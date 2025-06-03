@@ -1,0 +1,336 @@
+/* General container for the Camiones page */
+.camiones-container {
+  overflow-x: hidden; /* Prevent horizontal scroll due to potential overflows */
+  background-color: #f8f9fa; /* Light background for the page */
+  min-height: 100vh; /* Ensure it takes at least the full viewport height */
+}
+
+/* Main Carousel Styles (Hero Carousel) */
+.main-carousel {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+}
+
+.carousel-image-container {
+  height: 600px; /* Altura base para el carrusel principal en escritorio */
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #f0f0f0; /* Placeholder background */
+}
+
+.main-carousel .carousel-item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* Ensures images cover the area without distortion */
+  filter: brightness(0.7); /* Slightly dim the background images */
+  transition: transform 0.5s ease-in-out;
+}
+
+.main-carousel .carousel-item.active img {
+  transform: scale(1.03); /* Slight zoom effect on active slide */
+}
+
+/* Skeleton Loader for images */
+.skeleton-loader {
+  background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+  background-size: 200% 100%;
+  animation: loading 1.5s infinite;
+}
+
+@keyframes loading {
+  0% {
+    background-position: 200% 0;
+  }
+  100% {
+    background-position: -200% 0;
+  }
+}
+
+/* Title Section */
+.titulo-camiones-wrapper {
+  position: relative;
+  z-index: 100;
+  margin-top: -100px; /* Adjust this value to overlap the carousel as desired */
+  margin-bottom: 3rem !important; /* Ensure enough space below the title */
+}
+
+.titulo-camiones {
+  background: rgba(255, 255, 255, 0.95);
+  padding: 15px 30px;
+  border-radius: 8px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  display: inline-block;
+  border: 2px solid #1e3a8a;
+  color: #1e3a8a; /* Dark blue color for the title */
+  font-size: 2.5rem; /* Large font size for impact */
+  font-weight: 700; /* Bold font */
+  text-transform: uppercase; /* Uppercase for prominence */
+}
+
+/* Counters Section */
+.contadores-container {
+  background-color: rgba(248, 249, 250, 0.9);
+  padding: 15px;
+  border-radius: 8px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+  margin-top: 1.5rem; /* Space between title and counters */
+}
+
+.contador-badge {
+  background-color: #0d6efd; /* Bootstrap primary blue */
+  color: white;
+  padding: 0.75rem 1.25rem;
+  border-radius: 0.5rem;
+  min-width: 120px;
+  text-align: center;
+  font-size: 0.9rem;
+  font-weight: 600;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  transition: transform 0.2s ease, background-color 0.2s ease;
+}
+
+.contador-badge:nth-child(2) { background-color: #198754; } /* New: success */
+.contador-badge:nth-child(3) { background-color: #ffc107; color: #333; } /* Used: warning */
+.contador-badge:nth-child(4) { background-color: #dc3545; } /* Sold: danger */
+.contador-badge:nth-child(5) { background-color: #0dcaf0; color: #333; } /* Featured: info */
+
+.contador-badge:hover {
+  transform: translateY(-3px);
+  opacity: 0.9;
+}
+
+.contador-badge h5 {
+  font-size: 1rem; /* Adjust font size for smaller screens */
+  margin-bottom: 0;
+}
+
+/* Filters and Search Bar */
+.card-body .form-control-lg {
+  border-radius: 0.5rem;
+  padding: 0.75rem 1.25rem;
+  font-size: 1.1rem;
+  border: 1px solid #ced4da;
+}
+
+.card-body .form-select {
+  border-radius: 0.5rem;
+  padding: 0.75rem 1.25rem;
+  font-size: 1rem;
+  border: 1px solid #ced4da;
+}
+
+/* Custom Checkbox Size */
+.form-check-input.big-checkbox {
+  width: 1.5em; /* Increase width */
+  height: 1.5em; /* Increase height */
+  margin-top: 0.25em; /* Adjust vertical alignment */
+  margin-right: 0.5em; /* Space between checkbox and label */
+}
+
+/* Individual Card Styles (Camiones) */
+.card.h-100 {
+  border-radius: 0.75rem;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  overflow: hidden;
+  border: none; /* Remove default border */
+}
+
+.card.hover-effect:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 1rem 3rem rgba(0, 0, 0, 0.175) !important;
+}
+
+.card .carousel-inner {
+  height: 250px; /* Altura fija para el carrusel de cada camión */
+  overflow: hidden; /* Asegura que no haya desbordamiento */
+}
+
+.card .carousel-inner img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* Hace que la imagen cubra el área sin deformarse */
+  object-position: center; /* Centra la imagen si hay recortes */
+}
+
+.card-body {
+  padding: 1.5rem;
+}
+
+.card-title {
+  color: #1e3a8a; /* Primary blue for titles */
+  font-size: 1.75rem;
+  margin-bottom: 0.75rem;
+}
+
+.card-text {
+  font-size: 0.95rem;
+  line-height: 1.6;
+  color: #555;
+}
+
+.list-group-item {
+  border: none;
+  padding-left: 0;
+  padding-right: 0;
+  font-size: 0.9rem;
+}
+
+.list-group-item strong {
+  color: #333;
+  font-weight: 600;
+}
+
+/* Sold Overlay */
+.sold-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.6); /* Semi-transparent dark overlay */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 5; /* Above content, below ribbon */
+  border-radius: 0.75rem;
+  pointer-events: none; /* Allows clicks to pass through to the link */
+}
+
+.sold-text {
+  color: white;
+  font-size: 3rem; /* Large font size for "VENDIDO" */
+  font-weight: bold;
+  transform: rotate(-20deg); /* Rotate for a dynamic look */
+  border: 4px solid white;
+  padding: 10px 20px;
+  border-radius: 10px;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+/* Ribbon for Featured Items */
+.ribbon {
+  width: 150px; /* Base width for ribbon container */
+  height: 150px; /* Base height for ribbon container */
+  overflow: hidden;
+  position: absolute;
+  z-index: 10; /* Above the sold overlay */
+}
+
+.ribbon-top-left {
+  top: -10px;
+  left: -10px;
+}
+
+.ribbon-top-left span {
+  position: absolute;
+  display: block;
+  /* AUMENTADO: Ancho para asegurar que el texto quepa incluso con el relleno */
+  width: 250px; /* Valor ajustado para que el texto "⭐ DESTACADO" quepa */
+  padding: 10px 0; /* AUMENTADO: Padding para dar más espacio al texto */
+  background-color: #f7b32b; /* Golden yellow for featured */
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+  color: #fff;
+  font: 700 16px sans-serif; /* AUMENTADO: Tamaño de fuente para mayor legibilidad */
+  text-shadow: 0 1px 1px rgba(0, 0, 0, 0.2);
+  text-transform: uppercase;
+  text-align: center;
+  white-space: nowrap; /* Evita que el texto se rompa en varias líneas */
+  /* Posicionamiento para la rotación */
+  left: -35px; /* Ajuste fino de la posición para centrar el texto rotado */
+  top: 35px; /* Ajuste fino de la posición */
+  transform: rotate(-45deg);
+}
+
+/* Responsive Adjustments */
+
+/* Tablets (landscape) and small laptops */
+@media (max-width: 991px) {
+  .col-lg-3 { /* Ajusta las columnas en tarjetas a 2 por fila */
+    flex: 0 0 auto;
+    width: 50%;
+  }
+}
+
+/* Móviles y tabletas (portrait) */
+@media (max-width: 767.98px) { /* Usamos 767.98px para un quiebre más estándar de Bootstrap xs/sm */
+  .titulo-camiones {
+    font-size: 1.8rem;
+    padding: 10px 20px;
+  }
+
+  .titulo-camiones-wrapper {
+    margin-top: -100px;
+  }
+
+  .contador-badge {
+    min-width: 100px;
+    padding: 0.5rem 0.8rem;
+    font-size: 0.8rem;
+  }
+
+  .carousel-image-container {
+    height: 400px; /* Altura del carrusel principal en móviles */
+  }
+
+  .sold-text {
+    font-size: 2rem;
+    padding: 8px 15px;
+  }
+
+  /* AUMENTADO: Ancho de las cards en dispositivos móviles */
+  .row-cols-1 > .col { /* Esto asegura que todas las cards ocupen el 100% en el quiebre xs */
+    flex: 0 0 auto;
+    width: 100%;
+  }
+  .row-cols-md-2 > .col { /* Esto sobrescribe para que en sm ocupe el 100% también */
+    flex: 0 0 auto;
+    width: 100%;
+  }
+  .row-cols-lg-3 > .col { /* Aseguramos que en sm/md/lg se comporte como se espera */
+    width: 100%; /* Las cards ahora ocupan 100% de ancho hasta que se llegue a un breakpoint mayor (col-md-2/3) */
+  }
+
+  /* Ajustes específicos para la cinta en móvil */
+  .ribbon-top-left span {
+    width: 200px; /* AUMENTADO: Ancho para móviles */
+    font-size: 14px; /* Tamaño de fuente ajustado */
+    padding: 8px 0; /* Padding ajustado */
+    left: -25px; /* Reposicionado */
+    top: 25px; /* Reposicionado */
+  }
+}
+
+/* Móviles muy pequeños (e.g., iPhone 5/SE) */
+@media (max-width: 479.98px) { /* Un quiebre adicional para pantallas muy pequeñas */
+  .titulo-camiones {
+    font-size: 1.3rem;
+    padding: 6px 12px;
+  }
+
+  .titulo-camiones-wrapper {
+    margin-top: -60px;
+  }
+
+  .carousel-image-container {
+    height: 300px; /* Altura más pequeña para móviles muy pequeños */
+  }
+
+  .sold-text {
+    font-size: 1.5rem;
+    padding: 5px 10px;
+  }
+
+  /* Cards ya al 100% */
+
+  /* Ajustes específicos para la cinta en móvil más pequeño */
+  .ribbon-top-left span {
+    width: 180px; /* AUMENTADO: Ancho para móviles muy pequeños */
+    font-size: 12px; /* Reducido aún más el tamaño de la fuente */
+    padding: 6px 0; /* Ajustado el padding */
+    left: -20px; /* Reposicionado */
+    top: 20px; /* Reposicionado */
+  }
+}

@@ -1,0 +1,151 @@
+.carroceria-detalle {
+  background-color: #f8f9fa;
+  min-height: 100vh;
+}
+
+.card {
+  border-radius: 10px;
+  overflow: hidden;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1) !important;
+}
+
+.main-carousel {
+  position: relative;
+}
+
+.main-image-container {
+  cursor: zoom-in;
+  border-radius: 8px;
+  overflow: hidden;
+  height: 400px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #f1f1f1;
+}
+
+.main-image-container img {
+  object-fit: contain;
+  max-height: 100%;
+  max-width: 100%;
+}
+
+.thumbnail-container {
+  display: flex;
+  gap: 10px;
+  overflow-x: auto;
+  padding-bottom: 10px;
+}
+
+.thumbnail {
+  width: 80px;
+  height: 60px;
+  cursor: pointer;
+  border-radius: 5px;
+  overflow: hidden;
+  opacity: 0.7;
+  transition: opacity 0.3s ease, transform 0.3s ease;
+  flex-shrink: 0;
+}
+
+.thumbnail:hover {
+  opacity: 1;
+  transform: scale(1.05);
+}
+
+.thumbnail.active {
+  opacity: 1;
+  border: 2px solid #0d6efd;
+}
+
+.thumbnail img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.price-display {
+  background-color: #f8f9fa;
+  padding: 15px;
+  border-radius: 8px;
+  border-left: 4px solid #dc3545;
+}
+
+.specs-table th {
+  width: 40%;
+}
+
+.video-container {
+  background-color: #f8f9fa;
+  padding: 15px;
+  border-radius: 8px;
+}
+
+.image-zoom-modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.9);
+  z-index: 1050;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: zoom-out;
+}
+
+.zoom-content {
+  position: relative;
+  max-width: 90%;
+  max-height: 90%;
+}
+
+.zoomed-image {
+  max-width: 100%;
+  max-height: 90vh;
+  object-fit: contain;
+}
+
+.zoom-close-btn {
+  position: absolute;
+  top: -15px;
+  right: -15px;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  font-size: 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1051;
+}
+
+/* Responsive adjustments */
+@media (max-width: 992px) {
+  .main-image-container {
+    height: 350px;
+  }
+}
+
+@media (max-width: 768px) {
+  .main-image-container {
+    height: 300px;
+  }
+}
+
+@media (max-width: 576px) {
+  .main-image-container {
+    height: 250px;
+  }
+  
+  .thumbnail {
+    width: 60px;
+    height: 45px;
+  }
+}
