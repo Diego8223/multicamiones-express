@@ -5,7 +5,7 @@ import './Inicio.css';
 
 const videos = [
   {
-    id: 'rZ_wnF1O43Q/edit',
+    id: 'Zba22B5RimA',
     title: 'Video destacado',
     description: 'Disfruta de nuestro contenido premium cuidadosamente seleccionado para ti.'
   }
