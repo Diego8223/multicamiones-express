@@ -1,13 +1,18 @@
+import { fileURLToPath } from 'url';
+import { dirname, resolve } from 'path';
 import { defineConfig } from 'vite';
 import react from '@vitejs/plugin-react';
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = dirname(__filename);
 
 export default defineConfig({
   plugins: [react()],
   server: {
-    port: 5173, // Puerto específico para evitar conflictos
+    port: 5173,
   },
   build: {
-    // No necesitas marcar bootstrap como external
+    outDir: 'build',
     rollupOptions: {
       output: {
         assetFileNames: 'assets/[name].[hash].[ext]',
@@ -18,9 +23,8 @@ export default defineConfig({
   },
   resolve: {
     alias: {
-      // Opcional: Crea alias para rutas comunes
-      '@': '/src',
-      '@components': '/src/components'
+      '@': resolve(__dirname, 'src'),
+      '@components': resolve(__dirname, 'src/components')
     }
   }
 });
