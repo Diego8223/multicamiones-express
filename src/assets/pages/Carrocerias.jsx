@@ -3,7 +3,8 @@ import { Carousel } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import FallbackImage from '../../assets/img/foton.jpg';
-import './carrocerias.css';
+import './Carrocerias.css';
+
 
 // Importa imágenes para el carrusel de carrocerías
 import Carroceria1 from '../../assets/img/carroceria1.jpg';
