@@ -250,7 +250,7 @@ const Carrocerias = () => {
   // Estilos dinámicos responsive
   const responsiveStyles = {
     containerPadding: windowWidth < 768 ? '0 10px' : '0 20px',
-    carouselHeight: windowWidth < 768 ? '200px' : '500px',
+    carouselHeight: windowWidth < 768 ? '300px' : '500px', // Aumentada altura para móviles
     titleSize: windowWidth < 768 ? '1.8rem' : '2.5rem',
     cardTitleSize: windowWidth < 768 ? '1.2rem' : '1.5rem',
     cardTextSize: windowWidth < 768 ? '0.9rem' : '1rem',
@@ -261,7 +261,8 @@ const Carrocerias = () => {
     counterSize: windowWidth < 768 ? '0.9rem' : '1rem',
     noResultsSize: windowWidth < 768 ? '1.1rem' : '1.3rem',
     filterOptionSize: windowWidth < 768 ? '0.8rem' : '0.9rem',
-    filterLabelSize: windowWidth < 768 ? '0.9rem' : '1rem'
+    filterLabelSize: windowWidth < 768 ? '0.9rem' : '1rem',
+    cardImageHeight: windowWidth < 768 ? '250px' : '300px' // Nueva propiedad para altura de imágenes en cards
   };
 
   // Componente para renderizar filtros agrupados
@@ -296,7 +297,7 @@ const Carrocerias = () => {
 
   return (
     <div className="carrocerias-container" style={{ padding: responsiveStyles.containerPadding, marginTop: windowWidth < 768 ? '60px' : '80px' }}>
-      {/* Carrusel */}
+      {/* Carrusel - Modificado para mejor visualización en móviles */}
       <div className="carousel-wrapper" style={{ marginTop: windowWidth < 768 ? '10px' : '20px' }}>
         <Carousel
           activeIndex={index}
@@ -310,7 +311,10 @@ const Carrocerias = () => {
         >
           {carouselItems.map((item, idx) => (
             <Carousel.Item key={idx}>
-              <div className="carousel-image-container" style={{ height: responsiveStyles.carouselHeight }}>
+              <div className="carousel-image-container" style={{ 
+                height: responsiveStyles.carouselHeight,
+                overflow: 'hidden'
+              }}>
                 {loading ? (
                   <div className="skeleton-loader" style={{ height: '100%', width: '100%' }} />
                 ) : (
@@ -319,7 +323,11 @@ const Carrocerias = () => {
                     src={item.image}
                     alt={item.altText}
                     loading="eager"
-                    style={{ objectFit: 'cover' }}
+                    style={{ 
+                      objectFit: 'cover',
+                      width: '100%',
+                      height: '100%'
+                    }}
                     onError={(e) => {
                       e.target.onerror = null;
                       e.target.src = FallbackImage;
@@ -342,22 +350,22 @@ const Carrocerias = () => {
         </p>
       </header>
 
-      {/* Contadores */}
+      {/* Contadores - Modificado con color azul #1e3a8a */}
       <div className="contadores-container mb-4">
         <div className="row g-3 justify-content-center">
           {[
-            { label: 'Total', value: carrocerias.length, color: 'primary' },
-            { label: 'Nuevas', value: conteoEstados['Nueva'] || 0, color: 'success' },
-            { label: 'Usadas', value: conteoEstados['Usada'] || 0, color: 'warning' },
-            { label: 'Reacondicionadas', value: conteoEstados['Reacondicionada'] || 0, color: 'info' },
-            { label: 'Destacadas', value: conteoDestacados, color: 'danger' }
+            { label: 'Total', value: carrocerias.length },
+            { label: 'Nuevas', value: conteoEstados['Nueva'] || 0 },
+            { label: 'Usadas', value: conteoEstados['Usada'] || 0 },
+            { label: 'Reacondicionadas', value: conteoEstados['Reacondicionada'] || 0 },
+            { label: 'Destacadas', value: conteoDestacados }
           ].map((item, index) => (
             <div key={index} className="col-6 col-sm-4 col-md-3 col-lg-2">
-              <div className={`counter-card bg-${item.color} text-white rounded p-3 text-center shadow`}>
-                <div className="counter-value fw-bold" style={{ fontSize: '1.5rem' }}>
+              <div className="counter-card rounded p-3 text-center shadow" style={{ backgroundColor: '#1e3a8a' }}>
+                <div className="counter-value fw-bold text-white" style={{ fontSize: '1.5rem' }}>
                   {item.value}
                 </div>
-                <div className="counter-label" style={{ fontSize: responsiveStyles.counterSize }}>
+                <div className="counter-label text-white" style={{ fontSize: responsiveStyles.counterSize }}>
                   {item.label}
                 </div>
               </div>
@@ -366,7 +374,7 @@ const Carrocerias = () => {
         </div>
       </div>
 
-      {/* Filtros - MEJORADO Y ORGANIZADO */}
+      {/* Filtros */}
       <div className="card shadow-sm mb-4">
         <div className="card-body">
           <h2 className="h5 mb-3" style={{ fontSize: responsiveStyles.cardTitleSize }}>
@@ -440,33 +448,41 @@ const Carrocerias = () => {
         </div>
       </div>
 
-      {/* Listado de carrocerías */}
+      {/* Listado de carrocerías - Modificado para mejor visualización */}
       <div className="row">
         {filteredCarrocerias.length > 0 ? (
           filteredCarrocerias.map(carroceria => (
             <div key={carroceria.id} className="col-12 col-md-6 col-lg-4 mb-4">
               <div className="card h-100 shadow-sm position-relative carroceria-card">
+                {/* Overlay de vendido */}
                 {carroceria.estado === 'Vendida' && (
                   <div className="sold-overlay">
                     <span className="sold-text">VENDIDA</span>
                   </div>
                 )}
                 
+                {/* Ribbon de destacado - Modificado para posición superior */}
                 {carroceria.destacado && (
-                  <div className="ribbon ribbon-top-right">
+                  <div className="ribbon ribbon-top-right" style={{ top: '10px', right: '10px' }}>
                     <span>⭐ DESTACADA</span>
                   </div>
                 )}
                 
                 <Link to={`/carrocerias/${carroceria.id}`} className="text-decoration-none text-dark">
+                  {/* Carrusel de imágenes del camión - Modificado para mejor visualización */}
                   <div id={`carouselCarroceria${carroceria.id}`} className="carousel slide" data-bs-ride="carousel">
-                    <div className="carousel-inner ratio ratio-16x9">
+                    <div className="carousel-inner" style={{ height: responsiveStyles.cardImageHeight }}>
                       {carroceria.imagenes.map((img, index) => (
                         <div key={index} className={`carousel-item ${index === 0 ? 'active' : ''}`}>
                           <img 
                             src={img} 
-                            className="d-block w-100 card-img-top"
+                            className="d-block w-100 h-100"
                             alt={`${carroceria.tipo} ${carroceria.modelo}`}
+                            style={{
+                              objectFit: 'cover',
+                              width: '100%',
+                              height: '100%'
+                            }}
                             onError={(e) => {
                               e.target.onerror = null;
                               e.target.src = FallbackImage;
@@ -530,7 +546,11 @@ const Carrocerias = () => {
                   <Link 
                     to={`/carrocerias/${carroceria.id}`} 
                     className="btn btn-primary w-100"
-                    style={{ fontSize: responsiveStyles.buttonSize }}
+                    style={{ 
+                      fontSize: responsiveStyles.buttonSize,
+                      backgroundColor: '#1e3a8a',
+                      borderColor: '#1e3a8a'
+                    }}
                   >
                     Ver detalles completos
                   </Link>
@@ -556,7 +576,11 @@ const Carrocerias = () => {
                   destacado: false
                 });
               }}
-              style={{ fontSize: responsiveStyles.buttonSize }}
+              style={{ 
+                fontSize: responsiveStyles.buttonSize,
+                color: '#1e3a8a',
+                borderColor: '#1e3a8a'
+              }}
             >
               Limpiar filtros
             </button>

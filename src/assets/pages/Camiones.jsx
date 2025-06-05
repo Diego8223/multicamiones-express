@@ -361,22 +361,22 @@ const Camiones = () => {
         </p>
       </header>
 
-      {/* Contadores */}
+      {/* Contadores - Modificado con color azul #1e3a8a */}
       <div className="contadores-container mb-4">
         <div className="row g-3 justify-content-center">
           {[
-            { label: 'Total', value: camiones.length, color: 'primary' },
-            { label: 'Nuevos', value: conteoEstados['Nuevo'] || 0, color: 'success' },
-            { label: 'Usados', value: conteoEstados['Usado'] || 0, color: 'warning' },
-            { label: 'Vendidos', value: conteoEstados['Vendido'] || 0, color: 'danger' },
-            { label: 'Destacados', value: conteoDestacados, color: 'info' }
+            { label: 'Total', value: camiones.length },
+            { label: 'Nuevos', value: conteoEstados['Nuevo'] || 0 },
+            { label: 'Usados', value: conteoEstados['Usado'] || 0 },
+            { label: 'Vendidos', value: conteoEstados['Vendido'] || 0 },
+            { label: 'Destacados', value: conteoDestacados }
           ].map((item, index) => (
             <div key={index} className="col-6 col-sm-4 col-md-3 col-lg-2">
-              <div className={`counter-card bg-${item.color} text-white rounded p-3 text-center shadow`}>
-                <div className="counter-value fw-bold" style={{ fontSize: '1.5rem' }}>
+              <div className="counter-card rounded p-3 text-center shadow" style={{ backgroundColor: '#1e3a8a' }}>
+                <div className="counter-value fw-bold text-white" style={{ fontSize: '1.5rem' }}>
                   {item.value}
                 </div>
-                <div className="counter-label" style={{ fontSize: responsiveStyles.counterSize }}>
+                <div className="counter-label text-white" style={{ fontSize: responsiveStyles.counterSize }}>
                   {item.label}
                 </div>
               </div>
@@ -557,7 +557,11 @@ const Camiones = () => {
                   <Link 
                     to={`/camiones/${camion.id}`} 
                     className="btn btn-primary w-100"
-                    style={{ fontSize: responsiveStyles.buttonSize }}
+                    style={{ 
+                      fontSize: responsiveStyles.buttonSize,
+                      backgroundColor: '#1e3a8a',
+                      borderColor: '#1e3a8a'
+                    }}
                   >
                     Ver detalles completos
                   </Link>
@@ -583,7 +587,11 @@ const Camiones = () => {
                   destacado: false
                 });
               }}
-              style={{ fontSize: responsiveStyles.buttonSize }}
+              style={{ 
+                fontSize: responsiveStyles.buttonSize,
+                color: '#1e3a8a',
+                borderColor: '#1e3a8a'
+              }}
             >
               Limpiar filtros
             </button>
