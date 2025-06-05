@@ -2,28 +2,42 @@ import React, { useState, useEffect, useMemo } from 'react';
 import { Carousel } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import FallbackImage from '../../assets/img/foton.jpg'; 
-import './Camiones.css'; // Asegúrate de que este CSS esté bien definido
+import FallbackImage from '../../assets/img/foton.jpg';
+import './Camiones.css';
 
 // Importa imágenes para el carrusel
 import Multimarca from '../../assets/img/multimarca.jpg';
 import Multicamiones from '../../assets/img/multicamiones.jpg';
 import Expres from "../../assets/img/expres.jpg";
 
-
-
-
 const Camiones = () => {
   // Estados del carrusel
   const [index, setIndex] = useState(0);
   const [autoPlay, setAutoPlay] = useState(true);
   const [loading, setLoading] = useState(true);
+  const [windowWidth, setWindowWidth] = useState(window.innerWidth);
 
-  // Configuración de rutas de imágenes locales
+  // Actualizar ancho de ventana al cambiar tamaño
+  useEffect(() => {
+    const handleResize = () => setWindowWidth(window.innerWidth);
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
+
+  // Configuración de rutas de imágenes locales para camiones
   const carouselItems = useMemo(() => [
-    { image: Multimarca, altText: 'Variedad de marcas de camiones' },
-    { image: Multicamiones, altText: 'Flota de camiones disponibles' },
-    { image: Expres, altText: 'Servicio express de camiones' }
+    {
+      image: Multimarca,
+      altText: 'Camiones de alta calidad'
+    },
+    {
+      image: Multicamiones,
+      altText: 'Variedad de modelos disponibles'
+    },
+    {
+      image: Expres,
+      altText: 'Flota profesional de camiones'
+    }
   ], []);
 
   // Precarga de imágenes
@@ -32,7 +46,7 @@ const Camiones = () => {
     const loadImages = async () => {
       try {
         await Promise.all(
-          carouselItems.map(item => 
+          carouselItems.map(item =>
             new Promise((resolve, reject) => {
               const img = new Image();
               img.src = item.image;
@@ -47,11 +61,11 @@ const Camiones = () => {
         if (isMounted) setLoading(false);
       }
     };
-    
+
     loadImages();
     return () => { isMounted = false };
   }, [carouselItems]);
-  
+
   const [searchTerm, setSearchTerm] = useState('');
   const [filters, setFilters] = useState({
     marca: '',
@@ -59,15 +73,15 @@ const Camiones = () => {
     modelo: '',
     ubicacion: '',
     estado: '',
-    destacado: false, 
+    destacado: false
   });
 
-  // Datos para filtros
-  const tiposVehiculo = [
+  // Datos específicos para camiones
+  const tiposCamion = [
     'Chasis', 'Estaca', 'Furgón', 'Grúa', 'Tanque', 'Tractocamión', 
     'Volqueta', 'Refrigerado', 'Cisterna', 'Cargo', 'Planchón ferretero', 'Trailer'
   ];
-  
+
   const marcas = [
     'Chevrolet', 'Fotón', 'Hino', 'Kenworth', 'International', 'JMC',
     'JAC', 'Volkswagen', 'Mercedes', 'Freightliner', 'Shacman', 'Volvo',
@@ -75,33 +89,33 @@ const Camiones = () => {
     'Mack', 'Daihatsu', 'Mitsubishi', 'Toyota', 'Nissan', 'DMF', 'Iveco',
     'Sinotruk', 'Otro'
   ];
-  
+
   const ciudadesColombia = [
     'Bogotá', 'Medellín', 'Cali', 'Barranquilla', 'Cartagena',
     'Bucaramanga', 'Pereira', 'Manizales', 'Cúcuta', 'Ibagué'
   ];
 
-  const Estados = ['usado', 'nuevo', 'vendido'];
+  const Estados = ['Nuevo', 'Usado', 'Vendido'];
 
-  // Datos de ejemplo mejorados
   const camiones = [
-    { 
-      id: 1, 
-      marca: 'Foton', 
-      tipo: 'Tractocamión', 
-      modelo: 'FH16', 
+    {
+      id: 1,
+      marca: 'Foton',
+      tipo: 'Tractocamión',
+      modelo: 'FH16',
       ubicacion: 'Medellín',
       precio: 420000000,
       kilometraje: 145000,
       año: 2020,
-      estado: 'usado',
+      estado: 'Usado',
       destacado: true,
       descripcion: 'Tractocamión en excelente estado con mantenimiento al día, ideal para transporte pesado',
       imagenes: [
         '/img/fotonmediano.jpg',
-        
+        '/img/fotonmediano-2.jpg',
+        '/img/fotonmediano-3.jpg'
       ],
-      video: 'https://www.youtube.com/watch?v=dQw4w9WgXcQ', // Se quitará este video en el renderizado
+      video: 'https://www.youtube.com/watch?v=dQw4w9WgXcQ',
       especificaciones: {
         motor: 'D13K 540HP',
         transmision: 'I-Shift 12 velocidades',
@@ -111,23 +125,24 @@ const Camiones = () => {
         extras: 'Cabina Globetrotter, Aire acondicionado, Dirección asistida'
       }
     },
-    { 
-      id: 2, 
-      marca: 'Fotón', 
-      tipo: 'Estaca', 
-      modelo: 'Auman G7', 
+    {
+      id: 2,
+      marca: 'Fotón',
+      tipo: 'Estaca',
+      modelo: 'Auman G7',
       ubicacion: 'Bogotá',
       precio: 185000000,
       kilometraje: 85000,
       año: 2021,
-      estado: 'usado',
+      estado: 'Usado',
       destacado: true,
       descripcion: 'Camión estaca con excelente rendimiento en combustible, mantenimiento en concesionario',
       imagenes: [
         '/img/foton-auman-1.jpg',
-        '/img/foton-auman-2.jpg'
+        '/img/foton-auman-2.jpg',
+        '/img/foton-auman-3.jpg'
       ],
-      video: 'https://www.youtube.com/watch?v=M_Tj_z_q00I', // Se quitará este video en el renderizado
+      video: 'https://www.youtube.com/watch?v=9bZkp7q19f0',
       especificaciones: {
         motor: 'Cummins ISF3.8 168HP',
         transmision: 'Manual 8 velocidades',
@@ -137,22 +152,24 @@ const Camiones = () => {
         extras: 'Cabina amplia, Frenos ABS'
       }
     },
-    { 
-      id: 3, 
-      marca: 'Mercedes', 
-      tipo: 'Furgón', 
-      modelo: 'Actros 2646', 
+    {
+      id: 3,
+      marca: 'Mercedes',
+      tipo: 'Furgón',
+      modelo: 'Actros 2646',
       ubicacion: 'Cali',
       precio: 380000000,
       kilometraje: 120000,
       año: 2019,
-      estado: 'usado',
+      estado: 'Usado',
       destacado: false,
       descripcion: 'Furgón Mercedes en perfecto estado, ideal para transporte de carga seca',
       imagenes: [
-        '/img/mercedes-actros-1.jpg'
+        '/img/mercedes-actros-1.jpg',
+        '/img/mercedes-actros-2.jpg',
+        '/img/mercedes-actros-3.jpg'
       ],
-      video: null, // Ejemplo sin video
+      video: 'https://www.youtube.com/watch?v=JGwWNGJdvx8',
       especificaciones: {
         motor: 'OM 460 460HP',
         transmision: 'Powershift 12 velocidades',
@@ -162,76 +179,41 @@ const Camiones = () => {
         extras: 'Control de crucero, Camara de retroceso'
       }
     },
-    { 
-      id: 4, 
-      marca: 'Freightliner', 
-      tipo: 'Tractocamión', 
-      modelo: 'Cascadia', 
+    {
+      id: 4,
+      marca: 'Volvo',
+      tipo: 'Volqueta',
+      modelo: 'FMX 540',
       ubicacion: 'Barranquilla',
-      precio: 450000000,
+      precio: 520000000,
       kilometraje: 90000,
       año: 2022,
-      estado: 'nuevo',
+      estado: 'Usado',
       destacado: true,
-      descripcion: 'Tractocamión Freightliner Cascadia nuevo, listo para trabajar',
+      descripcion: 'Volqueta Volvo con bajo kilometraje, lista para trabajo pesado',
       imagenes: [
-        '/img/freightliner-cascadia-1.jpg',
-        '/img/freightliner-cascadia-2.jpg'
+        '/img/volvo-volqueta-1.jpg',
+        '/img/volvo-volqueta-2.jpg'
       ],
-      video: 'https://www.youtube.com/watch?v=F0p7v66wE7E', // Se quitará este video en el renderizado
+      video: 'https://www.youtube.com/watch?v=JGwWNGJdvx8',
       especificaciones: {
-        motor: 'Detroit DD15',
-        transmision: 'Automática Detroit DT12',
-        capacidad: '45 toneladas',
+        motor: 'D13K 540HP',
+        transmision: 'I-Shift 12 velocidades',
+        capacidad: '30 toneladas',
         ejes: '3',
         suspension: 'Neumática',
-        extras: 'Paquete de seguridad, Confort mejorado'
-      }
-    },
-    { 
-      id: 5, 
-      marca: 'Chevrolet', 
-      tipo: 'Volqueta', 
-      modelo: 'FVR', 
-      ubicacion: 'Cúcuta',
-      precio: 250000000,
-      kilometraje: 200000,
-      año: 2018,
-      estado: 'vendido',
-      destacado: false,
-      descripcion: 'Volqueta Chevrolet FVR en buen estado, ideal para construcción',
-      imagenes: [
-        '/img/chevrolet-fvr-1.jpg'
-      ],
-      video: null,
-      especificaciones: {
-        motor: 'Isuzu 6HK1',
-        transmision: 'Manual',
-        capacidad: '15 metros cúbicos',
-        ejes: '2',
-        suspension: 'Ballestas',
-        extras: 'Aire acondicionado'
+        extras: 'Cabina con dormitorio, Aire acondicionado'
       }
     }
   ];
 
-  // Función mejorada para extraer IDs de YouTube (se mantiene aunque no se use en el renderizado actual)
-  const getYouTubeId = (url) => {
-    if (!url) return null;
-
-    const patterns = [
-      /(?:https?:\/\/)?(?:www\.)?(?:youtube\.com\/(?:[^\/]+\/.+\/|(?:v|e(?:mbed)?)\/|.*[?&]v=)|youtu\.be\/)([^"&?\/\s]{11})/i,
-      /^([a-zA-Z0-9_-]{11})$/
-    ];
-
-    for (const pattern of patterns) {
-      const match = url.match(pattern);
-      if (match && match[1]) {
-        return match[1];
-      }
-    }
-
-    return null;
+  // Función para contar camiones por propiedad
+  const countBy = (prop) => {
+    return camiones.reduce((acc, curr) => {
+      const key = curr[prop]?.toString() || 'desconocido';
+      acc[key] = (acc[key] || 0) + 1;
+      return acc;
+    }, {});
   };
 
   const handleFilterChange = (e) => {
@@ -247,15 +229,16 @@ const Camiones = () => {
     const matchesSearch = (
       camion.marca.toLowerCase().includes(searchLower) ||
       camion.modelo.toLowerCase().includes(searchLower) ||
-      camion.descripcion.toLowerCase().includes(searchLower)
+      camion.descripcion.toLowerCase().includes(searchLower) ||
+      camion.tipo.toLowerCase().includes(searchLower)
     );
-    
+
     const matchesFilters = (
       (!filters.marca || camion.marca === filters.marca) &&
       (!filters.tipo || camion.tipo === filters.tipo) &&
       (!filters.ubicacion || camion.ubicacion === filters.ubicacion) &&
       (!filters.estado || camion.estado === filters.estado) &&
-      (!filters.destacado || camion.destacado === true) 
+      (!filters.destacado || camion.destacado === filters.destacado)
     );
 
     return matchesSearch && matchesFilters;
@@ -269,289 +252,346 @@ const Camiones = () => {
     }).format(price);
   };
 
-  const countBy = (prop) => {
-    return camiones.reduce((acc, curr) => {
-      const key = curr[prop]?.toString() || 'desconocido';
-      acc[key] = (acc[key] || 0) + 1;
-      return acc;
-    }, {});
-  };
-
   const conteoEstados = countBy('estado');
   const conteoTipos = countBy('tipo');
-  const conteoUbicaciones = countBy('ubicacion');
   const conteoMarcas = countBy('marca');
+  const conteoUbicaciones = countBy('ubicacion');
   const conteoDestacados = camiones.filter(c => c.destacado).length;
 
-  return (
-    <div className="camiones-container"> 
-      {/* Carrusel */}
-      <Carousel 
-        activeIndex={index} 
-        onSelect={setIndex}
-        fade
-        pause={autoPlay ? false : 'hover'}
-        className="main-carousel"
-        interval={autoPlay ? 5000 : null}
-        onMouseEnter={() => setAutoPlay(false)}
-        onMouseLeave={() => setAutoPlay(true)}
-      >
-        {carouselItems.map((item, idx) => (
-          <Carousel.Item key={idx}>
-            <div className="carousel-image-container">
-              {loading ? (
-                <div className="skeleton-loader" style={{ height: '500px', width: '100%' }} /> 
-              ) : (
-                <img
-                  className="d-block w-100"
-                  src={item.image}
-                  alt={item.altText}
-                  loading="eager"
-                  onError={(e) => {
-                    e.target.onerror = null;
-                    e.target.src = FallbackImage; 
-                  }}
-                />
-              )}
-            </div>
-          </Carousel.Item>
-        ))}
-      </Carousel>  
+  // Estilos dinámicos responsive
+  const responsiveStyles = {
+    containerPadding: windowWidth < 768 ? '0 10px' : '0 20px',
+    carouselHeight: windowWidth < 768 ? '300px' : '500px', // Aumentada altura para móviles
+    titleSize: windowWidth < 768 ? '1.8rem' : '2.5rem',
+    cardTitleSize: windowWidth < 768 ? '1.2rem' : '1.5rem',
+    cardTextSize: windowWidth < 768 ? '0.9rem' : '1rem',
+    priceSize: windowWidth < 768 ? '1.1rem' : '1.3rem',
+    badgeSize: windowWidth < 768 ? '0.7rem' : '0.8rem',
+    buttonSize: windowWidth < 768 ? '0.9rem' : '1rem',
+    inputSize: windowWidth < 768 ? '0.9rem' : '1rem',
+    counterSize: windowWidth < 768 ? '0.9rem' : '1rem',
+    noResultsSize: windowWidth < 768 ? '1.1rem' : '1.3rem',
+    filterOptionSize: windowWidth < 768 ? '0.8rem' : '0.9rem',
+    filterLabelSize: windowWidth < 768 ? '0.9rem' : '1rem',
+    cardImageHeight: windowWidth < 768 ? '250px' : '300px' // Nueva propiedad para altura de imágenes en cards
+  };
 
-      {/* Título de la sección movido fuera del carrusel */}
-      <header 
-        className="text-center mb-3 mt-5 titulo-camiones-wrapper" // Ajustado el margen superior
+  // Componente para renderizar filtros agrupados
+  const FilterGroup = ({ title, name, options, count }) => (
+    <div className="mb-3">
+      <h3 className="h6 mb-2" style={{ fontSize: responsiveStyles.filterLabelSize, fontWeight: 'bold' }}>
+        {title}
+      </h3>
+      <select
+        name={name}
+        className="form-select"
+        onChange={handleFilterChange}
+        value={filters[name]}
+        style={{ fontSize: responsiveStyles.inputSize }}
       >
-        <h1 className="titulo-camiones mb-3">
-          Camiones Nuevos y Usados
+        <option value="">Todos ({Object.values(count).reduce((a, b) => a + b, 0)})</option>
+        {options.map(option => (
+          <option 
+            key={option} 
+            value={option}
+            style={{ fontSize: responsiveStyles.filterOptionSize }}
+            title={option}
+          >
+            {windowWidth < 768 ? 
+              `${option.substring(0, 12)}${option.length > 12 ? '...' : ''}` : 
+              option} ({count[option] || 0})
+          </option>
+        ))}
+      </select>
+    </div>
+  );
+
+  return (
+    <div className="camiones-container" style={{ padding: responsiveStyles.containerPadding, marginTop: windowWidth < 768 ? '60px' : '80px' }}>
+      {/* Carrusel - Modificado para mejor visualización en móviles */}
+      <div className="carousel-wrapper" style={{ marginTop: windowWidth < 768 ? '10px' : '20px' }}>
+        <Carousel
+          activeIndex={index}
+          onSelect={setIndex}
+          fade
+          pause={autoPlay ? false : 'hover'}
+          className="main-carousel mb-4"
+          interval={autoPlay ? 5000 : null}
+          onMouseEnter={() => setAutoPlay(false)}
+          onMouseLeave={() => setAutoPlay(true)}
+        >
+          {carouselItems.map((item, idx) => (
+            <Carousel.Item key={idx}>
+              <div className="carousel-image-container" style={{ 
+                height: responsiveStyles.carouselHeight,
+                overflow: 'hidden'
+              }}>
+                {loading ? (
+                  <div className="skeleton-loader" style={{ height: '100%', width: '100%' }} />
+                ) : (
+                  <img
+                    className="d-block w-100 h-100"
+                    src={item.image}
+                    alt={item.altText}
+                    loading="eager"
+                    style={{ 
+                      objectFit: 'cover',
+                      width: '100%',
+                      height: '100%'
+                    }}
+                    onError={(e) => {
+                      e.target.onerror = null;
+                      e.target.src = FallbackImage;
+                    }}
+                  />
+                )}
+              </div>
+            </Carousel.Item>
+          ))}
+        </Carousel>
+      </div>
+
+      {/* Título principal */}
+      <header className="text-center my-4">
+        <h1 className="titulo-camiones fw-bold" style={{ fontSize: responsiveStyles.titleSize }}>
+          CAMIONES NUEVOS Y USADOS
         </h1>
+        <p className="lead" style={{ fontSize: responsiveStyles.cardTextSize }}>
+          Encuentra el camión perfecto para tus necesidades de transporte
+        </p>
       </header>
 
-      {/* Contenido principal de camiones */}
-      <div className="container-fluid p-4 mt-0 position-relative"> {/* Ajustado el margen superior */}
-        <div className="container-fluid px-3 px-md-4 mt-0">
-          <div className="row justify-content-center">
-            <div className="col-12">
-              <header className="text-center mb-4">
-                <div className="contadores-container d-flex flex-wrap justify-content-center gap-2 mb-4">
-                  <div className="contador-badge">
-                    <h5 className="mb-0">Total: {camiones.length}</h5>
-                  </div>
-                  <div className="contador-badge">
-                    <h5 className="mb-0">Nuevos: {conteoEstados['nuevo'] || 0}</h5>
-                  </div>
-                  <div className="contador-badge">
-                    <h5 className="mb-0">Usados: {conteoEstados['usado'] || 0}</h5>
-                  </div>
-                  <div className="contador-badge">
-                    <h5 className="mb-0">Vendidos: {conteoEstados['vendido'] || 0}</h5>
-                  </div>
-                  <div className="contador-badge">
-                    <h5 className="mb-0">Destacados: {conteoDestacados}</h5>
-                  </div>
+      {/* Contadores */}
+      <div className="contadores-container mb-4">
+        <div className="row g-3 justify-content-center">
+          {[
+            { label: 'Total', value: camiones.length, color: 'primary' },
+            { label: 'Nuevos', value: conteoEstados['Nuevo'] || 0, color: 'success' },
+            { label: 'Usados', value: conteoEstados['Usado'] || 0, color: 'warning' },
+            { label: 'Vendidos', value: conteoEstados['Vendido'] || 0, color: 'danger' },
+            { label: 'Destacados', value: conteoDestacados, color: 'info' }
+          ].map((item, index) => (
+            <div key={index} className="col-6 col-sm-4 col-md-3 col-lg-2">
+              <div className={`counter-card bg-${item.color} text-white rounded p-3 text-center shadow`}>
+                <div className="counter-value fw-bold" style={{ fontSize: '1.5rem' }}>
+                  {item.value}
                 </div>
-              </header>
-            </div>
-          </div>
-
-          <div className="row justify-content-center">
-            <div className="col-12">
-              <div className="card shadow-lg mb-5 border-0">
-                <div className="card-body">
-                  <div className="mb-4">
-                    <input
-                      type="search"
-                      className="form-control form-control-lg"
-                      placeholder="🔍 Buscar por marca, modelo o características..."
-                      value={searchTerm}
-                      onChange={(e) => setSearchTerm(e.target.value)}
-                    />
-                  </div>
-
-                  <div className="row g-2 g-md-3">
-                    <div className="col-6 col-md-3">
-                      <select
-                        name="marca"
-                        className="form-select"
-                        onChange={handleFilterChange}
-                        value={filters.marca}
-                      >
-                        <option value="">Todas las marcas ({marcas.length})</option>
-                        {marcas.map(marca => (
-                          <option key={marca} value={marca}>
-                            {marca} ({conteoMarcas[marca] || 0})
-                          </option>
-                        ))}
-                      </select>
-                    </div>
-
-                    <div className="col-6 col-md-3">
-                      <select
-                        name="tipo"
-                        className="form-select"
-                        onChange={handleFilterChange}
-                        value={filters.tipo}
-                      >
-                        <option value="">Todos los tipos ({tiposVehiculo.length})</option>
-                        {tiposVehiculo.map(tipo => (
-                          <option key={tipo} value={tipo}>
-                            {tipo} ({conteoTipos[tipo] || 0})
-                          </option>
-                        ))}
-                      </select>
-                    </div>
-
-                    <div className="col-6 col-md-3">
-                      <select
-                        name="ubicacion"
-                        className="form-select"
-                        onChange={handleFilterChange}
-                        value={filters.ubicacion}
-                      >
-                        <option value="">Todas las ubicaciones ({ciudadesColombia.length})</option>
-                        {ciudadesColombia.map(ciudad => (
-                          <option key={ciudad} value={ciudad}>
-                            {ciudad} ({conteoUbicaciones[ciudad] || 0})
-                          </option>
-                        ))}
-                      </select>
-                    </div>
-
-                    <div className="col-6 col-md-3">
-                      <div className="d-flex flex-column flex-md-row gap-2 align-items-center h-100">
-                        <select
-                          name="estado"
-                          className="form-select"
-                          onChange={handleFilterChange}
-                          value={filters.estado}
-                        >
-                          <option value="">Todos los estados</option>
-                          <option value="nuevo">Nuevo ({conteoEstados['nuevo'] || 0})</option>
-                          <option value="usado">Usado ({conteoEstados['usado'] || 0})</option>
-                          <option value="vendido">Vendido ({conteoEstados['vendido'] || 0})</option>
-                        </select>
-                        <div className="form-check">
-                          <input
-                            type="checkbox"
-                            className="form-check-input big-checkbox"
-                            id="destacado"
-                            name="destacado"
-                            checked={filters.destacado}
-                            onChange={handleFilterChange}
-                          />
-                          <label className="form-check-label" htmlFor="destacado">
-                            Destacados
-                          </label>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
+                <div className="counter-label" style={{ fontSize: responsiveStyles.counterSize }}>
+                  {item.label}
                 </div>
               </div>
             </div>
+          ))}
+        </div>
+      </div>
+
+      {/* Filtros */}
+      <div className="card shadow-sm mb-4">
+        <div className="card-body">
+          <h2 className="h5 mb-3" style={{ fontSize: responsiveStyles.cardTitleSize }}>
+            <i className="bi bi-funnel-fill me-2"></i>
+            Filtrar Camiones
+          </h2>
+          
+          <div className="mb-3">
+            <input
+              type="search"
+              className="form-control"
+              placeholder="🔍 Buscar por marca, modelo o descripción..."
+              value={searchTerm}
+              onChange={(e) => setSearchTerm(e.target.value)}
+              style={{ fontSize: responsiveStyles.inputSize }}
+            />
           </div>
 
-          <div className="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
-            {filteredCamiones.length > 0 ? (
-              filteredCamiones.map(camion => {
-                // Ya no necesitamos videoId aquí, pero la función getYouTubeId se mantiene
-                // en caso de que la necesites para otras funcionalidades en el futuro.
-                // const videoId = getYouTubeId(camion.video); 
-                
-                return (
-                  <div key={camion.id} className="col">
-                    <div className="card h-100 shadow-sm position-relative hover-effect">
-                      {camion.estado === 'vendido' && (
-                        <div className="sold-overlay">
-                          <span className="sold-text">VENDIDO</span>
-                        </div>
-                      )}
-                      
-                      {camion.destacado && (
-                        <div className="ribbon ribbon-top-right">
-                          <span>⭐ DESTACADO</span>
-                        </div>
-                      )}
-                      
-                      <Link to={`/camiones/${camion.id}`} className="text-decoration-none">
-                        <div id={`carouselCamion${camion.id}`} className="carousel slide" data-bs-ride="carousel">
-                          <div className="carousel-inner ratio ratio-16x9">
-                            {camion.imagenes.map((img, index) => (
-                              <div key={index} className={`carousel-item ${index === 0 ? 'active' : ''}`}>
-                                <img 
-                                  src={img} 
-                                  className="d-block w-100"
-                                  alt={`${camion.marca} ${camion.modelo}`}
-                                  onError={(e) => {
-                                    e.target.onerror = null;
-                                    e.target.src = FallbackImage; // Usa FallbackImage para camiones
-                                  }}
-                                />
-                              </div>
-                            ))}
-                          </div>
-                          {camion.imagenes.length > 1 && (
-                            <>
-                              <button className="carousel-control-prev" type="button" data-bs-target={`#carouselCamion${camion.id}`} data-bs-slide="prev">
-                                <span className="carousel-control-prev-icon" aria-hidden="true"></span>
-                                <span className="visually-hidden">Previous</span>
-                              </button>
-                              <button className="carousel-control-next" type="button" data-bs-target={`#carouselCamion${camion.id}`} data-bs-slide="next">
-                                <span className="carousel-control-next-icon" aria-hidden="true"></span>
-                                <span className="visually-hidden">Next</span>
-                              </button>
-                            </>
-                          )}
-                        </div>
-                      </Link>
-                      
-                      {/* SE HA ELIMINADO LA SECCIÓN DE VIDEO AQUÍ */}
-                      
-                      <div className="card-body">
-                        <h3 className="card-title fw-bold text-primary">
-                          {camion.marca} {camion.modelo} ({camion.año})
-                        </h3>
-                        <div className="d-flex justify-content-between align-items-center mb-3">
-                          <span className="h4 text-danger">{formatPrice(camion.precio)}</span>
-                          <span className="badge bg-dark">{camion.kilometraje.toLocaleString()} km</span>
-                        </div>
-                        <p className="card-text text-muted">{camion.descripcion}</p>
-                        <ul className="list-group list-group-flush">
-                          <li className="list-group-item d-flex justify-content-between">
-                            <span>Tipo:</span>
-                            <strong>{camion.tipo}</strong>
-                          </li>
-                          <li className="list-group-item d-flex justify-content-between">
-                            <span>Ubicación:</span>
-                            <strong>{camion.ubicacion}</strong>
-                          </li>
-                          <li className="list-group-item d-flex justify-content-between">
-                            <span>Estado:</span>
-                            <strong className={`badge bg-${camion.estado === 'nuevo' ? 'success' : camion.estado === 'vendido' ? 'danger' : 'warning'}`}>
-                              {camion.estado.toUpperCase()}
-                            </strong>
-                          </li>
-                        </ul>
-                        <div className="mt-3">
-                          <Link to={`/camiones/${camion.id}`} className="btn btn-primary w-100">
-                            Ver detalles completos
-                          </Link>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                );
-              })
-            ) : (
-              <div className="col-12 text-center py-5">
-                <p className="lead">No se encontraron camiones que coincidan con tu búsqueda.</p>
+          <div className="row">
+            <div className="col-12 col-sm-6 col-md-3 mb-3">
+              <FilterGroup 
+                title="Marca" 
+                name="marca" 
+                options={marcas} 
+                count={conteoMarcas} 
+              />
+            </div>
+            
+            <div className="col-12 col-sm-6 col-md-3 mb-3">
+              <FilterGroup 
+                title="Tipo de Camión" 
+                name="tipo" 
+                options={tiposCamion} 
+                count={conteoTipos} 
+              />
+            </div>
+            
+            <div className="col-12 col-sm-6 col-md-3 mb-3">
+              <FilterGroup 
+                title="Ubicación" 
+                name="ubicacion" 
+                options={ciudadesColombia} 
+                count={conteoUbicaciones} 
+              />
+            </div>
+            
+            <div className="col-12 col-sm-6 col-md-3 mb-3">
+              <FilterGroup 
+                title="Estado" 
+                name="estado" 
+                options={Estados} 
+                count={conteoEstados} 
+              />
+              
+              <div className="form-check form-switch mt-3">
+                <input
+                  type="checkbox"
+                  className="form-check-input"
+                  id="destacado"
+                  name="destacado"
+                  checked={filters.destacado}
+                  onChange={handleFilterChange}
+                  role="switch"
+                />
+                <label className="form-check-label" htmlFor="destacado" style={{ fontSize: responsiveStyles.inputSize }}>
+                  Solo destacados
+                </label>
               </div>
-            )}
+            </div>
           </div>
         </div>
       </div>
+
+      {/* Listado de camiones - Modificado para mejor visualización */}
+      <div className="row">
+        {filteredCamiones.length > 0 ? (
+          filteredCamiones.map(camion => (
+            <div key={camion.id} className="col-12 col-md-6 col-lg-4 mb-4">
+              <div className="card h-100 shadow-sm position-relative camion-card">
+                {/* Overlay de vendido */}
+                {camion.estado === 'Vendido' && (
+                  <div className="sold-overlay">
+                    <span className="sold-text">VENDIDO</span>
+                  </div>
+                )}
+                
+                {/* Ribbon de destacado - Modificado para posición superior */}
+                {camion.destacado && (
+                  <div className="ribbon ribbon-top-right" style={{ top: '10px', right: '10px' }}>
+                    <span>⭐ DESTACADO</span>
+                  </div>
+                )}
+                
+                <Link to={`/camiones/${camion.id}`} className="text-decoration-none text-dark">
+                  {/* Carrusel de imágenes del camión - Modificado para mejor visualización */}
+                  <div id={`carouselCamion${camion.id}`} className="carousel slide" data-bs-ride="carousel">
+                    <div className="carousel-inner" style={{ height: responsiveStyles.cardImageHeight }}>
+                      {camion.imagenes.map((img, index) => (
+                        <div key={index} className={`carousel-item ${index === 0 ? 'active' : ''}`}>
+                          <img 
+                            src={img} 
+                            className="d-block w-100 h-100"
+                            alt={`${camion.marca} ${camion.modelo}`}
+                            style={{
+                              objectFit: 'cover',
+                              width: '100%',
+                              height: '100%'
+                            }}
+                            onError={(e) => {
+                              e.target.onerror = null;
+                              e.target.src = FallbackImage;
+                            }}
+                          />
+                        </div>
+                      ))}
+                    </div>
+                    {camion.imagenes.length > 1 && (
+                      <>
+                        <button className="carousel-control-prev" type="button" data-bs-target={`#carouselCamion${camion.id}`} data-bs-slide="prev">
+                          <span className="carousel-control-prev-icon" aria-hidden="true"></span>
+                          <span className="visually-hidden">Previous</span>
+                        </button>
+                        <button className="carousel-control-next" type="button" data-bs-target={`#carouselCamion${camion.id}`} data-bs-slide="next">
+                          <span className="carousel-control-next-icon" aria-hidden="true"></span>
+                          <span className="visually-hidden">Next</span>
+                        </button>
+                      </>
+                    )}
+                  </div>
+                  
+                  <div className="card-body">
+                    <h3 className="card-title" style={{ fontSize: responsiveStyles.cardTitleSize }}>
+                      {camion.marca} {camion.modelo} ({camion.año})
+                    </h3>
+                    <div className="d-flex justify-content-between align-items-center mb-3">
+                      <span className="price" style={{ fontSize: responsiveStyles.priceSize }}>
+                        {formatPrice(camion.precio)}
+                      </span>
+                      <span className="badge bg-dark" style={{ fontSize: responsiveStyles.badgeSize }}>
+                        {camion.kilometraje.toLocaleString()} km
+                      </span>
+                    </div>
+                    <p className="card-text text-muted mb-3" style={{ fontSize: responsiveStyles.cardTextSize }}>
+                      {camion.descripcion}
+                    </p>
+                    
+                    <div className="mb-3">
+                      {[
+                        { label: 'Tipo', value: camion.tipo },
+                        { label: 'Ubicación', value: camion.ubicacion },
+                        { label: 'Estado', value: camion.estado, badge: true }
+                      ].map((item, idx) => (
+                        <div key={idx} className="d-flex justify-content-between mb-2">
+                          <span style={{ fontSize: responsiveStyles.cardTextSize }}>{item.label}:</span>
+                          {item.badge ? (
+                            <span className={`badge bg-${camion.estado === 'Nuevo' ? 'success' : camion.estado === 'Vendido' ? 'danger' : 'warning'}`}>
+                              {item.value.toUpperCase()}
+                            </span>
+                          ) : (
+                            <strong style={{ fontSize: responsiveStyles.cardTextSize }}>{item.value}</strong>
+                          )}
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                </Link>
+                
+                <div className="card-footer bg-white border-top-0">
+                  <Link 
+                    to={`/camiones/${camion.id}`} 
+                    className="btn btn-primary w-100"
+                    style={{ fontSize: responsiveStyles.buttonSize }}
+                  >
+                    Ver detalles completos
+                  </Link>
+                </div>
+              </div>
+            </div>
+          ))
+        ) : (
+          <div className="col-12 text-center py-5">
+            <div className="alert alert-info" style={{ fontSize: responsiveStyles.noResultsSize }}>
+              <i className="bi bi-exclamation-circle-fill me-2"></i>
+              No se encontraron camiones que coincidan con tu búsqueda.
+            </div>
+            <button 
+              className="btn btn-outline-primary mt-3"
+              onClick={() => {
+                setSearchTerm('');
+                setFilters({
+                  marca: '',
+                  tipo: '',
+                  estado: '',
+                  ubicacion: '',
+                  destacado: false
+                });
+              }}
+              style={{ fontSize: responsiveStyles.buttonSize }}
+            >
+              Limpiar filtros
+            </button>
+          </div>
+        )}
+      </div>
     </div>
-  ); 
+  );
 }
 
 export default Camiones;

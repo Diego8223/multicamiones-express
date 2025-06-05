@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { useParams, Link } from 'react-router-dom';
+import { useParams, Link, useNavigate } from 'react-router-dom';
 import { Carousel } from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap-icons/font/bootstrap-icons.css';
@@ -7,6 +7,7 @@ import './CamionesDetalle.css';
 
 const CamionDetalle = () => {
   const { id } = useParams();
+  const navigate = useNavigate();
   const [camion, setCamion] = useState(null);
   const [loading, setLoading] = useState(true);
   const [activeIndex, setActiveIndex] = useState(0);
@@ -20,13 +21,13 @@ const CamionDetalle = () => {
       marca: 'Volvo', 
       tipo: 'Tractocamión', 
       modelo: 'FH16', 
-      ubicacion: 'Medellín',
+      ubicacion: 'Medellín, Colombia',
       precio: 420000000,
       kilometraje: 145000,
       año: 2020,
       estado: 'usado',
       destacado: true,
-      descripcion: 'Tractocamión en excelente estado con mantenimiento al día, ideal para transporte pesado. Incluye todos los servicios recientes y documentación al día.',
+      descripcion: 'Tractocamión en excelente estado con mantenimiento al día, ideal para transporte pesado. Incluye todos los servicios recientes y documentación al día. Equipado con las últimas tecnologías en seguridad y confort para el conductor.',
       imagenes: [
         '/img/camion1.jpg',
         '/img/camion2.jpg',
@@ -35,29 +36,33 @@ const CamionDetalle = () => {
       ],
       video: 'https://www.youtube.com/watch?v=tbI9FW3drWY',
       especificaciones: {
-        motor: 'D13K 540HP',
-        transmision: 'I-Shift 12 velocidades',
-        capacidad: '40 toneladas',
-        ejes: '3',
-        suspension: 'Neumática',
-        'Consumo combustible': '2.5 km/l',
-        'Altura cabina': '3.9 m',
+        'Motor': 'D13K 540HP Euro 5',
+        'Transmisión': 'I-Shift 12 velocidades',
+        'Capacidad de carga': '40 toneladas',
+        'Ejes': '3 ejes',
+        'Suspensión': 'Neumática',
+        'Consumo combustible': '2.5 km/l (promedio)',
+        'Altura cabina': '3.9 metros',
         'Peso bruto': '18,000 kg',
-        extras: 'Cabina Globetrotter, Aire acondicionado, Dirección asistida, Camara de retroceso'
+        'Extras': 'Cabina Globetrotter XL, Aire acondicionado digital, Dirección asistida, Cámara de retroceso, Sistema de navegación GPS'
       },
       caracteristicas: [
-        'Motor Euro 5 con bajo consumo de combustible',
-        'Sistema de frenado ABS y EBS',
-        'Asientos ergonómicos con ajuste múltiple',
-        'Sistema de navegación integrado',
-        'Control de estabilidad (ESP)',
-        'Sistema de monitoreo de presión de llantas'
+        'Motor Euro 5 con bajo consumo de combustible y emisiones reducidas',
+        'Sistema de frenado ABS y EBS con control electrónico',
+        'Asientos ergonómicos con ajuste múltiple y calefacción',
+        'Sistema de navegación integrado con pantalla táctil de 10"',
+        'Control de estabilidad (ESP) y control de descenso en pendientes',
+        'Sistema de monitoreo de presión de llantas (TPMS)',
+        'Sistema de entretenimiento con Bluetooth y USB',
+        'Caja de cambios automatizada para mayor comodidad',
+        'Faros LED de largo alcance con autoajuste'
       ],
-      garantia: '6 meses',
+      garantia: '6 meses o 50,000 km',
       contacto: {
         nombre: 'Juan Pérez',
         telefono: '+57 310 123 4567',
-        email: 'ventas@multicamiones.com'
+        email: 'ventas@multicamiones.com',
+        horario: 'Lunes a Viernes: 8:00 AM - 6:00 PM / Sábados: 9:00 AM - 2:00 PM'
       }
     },
     // ... otros camiones
@@ -145,12 +150,23 @@ const CamionDetalle = () => {
         </div>
       )}
 
-      <div className="container py-5">
-        <div className="row">
-          <div className="col-lg-8">
-            <div className="card shadow-sm mb-4">
-              <div className="card-body">
-                <nav aria-label="breadcrumb">
+      <div className="container-fluid px-0 px-md-3 py-3 py-md-4">
+        {/* Botón de retorno en la parte superior */}
+        <div className="d-flex justify-content-start mb-3 mb-md-4 ps-3 ps-md-0">
+          <button 
+            onClick={() => navigate(-1)}
+            className="btn btn-outline-primary d-flex align-items-center"
+          >
+            <i className="bi bi-arrow-left me-2 fs-5"></i>
+            <span className="fs-5">Volver al listado</span>
+          </button>
+        </div>
+
+        <div className="row g-0 g-md-3">
+          <div className="col-lg-8 mb-3 mb-lg-0 pe-0 pe-md-3">
+            <div className="card shadow-sm h-100 border-0">
+              <div className="card-body p-3 p-md-4">
+                <nav aria-label="breadcrumb" className="d-none d-md-block mb-4">
                   <ol className="breadcrumb">
                     <li className="breadcrumb-item">
                       <Link to="/">Inicio</Link>
@@ -164,34 +180,40 @@ const CamionDetalle = () => {
                   </ol>
                 </nav>
 
-                <h1 className="display-5 fw-bold mb-3">
-                  {camion.marca} {camion.modelo} ({camion.año})
-                </h1>
-
-                <div className="d-flex flex-wrap align-items-center gap-3 mb-4">
-                  <span className="badge bg-primary fs-6">
-                    {camion.tipo}
-                  </span>
-                  <span className={`badge fs-6 bg-${
-                    camion.estado === 'nuevo' ? 'success' : 
-                    camion.estado === 'vendido' ? 'danger' : 'warning'
-                  }`}>
-                    {camion.estado.toUpperCase()}
-                  </span>
-                  {camion.destacado && (
-                    <span className="badge bg-warning text-dark fs-6">
-                      ⭐ DESTACADO
-                    </span>
-                  )}
-                </div>
-
-                <div className="price-display mb-4">
-                  <h2 className="text-danger fw-bold">
-                    {formatPrice(camion.precio)}
-                  </h2>
-                  <div className="d-flex justify-content-between">
-                    <small className="text-muted">Kilometraje: {camion.kilometraje.toLocaleString()} km</small>
-                    <small className="text-muted">Ubicación: {camion.ubicacion}</small>
+                <div className="d-flex flex-column flex-md-row justify-content-between align-items-start align-items-md-center mb-4">
+                  <div>
+                    <h1 className="h2 fw-bold mb-2 text-primary">
+                      {camion.marca} {camion.modelo} <span className="text-muted">({camion.año})</span>
+                    </h1>
+                    <div className="d-flex flex-wrap gap-2">
+                      <span className="badge bg-primary px-3 py-2">
+                        <i className="bi bi-truck me-1"></i> {camion.tipo}
+                      </span>
+                      <span className={`badge px-3 py-2 ${camion.estado === 'nuevo' ? 'bg-success' : 
+                        camion.estado === 'vendido' ? 'bg-danger' : 'bg-warning text-dark'}`}>
+                        {camion.estado.toUpperCase()}
+                      </span>
+                      {camion.destacado && (
+                        <span className="badge bg-warning text-dark px-3 py-2">
+                          ⭐ DESTACADO
+                        </span>
+                      )}
+                    </div>
+                  </div>
+                  <div className="mt-3 mt-md-0 text-center text-md-end">
+                    <h2 className="text-danger fw-bold mb-1">
+                      {formatPrice(camion.precio)}
+                    </h2>
+                    <div className="d-flex flex-column flex-md-row gap-2 gap-md-3">
+                      <small className="text-muted">
+                        <i className="bi bi-speedometer2 me-1"></i>
+                        {camion.kilometraje.toLocaleString()} km
+                      </small>
+                      <small className="text-muted">
+                        <i className="bi bi-geo-alt me-1"></i>
+                        {camion.ubicacion}
+                      </small>
+                    </div>
                   </div>
                 </div>
 
@@ -217,62 +239,62 @@ const CamionDetalle = () => {
                     ))}
                   </Carousel>
 
-                  <div className="thumbnail-container mt-3">
-                    {camion.imagenes.map((img, index) => (
-                      <div 
-                        key={index}
-                        className={`thumbnail ${activeIndex === index ? 'active' : ''}`}
-                        onClick={() => setActiveIndex(index)}
-                      >
-                        <img
-                          src={img}
-                          alt={`Miniatura ${index + 1}`}
-                          className="img-thumbnail"
-                        />
-                      </div>
-                    ))}
+                  <div className="thumbnail-scroll-container">
+                    <div className="thumbnail-container">
+                      {camion.imagenes.map((img, index) => (
+                        <div 
+                          key={index}
+                          className={`thumbnail ${activeIndex === index ? 'active' : ''}`}
+                          onClick={() => setActiveIndex(index)}
+                        >
+                          <img
+                            src={img}
+                            alt={`Miniatura ${index + 1}`}
+                            className="img-thumbnail"
+                          />
+                        </div>
+                      ))}
+                    </div>
                   </div>
                 </div>
 
                 {videoId && (
                   <div className="video-container mb-4">
-                    <h3 className="h5 mb-3">
-                      <i className="bi bi-play-circle-fill text-danger me-2"></i>
-                      Video demostrativo
-                    </h3>
+                    <div className="d-flex align-items-center mb-3">
+                      <i className="bi bi-play-circle-fill text-danger fs-3 me-2"></i>
+                      <h3 className="h4 mb-0">Video demostrativo</h3>
+                    </div>
                     <div className="ratio ratio-16x9">
                       <iframe 
                         src={`https://www.youtube.com/embed/${videoId}?rel=0&modestbranding=1`}
                         title={`Video demostrativo ${camion.marca} ${camion.modelo}`}
-                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                         allowFullScreen
                         loading="lazy"
                         className="rounded"
                         style={{ border: 'none' }}
-                        referrerPolicy="strict-origin-when-cross-origin"
                       ></iframe>
                     </div>
                   </div>
                 )}
 
                 <div className="description-section mb-4">
-                  <h3 className="h5 mb-3">
-                    <i className="bi bi-card-text text-primary me-2"></i>
-                    Descripción detallada
-                  </h3>
-                  <p className="lead">{camion.descripcion}</p>
+                  <div className="d-flex align-items-center mb-3">
+                    <i className="bi bi-card-text text-primary fs-3 me-2"></i>
+                    <h3 className="h4 mb-0">Descripción detallada</h3>
+                  </div>
+                  <p className="mb-0 fs-5">{camion.descripcion}</p>
                 </div>
 
-                <div className="specs-section mb-4">
-                  <h3 className="h5 mb-3">
-                    <i className="bi bi-list-check text-primary me-2"></i>
-                    Características principales
-                  </h3>
+                <div className="specs-section">
+                  <div className="d-flex align-items-center mb-3">
+                    <i className="bi bi-list-check text-primary fs-3 me-2"></i>
+                    <h3 className="h4 mb-0">Características principales</h3>
+                  </div>
                   <ul className="list-group list-group-flush">
                     {camion.caracteristicas.map((item, index) => (
-                      <li key={index} className="list-group-item">
-                        <i className="bi bi-check-circle-fill text-success me-2"></i>
-                        {item}
+                      <li key={index} className="list-group-item d-flex align-items-start py-3">
+                        <i className="bi bi-check-circle-fill text-success mt-1 me-3 fs-5"></i>
+                        <span className="fs-5">{item}</span>
                       </li>
                     ))}
                   </ul>
@@ -281,91 +303,125 @@ const CamionDetalle = () => {
             </div>
           </div>
 
-          <div className="col-lg-4">
-            <div className="card shadow-sm sticky-top mb-4" style={{ top: '20px' }}>
-              <div className="card-body">
-                <h3 className="h5 mb-4 text-center">
-                  <i className="bi bi-info-circle-fill text-primary me-2"></i>
-                  Especificaciones técnicas
-                </h3>
-
-                <div className="specs-table">
-                  <table className="table table-borderless">
-                    <tbody>
-                      {Object.entries(camion.especificaciones).map(([key, value]) => (
-                        <tr key={key}>
-                          <th className="text-muted">{key}:</th>
-                          <td className="fw-bold">{value}</td>
-                        </tr>
-                      ))}
-                    </tbody>
-                  </table>
-                </div>
-
-                <div className="d-grid gap-2 mt-4">
-                  <a 
-                    href={`https://wa.me/57${camion.contacto.telefono.replace(/\D/g, '')}?text=Hola, estoy interesado en el camión ${camion.marca} ${camion.modelo} (ID: ${camion.id})`} 
-                    className="btn btn-primary btn-lg"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    <i className="bi bi-whatsapp me-2"></i>
-                    Consultar por WhatsApp
-                  </a>
-                  <a 
-                    href={`tel:${camion.contacto.telefono}`} 
-                    className="btn btn-outline-primary btn-lg"
-                  >
-                    <i className="bi bi-telephone me-2"></i>
-                    Llamar ahora
-                  </a>
-                  <button className="btn btn-success btn-lg">
-                    <i className="bi bi-credit-card me-2"></i>
-                    Solicitar financiación
-                  </button>
-                  <Link to="/camiones" className="btn btn-outline-secondary btn-lg">
-                    <i className="bi bi-arrow-left me-2"></i>
-                    Volver al catálogo
-                  </Link>
-                </div>
-
-                <div className="alert alert-info mt-4">
-                  <div className="d-flex align-items-center">
-                    <i className="bi bi-geo-alt-fill fs-4 me-3"></i>
-                    <div>
-                      <h4 className="h6 mb-1">Ubicación</h4>
-                      <p className="mb-0">{camion.ubicacion}</p>
+          <div className="col-lg-4 ps-0 ps-md-3">
+            <div className="card shadow-sm h-100 border-0 sticky-lg-top" style={{ top: '20px' }}>
+              <div className="card-body p-0">
+                {/* Sección de Especificaciones Técnicas - Versión Mejorada */}
+                <div className="p-3 p-md-4 border-bottom">
+                  <div className="d-flex align-items-center mb-4">
+                    <div className="icon-container bg-primary text-white rounded-circle me-3">
+                      <i className="bi bi-gear-fill fs-4"></i>
                     </div>
+                    <h3 className="h4 mb-0 text-primary fw-bold">Especificaciones Técnicas</h3>
+                  </div>
+
+                  <div className="specs-grid">
+                    {Object.entries(camion.especificaciones).map(([key, value]) => (
+                      <div key={key} className="spec-grid-item">
+                        <div className="spec-grid-key">
+                          <span className="fw-bold">{key}</span>
+                        </div>
+                        <div className="spec-grid-value">
+                          <span>{value}</span>
+                        </div>
+                      </div>
+                    ))}
                   </div>
                 </div>
 
-                <div className="alert alert-warning mt-3">
-                  <div className="d-flex align-items-center">
-                    <i className="bi bi-shield-check fs-4 me-3"></i>
-                    <div>
-                      <h4 className="h6 mb-1">Garantía</h4>
-                      <p className="mb-0">
-                        {camion.garantia || 'Sin garantía'}
-                      </p>
+                {/* Sección de Contacto */}
+                <div className="p-3 p-md-4">
+                  {/* Botón de retorno adicional en móviles */}
+                  <div className="d-block d-lg-none mb-4">
+                    <button 
+                      onClick={() => navigate(-1)}
+                      className="btn btn-outline-primary w-100 py-2 d-flex align-items-center justify-content-center"
+                    >
+                      <i className="bi bi-arrow-left me-2"></i>
+                      Volver al listado
+                    </button>
+                  </div>
+
+                  <div className="d-flex align-items-center mb-4">
+                    <div className="icon-container bg-success text-white rounded-circle me-3">
+                      <i className="bi bi-headset fs-4"></i>
+                    </div>
+                    <h3 className="h4 mb-0 text-success fw-bold">Contacto y Garantía</h3>
+                  </div>
+
+                  <div className="d-grid gap-3 mb-4">
+                    <a 
+                      href={`https://wa.me/57${camion.contacto.telefono.replace(/\D/g, '')}?text=Hola, estoy interesado en el camión ${camion.marca} ${camion.modelo} (ID: ${camion.id})`} 
+                      className="btn btn-success py-3 fs-5 fw-bold d-flex align-items-center justify-content-center"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      <i className="bi bi-whatsapp fs-4 me-2"></i>
+                      WhatsApp
+                    </a>
+                    <a 
+                      href={`tel:${camion.contacto.telefono}`} 
+                      className="btn btn-outline-success py-3 fs-5 fw-bold d-flex align-items-center justify-content-center"
+                    >
+                      <i className="bi bi-telephone fs-4 me-2"></i>
+                      Llamar ahora
+                    </a>
+                    <button className="btn btn-primary py-3 fs-5 fw-bold d-flex align-items-center justify-content-center">
+                      <i className="bi bi-credit-card fs-4 me-2"></i>
+                      Financiación
+                    </button>
+                  </div>
+
+                  <div className="contact-details mb-4">
+                    <div className="d-flex align-items-start mb-3">
+                      <div className="icon-container bg-light text-dark rounded-circle me-3">
+                        <i className="bi bi-person fs-5"></i>
+                      </div>
+                      <div>
+                        <h4 className="h6 fw-bold mb-1">Vendedor</h4>
+                        <p className="mb-0 fs-5">{camion.contacto.nombre}</p>
+                      </div>
+                    </div>
+
+                    <div className="d-flex align-items-start mb-3">
+                      <div className="icon-container bg-light text-dark rounded-circle me-3">
+                        <i className="bi bi-clock fs-5"></i>
+                      </div>
+                      <div>
+                        <h4 className="h6 fw-bold mb-1">Horario de atención</h4>
+                        <p className="mb-0 fs-5">{camion.contacto.horario}</p>
+                      </div>
+                    </div>
+
+                    <div className="d-flex align-items-start mb-3">
+                      <div className="icon-container bg-light text-dark rounded-circle me-3">
+                        <i className="bi bi-shield-check fs-5"></i>
+                      </div>
+                      <div>
+                        <h4 className="h6 fw-bold mb-1">Garantía</h4>
+                        <p className="mb-0 fs-5 text-success fw-bold">{camion.garantia || 'Sin garantía'}</p>
+                      </div>
+                    </div>
+
+                    <div className="d-flex align-items-start">
+                      <div className="icon-container bg-light text-dark rounded-circle me-3">
+                        <i className="bi bi-geo-alt fs-5"></i>
+                      </div>
+                      <div>
+                        <h4 className="h6 fw-bold mb-1">Ubicación</h4>
+                        <p className="mb-0 fs-5">
+                          <i className="bi bi-pin-map-fill text-danger me-1"></i>
+                          {camion.ubicacion}
+                        </p>
+                      </div>
                     </div>
                   </div>
-                </div>
 
-                <div className="alert alert-light mt-3">
-                  <div className="d-flex align-items-center">
-                    <i className="bi bi-person-fill fs-4 me-3"></i>
-                    <div>
-                      <h4 className="h6 mb-1">Contacto</h4>
-                      <p className="mb-1">{camion.contacto.nombre}</p>
-                      <p className="mb-1">
-                        <a href={`tel:${camion.contacto.telefono}`}>
-                          {camion.contacto.telefono}
-                        </a>
-                      </p>
-                      <p className="mb-0">
-                        <a href={`mailto:${camion.contacto.email}`}>
-                          {camion.contacto.email}
-                        </a>
+                  <div className="alert alert-info mb-0">
+                    <div className="d-flex align-items-center">
+                      <i className="bi bi-info-circle fs-4 me-2"></i>
+                      <p className="mb-0 fs-5">
+                        ¿Tienes dudas? Contáctanos y con gusto te asesoraremos sobre este vehículo.
                       </p>
                     </div>
                   </div>

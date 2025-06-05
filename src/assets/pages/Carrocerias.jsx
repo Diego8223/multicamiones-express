@@ -5,7 +5,6 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import FallbackImage from '../../assets/img/foton.jpg';
 import './Carrocerias.css';
 
-
 // Importa imágenes para el carrusel de carrocerías
 import Carroceria1 from '../../assets/img/carroceria1.jpg';
 import Carroceria2 from '../../assets/img/carroceria2.jpg';
@@ -15,7 +14,15 @@ const Carrocerias = () => {
   // Estados del carrusel
   const [index, setIndex] = useState(0);
   const [autoPlay, setAutoPlay] = useState(true);
-  const [loading, setLoading] = useState(true); // Estado para controlar la carga inicial
+  const [loading, setLoading] = useState(true);
+  const [windowWidth, setWindowWidth] = useState(window.innerWidth);
+
+  // Actualizar ancho de ventana al cambiar tamaño
+  useEffect(() => {
+    const handleResize = () => setWindowWidth(window.innerWidth);
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
 
   // Configuración de rutas de imágenes locales para carrocerías
   const carouselItems = useMemo(() => [
@@ -40,18 +47,18 @@ const Carrocerias = () => {
       try {
         await Promise.all(
           carouselItems.map(item =>
-              new Promise((resolve, reject) => {
-                const img = new Image();
-                img.src = item.image;
-                img.onload = resolve;
-                img.onerror = () => reject(`Error loading: ${item.image}`);
-              })
+            new Promise((resolve, reject) => {
+              const img = new Image();
+              img.src = item.image;
+              img.onload = resolve;
+              img.onerror = () => reject(`Error loading: ${item.image}`);
+            })
           )
         );
       } catch (error) {
-          console.error('Error en carga de imágenes:', error);
+        console.error('Error en carga de imágenes:', error);
       } finally {
-          if (isMounted) setLoading(false); // Marca como cargado una vez que todas las imágenes han intentado cargar
+        if (isMounted) setLoading(false);
       }
     };
 
@@ -85,7 +92,6 @@ const Carrocerias = () => {
     'Bucaramanga', 'Pereira', 'Manizales', 'Cúcuta', 'Ibagué'
   ];
 
-  // Estados de los vehículos
   const Estados = ['Nueva', 'Usada', 'Reacondicionada', 'Vendida'];
 
   const carrocerias = [
@@ -123,7 +129,7 @@ const Carrocerias = () => {
       ubicacion: 'Medellín',
       precio: 45000000,
       año: 2020,
-      estado: 'Vendida',
+      estado: 'Usada',
       destacado: false,
       descripcion: 'Carrocería tipo estaca en acero, excelente estado',
       imagenes: [
@@ -165,26 +171,38 @@ const Carrocerias = () => {
         presion: '3.5 bar',
         certificaciones: 'FDA, ISO 9001'
       }
+    },
+    {
+      id: 4,
+      tipo: 'Volqueta',
+      material: 'Acero',
+      modelo: 'VOL-650',
+      ubicacion: 'Barranquilla',
+      precio: 68000000,
+      año: 2021,
+      estado: 'Usada',
+      destacado: false,
+      descripcion: 'Carrocería tipo volqueta en acero, buen estado general',
+      imagenes: [
+        '/img/carroceria-volqueta-1.jpg',
+        '/img/carroceria-volqueta-2.jpg'
+      ],
+      video: 'https://www.youtube.com/watch?v=JGwWNGJdvx8',
+      especificaciones: {
+        capacidad: '18 toneladas',
+        peso: '3,200 kg',
+        dimensiones: '7.8m x 2.5m x 2.8m'
+      }
     }
   ];
 
-  // Función mejorada para extraer IDs de YouTube
-  const getYouTubeId = (url) => {
-    if (!url) return null;
-
-    const patterns = [
-      /(?:https?:\/\/)?(?:www\.)?(?:youtube\.com\/(?:[^\/]+\/.+\/|(?:v|e(?:mbed)?)\/|.*[?&]v=)|youtu\.be\/)([^"&?\/\s]{11})/i,
-      /^([a-zA-Z0-9_-]{11})$/
-    ];
-
-    for (const pattern of patterns) {
-      const match = url.match(pattern);
-      if (match && match[1]) {
-        return match[1];
-      }
-    }
-
-    return null;
+  // Función para contar carrocerías por propiedad
+  const countBy = (prop) => {
+    return carrocerias.reduce((acc, curr) => {
+      const key = curr[prop]?.toString() || 'desconocido';
+      acc[key] = (acc[key] || 0) + 1;
+      return acc;
+    }, {});
   };
 
   const handleFilterChange = (e) => {
@@ -223,297 +241,327 @@ const Carrocerias = () => {
     }).format(price);
   };
 
-  // Función para contar carrocerías por propiedad
-  const countBy = (prop) => {
-    return carrocerias.reduce((acc, curr) => {
-      const key = curr[prop]?.toString() || 'desconocido';
-      acc[key] = (acc[key] || 0) + 1;
-      return acc;
-    }, {});
-  };
-
   const conteoEstados = countBy('estado');
   const conteoTipos = countBy('tipo');
   const conteoMateriales = countBy('material');
   const conteoUbicaciones = countBy('ubicacion');
   const conteoDestacados = carrocerias.filter(c => c.destacado).length;
 
-  return (
-    <div className="carrocerias-container">
-      {/* Carrusel */}
-      <Carousel
-        activeIndex={index}
-        onSelect={setIndex}
-        fade
-        pause={autoPlay ? false : 'hover'}
-        className="main-carousel"
-        interval={autoPlay ? 5000 : null}
-        onMouseEnter={() => setAutoPlay(false)}
-        onMouseLeave={() => setAutoPlay(true)}
-      >
-        {carouselItems.map((item, idx) => (
-          <Carousel.Item key={idx}>
-            <div className="carousel-image-container">
-              {/* Se renderiza un cargador esquelético mientras la imagen carga, evitando el parpadeo */}
-              {loading ? (
-                <div className="skeleton-loader" style={{ height: '700px', width: '100%' }} />
-              ) : (
-                <img
-                  className="d-block w-100"
-                  src={item.image}
-                  alt={item.altText}
-                  loading="eager"
-                  onError={(e) => {
-                    e.target.onerror = null;
-                    e.target.src = FallbackImage;
-                  }}
-                />
-              )}
-            </div>
-          </Carousel.Item>
-        ))}
-      </Carousel>
+  // Estilos dinámicos responsive
+  const responsiveStyles = {
+    containerPadding: windowWidth < 768 ? '0 10px' : '0 20px',
+    carouselHeight: windowWidth < 768 ? '200px' : '500px',
+    titleSize: windowWidth < 768 ? '1.8rem' : '2.5rem',
+    cardTitleSize: windowWidth < 768 ? '1.2rem' : '1.5rem',
+    cardTextSize: windowWidth < 768 ? '0.9rem' : '1rem',
+    priceSize: windowWidth < 768 ? '1.1rem' : '1.3rem',
+    badgeSize: windowWidth < 768 ? '0.7rem' : '0.8rem',
+    buttonSize: windowWidth < 768 ? '0.9rem' : '1rem',
+    inputSize: windowWidth < 768 ? '0.9rem' : '1rem',
+    counterSize: windowWidth < 768 ? '0.9rem' : '1rem',
+    noResultsSize: windowWidth < 768 ? '1.1rem' : '1.3rem',
+    filterOptionSize: windowWidth < 768 ? '0.8rem' : '0.9rem',
+    filterLabelSize: windowWidth < 768 ? '0.9rem' : '1rem'
+  };
 
-      {/* Título de la sección principal (¡Este es el correcto y ya estaba bien posicionado!) */}
-      <header
-        className="text-center mb-3 mt-5 titulo-carrocerias-wrapper"
+  // Componente para renderizar filtros agrupados
+  const FilterGroup = ({ title, name, options, count }) => (
+    <div className="mb-3">
+      <h3 className="h6 mb-2" style={{ fontSize: responsiveStyles.filterLabelSize, fontWeight: 'bold' }}>
+        {title}
+      </h3>
+      <select
+        name={name}
+        className="form-select"
+        onChange={handleFilterChange}
+        value={filters[name]}
+        style={{ fontSize: responsiveStyles.inputSize }}
       >
-        <h1 className="titulo-carrocerias mb-5">
-          CARROCERIAS NUEVAS Y USADAS
+        <option value="">Todos ({Object.values(count).reduce((a, b) => a + b, 0)})</option>
+        {options.map(option => (
+          <option 
+            key={option} 
+            value={option}
+            style={{ fontSize: responsiveStyles.filterOptionSize }}
+            title={option}
+          >
+            {windowWidth < 768 ? 
+              `${option.substring(0, 12)}${option.length > 12 ? '...' : ''}` : 
+              option} ({count[option] || 0})
+          </option>
+        ))}
+      </select>
+    </div>
+  );
+
+  return (
+    <div className="carrocerias-container" style={{ padding: responsiveStyles.containerPadding, marginTop: windowWidth < 768 ? '60px' : '80px' }}>
+      {/* Carrusel */}
+      <div className="carousel-wrapper" style={{ marginTop: windowWidth < 768 ? '10px' : '20px' }}>
+        <Carousel
+          activeIndex={index}
+          onSelect={setIndex}
+          fade
+          pause={autoPlay ? false : 'hover'}
+          className="main-carousel mb-4"
+          interval={autoPlay ? 5000 : null}
+          onMouseEnter={() => setAutoPlay(false)}
+          onMouseLeave={() => setAutoPlay(true)}
+        >
+          {carouselItems.map((item, idx) => (
+            <Carousel.Item key={idx}>
+              <div className="carousel-image-container" style={{ height: responsiveStyles.carouselHeight }}>
+                {loading ? (
+                  <div className="skeleton-loader" style={{ height: '100%', width: '100%' }} />
+                ) : (
+                  <img
+                    className="d-block w-100 h-100"
+                    src={item.image}
+                    alt={item.altText}
+                    loading="eager"
+                    style={{ objectFit: 'cover' }}
+                    onError={(e) => {
+                      e.target.onerror = null;
+                      e.target.src = FallbackImage;
+                    }}
+                  />
+                )}
+              </div>
+            </Carousel.Item>
+          ))}
+        </Carousel>
+      </div>
+
+      {/* Título principal */}
+      <header className="text-center my-4">
+        <h1 className="titulo-carrocerias fw-bold" style={{ fontSize: responsiveStyles.titleSize }}>
+          CARROCERÍAS NUEVAS Y USADAS
         </h1>
+        <p className="lead" style={{ fontSize: responsiveStyles.cardTextSize }}>
+          Encuentra la carrocería perfecta para tus necesidades de transporte
+        </p>
       </header>
 
-      {/* Contenido principal de la página */}
-      <div className="container-fluid p-4 mt-0 position-relative">
-        <div className="container-fluid px-3 px-md-4 mt-0">
-          <div className="row justify-content-center">
-            <div className="col-12">
-              {/*
-                ***** INICIO DE LA CORRECCIÓN *****
-                Se ha ELIMINADO la etiqueta <header> que envolvía el div de los contadores.
-                El título principal ya está arriba, y este header era redundante y podía causar problemas.
-              */}
-              <div className="contadores-container d-flex flex-wrap justify-content-center gap-2 mb-4">
-                <div className="contador-badge">
-                  <h5 className="mb-0">Total: {carrocerias.length}</h5>
+      {/* Contadores */}
+      <div className="contadores-container mb-4">
+        <div className="row g-3 justify-content-center">
+          {[
+            { label: 'Total', value: carrocerias.length, color: 'primary' },
+            { label: 'Nuevas', value: conteoEstados['Nueva'] || 0, color: 'success' },
+            { label: 'Usadas', value: conteoEstados['Usada'] || 0, color: 'warning' },
+            { label: 'Reacondicionadas', value: conteoEstados['Reacondicionada'] || 0, color: 'info' },
+            { label: 'Destacadas', value: conteoDestacados, color: 'danger' }
+          ].map((item, index) => (
+            <div key={index} className="col-6 col-sm-4 col-md-3 col-lg-2">
+              <div className={`counter-card bg-${item.color} text-white rounded p-3 text-center shadow`}>
+                <div className="counter-value fw-bold" style={{ fontSize: '1.5rem' }}>
+                  {item.value}
                 </div>
-                <div className="contador-badge">
-                  <h5 className="mb-0">Nuevas: {conteoEstados['Nueva'] || 0}</h5>
-                </div>
-                <div className="contador-badge">
-                  <h5 className="mb-0">Usadas: {conteoEstados['Usada'] || 0}</h5>
-                </div>
-                <div className="contador-badge">
-                  <h5 className="mb-0">Vendidas: {conteoEstados['Vendida'] || 0}</h5>
-                </div>
-                <div className="contador-badge">
-                  <h5 className="mb-0">Reacondicionadas: {conteoEstados['Reacondicionada'] || 0}</h5>
-                </div>
-                <div className="contador-badge">
-                  <h5 className="mb-0">Destacadas: {conteoDestacados}</h5>
-                </div>
-              </div>
-              {/* ***** FIN DE LA CORRECCIÓN ***** */}
-            </div>
-          </div>
-
-          <div className="row justify-content-center">
-            <div className="col-12">
-              <div className="card shadow-lg mb-5 border-0">
-                <div className="card-body">
-                  <div className="mb-4">
-                    <input
-                      type="search"
-                      className="form-control form-control-lg"
-                      placeholder="🔍 Buscar por tipo, material, modelo o características..."
-                      value={searchTerm}
-                      onChange={(e) => setSearchTerm(e.target.value)}
-                    />
-                  </div>
-
-                  <div className="row g-2 g-md-3">
-                    <div className="col-6 col-md-3">
-                      <select
-                        name="tipo"
-                        className="form-select"
-                        onChange={handleFilterChange}
-                        value={filters.tipo}
-                      >
-                        <option value="">Todos los tipos ({tiposCarroceria.length})</option>
-                        {tiposCarroceria.map(tipo => (
-                          <option key={tipo} value={tipo}>
-                            {tipo} ({conteoTipos[tipo] || 0})
-                          </option>
-                        ))}
-                      </select>
-                    </div>
-
-                    <div className="col-6 col-md-3">
-                      <select
-                        name="material"
-                        className="form-select"
-                        onChange={handleFilterChange}
-                        value={filters.material}
-                      >
-                        <option value="">Todos los materiales ({materiales.length})</option>
-                        {materiales.map(material => (
-                          <option key={material} value={material}>
-                            {material} ({conteoMateriales[material] || 0})
-                          </option>
-                        ))}
-                      </select>
-                    </div>
-
-                    <div className="col-6 col-md-3">
-                      <select
-                        name="ubicacion"
-                        className="form-select"
-                        onChange={handleFilterChange}
-                        value={filters.ubicacion}
-                      >
-                        <option value="">Todas las ubicaciones ({ciudadesColombia.length})</option>
-                        {ciudadesColombia.map(ciudad => (
-                          <option key={ciudad} value={ciudad}>
-                            {ciudad} ({conteoUbicaciones[ciudad] || 0})
-                          </option>
-                        ))}
-                      </select>
-                    </div>
-
-                    <div className="col-6 col-md-3">
-                      <div className="d-flex flex-column flex-md-row gap-2 align-items-center h-100">
-                        <select
-                          name="estado"
-                          className="form-select"
-                          onChange={handleFilterChange}
-                          value={filters.estado}
-                        >
-                          <option value="">Todos los estados</option>
-                          {Estados.map(estado => (
-                            <option key={estado} value={estado}>
-                              {estado} ({conteoEstados[estado] || 0})
-                            </option>
-                          ))}
-                        </select>
-                        <div className="form-check">
-                          <input
-                            type="checkbox"
-                            className="form-check-input big-checkbox"
-                            id="destacado"
-                            name="destacado"
-                            checked={filters.destacado}
-                            onChange={handleFilterChange}
-                          />
-                          <label className="form-check-label" htmlFor="destacado">
-                            Destacadas
-                          </label>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
+                <div className="counter-label" style={{ fontSize: responsiveStyles.counterSize }}>
+                  {item.label}
                 </div>
               </div>
             </div>
+          ))}
+        </div>
+      </div>
+
+      {/* Filtros - MEJORADO Y ORGANIZADO */}
+      <div className="card shadow-sm mb-4">
+        <div className="card-body">
+          <h2 className="h5 mb-3" style={{ fontSize: responsiveStyles.cardTitleSize }}>
+            <i className="bi bi-funnel-fill me-2"></i>
+            Filtrar Carrocerías
+          </h2>
+          
+          <div className="mb-3">
+            <input
+              type="search"
+              className="form-control"
+              placeholder="🔍 Buscar por tipo, modelo o descripción..."
+              value={searchTerm}
+              onChange={(e) => setSearchTerm(e.target.value)}
+              style={{ fontSize: responsiveStyles.inputSize }}
+            />
           </div>
 
-          <div className="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
-            {filteredCarrocerias.length > 0 ? (
-              filteredCarrocerias.map(carroceria => {
-                // Ya no necesitamos videoId aquí, pero la función getYouTubeId se mantiene
-                // en caso de que la necesites para otras funcionalidades en el futuro.
-                // const videoId = getYouTubeId(carroceria.video); 
-                
-                return (
-                  <div key={carroceria.id} className="col">
-                    <div className="card h-100 shadow-sm position-relative hover-effect">
-                      {carroceria.estado === 'Vendida' && (
-                        <div className="sold-overlay">
-                          <span className="sold-text">VENDIDA</span>
-                        </div>
-                      )}
-                      
-                      {carroceria.destacado && (
-                        <div className="ribbon ribbon-top-right">
-                          <span>⭐ DESTACADA</span>
-                        </div>
-                      )}
-                      
-                      <Link to={`/carrocerias/${carroceria.id}`} className="text-decoration-none">
-                        <div id={`carouselCarroceria${carroceria.id}`} className="carousel slide" data-bs-ride="carousel">
-                          <div className="carousel-inner ratio ratio-16x9">
-                            {carroceria.imagenes.map((img, index) => (
-                              <div key={index} className={`carousel-item ${index === 0 ? 'active' : ''}`}>
-                                <img 
-                                  src={img} 
-                                  className="d-block w-100"
-                                  alt={`${carroceria.tipo} ${carroceria.modelo}`}
-                                  onError={(e) => {
-                                    e.target.onerror = null;
-                                    e.target.src = FallbackImage; // Usa FallbackImage para carrocerías
-                                  }}
-                                />
-                              </div>
-                            ))}
-                          </div>
-                          {carroceria.imagenes.length > 1 && (
-                            <>
-                              <button className="carousel-control-prev" type="button" data-bs-target={`#carouselCarroceria${carroceria.id}`} data-bs-slide="prev">
-                                <span className="carousel-control-prev-icon" aria-hidden="true"></span>
-                                <span className="visually-hidden">Previous</span>
-                              </button>
-                              <button className="carousel-control-next" type="button" data-bs-target={`#carouselCarroceria${carroceria.id}`} data-bs-slide="next">
-                                <span className="carousel-control-next-icon" aria-hidden="true"></span>
-                                <span className="visually-hidden">Next</span>
-                              </button>
-                            </>
-                          )}
-                        </div>
-                      </Link>
-                      
-                      {/* SE HA ELIMINADO LA SECCIÓN DE VIDEO AQUÍ */}
-                      
-                      <div className="card-body">
-                        <h3 className="card-title fw-bold text-primary">
-                          {carroceria.tipo} {carroceria.modelo} ({carroceria.año})
-                        </h3>
-                        <div className="d-flex justify-content-between align-items-center mb-3">
-                          <span className="h4 text-danger">{formatPrice(carroceria.precio)}</span>
-                          <span className="badge bg-dark">Material: {carroceria.material}</span>
-                        </div>
-                        <p className="card-text text-muted">{carroceria.descripcion}</p>
-                        <ul className="list-group list-group-flush">
-                          <li className="list-group-item d-flex justify-content-between">
-                            <span>Tipo:</span>
-                            <strong>{carroceria.tipo}</strong>
-                          </li>
-                          <li className="list-group-item d-flex justify-content-between">
-                            <span>Ubicación:</span>
-                            <strong>{carroceria.ubicacion}</strong>
-                          </li>
-                          <li className="list-group-item d-flex justify-content-between">
-                            <span>Estado:</span>
-                            <strong className={`badge bg-${carroceria.estado === 'Nueva' ? 'success' : carroceria.estado === 'Vendida' ? 'danger' : carroceria.estado === 'Usada' ? 'warning' : 'info'}`}>
-                              {carroceria.estado.toUpperCase()}
-                            </strong>
-                          </li>
-                        </ul>
-                        <div className="mt-3">
-                          <Link to={`/carrocerias/${carroceria.id}`} className="btn btn-primary w-100">
-                            Ver detalles completos
-                          </Link>
-                        </div>
-                      </div>
-                    </div>
-                    </div>
-                );
-              })
-            ) : (
-              <div className="col-12 text-center py-5">
-                <p className="lead">No se encontraron carrocerías que coincidan con tu búsqueda.</p>
+          <div className="row">
+            <div className="col-12 col-sm-6 col-md-3 mb-3">
+              <FilterGroup 
+                title="Tipo de Carrocería" 
+                name="tipo" 
+                options={tiposCarroceria} 
+                count={conteoTipos} 
+              />
+            </div>
+            
+            <div className="col-12 col-sm-6 col-md-3 mb-3">
+              <FilterGroup 
+                title="Material" 
+                name="material" 
+                options={materiales} 
+                count={conteoMateriales} 
+              />
+            </div>
+            
+            <div className="col-12 col-sm-6 col-md-3 mb-3">
+              <FilterGroup 
+                title="Ubicación" 
+                name="ubicacion" 
+                options={ciudadesColombia} 
+                count={conteoUbicaciones} 
+              />
+            </div>
+            
+            <div className="col-12 col-sm-6 col-md-3 mb-3">
+              <FilterGroup 
+                title="Estado" 
+                name="estado" 
+                options={Estados} 
+                count={conteoEstados} 
+              />
+              
+              <div className="form-check form-switch mt-3">
+                <input
+                  type="checkbox"
+                  className="form-check-input"
+                  id="destacado"
+                  name="destacado"
+                  checked={filters.destacado}
+                  onChange={handleFilterChange}
+                  role="switch"
+                />
+                <label className="form-check-label" htmlFor="destacado" style={{ fontSize: responsiveStyles.inputSize }}>
+                  Solo destacadas
+                </label>
               </div>
-            )}
+            </div>
           </div>
         </div>
+      </div>
+
+      {/* Listado de carrocerías */}
+      <div className="row">
+        {filteredCarrocerias.length > 0 ? (
+          filteredCarrocerias.map(carroceria => (
+            <div key={carroceria.id} className="col-12 col-md-6 col-lg-4 mb-4">
+              <div className="card h-100 shadow-sm position-relative carroceria-card">
+                {carroceria.estado === 'Vendida' && (
+                  <div className="sold-overlay">
+                    <span className="sold-text">VENDIDA</span>
+                  </div>
+                )}
+                
+                {carroceria.destacado && (
+                  <div className="ribbon ribbon-top-right">
+                    <span>⭐ DESTACADA</span>
+                  </div>
+                )}
+                
+                <Link to={`/carrocerias/${carroceria.id}`} className="text-decoration-none text-dark">
+                  <div id={`carouselCarroceria${carroceria.id}`} className="carousel slide" data-bs-ride="carousel">
+                    <div className="carousel-inner ratio ratio-16x9">
+                      {carroceria.imagenes.map((img, index) => (
+                        <div key={index} className={`carousel-item ${index === 0 ? 'active' : ''}`}>
+                          <img 
+                            src={img} 
+                            className="d-block w-100 card-img-top"
+                            alt={`${carroceria.tipo} ${carroceria.modelo}`}
+                            onError={(e) => {
+                              e.target.onerror = null;
+                              e.target.src = FallbackImage;
+                            }}
+                          />
+                        </div>
+                      ))}
+                    </div>
+                    {carroceria.imagenes.length > 1 && (
+                      <>
+                        <button className="carousel-control-prev" type="button" data-bs-target={`#carouselCarroceria${carroceria.id}`} data-bs-slide="prev">
+                          <span className="carousel-control-prev-icon" aria-hidden="true"></span>
+                          <span className="visually-hidden">Previous</span>
+                        </button>
+                        <button className="carousel-control-next" type="button" data-bs-target={`#carouselCarroceria${carroceria.id}`} data-bs-slide="next">
+                          <span className="carousel-control-next-icon" aria-hidden="true"></span>
+                          <span className="visually-hidden">Next</span>
+                        </button>
+                      </>
+                    )}
+                  </div>
+                  
+                  <div className="card-body">
+                    <h3 className="card-title" style={{ fontSize: responsiveStyles.cardTitleSize }}>
+                      {carroceria.tipo} {carroceria.modelo} ({carroceria.año})
+                    </h3>
+                    <div className="d-flex justify-content-between align-items-center mb-3">
+                      <span className="price" style={{ fontSize: responsiveStyles.priceSize }}>
+                        {formatPrice(carroceria.precio)}
+                      </span>
+                      <span className="badge bg-dark" style={{ fontSize: responsiveStyles.badgeSize }}>
+                        {carroceria.material}
+                      </span>
+                    </div>
+                    <p className="card-text text-muted mb-3" style={{ fontSize: responsiveStyles.cardTextSize }}>
+                      {carroceria.descripcion}
+                    </p>
+                    
+                    <div className="mb-3">
+                      {[
+                        { label: 'Tipo', value: carroceria.tipo },
+                        { label: 'Ubicación', value: carroceria.ubicacion },
+                        { label: 'Estado', value: carroceria.estado, badge: true }
+                      ].map((item, idx) => (
+                        <div key={idx} className="d-flex justify-content-between mb-2">
+                          <span style={{ fontSize: responsiveStyles.cardTextSize }}>{item.label}:</span>
+                          {item.badge ? (
+                            <span className={`badge bg-${carroceria.estado === 'Nueva' ? 'success' : carroceria.estado === 'Vendida' ? 'danger' : carroceria.estado === 'Usada' ? 'warning' : 'info'}`}>
+                              {item.value.toUpperCase()}
+                            </span>
+                          ) : (
+                            <strong style={{ fontSize: responsiveStyles.cardTextSize }}>{item.value}</strong>
+                          )}
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                </Link>
+                
+                <div className="card-footer bg-white border-top-0">
+                  <Link 
+                    to={`/carrocerias/${carroceria.id}`} 
+                    className="btn btn-primary w-100"
+                    style={{ fontSize: responsiveStyles.buttonSize }}
+                  >
+                    Ver detalles completos
+                  </Link>
+                </div>
+              </div>
+            </div>
+          ))
+        ) : (
+          <div className="col-12 text-center py-5">
+            <div className="alert alert-info" style={{ fontSize: responsiveStyles.noResultsSize }}>
+              <i className="bi bi-exclamation-circle-fill me-2"></i>
+              No se encontraron carrocerías que coincidan con tu búsqueda.
+            </div>
+            <button 
+              className="btn btn-outline-primary mt-3"
+              onClick={() => {
+                setSearchTerm('');
+                setFilters({
+                  tipo: '',
+                  material: '',
+                  estado: '',
+                  ubicacion: '',
+                  destacado: false
+                });
+              }}
+              style={{ fontSize: responsiveStyles.buttonSize }}
+            >
+              Limpiar filtros
+            </button>
+          </div>
+        )}
       </div>
     </div>
   );

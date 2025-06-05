@@ -1,336 +1,657 @@
 /* General container for the Camiones page */
 .camiones-container {
-  overflow-x: hidden; /* Prevent horizontal scroll due to potential overflows */
-  background-color: #f8f9fa; /* Light background for the page */
-  min-height: 100vh; /* Ensure it takes at least the full viewport height */
+  position: relative;
+  background-color: #f8f9fa;
+  padding-top: 80px; /* Más espacio para la navbar */
+  min-height: 100vh;
 }
 
-/* Main Carousel Styles (Hero Carousel) */
+/* CARRUSEL PRINCIPAL - POSICIÓN CORREGIDA */
 .main-carousel {
-  position: relative;
-  width: 100%;
+  height: 600px;
   overflow: hidden;
+  position: relative;
+  margin: 20px auto 2rem;
+  border-radius: 10px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  max-width: 1400px;
 }
 
 .carousel-image-container {
-  height: 600px; /* Altura base para el carrusel principal en escritorio */
-  overflow: hidden;
+  height: 600px;
+  width: 100%;
   display: flex;
-  justify-content: center;
   align-items: center;
-  background-color: #f0f0f0; /* Placeholder background */
+  justify-content: center;
+  background-color: #e9ecef;
+  position: relative;
+  border-radius: 10px;
+  overflow: hidden;
 }
 
-.main-carousel .carousel-item img {
+.main-carousel img {
+  object-fit: cover;
   width: 100%;
   height: 100%;
-  object-fit: cover; /* Ensures images cover the area without distortion */
-  filter: brightness(0.7); /* Slightly dim the background images */
-  transition: transform 0.5s ease-in-out;
+  transition: transform 0.5s ease;
+  filter: brightness(0.7);
 }
 
-.main-carousel .carousel-item.active img {
-  transform: scale(1.03); /* Slight zoom effect on active slide */
+.main-carousel:hover img {
+  transform: scale(1.02);
 }
 
-/* Skeleton Loader for images */
-.skeleton-loader {
-  background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
-  background-size: 200% 100%;
-  animation: loading 1.5s infinite;
+.main-carousel .carousel-caption {
+  background-color: rgba(0, 0, 0, 0.7);
+  padding: 12px 25px;
+  border-radius: 8px;
+  left: 50%;
+  transform: translateX(-50%);
+  right: auto;
+  bottom: 30px;
+  width: auto;
+  max-width: 80%;
 }
 
-@keyframes loading {
-  0% {
-    background-position: 200% 0;
-  }
-  100% {
-    background-position: -200% 0;
-  }
+.main-carousel .carousel-caption h3 {
+  font-size: 1.5rem;
+  margin: 0;
+  font-weight: 600;
 }
 
-/* Title Section */
-.titulo-camiones-wrapper {
-  position: relative;
-  z-index: 100;
-  margin-top: -100px; /* Adjust this value to overlap the carousel as desired */
-  margin-bottom: 3rem !important; /* Ensure enough space below the title */
-}
-
+/* TÍTULO MEJORADO */
 .titulo-camiones {
+  color: #1e3a8a;
+  font-weight: 800;
+  text-align: center;
+  margin: 1.5rem 0;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  position: relative;
+  padding-bottom: 15px;
   background: rgba(255, 255, 255, 0.95);
   padding: 15px 30px;
   border-radius: 8px;
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-  display: inline-block;
   border: 2px solid #1e3a8a;
-  color: #1e3a8a; /* Dark blue color for the title */
-  font-size: 2.5rem; /* Large font size for impact */
-  font-weight: 700; /* Bold font */
-  text-transform: uppercase; /* Uppercase for prominence */
+  font-size: 2.5rem;
 }
 
-/* Counters Section */
+.titulo-camiones::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100px;
+  height: 3px;
+  background-color: #1e3a8a;
+}
+
+.titulo-camiones-wrapper {
+  position: relative;
+  z-index: 100;
+  margin-top: -100px;
+  margin-bottom: 3rem !important;
+}
+
+/* CONTADORES - DISEÑO MEJORADO */
 .contadores-container {
-  background-color: rgba(248, 249, 250, 0.9);
-  padding: 15px;
-  border-radius: 8px;
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
-  margin-top: 1.5rem; /* Space between title and counters */
+  background-color: white;
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  gap: 15px;
+  margin: 0 auto 2.5rem;
+  max-width: 1200px;
 }
 
 .contador-badge {
-  background-color: #0d6efd; /* Bootstrap primary blue */
+  padding: 15px;
+  background: linear-gradient(135deg, #0d6efd 0%, #1e3a8a 100%);
   color: white;
-  padding: 0.75rem 1.25rem;
-  border-radius: 0.5rem;
-  min-width: 120px;
+  border-radius: 10px;
   text-align: center;
-  font-size: 0.9rem;
-  font-weight: 600;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-  transition: transform 0.2s ease, background-color 0.2s ease;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+  transition: all 0.3s ease;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  min-width: 120px;
 }
 
-.contador-badge:nth-child(2) { background-color: #198754; } /* New: success */
-.contador-badge:nth-child(3) { background-color: #ffc107; color: #333; } /* Used: warning */
-.contador-badge:nth-child(4) { background-color: #dc3545; } /* Sold: danger */
-.contador-badge:nth-child(5) { background-color: #0dcaf0; color: #333; } /* Featured: info */
+.contador-badge:nth-child(2) { 
+  background: linear-gradient(135deg, #198754 0%, #1e6a4a 100%); 
+}
+.contador-badge:nth-child(3) { 
+  background: linear-gradient(135deg, #ffc107 0%, #ffab00 100%);
+  color: #333;
+}
+.contador-badge:nth-child(4) { 
+  background: linear-gradient(135deg, #dc3545 0%, #a71d2a 100%); 
+}
+.contador-badge:nth-child(5) { 
+  background: linear-gradient(135deg, #0dcaf0 0%, #0aa2c0 100%);
+  color: #333;
+}
 
 .contador-badge:hover {
   transform: translateY(-3px);
-  opacity: 0.9;
+  box-shadow: 0 6px 12px rgba(0,0,0,0.15);
 }
 
 .contador-badge h5 {
-  font-size: 1rem; /* Adjust font size for smaller screens */
-  margin-bottom: 0;
-}
-
-/* Filters and Search Bar */
-.card-body .form-control-lg {
-  border-radius: 0.5rem;
-  padding: 0.75rem 1.25rem;
-  font-size: 1.1rem;
-  border: 1px solid #ced4da;
-}
-
-.card-body .form-select {
-  border-radius: 0.5rem;
-  padding: 0.75rem 1.25rem;
+  margin: 0;
   font-size: 1rem;
-  border: 1px solid #ced4da;
-}
-
-/* Custom Checkbox Size */
-.form-check-input.big-checkbox {
-  width: 1.5em; /* Increase width */
-  height: 1.5em; /* Increase height */
-  margin-top: 0.25em; /* Adjust vertical alignment */
-  margin-right: 0.5em; /* Space between checkbox and label */
-}
-
-/* Individual Card Styles (Camiones) */
-.card.h-100 {
-  border-radius: 0.75rem;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-  overflow: hidden;
-  border: none; /* Remove default border */
-}
-
-.card.hover-effect:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 1rem 3rem rgba(0, 0, 0, 0.175) !important;
-}
-
-.card .carousel-inner {
-  height: 250px; /* Altura fija para el carrusel de cada camión */
-  overflow: hidden; /* Asegura que no haya desbordamiento */
-}
-
-.card .carousel-inner img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover; /* Hace que la imagen cubra el área sin deformarse */
-  object-position: center; /* Centra la imagen si hay recortes */
-}
-
-.card-body {
-  padding: 1.5rem;
-}
-
-.card-title {
-  color: #1e3a8a; /* Primary blue for titles */
-  font-size: 1.75rem;
-  margin-bottom: 0.75rem;
-}
-
-.card-text {
-  font-size: 0.95rem;
-  line-height: 1.6;
-  color: #555;
-}
-
-.list-group-item {
-  border: none;
-  padding-left: 0;
-  padding-right: 0;
-  font-size: 0.9rem;
-}
-
-.list-group-item strong {
-  color: #333;
   font-weight: 600;
+  display: flex;
+  flex-direction: column;
 }
 
-/* Sold Overlay */
+.contador-badge h5 span {
+  font-size: 1.5rem;
+  font-weight: 700;
+  margin-top: 5px;
+}
+
+/* FILTROS MEJORADOS */
+.filter-card {
+  border-radius: 15px;
+  overflow: hidden;
+  margin-bottom: 2.5rem;
+  background-color: white;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  border: 1px solid #e9ecef;
+}
+
+.filter-card .card-body {
+  padding: 1.8rem;
+}
+
+.filter-card h2 {
+  color: #1e3a8a;
+  font-size: 1.3rem;
+  margin-bottom: 1.2rem;
+  font-weight: 700;
+  text-align: center;
+}
+
+.form-control {
+  border-radius: 10px;
+  padding: 12px 18px;
+  border: 2px solid #e9ecef;
+  transition: all 0.3s;
+  font-size: 1rem;
+}
+
+.form-control:focus {
+  border-color: #1e3a8a;
+  box-shadow: 0 0 0 0.25rem rgba(30, 58, 138, 0.25);
+}
+
+.form-select {
+  padding: 12px 18px;
+  border-radius: 10px;
+  border: 2px solid #e9ecef;
+  font-size: 1rem;
+  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3e%3cpath fill='none' stroke='%231e3a8a' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M2 5l6 6 6-6'/%3e%3c/svg%3e");
+}
+
+.form-check-input {
+  width: 22px;
+  height: 22px;
+  margin-top: 0.2rem;
+  margin-right: 10px;
+  border: 2px solid #adb5bd;
+}
+
+.form-check-input:checked {
+  background-color: #1e3a8a;
+  border-color: #1e3a8a;
+}
+
+.form-check-label {
+  font-weight: 500;
+  font-size: 1rem;
+}
+
+.form-switch .form-check-input {
+  width: 48px;
+  height: 24px;
+  margin-right: 12px;
+}
+
+/* TARJETAS DE CAMIONES - DISEÑO MEJORADO */
+.camion-card {
+  transition: all 0.3s ease;
+  border-radius: 12px;
+  overflow: hidden;
+  border: none;
+  box-shadow: 0 6px 12px rgba(0,0,0,0.1);
+  height: 100%;
+  margin-bottom: 2rem;
+  background-color: white;
+  position: relative;
+  border: 1px solid rgba(0,0,0,0.05);
+}
+
+.camion-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 12px 24px rgba(0,0,0,0.15);
+}
+
+.camion-card .card-img-top {
+  height: 220px;
+  object-fit: cover;
+  transition: transform 0.5s ease;
+  width: 100%;
+}
+
+.camion-card:hover .card-img-top {
+  transform: scale(1.08);
+}
+
+.camion-card .card-body {
+  padding: 1.8rem;
+}
+
+.camion-card .card-title {
+  font-size: 1.4rem;
+  margin-bottom: 0.8rem;
+  color: #1e3a8a;
+  font-weight: 700;
+  line-height: 1.3;
+}
+
+.camion-card .card-text {
+  color: #6c757d;
+  margin-bottom: 1.2rem;
+  font-size: 1rem;
+  line-height: 1.5;
+}
+
+.camion-card .price {
+  font-weight: 700;
+  color: #dc3545;
+  font-size: 1.3rem;
+  letter-spacing: 0.5px;
+}
+
+.camion-card .badge {
+  font-size: 0.85rem;
+  padding: 0.5em 0.8em;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+}
+
+.camion-card .card-footer {
+  background-color: transparent;
+  border-top: none;
+  padding: 0 1.8rem 1.8rem;
+}
+
+/* ESTADO VENDIDO - VERSIÓN MEJORADA */
 .sold-overlay {
   position: absolute;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: rgba(0, 0, 0, 0.6); /* Semi-transparent dark overlay */
+  background-color: rgba(0, 0, 0, 0.75);
+  z-index: 2;
   display: flex;
-  justify-content: center;
   align-items: center;
-  z-index: 5; /* Above content, below ribbon */
-  border-radius: 0.75rem;
-  pointer-events: none; /* Allows clicks to pass through to the link */
+  justify-content: center;
+  border-radius: 12px;
 }
 
 .sold-text {
   color: white;
-  font-size: 3rem; /* Large font size for "VENDIDO" */
-  font-weight: bold;
-  transform: rotate(-20deg); /* Rotate for a dynamic look */
-  border: 4px solid white;
-  padding: 10px 20px;
-  border-radius: 10px;
-  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+  font-size: 2.2rem;
+  font-weight: 800;
+  transform: rotate(-10deg);
+  text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.8);
+  padding: 12px 24px;
+  background-color: rgba(220, 53, 69, 0.9);
+  border-radius: 8px;
+  border: 3px solid rgba(255, 255, 255, 0.3);
+  text-transform: uppercase;
+  letter-spacing: 1px;
 }
 
-/* Ribbon for Featured Items */
+/* RIBBON DESTACADO - VERSIÓN MEJORADA */
 .ribbon {
-  width: 150px; /* Base width for ribbon container */
-  height: 150px; /* Base height for ribbon container */
+  width: 85px;
+  height: 85px;
   overflow: hidden;
   position: absolute;
-  z-index: 10; /* Above the sold overlay */
+  right: -5px;
+  top: -5px;
+  z-index: 3;
+}
+
+.ribbon span {
+  font-size: 0.85rem;
+  font-weight: 800;
+  color: #2c3e50;
+  text-transform: uppercase;
+  text-align: center;
+  line-height: 24px;
+  transform: rotate(45deg);
+  -webkit-transform: rotate(45deg);
+  width: 120px;
+  display: block;
+  background: linear-gradient(135deg, #FFD700 0%, #FFA500 100%);
+  box-shadow: 0 3px 15px -5px rgba(0, 0, 0, 0.3);
+  position: absolute;
+  top: 22px;
+  right: -25px;
+  letter-spacing: 0.5px;
+  padding: 2px 0;
+}
+
+.ribbon span::before {
+  content: "";
+  position: absolute;
+  left: 0px;
+  top: 100%;
+  z-index: -1;
+  border-left: 4px solid #FF8C00;
+  border-right: 4px solid transparent;
+  border-bottom: 4px solid transparent;
+  border-top: 4px solid #FF8C00;
+}
+
+.ribbon span::after {
+  content: "";
+  position: absolute;
+  right: 0px;
+  top: 100%;
+  z-index: -1;
+  border-left: 4px solid transparent;
+  border-right: 4px solid #FF8C00;
+  border-bottom: 4px solid transparent;
+  border-top: 4px solid #FF8C00;
 }
 
 .ribbon-top-left {
-  top: -10px;
-  left: -10px;
+  top: -5px;
+  left: -5px;
+  right: auto;
 }
 
 .ribbon-top-left span {
-  position: absolute;
-  display: block;
-  /* AUMENTADO: Ancho para asegurar que el texto quepa incluso con el relleno */
-  width: 250px; /* Valor ajustado para que el texto "⭐ DESTACADO" quepa */
-  padding: 10px 0; /* AUMENTADO: Padding para dar más espacio al texto */
-  background-color: #f7b32b; /* Golden yellow for featured */
-  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
-  color: #fff;
-  font: 700 16px sans-serif; /* AUMENTADO: Tamaño de fuente para mayor legibilidad */
-  text-shadow: 0 1px 1px rgba(0, 0, 0, 0.2);
-  text-transform: uppercase;
-  text-align: center;
-  white-space: nowrap; /* Evita que el texto se rompa en varias líneas */
-  /* Posicionamiento para la rotación */
-  left: -35px; /* Ajuste fino de la posición para centrar el texto rotado */
-  top: 35px; /* Ajuste fino de la posición */
   transform: rotate(-45deg);
+  -webkit-transform: rotate(-45deg);
+  left: -25px;
+  right: auto;
 }
 
-/* Responsive Adjustments */
+/* SKELETON LOADER */
+.skeleton-loader {
+  background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+  background-size: 200% 100%;
+  animation: shimmer 1.5s infinite;
+  height: 100%;
+  width: 100%;
+  border-radius: 12px;
+}
 
-/* Tablets (landscape) and small laptops */
-@media (max-width: 991px) {
-  .col-lg-3 { /* Ajusta las columnas en tarjetas a 2 por fila */
-    flex: 0 0 auto;
-    width: 50%;
+@keyframes shimmer {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+
+/* MENSAJE SIN RESULTADOS - MEJORADO */
+.no-results {
+  padding: 2.5rem;
+  text-align: center;
+  background-color: white;
+  border-radius: 12px;
+  box-shadow: 0 6px 12px rgba(0,0,0,0.1);
+  margin: 3rem auto;
+  max-width: 800px;
+  border: 1px solid rgba(0,0,0,0.05);
+}
+
+.no-results .alert {
+  font-size: 1.2rem;
+  padding: 1.5rem;
+  border-radius: 10px;
+}
+
+/* BOTONES - MEJORADOS */
+.btn-primary {
+  background-color: #1e3a8a;
+  border-color: #1e3a8a;
+  padding: 0.7rem 1.5rem;
+  border-radius: 10px;
+  font-weight: 600;
+  font-size: 1rem;
+  letter-spacing: 0.5px;
+  transition: all 0.3s ease;
+  text-transform: uppercase;
+}
+
+.btn-primary:hover {
+  background-color: #152c6b;
+  border-color: #152c6b;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+}
+
+.btn-outline-primary {
+  color: #1e3a8a;
+  border-color: #1e3a8a;
+  font-weight: 600;
+  padding: 0.6rem 1.5rem;
+  transition: all 0.3s ease;
+}
+
+.btn-outline-primary:hover {
+  background-color: #1e3a8a;
+  border-color: #1e3a8a;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+}
+
+/* RESPONSIVE */
+@media (max-width: 1399.98px) {
+  .main-carousel, .carousel-image-container {
+    height: 500px;
   }
 }
 
-/* Móviles y tabletas (portrait) */
-@media (max-width: 767.98px) { /* Usamos 767.98px para un quiebre más estándar de Bootstrap xs/sm */
+@media (max-width: 1199.98px) {
+  .main-carousel, .carousel-image-container {
+    height: 450px;
+  }
+  
+  .contadores-container {
+    grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+  }
+  
+  .titulo-camiones {
+    font-size: 2.2rem;
+  }
+}
+
+@media (max-width: 991.98px) {
+  .main-carousel, .carousel-image-container {
+    height: 400px;
+  }
+  
+  .camion-card .card-img-top {
+    height: 200px;
+  }
+  
+  .sold-text {
+    font-size: 1.8rem;
+    padding: 0.8rem 1.8rem;
+  }
+  
+  .contadores-container {
+    grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+    gap: 12px;
+    padding: 15px;
+  }
+  
+  .contador-badge h5 {
+    font-size: 0.9rem;
+  }
+  
+  .contador-badge h5 span {
+    font-size: 1.3rem;
+  }
+  
+  .titulo-camiones {
+    font-size: 2rem;
+  }
+  
+  .titulo-camiones-wrapper {
+    margin-top: -80px;
+  }
+
+  .ribbon {
+    width: 75px;
+    height: 75px;
+  }
+  
+  .ribbon span {
+    font-size: 0.75rem;
+    width: 100px;
+    top: 18px;
+    right: -22px;
+    line-height: 20px;
+  }
+}
+
+@media (max-width: 767.98px) {
+  .camiones-container {
+    padding-top: 70px;
+  }
+  
+  .main-carousel, .carousel-image-container {
+    height: 350px;
+    border-radius: 8px;
+  }
+  
+  .main-carousel .carousel-caption h3 {
+    font-size: 1.2rem;
+  }
+  
   .titulo-camiones {
     font-size: 1.8rem;
-    padding: 10px 20px;
+    padding: 12px 25px;
   }
-
-  .titulo-camiones-wrapper {
-    margin-top: -100px;
+  
+  .contadores-container {
+    grid-template-columns: repeat(2, 1fr));
   }
-
-  .contador-badge {
-    min-width: 100px;
-    padding: 0.5rem 0.8rem;
-    font-size: 0.8rem;
+  
+  .camion-card .card-img-top {
+    height: 180px;
   }
-
-  .carousel-image-container {
-    height: 400px; /* Altura del carrusel principal en móviles */
-  }
-
+  
   .sold-text {
-    font-size: 2rem;
-    padding: 8px 15px;
+    font-size: 1.5rem;
+    padding: 0.6rem 1.5rem;
   }
-
-  /* AUMENTADO: Ancho de las cards en dispositivos móviles */
-  .row-cols-1 > .col { /* Esto asegura que todas las cards ocupen el 100% en el quiebre xs */
-    flex: 0 0 auto;
-    width: 100%;
+  
+  .ribbon span {
+    font-size: 0.7rem;
+    width: 90px;
   }
-  .row-cols-md-2 > .col { /* Esto sobrescribe para que en sm ocupe el 100% también */
-    flex: 0 0 auto;
-    width: 100%;
+  
+  .no-results {
+    padding: 1.8rem;
   }
-  .row-cols-lg-3 > .col { /* Aseguramos que en sm/md/lg se comporte como se espera */
-    width: 100%; /* Las cards ahora ocupan 100% de ancho hasta que se llegue a un breakpoint mayor (col-md-2/3) */
-  }
-
-  /* Ajustes específicos para la cinta en móvil */
-  .ribbon-top-left span {
-    width: 200px; /* AUMENTADO: Ancho para móviles */
-    font-size: 14px; /* Tamaño de fuente ajustado */
-    padding: 8px 0; /* Padding ajustado */
-    left: -25px; /* Reposicionado */
-    top: 25px; /* Reposicionado */
-  }
-}
-
-/* Móviles muy pequeños (e.g., iPhone 5/SE) */
-@media (max-width: 479.98px) { /* Un quiebre adicional para pantallas muy pequeñas */
-  .titulo-camiones {
-    font-size: 1.3rem;
-    padding: 6px 12px;
-  }
-
+  
   .titulo-camiones-wrapper {
     margin-top: -60px;
   }
+}
 
-  .carousel-image-container {
-    height: 300px; /* Altura más pequeña para móviles muy pequeños */
+@media (max-width: 575.98px) {
+  .camiones-container {
+    padding-top: 60px;
   }
-
-  .sold-text {
+  
+  .main-carousel, .carousel-image-container {
+    height: 300px;
+    margin: 10px auto 1.5rem;
+  }
+  
+  .main-carousel .carousel-caption {
+    padding: 8px 15px;
+    bottom: 15px;
+  }
+  
+  .main-carousel .carousel-caption h3 {
+    font-size: 1rem;
+  }
+  
+  .titulo-camiones {
     font-size: 1.5rem;
-    padding: 5px 10px;
+    margin: 1rem 0;
+    padding: 10px 20px;
   }
-
-  /* Cards ya al 100% */
-
-  /* Ajustes específicos para la cinta en móvil más pequeño */
-  .ribbon-top-left span {
-    width: 180px; /* AUMENTADO: Ancho para móviles muy pequeños */
-    font-size: 12px; /* Reducido aún más el tamaño de la fuente */
-    padding: 6px 0; /* Ajustado el padding */
-    left: -20px; /* Reposicionado */
-    top: 20px; /* Reposicionado */
+  
+  .contadores-container {
+    grid-template-columns: 1fr;
+    gap: 10px;
+    padding: 12px;
+  }
+  
+  .contador-badge {
+    padding: 12px;
+  }
+  
+  .camion-card .card-img-top {
+    height: 160px;
+  }
+  
+  .camion-card .card-body,
+  .camion-card .card-footer {
+    padding: 1.5rem;
+  }
+  
+  .sold-text {
+    font-size: 1.3rem;
+    padding: 0.5rem 1.2rem;
+  }
+  
+  .ribbon {
+    width: 65px;
+    height: 65px;
+  }
+  
+  .ribbon span {
+    width: 90px;
+    font-size: 0.65rem;
+    top: 15px;
+    right: -20px;
+    line-height: 18px;
+  }
+  
+  .no-results {
+    padding: 1.5rem;
+    margin: 2rem auto;
+  }
+  
+  .no-results .alert {
+    font-size: 1rem;
+    padding: 1rem;
+  }
+  
+  .btn-primary,
+  .btn-outline-primary {
+    padding: 0.6rem 1.2rem;
+    font-size: 0.9rem;
+  }
+  
+  .titulo-camiones-wrapper {
+    margin-top: -50px;
+    margin-bottom: 2rem !important;
   }
 }

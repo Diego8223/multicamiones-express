@@ -64,19 +64,21 @@ const AboutUs = () => {
     }
   ];
 
+  // Configuración simplificada del mapa
   const mapConfig = {
     initialPosition: [6.2027037, -75.5833673],
-    zoomLevel: 16,
-    markerTitle: 'Multicamiones Express - Sede Principal',
+    zoomLevel: 15, // Zoom un poco más alejado
+    markerTitle: 'Multicamiones Express',
     popupContent: `
-      <div style="padding: 8px;">
+      <div style="padding: 8px; text-align: center;">
         <h3 style="font-size: 1.2rem; margin-bottom: 0.5rem; color: #0d6efd;">Multicamiones Express</h3>
-        <p style="margin-bottom: 0.3rem;"><strong>Dirección:</strong></p>
-        <p style="margin-bottom: 0.5rem;">Carrera 50 2 Sur 189, Medellín</p>
-        <p><strong>Teléfono:</strong> (604) 123 4567</p>
-        <p><strong>Email:</strong> contacto@multicamionesexpress.com</p>
+        <p style="margin-bottom: 0.5rem;"><i class="fas fa-map-marker-alt"></i> Medellín, Colombia</p>
+        <a href="https://maps.google.com/?q=Carrera+50+2+Sur+189,+Medellín" target="_blank" style="color: #0d6efd; text-decoration: none;">
+          Ver dirección completa
+        </a>
       </div>
-    `
+    `,
+    simpleMode: true // Nueva propiedad para modo simplificado
   };
 
   return (
@@ -119,17 +121,29 @@ const AboutUs = () => {
           <Col lg={6}>
             <div className="location-card h-100">
               <h4 className="location-title">
-                <FaMapMarkerAlt className="me-2" /> NUESTRA SEDE
+                <FaMapMarkerAlt className="me-2" /> VISÍTANOS
               </h4>
-              <p className="location-address">Carrera 50 2 Sur 189, Medellín, Antioquia</p>
-
-              <div className="map-wrapper mt-3">
+              
+              {/* Mapa simplificado */}
+              <div className="map-wrapper mt-3" style={{ height: '250px', borderRadius: '8px', overflow: 'hidden' }}>
                 <MapComponent {...mapConfig} />
               </div>
 
-              <div className="contact-info mt-3">
-                <p><FaPhone className="me-2" /> (604) 123 4567</p>
-                <p><FaEnvelope className="me-2" /> contacto@multicamionesexpress.com</p>
+              {/* Información de contacto reorganizada */}
+              <div className="contact-info mt-4 text-center">
+                <p className="mb-2">
+                  <FaPhone className="me-2" /> 
+                  <a href="tel:+6041234567" className="text-decoration-none">(604) 123 4567</a>
+                </p>
+                <p className="mb-2">
+                  <FaEnvelope className="me-2" /> 
+                  <a href="mailto:contacto@multicamionesexpress.com" className="text-decoration-none">
+                    contacto@multicamionesexpress.com
+                  </a>
+                </p>
+                <p className="text-muted small mt-2">
+                  Carrera 50 2 Sur 189, Medellín
+                </p>
               </div>
             </div>
           </Col>
