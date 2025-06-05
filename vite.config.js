@@ -12,7 +12,7 @@ export default defineConfig({
     port: 5173,
   },
   build: {
-    outDir: 'dist', // ✅ Cambiado de 'build' a 'dist'
+    outDir: 'build',
     rollupOptions: {
       output: {
         assetFileNames: 'assets/[name].[hash].[ext]',
