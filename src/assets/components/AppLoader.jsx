@@ -25,7 +25,7 @@ export class AppLoader {
   }
 }
 
-// Modificación recomendada para la inicialización
+
 if (import.meta.env.MODE !== 'test') {
   AppLoader.init();
 }
