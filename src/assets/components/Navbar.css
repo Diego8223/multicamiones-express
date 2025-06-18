@@ -1,0 +1,454 @@
+/* Reset básico */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Segoe UI', sans-serif;
+  overflow-x: hidden;
+  width: 100%;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* Modo oscuro */
+body.dark-mode {
+  background-color: #0f172a;
+  color: #f8fafc;
+}
+
+/* Navbar Principal */
+.navbar-custom {
+  background-color: #1e3a8a;
+  color: white;
+  padding: 10px 0;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  position: fixed;
+  top: 0;
+  z-index: 1030;
+  width: 100%;
+  transition: all 0.3s ease;
+  height: 120px;
+}
+
+/* Contenedor interno */
+.navbar-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  max-width: 1600px;
+  margin: 0 auto;
+  padding: 0 20px;
+  height: 100%;
+  width: 100%;
+}
+
+/* Logo y nombre de marca */
+.logo-container {
+  display: flex;
+  align-items: center;
+  min-width: 250px;
+  z-index: 1001; /* Asegura que esté por encima del menú móvil */
+}
+
+.logo {
+  width: 160px;
+  height: 160px;
+  margin-right: -20px;
+  transition: all 0.3s ease;
+  object-fit: contain;
+}
+
+.brand-name {
+  font-size: 1.8rem;
+  font-weight: 600;
+  color: white;
+  white-space: nowrap;
+}
+
+/* Contenedor menú escritorio */
+.desktop-menu-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+/* Menú principal */
+.menu-links {
+  display: flex;
+  gap: 30px;
+  align-items: center;
+}
+
+/* Links de navegación */
+.menu-link {
+  color: white;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 1.1rem;
+  transition: all 0.3s ease;
+  position: relative;
+  padding: 5px 0;
+}
+
+.menu-link:hover {
+  color: #93c5fd;
+}
+
+.menu-link::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 0;
+  height: 3px;
+  background: #93c5fd;
+  transition: width 0.3s ease;
+}
+
+.menu-link:hover::after {
+  width: 100%;
+}
+
+/* Redes sociales escritorio */
+.social-links-desktop {
+  display: flex;
+  gap: 15px;
+  margin-left: 10px;
+}
+
+.social-links-desktop a {
+  color: white;
+  font-size: 1.5rem;
+  transition: transform 0.3s ease, color 0.3s ease;
+}
+
+.social-links-desktop a:hover {
+  transform: scale(1.2);
+}
+
+/* Estilos específicos para cada red social */
+.social-links-desktop .facebook:hover { color: #1877f2 !important; }
+.social-links-desktop .instagram:hover { color: #E4405F !important; }
+.social-links-desktop .tiktok:hover { color: #000000 !important; }
+
+/* Botón modo oscuro */
+.dark-mode-toggle {
+  background: none;
+  border: none;
+  color: white;
+  cursor: pointer;
+  padding: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+  margin-left: 10px;
+}
+
+.dark-mode-toggle:hover {
+  color: #facc15;
+  transform: scale(1.1);
+}
+
+/* Botón logout */
+.logout-button {
+  background: none;
+  border: 1px solid white;
+  color: white;
+  padding: 8px 16px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: all 0.3s ease;
+  margin-left: 15px;
+}
+
+.logout-button:hover {
+  background: rgba(255, 255, 255, 0.1);
+}
+
+/* Botón hamburguesa */
+.menu-toggle {
+  display: none;
+  background: none;
+  border: none;
+  color: white;
+  cursor: pointer;
+  z-index: 1001;
+  padding: 0.5rem;
+}
+
+/* Menú móvil */
+.mobile-menu {
+  position: fixed;
+  top: 120px;
+  left: 0;
+  width: 100%;
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.5s ease;
+  background-color: #f8fafc;
+  z-index: 1000;
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+}
+
+.mobile-menu.open {
+  max-height: calc(100vh - 120px);
+  overflow-y: auto;
+}
+
+.mobile-link {
+  display: block;
+  padding: 18px;
+  text-align: center;
+  color: #1e3a8a;
+  font-weight: 600;
+  font-size: 1.2rem;
+  border-bottom: 1px solid #e2e8f0;
+  transition: all 0.3s ease;
+  width: 100%;
+  text-decoration: none;
+}
+
+.mobile-link:hover {
+  background-color: #e0e7ff;
+}
+
+/* Redes sociales móvil */
+.mobile-socials {
+  display: flex;
+  justify-content: center;
+  gap: 25px;
+  padding: 20px;
+  border-top: 1px solid #e2e8f0;
+}
+
+.mobile-socials a {
+  color: #1e3a8a;
+  font-size: 1.8rem;
+  transition: transform 0.3s ease, color 0.3s ease;
+}
+
+.mobile-socials a:hover {
+  transform: scale(1.2);
+}
+
+/* Botón modo oscuro móvil */
+.mobile-dark-mode-toggle {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  width: 100%;
+  padding: 15px;
+  background: none;
+  border: none;
+  border-top: 1px solid #e2e8f0;
+  color: #1e3a8a;
+  font-size: 1.1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.mobile-dark-mode-toggle:hover {
+  background-color: #e0e7ff;
+}
+
+/* Botón logout móvil */
+.mobile-logout-button {
+  width: 100%;
+  padding: 15px;
+  background: none;
+  border: none;
+  border-top: 1px solid #e2e8f0;
+  color: #ef4444;
+  font-size: 1.1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.mobile-logout-button:hover {
+  background-color: #fee2e2;
+}
+
+/* Transición para los iconos sociales */
+.social-link {
+  transition: color 0.3s ease;
+}
+
+/* Logo más grande (general, pero sobreescrito por media queries) */
+.logo {
+  height: 140px;
+  width: auto; /* Mantener la proporción */
+  transition: transform 0.3s ease;
+  object-fit: contain; /* Asegura que la imagen se ajuste sin distorsionarse */
+}
+
+.logo:hover {
+  transform: scale(1.05);
+}
+
+/* Responsive: Tablets */
+@media (max-width: 1200px) {
+  .navbar-container {
+    padding: 0 30px;
+  }
+  
+  .menu-links {
+    gap: 20px;
+  }
+  
+  .brand-name {
+    font-size: 1.5rem;
+  }
+  
+  .logo {
+    width: 120px;
+    height: 120px;
+  }
+}
+
+/* Responsive: Tablets pequeñas */
+@media (max-width: 992px) {
+  .brand-name {
+    font-size: 1.2rem;
+  }
+  
+  .menu-link {
+    font-size: 1rem;
+  }
+  
+  .logo {
+    width: 100px;
+    height: 100px;
+  }
+}
+
+/* Responsive: Móviles */
+@media (max-width: 768px) {
+  .navbar-custom {
+    height: 100px;
+  }
+  
+  .desktop-menu-wrapper {
+    display: none;
+  }
+
+  .menu-toggle {
+    display: block;
+  }
+
+  .navbar-container {
+    padding: 0 15px;
+  }
+
+  /* --- CAMBIO CLAVE AQUÍ --- */
+  .logo {
+    width: 90px; /* Aumentado de 80px a 90px para un logo más grande */
+    height: 90px; /* Aumentado de 80px a 90px */
+    margin-right: -10px;
+  }
+  /* -------------------------- */
+
+  .brand-name {
+    font-size: 1.5rem; /* Ajustado para que el nombre de marca sea más legible con el logo más grande */
+    max-width: 180px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  .mobile-menu {
+    top: 100px;
+  }
+  
+  .mobile-menu.open {
+    max-height: calc(100vh - 100px);
+  }
+  
+  /* Ajustes para iconos flotantes en móviles */
+  .mobile-socials {
+    gap: 20px;
+    padding: 15px;
+  }
+  
+  .mobile-socials a {
+    font-size: 1.5rem;
+  }
+}
+
+/* Responsive: Móviles pequeños */
+@media (max-width: 480px) {
+  .navbar-custom {
+    height: 90px;
+  }
+  
+  .logo-container {
+    min-width: auto;
+    max-width: calc(100% - 70px);
+  }
+
+  /* --- CAMBIO CLAVE AQUÍ --- */
+  .logo {
+    width: 80px; /* Aumentado de 70px a 80px para un logo más grande */
+    height: 80px; /* Aumentado de 70px a 80px */
+    margin-right: -5px;
+  }
+  /* -------------------------- */
+
+  .brand-name {
+    font-size: 1.2rem; /* Ajustado el tamaño de la fuente */
+    max-width: 150px;
+  }
+
+  .mobile-menu {
+    top: 90px;
+  }
+  
+  .mobile-menu.open {
+    max-height: calc(100vh - 90px);
+  }
+  
+  .mobile-link {
+    font-size: 1.1rem;
+    padding: 15px;
+  }
+  
+  .mobile-socials {
+    gap: 15px;
+    padding: 12px;
+  }
+  
+  .mobile-socials a {
+    font-size: 1.4rem;
+  }
+}
+
+/* Ajustes adicionales para pantallas muy pequeñas */
+@media (max-width: 360px) {
+  /* --- CAMBIO CLAVE AQUÍ --- */
+  .logo {
+    width: 70px; /* Aumentado de 60px a 70px para un logo más grande */
+    height: 70px; /* Aumentado de 60px a 70px */
+  }
+  /* -------------------------- */
+  
+  .brand-name {
+    font-size: 1.1rem; /* Ajustado el tamaño de la fuente */
+    max-width: 120px;
+  }
+  
+  .mobile-socials {
+    gap: 12px;
+    padding: 10px;
+  }
+  
+  .mobile-socials a {
+    font-size: 1.3rem;
+  }
+}

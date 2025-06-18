@@ -1,0 +1,328 @@
+.carroceria-detalle {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  overflow-x: hidden;
+  background-color: #f8f9fa;
+}
+
+/* Modal de zoom */
+.image-zoom-modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.95);
+  z-index: 9999;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 1rem;
+}
+
+.zoom-content {
+  position: relative;
+  width: 95%;
+  height: 95%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.zoomed-image {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+  border-radius: 0.5rem;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+}
+
+.zoom-close-btn {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  width: 3rem;
+  height: 3rem;
+  font-size: 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  z-index: 10000;
+}
+
+/* Cards */
+.card {
+  border-radius: 0.75rem !important;
+  overflow: hidden;
+  border: none !important;
+  box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.1);
+}
+
+.card-body {
+  padding: 1.5rem;
+}
+
+/* Carrusel */
+.main-carousel {
+  position: relative;
+  margin-bottom: 2rem;
+}
+
+.main-image-container {
+  cursor: zoom-in;
+  border-radius: 0.75rem;
+  overflow: hidden;
+  background-color: #f8f9fa;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 300px;
+  max-height: 500px;
+  box-shadow: 0 0.25rem 0.5rem rgba(0, 0, 0, 0.1);
+}
+
+.main-image-container img {
+  width: 100%;
+  height: auto;
+  max-height: 500px;
+  object-fit: contain;
+  transition: transform 0.3s ease;
+}
+
+.main-image-container:hover img {
+  transform: scale(1.02);
+}
+
+.thumbnail-scroll-container {
+  overflow-x: auto;
+  padding-bottom: 0.75rem;
+  margin-top: 1rem;
+}
+
+.thumbnail-container {
+  display: flex;
+  gap: 0.75rem;
+  padding: 0.5rem;
+  min-width: min-content;
+}
+
+.thumbnail {
+  flex: 0 0 100px;
+  cursor: pointer;
+  opacity: 0.7;
+  transition: all 0.3s ease;
+  border-radius: 0.5rem;
+  overflow: hidden;
+  border: 3px solid transparent;
+}
+
+.thumbnail:hover {
+  opacity: 1;
+}
+
+.thumbnail.active {
+  opacity: 1;
+  border-color: #0d6efd;
+}
+
+.thumbnail img {
+  width: 100%;
+  height: 80px;
+  object-fit: cover;
+}
+
+/* Video */
+.video-container {
+  margin-bottom: 2rem;
+}
+
+.video-container iframe {
+  border-radius: 0.75rem;
+  box-shadow: 0 0.25rem 0.5rem rgba(0, 0, 0, 0.15);
+}
+
+/* Especificaciones técnicas - Versión mejorada */
+.specs-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 0.75rem;
+}
+
+.spec-grid-item {
+  display: grid;
+  grid-template-columns: 1fr 1.5fr;
+  gap: 0.5rem;
+  align-items: center;
+}
+
+.spec-grid-key {
+  background-color: #f8f9fa;
+  padding: 0.75rem 1rem;
+  border-radius: 0.5rem;
+  border-left: 4px solid #0d6efd;
+  font-size: 0.95rem;
+}
+
+.spec-grid-value {
+  background-color: #e9ecef;
+  padding: 0.75rem 1rem;
+  border-radius: 0.5rem;
+  word-break: break-word;
+  font-size: 0.95rem;
+}
+
+/* Efecto hover para mejor interacción */
+.spec-grid-item:hover .spec-grid-key {
+  background-color: #e2e6ea;
+}
+
+.spec-grid-item:hover .spec-grid-value {
+  background-color: #dde0e3;
+}
+
+/* Contacto */
+.icon-container {
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.contact-details {
+  background-color: #f8f9fa;
+  border-radius: 0.75rem;
+  padding: 1.5rem;
+}
+
+/* Botones */
+.btn {
+  font-weight: 500;
+  border-radius: 0.5rem !important;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.btn-success {
+  background-color: #198754;
+  border-color: #198754;
+}
+
+.btn-success:hover {
+  background-color: #157347;
+  border-color: #146c43;
+}
+
+.btn-primary {
+  background-color: #0d6efd;
+  border-color: #0d6efd;
+}
+
+.btn-primary:hover {
+  background-color: #0b5ed7;
+  border-color: #0a58ca;
+}
+
+/* Botón de retorno */
+.btn-outline-primary {
+  border: 2px solid #0d6efd;
+  color: #0d6efd;
+  transition: all 0.3s ease;
+  display: inline-flex;
+  align-items: center;
+  font-weight: 500;
+}
+
+.btn-outline-primary:hover {
+  background-color: #0d6efd;
+  color: white;
+}
+
+/* Responsive */
+@media (max-width: 1200px) {
+  .main-image-container {
+    min-height: 250px;
+    max-height: 400px;
+  }
+  
+  .thumbnail {
+    flex: 0 0 90px;
+  }
+  
+  .thumbnail img {
+    height: 70px;
+  }
+}
+
+@media (max-width: 992px) {
+  .sticky-lg-top {
+    position: static !important;
+  }
+  
+  .container-fluid {
+    padding-left: 0.5rem;
+    padding-right: 0.5rem;
+  }
+  
+  .specs-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 768px) {
+  .main-image-container {
+    min-height: 200px;
+    max-height: 350px;
+  }
+  
+  .thumbnail {
+    flex: 0 0 80px;
+  }
+  
+  .thumbnail img {
+    height: 60px;
+  }
+  
+  .card-body {
+    padding: 1rem;
+  }
+  
+  .btn-outline-primary {
+    padding: 0.5rem 1rem;
+    font-size: 0.9rem;
+  }
+}
+
+@media (max-width: 576px) {
+  .main-image-container {
+    min-height: 180px;
+    max-height: 300px;
+  }
+  
+  .thumbnail {
+    flex: 0 0 70px;
+  }
+  
+  .thumbnail img {
+    height: 50px;
+  }
+  
+  .zoom-close-btn {
+    width: 2.5rem;
+    height: 2.5rem;
+    font-size: 1.25rem;
+  }
+  
+  .icon-container {
+    width: 36px;
+    height: 36px;
+  }
+  
+  .spec-grid-key, .spec-grid-value {
+    padding: 0.5rem;
+    font-size: 0.9rem;
+  }
+}

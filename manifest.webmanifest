@@ -1,0 +1,29 @@
+{
+  "name": "Multicamiones Express",
+  "short_name": "Multicamiones",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "background_color": "#1e3a8a",
+  "theme_color": "#1e3a8a",
+  "description": "Servicio profesional de transporte y logística",
+  "orientation": "portrait-primary",
+  "lang": "es-ES",
+  "dir": "ltr",
+  "prefer_related_applications": false,
+  "categories": ["transportation", "business"],
+  "shortcuts": [
+    {
+      "name": "Nuevo Envío",
+      "short_name": "Envío",
+      "description": "Crear un nuevo envío",
+      "url": "/nuevo-envio"
+    },
+    {
+      "name": "Seguimiento",
+      "short_name": "Track",
+      "description": "Seguimiento de envíos",
+      "url": "/seguimiento"
+    }
+  ]
+}

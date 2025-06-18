@@ -1,0 +1,657 @@
+/* General container for the Camiones page */
+.camiones-container {
+  position: relative;
+  background-color: #f8f9fa;
+  padding-top: 80px; /* Más espacio para la navbar */
+  min-height: 100vh;
+}
+
+/* CARRUSEL PRINCIPAL - POSICIÓN CORREGIDA */
+.main-carousel {
+  height: 600px;
+  overflow: hidden;
+  position: relative;
+  margin: 20px auto 2rem;
+  border-radius: 10px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  max-width: 1400px;
+}
+
+.carousel-image-container {
+  height: 600px;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #e9ecef;
+  position: relative;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.main-carousel img {
+  object-fit: cover;
+  width: 100%;
+  height: 100%;
+  transition: transform 0.5s ease;
+  filter: brightness(0.7);
+}
+
+.main-carousel:hover img {
+  transform: scale(1.02);
+}
+
+.main-carousel .carousel-caption {
+  background-color: rgba(0, 0, 0, 0.7);
+  padding: 12px 25px;
+  border-radius: 8px;
+  left: 50%;
+  transform: translateX(-50%);
+  right: auto;
+  bottom: 30px;
+  width: auto;
+  max-width: 80%;
+}
+
+.main-carousel .carousel-caption h3 {
+  font-size: 1.5rem;
+  margin: 0;
+  font-weight: 600;
+}
+
+/* TÍTULO MEJORADO */
+.titulo-camiones {
+  color: #1e3a8a;
+  font-weight: 800;
+  text-align: center;
+  margin: 1.5rem 0;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  position: relative;
+  padding-bottom: 15px;
+  background: rgba(255, 255, 255, 0.95);
+  padding: 15px 30px;
+  border-radius: 8px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  border: 2px solid #1e3a8a;
+  font-size: 2.5rem;
+}
+
+.titulo-camiones::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100px;
+  height: 3px;
+  background-color: #1e3a8a;
+}
+
+.titulo-camiones-wrapper {
+  position: relative;
+  z-index: 100;
+  margin-top: -100px;
+  margin-bottom: 3rem !important;
+}
+
+/* CONTADORES - DISEÑO MEJORADO */
+.contadores-container {
+  background-color: white;
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  gap: 15px;
+  margin: 0 auto 2.5rem;
+  max-width: 1200px;
+}
+
+.contador-badge {
+  padding: 15px;
+  background: linear-gradient(135deg, #0d6efd 0%, #1e3a8a 100%);
+  color: white;
+  border-radius: 10px;
+  text-align: center;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+  transition: all 0.3s ease;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  min-width: 120px;
+}
+
+.contador-badge:nth-child(2) { 
+  background: linear-gradient(135deg, #198754 0%, #1e6a4a 100%); 
+}
+.contador-badge:nth-child(3) { 
+  background: linear-gradient(135deg, #ffc107 0%, #ffab00 100%);
+  color: #333;
+}
+.contador-badge:nth-child(4) { 
+  background: linear-gradient(135deg, #dc3545 0%, #a71d2a 100%); 
+}
+.contador-badge:nth-child(5) { 
+  background: linear-gradient(135deg, #0dcaf0 0%, #0aa2c0 100%);
+  color: #333;
+}
+
+.contador-badge:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 6px 12px rgba(0,0,0,0.15);
+}
+
+.contador-badge h5 {
+  margin: 0;
+  font-size: 1rem;
+  font-weight: 600;
+  display: flex;
+  flex-direction: column;
+}
+
+.contador-badge h5 span {
+  font-size: 1.5rem;
+  font-weight: 700;
+  margin-top: 5px;
+}
+
+/* FILTROS MEJORADOS */
+.filter-card {
+  border-radius: 15px;
+  overflow: hidden;
+  margin-bottom: 2.5rem;
+  background-color: white;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  border: 1px solid #e9ecef;
+}
+
+.filter-card .card-body {
+  padding: 1.8rem;
+}
+
+.filter-card h2 {
+  color: #1e3a8a;
+  font-size: 1.3rem;
+  margin-bottom: 1.2rem;
+  font-weight: 700;
+  text-align: center;
+}
+
+.form-control {
+  border-radius: 10px;
+  padding: 12px 18px;
+  border: 2px solid #e9ecef;
+  transition: all 0.3s;
+  font-size: 1rem;
+}
+
+.form-control:focus {
+  border-color: #1e3a8a;
+  box-shadow: 0 0 0 0.25rem rgba(30, 58, 138, 0.25);
+}
+
+.form-select {
+  padding: 12px 18px;
+  border-radius: 10px;
+  border: 2px solid #e9ecef;
+  font-size: 1rem;
+  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3e%3cpath fill='none' stroke='%231e3a8a' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M2 5l6 6 6-6'/%3e%3c/svg%3e");
+}
+
+.form-check-input {
+  width: 22px;
+  height: 22px;
+  margin-top: 0.2rem;
+  margin-right: 10px;
+  border: 2px solid #adb5bd;
+}
+
+.form-check-input:checked {
+  background-color: #1e3a8a;
+  border-color: #1e3a8a;
+}
+
+.form-check-label {
+  font-weight: 500;
+  font-size: 1rem;
+}
+
+.form-switch .form-check-input {
+  width: 48px;
+  height: 24px;
+  margin-right: 12px;
+}
+
+/* TARJETAS DE CAMIONES - DISEÑO MEJORADO */
+.camion-card {
+  transition: all 0.3s ease;
+  border-radius: 12px;
+  overflow: hidden;
+  border: none;
+  box-shadow: 0 6px 12px rgba(0,0,0,0.1);
+  height: 100%;
+  margin-bottom: 2rem;
+  background-color: white;
+  position: relative;
+  border: 1px solid rgba(0,0,0,0.05);
+}
+
+.camion-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 12px 24px rgba(0,0,0,0.15);
+}
+
+.camion-card .card-img-top {
+  height: 220px;
+  object-fit: cover;
+  transition: transform 0.5s ease;
+  width: 100%;
+}
+
+.camion-card:hover .card-img-top {
+  transform: scale(1.08);
+}
+
+.camion-card .card-body {
+  padding: 1.8rem;
+}
+
+.camion-card .card-title {
+  font-size: 1.4rem;
+  margin-bottom: 0.8rem;
+  color: #1e3a8a;
+  font-weight: 700;
+  line-height: 1.3;
+}
+
+.camion-card .card-text {
+  color: #6c757d;
+  margin-bottom: 1.2rem;
+  font-size: 1rem;
+  line-height: 1.5;
+}
+
+.camion-card .price {
+  font-weight: 700;
+  color: #dc3545;
+  font-size: 1.3rem;
+  letter-spacing: 0.5px;
+}
+
+.camion-card .badge {
+  font-size: 0.85rem;
+  padding: 0.5em 0.8em;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+}
+
+.camion-card .card-footer {
+  background-color: transparent;
+  border-top: none;
+  padding: 0 1.8rem 1.8rem;
+}
+
+/* ESTADO VENDIDO - VERSIÓN MEJORADA */
+.sold-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.75);
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 12px;
+}
+
+.sold-text {
+  color: white;
+  font-size: 2.2rem;
+  font-weight: 800;
+  transform: rotate(-10deg);
+  text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.8);
+  padding: 12px 24px;
+  background-color: rgba(220, 53, 69, 0.9);
+  border-radius: 8px;
+  border: 3px solid rgba(255, 255, 255, 0.3);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+/* RIBBON DESTACADO - VERSIÓN MEJORADA */
+.ribbon {
+  width: 85px;
+  height: 85px;
+  overflow: hidden;
+  position: absolute;
+  right: -5px;
+  top: -5px;
+  z-index: 3;
+}
+
+.ribbon span {
+  font-size: 0.85rem;
+  font-weight: 800;
+  color: #2c3e50;
+  text-transform: uppercase;
+  text-align: center;
+  line-height: 24px;
+  transform: rotate(45deg);
+  -webkit-transform: rotate(45deg);
+  width: 120px;
+  display: block;
+  background: linear-gradient(135deg, #FFD700 0%, #FFA500 100%);
+  box-shadow: 0 3px 15px -5px rgba(0, 0, 0, 0.3);
+  position: absolute;
+  top: 22px;
+  right: -25px;
+  letter-spacing: 0.5px;
+  padding: 2px 0;
+}
+
+.ribbon span::before {
+  content: "";
+  position: absolute;
+  left: 0px;
+  top: 100%;
+  z-index: -1;
+  border-left: 4px solid #FF8C00;
+  border-right: 4px solid transparent;
+  border-bottom: 4px solid transparent;
+  border-top: 4px solid #FF8C00;
+}
+
+.ribbon span::after {
+  content: "";
+  position: absolute;
+  right: 0px;
+  top: 100%;
+  z-index: -1;
+  border-left: 4px solid transparent;
+  border-right: 4px solid #FF8C00;
+  border-bottom: 4px solid transparent;
+  border-top: 4px solid #FF8C00;
+}
+
+.ribbon-top-left {
+  top: -5px;
+  left: -5px;
+  right: auto;
+}
+
+.ribbon-top-left span {
+  transform: rotate(-45deg);
+  -webkit-transform: rotate(-45deg);
+  left: -25px;
+  right: auto;
+}
+
+/* SKELETON LOADER */
+.skeleton-loader {
+  background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+  background-size: 200% 100%;
+  animation: shimmer 1.5s infinite;
+  height: 100%;
+  width: 100%;
+  border-radius: 12px;
+}
+
+@keyframes shimmer {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+
+/* MENSAJE SIN RESULTADOS - MEJORADO */
+.no-results {
+  padding: 2.5rem;
+  text-align: center;
+  background-color: white;
+  border-radius: 12px;
+  box-shadow: 0 6px 12px rgba(0,0,0,0.1);
+  margin: 3rem auto;
+  max-width: 800px;
+  border: 1px solid rgba(0,0,0,0.05);
+}
+
+.no-results .alert {
+  font-size: 1.2rem;
+  padding: 1.5rem;
+  border-radius: 10px;
+}
+
+/* BOTONES - MEJORADOS */
+.btn-primary {
+  background-color: #1e3a8a;
+  border-color: #1e3a8a;
+  padding: 0.7rem 1.5rem;
+  border-radius: 10px;
+  font-weight: 600;
+  font-size: 1rem;
+  letter-spacing: 0.5px;
+  transition: all 0.3s ease;
+  text-transform: uppercase;
+}
+
+.btn-primary:hover {
+  background-color: #152c6b;
+  border-color: #152c6b;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+}
+
+.btn-outline-primary {
+  color: #1e3a8a;
+  border-color: #1e3a8a;
+  font-weight: 600;
+  padding: 0.6rem 1.5rem;
+  transition: all 0.3s ease;
+}
+
+.btn-outline-primary:hover {
+  background-color: #1e3a8a;
+  border-color: #1e3a8a;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+}
+
+/* RESPONSIVE */
+@media (max-width: 1399.98px) {
+  .main-carousel, .carousel-image-container {
+    height: 500px;
+  }
+}
+
+@media (max-width: 1199.98px) {
+  .main-carousel, .carousel-image-container {
+    height: 450px;
+  }
+  
+  .contadores-container {
+    grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+  }
+  
+  .titulo-camiones {
+    font-size: 2.2rem;
+  }
+}
+
+@media (max-width: 991.98px) {
+  .main-carousel, .carousel-image-container {
+    height: 400px;
+  }
+  
+  .camion-card .card-img-top {
+    height: 200px;
+  }
+  
+  .sold-text {
+    font-size: 1.8rem;
+    padding: 0.8rem 1.8rem;
+  }
+  
+  .contadores-container {
+    grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+    gap: 12px;
+    padding: 15px;
+  }
+  
+  .contador-badge h5 {
+    font-size: 0.9rem;
+  }
+  
+  .contador-badge h5 span {
+    font-size: 1.3rem;
+  }
+  
+  .titulo-camiones {
+    font-size: 2rem;
+  }
+  
+  .titulo-camiones-wrapper {
+    margin-top: -80px;
+  }
+
+  .ribbon {
+    width: 75px;
+    height: 75px;
+  }
+  
+  .ribbon span {
+    font-size: 0.75rem;
+    width: 100px;
+    top: 18px;
+    right: -22px;
+    line-height: 20px;
+  }
+}
+
+@media (max-width: 767.98px) {
+  .camiones-container {
+    padding-top: 70px;
+  }
+  
+  .main-carousel, .carousel-image-container {
+    height: 350px;
+    border-radius: 8px;
+  }
+  
+  .main-carousel .carousel-caption h3 {
+    font-size: 1.2rem;
+  }
+  
+  .titulo-camiones {
+    font-size: 1.8rem;
+    padding: 12px 25px;
+  }
+  
+  .contadores-container {
+    grid-template-columns: repeat(2, 1fr));
+  }
+  
+  .camion-card .card-img-top {
+    height: 180px;
+  }
+  
+  .sold-text {
+    font-size: 1.5rem;
+    padding: 0.6rem 1.5rem;
+  }
+  
+  .ribbon span {
+    font-size: 0.7rem;
+    width: 90px;
+  }
+  
+  .no-results {
+    padding: 1.8rem;
+  }
+  
+  .titulo-camiones-wrapper {
+    margin-top: -60px;
+  }
+}
+
+@media (max-width: 575.98px) {
+  .camiones-container {
+    padding-top: 60px;
+  }
+  
+  .main-carousel, .carousel-image-container {
+    height: 300px;
+    margin: 10px auto 1.5rem;
+  }
+  
+  .main-carousel .carousel-caption {
+    padding: 8px 15px;
+    bottom: 15px;
+  }
+  
+  .main-carousel .carousel-caption h3 {
+    font-size: 1rem;
+  }
+  
+  .titulo-camiones {
+    font-size: 1.5rem;
+    margin: 1rem 0;
+    padding: 10px 20px;
+  }
+  
+  .contadores-container {
+    grid-template-columns: 1fr;
+    gap: 10px;
+    padding: 12px;
+  }
+  
+  .contador-badge {
+    padding: 12px;
+  }
+  
+  .camion-card .card-img-top {
+    height: 160px;
+  }
+  
+  .camion-card .card-body,
+  .camion-card .card-footer {
+    padding: 1.5rem;
+  }
+  
+  .sold-text {
+    font-size: 1.3rem;
+    padding: 0.5rem 1.2rem;
+  }
+  
+  .ribbon {
+    width: 65px;
+    height: 65px;
+  }
+  
+  .ribbon span {
+    width: 90px;
+    font-size: 0.65rem;
+    top: 15px;
+    right: -20px;
+    line-height: 18px;
+  }
+  
+  .no-results {
+    padding: 1.5rem;
+    margin: 2rem auto;
+  }
+  
+  .no-results .alert {
+    font-size: 1rem;
+    padding: 1rem;
+  }
+  
+  .btn-primary,
+  .btn-outline-primary {
+    padding: 0.6rem 1.2rem;
+    font-size: 0.9rem;
+  }
+  
+  .titulo-camiones-wrapper {
+    margin-top: -50px;
+    margin-bottom: 2rem !important;
+  }
+}
