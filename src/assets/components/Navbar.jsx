@@ -60,19 +60,19 @@ const Navbar = () => {
       icon: <FaFacebook size={24} />, 
       label: "Facebook", 
       url: "https://www.facebook.com/MULTICAMIONESEXPRESS/",
-      color: "#1877F2" // Color oficial de Facebook
+      color: "#1877F2" 
     },
     { 
       icon: <FaInstagram size={24} />, 
       label: "Instagram", 
       url: "https://www.instagram.com/multicamionesexpresscol/",
-      color: "#E4405F" // Color oficial de Instagram
+      color: "#E4405F" 
     },
     { 
       icon: <FaTiktok size={24} />, 
       label: "TikTok", 
       url: "https://www.tiktok.com/@multicamionesexpr",
-      color: "#000000" // Color oficial de TikTok
+      color: "#000000" 
     }
   ];
 
