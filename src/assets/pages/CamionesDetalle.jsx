@@ -5,6 +5,9 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap-icons/font/bootstrap-icons.css';
 import './CamionesDetalle.css';
 
+// Función para limpiar números (eliminar espacios y el signo +)
+const cleanNumber = (num) => num.replace(/[+\s]/g, '');
+
 const CamionDetalle = () => {
   const { id } = useParams();
   const navigate = useNavigate();
@@ -18,49 +21,40 @@ const CamionDetalle = () => {
   const camiones = [
     { 
       id: 1, 
-      marca: 'Volvo', 
-      tipo: 'Tractocamión', 
-      modelo: 'FH16', 
+      marca: 'FOTON MEDIANO', 
+      tipo: 'camión', 
+      modelo: 'BJ1078', 
       ubicacion: 'Medellín, Colombia',
-      precio: 420000000,
-      kilometraje: 145000,
-      año: 2020,
+      precio: 110000000,
+      kilometraje: 134434,
+      año: 2019,
       estado: 'usado',
       destacado: true,
-      descripcion: 'Tractocamión en excelente estado con mantenimiento al día, ideal para transporte pesado. Incluye todos los servicios recientes y documentación al día. Equipado con las últimas tecnologías en seguridad y confort para el conductor.',
+      descripcion: 'Camión en excelente estado con mantenimiento al día, ideal para transporte pesado. Incluye todos los servicios recientes y documentación al día. Equipado con las últimas tecnologías en seguridad y confort para el conductor.',
       imagenes: [
         '/img/camion1.jpg',
         '/img/camion2.jpg',
         '/img/camion3.jpg',
-        '/img/volvo-fh16-4.jpg'
+        
       ],
       video: 'https://www.youtube.com/watch?v=tbI9FW3drWY',
       especificaciones: {
-        'Motor': 'D13K 540HP Euro 5',
-        'Transmisión': 'I-Shift 12 velocidades',
-        'Capacidad de carga': '40 toneladas',
-        'Ejes': '3 ejes',
-        'Suspensión': 'Neumática',
-        'Consumo combustible': '2.5 km/l (promedio)',
-        'Altura cabina': '3.9 metros',
-        'Peso bruto': '18,000 kg',
-        'Extras': 'Cabina Globetrotter XL, Aire acondicionado digital, Dirección asistida, Cámara de retroceso, Sistema de navegación GPS'
+        'Motor': '3,8L Disel',
+        'Peso bruto': '4,100 kg Runt',
+        
       },
       caracteristicas: [
-        'Motor Euro 5 con bajo consumo de combustible y emisiones reducidas',
-        'Sistema de frenado ABS y EBS con control electrónico',
-        'Asientos ergonómicos con ajuste múltiple y calefacción',
-        'Sistema de navegación integrado con pantalla táctil de 10"',
-        'Control de estabilidad (ESP) y control de descenso en pendientes',
-        'Sistema de monitoreo de presión de llantas (TPMS)',
-        'Sistema de entretenimiento con Bluetooth y USB',
-        'Caja de cambios automatizada para mayor comodidad',
-        'Faros LED de largo alcance con autoajuste'
+        'Motor 3,8 Disel -Rendimiento Solido y efeciente en operación Continua',
+        'Caja Manual-Manejo Preciso y Respuesta Inmediata en todo terreno',
+        'Carga Util 4,100 kg RUNT Ideal para labores logisticas o reparto exigente',
+        '134,434 km  - Listo para seguir produciendo desde el primer dia "',
+        
       ],
-      garantia: '6 meses o 50,000 km',
+      garantia: '',
       contacto: {
         nombre: 'Juan Acosta',
         telefono: '+57 3127767298',
+        whatsapp: '+57 3127767298',
         email: 'multicamionesexpressmed@gmail.com',
         horario: 'Lunes a Viernes: 9:00 AM - 5:00 PM / Sábados: 10:00 AM - 2:00 PM'
       }
@@ -351,7 +345,7 @@ const CamionDetalle = () => {
 
                   <div className="d-grid gap-3 mb-4">
                     <a 
-                      href={`https://wa.me/57${camion.contacto.telefono.replace(/\D/g, '')}?text=Hola, estoy interesado en el camión ${camion.marca} ${camion.modelo} (ID: ${camion.id})`} 
+                      href={`https://wa.me/${cleanNumber(camion.contacto.whatsapp)}?text=Hola, estoy interesado en el camión ${camion.marca} ${camion.modelo} (ID: ${camion.id})`} 
                       className="btn btn-success py-3 fs-5 fw-bold d-flex align-items-center justify-content-center"
                       target="_blank"
                       rel="noopener noreferrer"
@@ -360,7 +354,7 @@ const CamionDetalle = () => {
                       WhatsApp
                     </a>
                     <a 
-                      href={`tel:${camion.contacto.telefono}`} 
+                      href={`tel:${cleanNumber(camion.contacto.telefono)}`} 
                       className="btn btn-outline-success py-3 fs-5 fw-bold d-flex align-items-center justify-content-center"
                     >
                       <i className="bi bi-telephone fs-4 me-2"></i>

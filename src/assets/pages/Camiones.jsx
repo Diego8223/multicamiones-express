@@ -100,29 +100,29 @@ const Camiones = () => {
   const camiones = [
     {
       id: 1,
-      marca: 'Foton',
-      tipo: 'Tractocamión',
-      modelo: 'FH16',
+      marca: 'FOTON MEDIANO',
+      tipo: 'camión',
+      modelo: 'BJ1078',
       ubicacion: 'Medellín',
-      precio: 420000000,
-      kilometraje: 145000,
-      año: 2020,
+      precio: 110000000,
+      kilometraje: 134434,
+      año: 2019,
       estado: 'Usado',
       destacado: true,
-      descripcion: 'Tractocamión en excelente estado con mantenimiento al día, ideal para transporte pesado',
+      descripcion: 'Camión en excelente estado con mantenimiento al día, ideal para transporte pesado',
       imagenes: [
         '/img/fotonmediano.jpg',
-        '/img/fotonmediano-2.jpg',
-        '/img/fotonmediano-3.jpg'
+        '/img/fotonmediano.jpg',
+        '/img/fotonmediano.jpg'
       ],
       video: 'https://www.youtube.com/watch?v=dQw4w9WgXcQ',
       especificaciones: {
-        motor: 'D13K 540HP',
-        transmision: 'I-Shift 12 velocidades',
-        capacidad: '40 toneladas',
+        motor: '3.8L Disel',
+        transmision: '',
+        capacidad: '4100 kg Runt',
         ejes: '3',
-        suspension: 'Neumática',
-        extras: 'Cabina Globetrotter, Aire acondicionado, Dirección asistida'
+        suspension: '',
+        extras: ''
       }
     },
     {

@@ -25,7 +25,7 @@ const AboutUs = () => {
     {
       icon: <FaTruck className="value-icon" />,
       title: "Nuestra Trayectoria",
-      description: "Más de 10 años especializados en la compra y venta de camiones y vehículos pesados.",
+      description: "Más de 10 años especializados en la compra y venta de camiones.",
       overlay: {
         title: "Expertos en el sector",
         content: "Desde 2015 conectando compradores y vendedores con transparencia y profesionalismo.",
@@ -107,7 +107,7 @@ const AboutUs = () => {
             <div className="about-description h-100">
               <h3 className="about-heading">QUIÉNES SOMOS</h3>
               <p className="about-text">
-                Multicamiones Express es una empresa líder en el mercado de compra y venta de vehículos pesados y camiones.
+                Multicamiones Express es una empresa líder en el mercado de compra y venta de vehículos pesados.
                 Nos especializamos en ofrecer soluciones integrales para el transporte de carga, con un portafolio que incluye
                 desde camiones usados certificados hasta unidades nuevas de las mejores marcas internacionales.
               </p>
