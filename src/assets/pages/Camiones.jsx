@@ -485,6 +485,11 @@ const Camiones = () => {
                     <div className="carousel-inner" style={{ height: responsiveStyles.cardImageHeight }}>
                       {camion.imagenes.map((img, index) => (
                         <div key={index} className={`carousel-item ${index === 0 ? 'active' : ''}`}>
+                           <Link 
+                            to={`/camiones/${camion.id}`} 
+                            onClick={() => window.scrollTo(0, 0)}
+                            style={{ display: 'block' }}
+                           >
                           <img 
                             src={img} 
                             className="d-block w-100 h-100"
@@ -499,6 +504,8 @@ const Camiones = () => {
                               e.target.src = FallbackImage;
                             }}
                           />
+                          </Link>
+                          
                         </div>
                       ))}
                     </div>
@@ -562,6 +569,7 @@ const Camiones = () => {
                       backgroundColor: '#1e3a8a',
                       borderColor: '#1e3a8a'
                     }}
+                    onClick={() => window.scrollTo(0, 0)}
                   >
                     Ver detalles completos
                   </Link>

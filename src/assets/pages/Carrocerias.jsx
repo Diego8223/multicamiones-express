@@ -474,6 +474,11 @@ const Carrocerias = () => {
                     <div className="carousel-inner" style={{ height: responsiveStyles.cardImageHeight }}>
                       {carroceria.imagenes.map((img, index) => (
                         <div key={index} className={`carousel-item ${index === 0 ? 'active' : ''}`}>
+                          <Link 
+                          to={`/carrocerias/${carrocerias.id}`} 
+                          onClick={() => window.scrollTo(0, 0)}
+                          style={{ display: 'block' }}
+                          >
                           <img 
                             src={img} 
                             className="d-block w-100 h-100"
@@ -488,6 +493,7 @@ const Carrocerias = () => {
                               e.target.src = FallbackImage;
                             }}
                           />
+                           </Link>
                         </div>
                       ))}
                     </div>
@@ -551,6 +557,7 @@ const Carrocerias = () => {
                       backgroundColor: '#1e3a8a',
                       borderColor: '#1e3a8a'
                     }}
+                     onClick={() => window.scrollTo(0, 0)}
                   >
                     Ver detalles completos
                   </Link>

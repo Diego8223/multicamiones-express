@@ -59,10 +59,10 @@ const CamionDetalle = () => {
       ],
       garantia: '6 meses o 50,000 km',
       contacto: {
-        nombre: 'Juan Pérez',
-        telefono: '+57 310 123 4567',
-        email: 'ventas@multicamiones.com',
-        horario: 'Lunes a Viernes: 8:00 AM - 6:00 PM / Sábados: 9:00 AM - 2:00 PM'
+        nombre: 'Juan Acosta',
+        telefono: '+57 3127767298',
+        email: 'multicamionesexpressmed@gmail.com',
+        horario: 'Lunes a Viernes: 9:00 AM - 5:00 PM / Sábados: 10:00 AM - 2:00 PM'
       }
     },
     // ... otros camiones
