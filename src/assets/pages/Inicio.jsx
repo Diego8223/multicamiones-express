@@ -6,8 +6,8 @@ import './Inicio.css';
 const videos = [
   {
     id: 'Zba22B5RimA',
-    title: 'Video destacado',
-    description: 'Disfruta de nuestro contenido premium cuidadosamente seleccionado para ti.'
+    title: 'MULTICAMIONES EXPRESS - Trailer Oficial ',
+    description: 'Visitanos y Conoce Nuestra Empresa.'
   }
 ];
 
