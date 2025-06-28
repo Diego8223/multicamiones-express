@@ -103,7 +103,7 @@ const Carrocerias = () => {
       ubicacion: 'Bogotá',
       precio: 85000000,
       año: 2022,
-      estado: 'Nueva',
+      estado: 'Vendida',
       destacado: true,
       descripcion: 'Carrocería refrigerada para transporte de alimentos, capacidad 20m3',
       imagenes: [
@@ -129,7 +129,7 @@ const Carrocerias = () => {
       ubicacion: 'Medellín',
       precio: 45000000,
       año: 2020,
-      estado: 'Usada',
+      estado: 'Vendida',
       destacado: false,
       descripcion: 'Carrocería tipo estaca en acero, excelente estado',
       imagenes: [
@@ -153,7 +153,7 @@ const Carrocerias = () => {
       ubicacion: 'Cali',
       precio: 120000000,
       año: 2023,
-      estado: 'Nueva',
+      estado: 'Vendida',
       destacado: true,
       descripcion: 'Cisterna para transporte de líquidos alimenticios, capacidad 30.000 litros',
       imagenes: [
@@ -180,7 +180,7 @@ const Carrocerias = () => {
       ubicacion: 'Barranquilla',
       precio: 68000000,
       año: 2021,
-      estado: 'Usada',
+      estado: 'Vendida',
       destacado: false,
       descripcion: 'Carrocería tipo volqueta en acero, buen estado general',
       imagenes: [
