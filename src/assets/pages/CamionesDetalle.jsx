@@ -92,9 +92,9 @@ const CamionDetalle = () => {
       ],
       garantia: '',
       contacto: {
-        nombre: 'Juan Acosta',
-        telefono: '+57 3127767298',
-        whatsapp: '+57 3127767298',
+        nombre: 'Edwin Alvarez',
+        telefono: '+57 3007857038',
+        whatsapp: '+57 3007857038',
         email: 'multicamionesexpressmed@gmail.com',
         horario: 'Lunes a Viernes: 9:00 AM - 5:00 PM / Sábados: 10:00 AM - 2:00 PM'
       }
@@ -132,9 +132,9 @@ const CamionDetalle = () => {
       ],
       garantia: '',
       contacto: {
-        nombre: 'Juan Acosta',
-        telefono: '+57 3127767298',
-        whatsapp: '+57 3127767298',
+        nombre: 'Julio Duque',
+        telefono: '+57 3015010196',
+        whatsapp: '+57 3015010196',
         email: 'multicamionesexpressmed@gmail.com',
         horario: 'Lunes a Viernes: 9:00 AM - 5:00 PM / Sábados: 10:00 AM - 2:00 PM'
       }
@@ -173,9 +173,9 @@ const CamionDetalle = () => {
       ],
       garantia: '',
       contacto: {
-        nombre: 'Juan Acosta',
-        telefono: '+57 3127767298',
-        whatsapp: '+57 3127767298',
+        nombre: 'Juan Restrepo',
+        telefono: '+57 3118813553',
+        whatsapp: '+57 3118813553',
         email: 'multicamionesexpressmed@gmail.com',
         horario: 'Lunes a Viernes: 9:00 AM - 5:00 PM / Sábados: 10:00 AM - 2:00 PM'
       }
@@ -251,9 +251,9 @@ const CamionDetalle = () => {
       ],
       garantia: '',
       contacto: {
-        nombre: 'Juan Acosta',
-        telefono: '+57 3127767298',
-        whatsapp: '+57 3127767298',
+        nombre: 'Edwin Alvarez',
+        telefono: '+57 3007857038',
+        whatsapp: '+57 3007857038',
         email: 'multicamionesexpressmed@gmail.com',
         horario: 'Lunes a Viernes: 9:00 AM - 5:00 PM / Sábados: 10:00 AM - 2:00 PM'
       }
@@ -290,9 +290,9 @@ const CamionDetalle = () => {
       ],
       garantia: '',
       contacto: {
-        nombre: 'Juan Acosta',
-        telefono: '+57 3127767298',
-        whatsapp: '+57 3127767298',
+        nombre: 'Julio Duque',
+        telefono: '+57 3015010196',
+        whatsapp: '+57 3015010196',
         email: 'multicamionesexpressmed@gmail.com',
         horario: 'Lunes a Viernes: 9:00 AM - 5:00 PM / Sábados: 10:00 AM - 2:00 PM'
       }
@@ -330,9 +330,9 @@ const CamionDetalle = () => {
       ],
       garantia: '',
       contacto: {
-        nombre: 'Juan Acosta',
-        telefono: '+57 3127767298',
-        whatsapp: '+57 3127767298',
+        nombre: 'Juan Restrepo',
+        telefono: '+57 3118813553',
+        whatsapp: '+57 3118813553',
         email: 'multicamionesexpressmed@gmail.com',
         horario: 'Lunes a Viernes: 9:00 AM - 5:00 PM / Sábados: 10:00 AM - 2:00 PM'
       }
@@ -409,9 +409,9 @@ const CamionDetalle = () => {
       ],
       garantia: '',
       contacto: {
-        nombre: 'Juan Acosta',
-        telefono: '+57 3127767298',
-        whatsapp: '+57 3127767298',
+        nombre: 'Edwin Alvarez',
+        telefono: '+57 3007857038',
+        whatsapp: '+57 3007857038',
         email: 'multicamionesexpressmed@gmail.com',
         horario: 'Lunes a Viernes: 9:00 AM - 5:00 PM / Sábados: 10:00 AM - 2:00 PM'
       }
@@ -449,9 +449,9 @@ const CamionDetalle = () => {
       ],
       garantia: '',
       contacto: {
-        nombre: 'Juan Acosta',
-        telefono: '+57 3127767298',
-        whatsapp: '+57 3127767298',
+        nombre: 'Julio Duque',
+        telefono: '+57 3015010196',
+        whatsapp: '+57 3015010196',
         email: 'multicamionesexpressmed@gmail.com',
         horario: 'Lunes a Viernes: 9:00 AM - 5:00 PM / Sábados: 10:00 AM - 2:00 PM'
       }
@@ -489,9 +489,9 @@ const CamionDetalle = () => {
       ],
       garantia: '',
       contacto: {
-        nombre: 'Juan Acosta',
-        telefono: '+57 3127767298',
-        whatsapp: '+57 3127767298',
+        nombre: 'Juan Restrepo',
+        telefono: '+57 3118813553',
+        whatsapp: '+57 3118813553',
         email: 'multicamionesexpressmed@gmail.com',
         horario: 'Lunes a Viernes: 9:00 AM - 5:00 PM / Sábados: 10:00 AM - 2:00 PM'
       }
@@ -570,9 +570,9 @@ const CamionDetalle = () => {
       ],
       garantia: '',
       contacto: {
-        nombre: 'Juan Acosta',
-        telefono: '+57 3127767298',
-        whatsapp: '+57 3127767298',
+        nombre: 'Edwin Alvarez',
+        telefono: '+57 3007857038',
+        whatsapp: '+57 3007857038',
         email: 'multicamionesexpressmed@gmail.com',
         horario: 'Lunes a Viernes: 9:00 AM - 5:00 PM / Sábados: 10:00 AM - 2:00 PM'
       }
@@ -610,9 +610,9 @@ const CamionDetalle = () => {
       ],
       garantia: '',
       contacto: {
-        nombre: 'Juan Acosta',
-        telefono: '+57 3127767298',
-        whatsapp: '+57 3127767298',
+        nombre: 'Julio Duque',
+        telefono: '+57 3015010196',
+        whatsapp: '+57 3015010196',
         email: 'multicamionesexpressmed@gmail.com',
         horario: 'Lunes a Viernes: 9:00 AM - 5:00 PM / Sábados: 10:00 AM - 2:00 PM'
       }
@@ -651,9 +651,9 @@ const CamionDetalle = () => {
       ],
       garantia: '',
       contacto: {
-        nombre: 'Juan Acosta',
-        telefono: '+57 3127767298',
-        whatsapp: '+57 3127767298',
+        nombre: 'Juan Restrepo',
+        telefono: '+57 3118813553',
+        whatsapp: '+57 3118813553',
         email: 'multicamionesexpressmed@gmail.com',
         horario: 'Lunes a Viernes: 9:00 AM - 5:00 PM / Sábados: 10:00 AM - 2:00 PM'
       }
@@ -731,9 +731,9 @@ const CamionDetalle = () => {
       ],
       garantia: '',
       contacto: {
-        nombre: 'Juan Acosta',
-        telefono: '+57 3127767298',
-        whatsapp: '+57 3127767298',
+        nombre: 'Edwin Alvarez',
+        telefono: '+57 3007857038',
+        whatsapp: '+57 3007857038',
         email: 'multicamionesexpressmed@gmail.com',
         horario: 'Lunes a Viernes: 9:00 AM - 5:00 PM / Sábados: 10:00 AM - 2:00 PM'
       }
@@ -772,9 +772,9 @@ const CamionDetalle = () => {
       ],
       garantia: '',
       contacto: {
-        nombre: 'Juan Acosta',
-        telefono: '+57 3127767298',
-        whatsapp: '+57 3127767298',
+        nombre: 'Julio Duque',
+        telefono: '+57 3015010196',
+        whatsapp: '+57 3015010196',
         email: 'multicamionesexpressmed@gmail.com',
         horario: 'Lunes a Viernes: 9:00 AM - 5:00 PM / Sábados: 10:00 AM - 2:00 PM'
       }
@@ -812,9 +812,9 @@ const CamionDetalle = () => {
       ],
       garantia: '',
       contacto: {
-        nombre: 'Juan Acosta',
-        telefono: '+57 3127767298',
-        whatsapp: '+57 3127767298',
+        nombre: 'Juan Restrepo',
+        telefono: '+57 3118813553',
+        whatsapp: '+57 3118813553',
         email: 'multicamionesexpressmed@gmail.com',
         horario: 'Lunes a Viernes: 9:00 AM - 5:00 PM / Sábados: 10:00 AM - 2:00 PM'
       }
@@ -892,9 +892,9 @@ const CamionDetalle = () => {
       ],
       garantia: '',
       contacto: {
-        nombre: 'Juan Acosta',
-        telefono: '+57 3127767298',
-        whatsapp: '+57 3127767298',
+        nombre: 'Edwin Alvarez',
+        telefono: '+57 3007857038',
+        whatsapp: '+57 3007857038',
         email: 'multicamionesexpressmed@gmail.com',
         horario: 'Lunes a Viernes: 9:00 AM - 5:00 PM / Sábados: 10:00 AM - 2:00 PM'
       }
@@ -932,9 +932,9 @@ const CamionDetalle = () => {
       ],
       garantia: '',
       contacto: {
-        nombre: 'Juan Acosta',
-        telefono: '+57 3127767298',
-        whatsapp: '+57 3127767298',
+        nombre: 'Julio Duque',
+        telefono: '+57 3015010196',
+        whatsapp: '+57 3015010196',
         email: 'multicamionesexpressmed@gmail.com',
         horario: 'Lunes a Viernes: 9:00 AM - 5:00 PM / Sábados: 10:00 AM - 2:00 PM'
       }
@@ -972,9 +972,9 @@ const CamionDetalle = () => {
       ],
       garantia: '',
       contacto: {
-        nombre: 'Juan Acosta',
-        telefono: '+57 3127767298',
-        whatsapp: '+57 3127767298',
+        nombre: 'Juan Restrepo',
+        telefono: '+57 3118813553',
+        whatsapp: '+57 3118813553',
         email: 'multicamionesexpressmed@gmail.com',
         horario: 'Lunes a Viernes: 9:00 AM - 5:00 PM / Sábados: 10:00 AM - 2:00 PM'
       }
