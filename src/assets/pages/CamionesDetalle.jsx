@@ -37,7 +37,7 @@ const CamionDetalle = () => {
         '/img/camion3.jpg',
         
       ],
-      video: 'https://www.youtube.com/watch?v=tbI9FW3drWY',
+      video: '',
       especificaciones: {
         'Motor': '3,8L Disel',
         'Peso bruto': '4,100 kg Runt',
@@ -77,7 +77,7 @@ const CamionDetalle = () => {
         '/img/CHEVROLETNLR2023-2.jpg',
         '/img/CHEVROLETNLR2023-3.jpg',
       ],
-      video: 'https://www.youtube.com/watch?v=tbI9FW3drWY',
+      video: '',
       especificaciones: {
         'Motor': '3,8L Disel',
         'Peso bruto': '4,100 kg Runt',
@@ -117,7 +117,7 @@ const CamionDetalle = () => {
         '/img/NQR5-2.jpg',
         '/img/NQR5-3.jpg',
       ],
-      video: 'https://www.youtube.com/watch?v=tbI9FW3drWY',
+      video: '',
       especificaciones: {
         'Motor': '5,2L Disel',
         'Capacidad De Carga': '4,650 kg Runt',
@@ -158,7 +158,7 @@ const CamionDetalle = () => {
         '/img/NHR3-2.jpg',
         '/img/NHR3-3.jpg',
       ],
-      video: 'https://www.youtube.com/watch?v=tbI9FW3drWY',
+      video: '',
       especificaciones: {
         'Motor': '3,0L Disel',
         'Peso bruto': '1,500 kg Runt',
@@ -197,7 +197,7 @@ const CamionDetalle = () => {
         '/img/Vans2.jpg',
         '/img/Vans3.jpg',
       ],
-      video: 'https://www.youtube.com/watch?v=tbI9FW3drWY',
+      video: '',
       especificaciones: {
         'Motor': '3,0L Disel',
         'Peso bruto': '1,500 kg Runt',
@@ -236,7 +236,7 @@ const CamionDetalle = () => {
         '/img/INTERNATIONAL2.jpg',
         '/img/INTERNATIONAL3.jpg',
       ],
-      video: 'https://www.youtube.com/watch?v=tbI9FW3drWY',
+      video: '',
       especificaciones: {
         'Motor': '10,8L Diesel',
         'Peso bruto': '15,900 kg Runt',
@@ -275,7 +275,7 @@ const CamionDetalle = () => {
         '/img/NHR20162.jpg',
         '/img/NHR20163.jpg',
       ],
-      video: 'https://www.youtube.com/watch?v=tbI9FW3drWY',
+      video: '',
       especificaciones: {
         'Motor': '3,0L Diesel',
         'Capacidad de Carga': '1,700 kg Runt',
@@ -315,7 +315,7 @@ const CamionDetalle = () => {
         '/img/Jac2.jpg',
         '/img/Jac3.jpg',
       ],
-      video: 'https://www.youtube.com/watch?v=tbI9FW3drWY',
+      video: '',
       especificaciones: {
         'Motor': '6,7L Diesel',
         'Capacidad de Carga': '17,000 kg Runt',
@@ -354,7 +354,7 @@ const CamionDetalle = () => {
         '/img/Hino2.jpg',
         '/img/Hino3.jpg',
       ],
-      video: 'https://www.youtube.com/watch?v=tbI9FW3drWY',
+      video: '',
       especificaciones: {
         'Motor': '4,0L Diesel',
         'Capacidad de Carga': '5,110 kg Runt',
@@ -393,7 +393,7 @@ const CamionDetalle = () => {
         '/img/Hilux2.jpg',
         '/img/Hilux3.jpg',
       ],
-      video: 'https://www.youtube.com/watch?v=tbI9FW3drWY',
+      video: '',
       especificaciones: {
         'Motor': '2,4L Gasolina',
         'Capacidad de Carga': '1,000 kg Runt',
@@ -433,7 +433,7 @@ const CamionDetalle = () => {
         '/img/VOLKSWAGEN2.jpg',
         '/img/VOLKSWAGEN3.jpg',
       ],
-      video: 'https://www.youtube.com/watch?v=tbI9FW3drWY',
+      video: '',
       especificaciones: {
         'Motor': '4,3L DIESEL',
         'Capacidad de Carga': '3,450 kg Runt',
@@ -473,7 +473,7 @@ const CamionDetalle = () => {
         '/img/CamionHino2.jpg',
         '/img/CamionHino3.jpg',
       ],
-      video: 'https://www.youtube.com/watch?v=tbI9FW3drWY',
+      video: '',
       especificaciones: {
         'Motor': '7,7L DIESEL',
         'Capacidad de Carga': '17,000 kg Runt',
@@ -514,7 +514,7 @@ const CamionDetalle = () => {
         '/img/ChevroletNHR20222.jpg',
         '/img/ChevroletNHR20223.jpg',
       ],
-      video: 'https://www.youtube.com/watch?v=tbI9FW3drWY',
+      video: '',
       especificaciones: {
         'Motor': '3,0L DIESEL',
         'Capacidad de Carga': '1,758 kg Runt',
@@ -554,7 +554,7 @@ const CamionDetalle = () => {
         '/img/ChevroletNHR20212.jpg',
         '/img/ChevroletNHR20213.jpg',
       ],
-      video: 'https://www.youtube.com/watch?v=tbI9FW3drWY',
+      video: '',
       especificaciones: {
         'Motor': '2,999 cc DIESEL',
         'Capacidad de Carga': '1,758 kg Runt',
@@ -594,7 +594,7 @@ const CamionDetalle = () => {
         '/img/ChevroletNLR20232.jpg',
         '/img/ChevroletNLR20233.jpg',
       ],
-      video: 'https://www.youtube.com/watch?v=tbI9FW3drWY',
+      video: '',
       especificaciones: {
         'Motor': '2,999 cc DIESEL',
         'Capacidad de Carga': '1,650 kg Runt',
@@ -635,7 +635,7 @@ const CamionDetalle = () => {
         '/img/Nissan20132.jpg',
         '/img/Nissan20133.jpg',
       ],
-      video: 'https://www.youtube.com/watch?v=tbI9FW3drWY',
+      video: '',
       especificaciones: {
         'Motor': '2,999 cc DIESEL',
         'Capacidad de Carga': '2,540 kg Runt',
@@ -675,7 +675,7 @@ const CamionDetalle = () => {
         '/img/TOYOTAHILUX20142.jpg',
         '/img/TOYOTAHILUX20143.jpg',
       ],
-      video: 'https://www.youtube.com/watch?v=tbI9FW3drWY',
+      video: '',
       especificaciones: {
         'Motor': '2,694 cc Gasolina',
         'Capacidad de Carga': '1,000 kg Runt',
@@ -715,7 +715,7 @@ const CamionDetalle = () => {
         '/img/CamionJac20222.jpg',
         '/img/CamionJac20223.jpg',
       ],
-      video: 'https://www.youtube.com/watch?v=tbI9FW3drWY',
+      video: '',
       especificaciones: {
         'Motor': '2,746 cc Diesel',
         'Capacidad de Carga': '5,600 kg Runt',
@@ -756,7 +756,7 @@ const CamionDetalle = () => {
         '/img/FOTON20212.jpg',
         '/img/FOTON20213.jpg',
       ],
-      video: 'https://www.youtube.com/watch?v=tbI9FW3drWY',
+      video: '',
       especificaciones: {
         'Motor': '3,760 cc Diesel',
         'Capacidad de Carga': '5,160 kg Runt',
@@ -796,7 +796,7 @@ const CamionDetalle = () => {
         '/img/HYUNDAI20152.jpg',
         '/img/HYUNDAI20153.jpg',
       ],
-      video: 'https://www.youtube.com/watch?v=tbI9FW3drWY',
+      video: '',
       especificaciones: {
         'Motor': '3,9 L Diesel',
         'Capacidad de Carga': '4,100 kg Runt',
@@ -836,7 +836,7 @@ const CamionDetalle = () => {
         '/img/FOTON20192.jpg',
         '/img/FOTON20193.jpg',
       ],
-      video: 'https://www.youtube.com/watch?v=tbI9FW3drWY',
+      video: '',
       especificaciones: {
         'Motor': '2,776 CC Diesel',
         'Capacidad de Carga': '2,500 kg Runt',
@@ -876,7 +876,7 @@ const CamionDetalle = () => {
         '/img/CAMIONETATOYOTAHILUX2.jpg',
         '/img/CAMIONETATOYOTAHILUX3.jpg',
       ],
-      video: 'https://www.youtube.com/watch?v=tbI9FW3drWY',
+      video: '',
       especificaciones: {
         'Motor': '2,400 CC Gasolina + Gas',
         'Capacidad de Carga': '5 pasajeros',
@@ -916,7 +916,7 @@ const CamionDetalle = () => {
         '/img/MITSUBISHIFUSO2.jpg',
         '/img/MITSUBISHIFUSO3.jpg',
       ],
-      video: 'https://www.youtube.com/watch?v=tbI9FW3drWY',
+      video: '',
       especificaciones: {
         'Motor': '3,9 L DIESEL',
         'Capacidad de Carga': '9,000 RUNT ',
@@ -956,7 +956,7 @@ const CamionDetalle = () => {
         '/img/CAMIONJAC20122.jpg',
         '/img/CAMIONJAC20123.jpg',
       ],
-      video: 'https://www.youtube.com/watch?v=tbI9FW3drWY',
+      video: '',
       especificaciones: {
         'Motor': '2,771  DIESEL',
         'Capacidad de Carga': '3,000  KG RUNT ',
@@ -996,7 +996,7 @@ const CamionDetalle = () => {
         '/img/VOLVO19792.jpg',
         '/img/VOLVO19793.jpg',
       ],
-      video: 'https://www.youtube.com/watch?v=tbI9FW3drWY',
+      video: '',
       especificaciones: {
         'Motor': '9,000 CC  DIESEL',
         'Capacidad de Carga': '20,000  KG RUNT ',
@@ -1036,7 +1036,7 @@ const CamionDetalle = () => {
         '/img/HINO30020122.jpg',
         '/img/HINO30020123.jpg',
       ],
-      video: 'https://www.youtube.com/watch?v=tbI9FW3drWY',
+      video: '',
       especificaciones: {
         'Motor': '4,009 CC  DIESEL',
         'Capacidad de Carga': 'Ideal para reparto',
