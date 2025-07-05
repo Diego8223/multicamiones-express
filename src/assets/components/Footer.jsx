@@ -64,7 +64,7 @@ const Footer = () => {
     <li className="service-item">Compra y venta de camiones usados</li>
     <li className="service-item">Venta de carrocerías nuevas</li>
     <li className="service-item">Venta de carrocerías usadas</li>
-    <li className="service-item">Asesoría especializada en transporte pesado</li>
+    <li className="service-item">Asesoría especializada en vehículos Productivos</li>
   </ul>
 </div>
 
