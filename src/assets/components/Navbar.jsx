@@ -3,7 +3,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { Menu, X, Moon, Sun } from "lucide-react";
 import { FaFacebook, FaInstagram, FaTiktok } from "react-icons/fa";
 import "./Navbar.css";
-import logo from "../fotos/logo.png";
+import logo from "../fotos/logo.webp";
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);

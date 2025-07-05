@@ -2,13 +2,13 @@ import React, { useState, useEffect, useMemo } from 'react';
 import { Carousel } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import FallbackImage from '../../assets/img/foton.jpg';
+import FallbackImage from '../../assets/img/foton.webp';
 import './Camiones.css';
 
 // Importa imágenes para el carrusel
-import Multimarca from '../../assets/img/multimarca.jpg';
-import Multicamiones from '../../assets/img/multicamiones.jpg';
-import Expres from "../../assets/img/expres.jpg";
+import Multimarca from '../../assets/img/multimarca.webp';
+import Multicamiones from '../../assets/img/multicamiones.webp';
+import Expres from "../../assets/img/expres.webp";
 
 const Camiones = () => {
   // Estados del carrusel
@@ -111,9 +111,9 @@ const Camiones = () => {
       destacado: true,
       descripcion: 'Camión en excelente estado con mantenimiento al día, ideal para transporte pesado',
       imagenes: [
-        '/img/fotonmediano.jpg',
-        '/img/fotonmediano.jpg',
-        '/img/fotonmediano.jpg'
+        '/img/fotonmediano.webp',
+        '/img/fotonmediano.webp',
+        '/img/fotonmediano.webp'
       ],
       video: 'https://www.youtube.com/watch?v=dQw4w9WgXcQ',
       especificaciones: {
@@ -138,9 +138,9 @@ const Camiones = () => {
       destacado: true,
       descripcion: 'Excelente opción para trabajo continuo,Versatilidad sin safrificar potencia',
       imagenes: [
-        '/img/NLR3.jpg',
-        '/img/NLR3.jpg',
-        '/img/NLR3.jpg'
+        '/img/NLR3.webp',
+        '/img/NLR3.webp',
+        '/img/NLR3.webp'
       ],
       video: 'https://www.youtube.com/watch?v=9bZkp7q19f0',
       especificaciones: {
@@ -162,9 +162,9 @@ const Camiones = () => {
       destacado: true,
       descripcion: 'Respaldo Chevrrolet en Desempeño y Durabilidad',
       imagenes: [
-        '/img/NQR5.jpg',
-        '/img/NQR5.jpg',
-        '/img/NQR5.jpg'
+        '/img/NQR5.webp',
+        '/img/NQR5.webp',
+        '/img/NQR5.webp'
       ],
       video: 'https://www.youtube.com/watch?v=9bZkp7q19f0',
       especificaciones: {
@@ -186,9 +186,9 @@ const Camiones = () => {
       destacado: true,
       descripcion: 'Excelente opción para emprendedores o flotas urbanas.',
       imagenes: [
-        '/img/NHR3.jpg',
-        '/img/NHR3.jpg',
-        '/img/NHR3.jpg'
+        '/img/NHR3.webp',
+        '/img/NHR3.webp',
+        '/img/NHR3.webp'
       ],
       video: 'https://www.youtube.com/watch?v=JGwWNGJdvx8',
       especificaciones: {
@@ -210,9 +210,9 @@ const Camiones = () => {
       destacado: true,
       descripcion: 'Vehiculo compacto,eficiente y perfecta para negocios en movimiento',
       imagenes: [
-        '/img/X30CARGO.jpg',
-        '/img/X30CARGO.jpg',
-        '/img/X30CARGO.jpg'
+        '/img/X30CARGO.webp',
+        '/img/X30CARGO.webp',
+        '/img/X30CARGO.webp'
       ],
       video: 'https://www.youtube.com/watch?v=JGwWNGJdvx8',
       especificaciones: {
@@ -235,9 +235,9 @@ const Camiones = () => {
       destacado: true,
       descripcion: 'Traccion 6*4 para maximo rendimiento oportunidad para fortalecer tu flota con respaldo',
       imagenes: [
-        '/img/INTERNATIONAL.jpg',
-        '/img/INTERNATIONAL.jpg',
-        '/img/INTERNATIONAL.jpg'
+        '/img/INTERNATIONAL.webp',
+        '/img/INTERNATIONAL.webp',
+        '/img/INTERNATIONAL.webp'
       ],
       video: 'https://www.youtube.com/watch?v=JGwWNGJdvx8',
       especificaciones: {
@@ -260,9 +260,9 @@ const Camiones = () => {
       destacado: true,
       descripcion: 'Excelente alternativa para emprendedores y empresas',
       imagenes: [
-        '/img/NHR2016.jpg',
-        '/img/NHR2016.jpg',
-        '/img/NHR2016.jpg'
+        '/img/NHR2016.webp',
+        '/img/NHR2016.webp',
+        '/img/NHR2016.webp'
       ],
       video: 'https://www.youtube.com/watch?v=JGwWNGJdvx8',
       especificaciones: {
@@ -285,9 +285,9 @@ const Camiones = () => {
       destacado: true,
       descripcion: 'Robusto,versátil y con la potencia que exige el trabajo pesado',
       imagenes: [
-        '/img/CamionJac.jpg',
-        '/img/CamionJac.jpg',
-        '/img/CamionJac.jpg'
+        '/img/CamionJac.webp',
+        '/img/CamionJac.webp',
+        '/img/CamionJac.webp'
       ],
       video: 'https://www.youtube.com/watch?v=JGwWNGJdvx8',
       especificaciones: {
@@ -310,9 +310,9 @@ const Camiones = () => {
       destacado: true,
       descripcion: 'Diseño compacto con fuerza profesional,Ideal para distribucion urbana o regional',
       imagenes: [
-        '/img/Hino.jpg',
-        '/img/Hino.jpg',
-        '/img/Hino.jpg'
+        '/img/Hino.webp',
+        '/img/Hino.webp',
+        '/img/Hino.webp'
       ],
       video: 'https://www.youtube.com/watch?v=JGwWNGJdvx8',
       especificaciones: {
@@ -335,9 +335,9 @@ const Camiones = () => {
       destacado: true,
       descripcion: 'Resistencia comprobada por generaciones',
       imagenes: [
-        '/img/Hilux.jpg',
-        '/img/Hilux.jpg',
-        '/img/Hilux.jpg'
+        '/img/Hilux.webp',
+        '/img/Hilux.webp',
+        '/img/Hilux.webp'
       ],
       video: 'https://www.youtube.com/watch?v=JGwWNGJdvx8',
       especificaciones: {
@@ -360,9 +360,9 @@ const Camiones = () => {
       destacado: true,
       descripcion: 'Versatilidad para múltiples aplicaciones comerciales',
       imagenes: [
-        '/img/VOLKSWAGEN.jpg',
-        '/img/VOLKSWAGEN.jpg',
-        '/img/VOLKSWAGEN.jpg'
+        '/img/VOLKSWAGEN.webp',
+        '/img/VOLKSWAGEN.webp',
+        '/img/VOLKSWAGEN.webp'
       ],
       video: 'https://www.youtube.com/watch?v=JGwWNGJdvx8',
       especificaciones: {
@@ -385,9 +385,9 @@ const Camiones = () => {
       destacado: true,
       descripcion: 'Este modelo ofrece eficiencia operativa.',
       imagenes: [
-        '/img/CamionHino.jpg',
-        '/img/CamionHino.jpg',
-        '/img/CamionHino.jpg'
+        '/img/CamionHino.webp',
+        '/img/CamionHino.webp',
+        '/img/CamionHino.webp'
       ],
       video: 'https://www.youtube.com/watch?v=JGwWNGJdvx8',
       especificaciones: {
@@ -410,9 +410,9 @@ const Camiones = () => {
       destacado: true,
       descripcion: 'Perfecto para ciudad y trayectos frecuentes.',
       imagenes: [
-        '/img/ChevroletNHR2022.jpg',
-        '/img/ChevroletNHR2022.jpg',
-        '/img/ChevroletNHR2022.jpg'
+        '/img/ChevroletNHR2022.webp',
+        '/img/ChevroletNHR2022.webp',
+        '/img/ChevroletNHR2022.webp'
       ],
       video: 'https://www.youtube.com/watch?v=JGwWNGJdvx8',
       especificaciones: {
@@ -435,9 +435,9 @@ const Camiones = () => {
       destacado: true,
       descripcion: 'Respaldo Chevrolet bajo mantenimiento.',
       imagenes: [
-        '/img/ChevroletNHR2021.jpg',
-        '/img/ChevroletNHR2021.jpg',
-        '/img/ChevroletNHR2021.jpg'
+        '/img/ChevroletNHR2021.webp',
+        '/img/ChevroletNHR2021.webp',
+        '/img/ChevroletNHR2021.webp'
       ],
       video: 'https://www.youtube.com/watch?v=JGwWNGJdvx8',
       especificaciones: {
@@ -460,9 +460,9 @@ const Camiones = () => {
       destacado: true,
       descripcion: 'Linea moderna,Respaldo Chevrolet.',
       imagenes: [
-        '/img/ChevroletNLR2023.jpg',
-        '/img/ChevroletNLR2023.jpg',
-        '/img/ChevroletNLR2023.jpg'
+        '/img/ChevroletNLR2023.webp',
+        '/img/ChevroletNLR2023.webp',
+        '/img/ChevroletNLR2023.webp'
       ],
       video: 'https://www.youtube.com/watch?v=JGwWNGJdvx8',
       especificaciones: {
@@ -485,9 +485,9 @@ const Camiones = () => {
       destacado: true,
       descripcion: 'Marca de respaldo y confianza en el mercado.',
       imagenes: [
-        '/img/Nissan2013.jpg',
-        '/img/Nissan2013.jpg',
-        '/img/Nissan2013.jpg'
+        '/img/Nissan2013.webp',
+        '/img/Nissan2013.webp',
+        '/img/Nissan2013.webp'
       ],
       video: 'https://www.youtube.com/watch?v=JGwWNGJdvx8',
       especificaciones: {
@@ -510,9 +510,9 @@ const Camiones = () => {
       destacado: true,
       descripcion: 'Robusta, confiable y lista para cualquier terreno.',
       imagenes: [
-        '/img/TOYOTAHILUX2014.jpg',
-        '/img/TOYOTAHILUX2014.jpg',
-        '/img/TOYOTAHILUX2014.jpg'
+        '/img/TOYOTAHILUX2014.webp',
+        '/img/TOYOTAHILUX2014.webp',
+        '/img/TOYOTAHILUX2014.webp'
       ],
       video: 'https://www.youtube.com/watch?v=JGwWNGJdvx8',
       especificaciones: {
@@ -535,9 +535,9 @@ const Camiones = () => {
       destacado: true,
       descripcion: 'Tecnologia actual y alto valor de reventa.',
       imagenes: [
-        '/img/CamionJac2022.jpg',
-        '/img/CamionJac2022.jpg',
-        '/img/CamionJac2022.jpg'
+        '/img/CamionJac2022.webp',
+        '/img/CamionJac2022.webp',
+        '/img/CamionJac2022.webp'
       ],
       video: 'https://www.youtube.com/watch?v=JGwWNGJdvx8',
       especificaciones: {
@@ -560,9 +560,9 @@ const Camiones = () => {
       destacado: true,
       descripcion: 'Soporte y buen desempeño en el mercado nacional.',
       imagenes: [
-        '/img/FOTON2021.jpg',
-        '/img/FOTON2021.jpg',
-        '/img/FOTON2021.jpg'
+        '/img/FOTON2021.webp',
+        '/img/FOTON2021.webp',
+        '/img/FOTON2021.webp'
       ],
       video: 'https://www.youtube.com/watch?v=JGwWNGJdvx8',
       especificaciones: {
@@ -585,9 +585,9 @@ const Camiones = () => {
       destacado: true,
       descripcion: 'Reconocido por su resistencia en topografias complejas.',
       imagenes: [
-        '/img/HYUNDAI2015.jpg',
-        '/img/HYUNDAI2015.jpg',
-        '/img/HYUNDAI2015.jpg'
+        '/img/HYUNDAI2015.webp',
+        '/img/HYUNDAI2015.webp',
+        '/img/HYUNDAI2015.webp'
       ],
       video: 'https://www.youtube.com/watch?v=JGwWNGJdvx8',
       especificaciones: {
@@ -611,9 +611,9 @@ const Camiones = () => {
       destacado: true,
       descripcion: 'Muy bien conservado y listo para seguir produciendo.',
       imagenes: [
-        '/img/FOTON2019.jpg',
-        '/img/FOTON2019.jpg',
-        '/img/FOTON2019.jpg'
+        '/img/FOTON2019.webp',
+        '/img/FOTON2019.webp',
+        '/img/FOTON2019.webp'
       ],
       video: 'https://www.youtube.com/watch?v=JGwWNGJdvx8',
       especificaciones: {
@@ -639,9 +639,9 @@ const Camiones = () => {
       destacado: true,
       descripcion: 'Rodada,pero firme y con espiritud de trabajo.',
       imagenes: [
-        '/img/CAMIONETATOYOTAHILUX.jpg',
-        '/img/CAMIONETATOYOTAHILUX.jpg',
-        '/img/CAMIONETATOYOTAHILUX.jpg'
+        '/img/CAMIONETATOYOTAHILUX.webp',
+        '/img/CAMIONETATOYOTAHILUX.webp',
+        '/img/CAMIONETATOYOTAHILUX.webp'
       ],
       video: 'https://www.youtube.com/watch?v=JGwWNGJdvx8',
       especificaciones: {
@@ -665,9 +665,9 @@ const Camiones = () => {
       destacado: true,
       descripcion: 'Buen desempeño mecanico y lista para seguir riendiendo.',
       imagenes: [
-        '/img/MITSUBISHIFUSO.jpg',
-        '/img/MITSUBISHIFUSO.jpg',
-        '/img/MITSUBISHIFUSO.jpg'
+        '/img/MITSUBISHIFUSO.webp',
+        '/img/MITSUBISHIFUSO.webp',
+        '/img/MITSUBISHIFUSO.webp'
       ],
       video: 'https://www.youtube.com/watch?v=JGwWNGJdvx8',
       especificaciones: {
@@ -692,9 +692,9 @@ const Camiones = () => {
       destacado: true,
       descripcion: 'Buen estado general .',
       imagenes: [
-        '/img/CAMIONJAC2012.jpg',
-        '/img/CAMIONJAC2012.jpg',
-        '/img/CAMIONJAC2012.jpg'
+        '/img/CAMIONJAC2012.webp',
+        '/img/CAMIONJAC2012.webp',
+        '/img/CAMIONJAC2012.webp'
       ],
       video: 'https://www.youtube.com/watch?v=JGwWNGJdvx8',
       especificaciones: {
@@ -718,9 +718,9 @@ const Camiones = () => {
       destacado: true,
       descripcion: 'Chasis de alta resistencia,mecanica confiable.',
       imagenes: [
-        '/img/VOLVO1979.jpg',
-        '/img/VOLVO1979.jpg',
-        '/img/VOLVO1979.jpg'
+        '/img/VOLVO1979.webp',
+        '/img/VOLVO1979.webp',
+        '/img/VOLVO1979.webp'
       ],
       video: 'https://www.youtube.com/watch?v=JGwWNGJdvx8',
       especificaciones: {
@@ -744,9 +744,9 @@ const Camiones = () => {
       destacado: true,
       descripcion: 'Reconocido por su bajo costo de operacion.',
       imagenes: [
-        '/img/HINO3002012.jpg',
-        '/img/HINO3002012.jpg',
-        '/img/HINO3002012.jpg'
+        '/img/HINO3002012.webp',
+        '/img/HINO3002012.webp',
+        '/img/HINO3002012.webp'
       ],
       video: 'https://www.youtube.com/watch?v=JGwWNGJdvx8',
       especificaciones: {

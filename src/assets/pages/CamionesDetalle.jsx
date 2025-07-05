@@ -32,10 +32,9 @@ const CamionDetalle = () => {
       destacado: true,
       descripcion: 'Camión en excelente estado con mantenimiento al día, ideal para transporte pesado. Incluye todos los servicios recientes y documentación al día. Equipado con las últimas tecnologías en seguridad y confort para el conductor.',
       imagenes: [
-        '/img/camion1.jpg',
-        '/img/camion2.jpg',
-        '/img/camion3.jpg',
-        
+        '/img/camion1.webp',
+        '/img/camion2.webp',
+        '/img/camion3.webp',
       ],
       video: '',
       especificaciones: {
@@ -73,9 +72,9 @@ const CamionDetalle = () => {
       destacado: true,
       descripcion: 'Camión en excelente estado con mantenimiento al día, ideal para transporte pesado. Incluye todos los servicios recientes y documentación al día. Equipado con las últimas tecnologías en seguridad y confort para el conductor.',
       imagenes: [
-        '/img/CHEVROLETNLR2023-1.jpg',
-        '/img/CHEVROLETNLR2023-2.jpg',
-        '/img/CHEVROLETNLR2023-3.jpg',
+        '/img/CHEVROLETNLR2023-1.webp',
+        '/img/CHEVROLETNLR2023-2.webp',
+        '/img/CHEVROLETNLR2023-3.webp',
       ],
       video: '',
       especificaciones: {
@@ -113,9 +112,9 @@ const CamionDetalle = () => {
       destacado: true,
       descripcion: 'Respaldo chevrolet en desempeño y Durabilidad',
       imagenes: [
-        '/img/NQR5-1.jpg',
-        '/img/NQR5-2.jpg',
-        '/img/NQR5-3.jpg',
+        '/img/NQR5-1.webp',
+        '/img/NQR5-2.webp',
+        '/img/NQR5-3.webp',
       ],
       video: '',
       especificaciones: {
@@ -154,9 +153,9 @@ const CamionDetalle = () => {
       destacado: true,
       descripcion: 'Excelnete Opción para emprendedores o flotas urbanas.',
       imagenes: [
-        '/img/NHR3-1.jpg',
-        '/img/NHR3-2.jpg',
-        '/img/NHR3-3.jpg',
+        '/img/NHR3-1.webp',
+        '/img/NHR3-2.webp',
+        '/img/NHR3-3.webp',
       ],
       video: '',
       especificaciones: {
@@ -193,9 +192,9 @@ const CamionDetalle = () => {
       destacado: true,
       descripcion: 'compacta, Eficiente y perfecta para negocios en movimiento.',
       imagenes: [
-        '/img/Vans1.jpg',
-        '/img/Vans2.jpg',
-        '/img/Vans3.jpg',
+        '/img/Vans1.webp',
+        '/img/Vans2.webp',
+        '/img/Vans3.webp',
       ],
       video: '',
       especificaciones: {
@@ -232,9 +231,9 @@ const CamionDetalle = () => {
       destacado: true,
       descripcion: 'Tracción 6*4 para maximo rendimiento oportunidad para fortalecer tu flota con respaldo.',
       imagenes: [
-        '/img/INTERNATIONAL1.jpg',
-        '/img/INTERNATIONAL2.jpg',
-        '/img/INTERNATIONAL3.jpg',
+        '/img/INTERNATIONAL1.webp',
+        '/img/INTERNATIONAL2.webp',
+        '/img/INTERNATIONAL3.webp',
       ],
       video: '',
       especificaciones: {
@@ -271,9 +270,9 @@ const CamionDetalle = () => {
       destacado: true,
       descripcion: 'Excelente alternativa para emprendedores.',
       imagenes: [
-        '/img/NHR20161.jpg',
-        '/img/NHR20162.jpg',
-        '/img/NHR20163.jpg',
+        '/img/NHR20161.webp',
+        '/img/NHR20162.webp',
+        '/img/NHR20163.webp',
       ],
       video: '',
       especificaciones: {
@@ -311,9 +310,9 @@ const CamionDetalle = () => {
       destacado: true,
       descripcion: 'Robusto,versátil y con l apotencia que exige el trabajo pesado.',
       imagenes: [
-        '/img/Jac1.jpg',
-        '/img/Jac2.jpg',
-        '/img/Jac3.jpg',
+        '/img/Jac1.webp',
+        '/img/Jac2.webp',
+        '/img/Jac3.webp',
       ],
       video: '',
       especificaciones: {
@@ -350,9 +349,9 @@ const CamionDetalle = () => {
       destacado: true,
       descripcion: 'Diseño compacto con fuerza profesional,Ideal para distribucion urbana o regional.',
       imagenes: [
-        '/img/Hino1.jpg',
-        '/img/Hino2.jpg',
-        '/img/Hino3.jpg',
+        '/img/Hino1.webp',
+        '/img/Hino2.webp',
+        '/img/Hino3.webp',
       ],
       video: '',
       especificaciones: {
@@ -389,9 +388,9 @@ const CamionDetalle = () => {
       destacado: true,
       descripcion: 'Resistencia comprobada por generaciones.',
       imagenes: [
-        '/img/Hilux1.jpg',
-        '/img/Hilux2.jpg',
-        '/img/Hilux3.jpg',
+        '/img/Hilux1.webp',
+        '/img/Hilux2.webp',
+        '/img/Hilux3.webp',
       ],
       video: '',
       especificaciones: {
@@ -429,9 +428,9 @@ const CamionDetalle = () => {
       destacado: true,
       descripcion: 'Versatilidad para múltiples aplicaciones comerciales.',
       imagenes: [
-        '/img/VOLKSWAGEN1.jpg',
-        '/img/VOLKSWAGEN2.jpg',
-        '/img/VOLKSWAGEN3.jpg',
+        '/img/VOLKSWAGEN1.webp',
+        '/img/VOLKSWAGEN2.webp',
+        '/img/VOLKSWAGEN3.webp',
       ],
       video: '',
       especificaciones: {
@@ -469,9 +468,9 @@ const CamionDetalle = () => {
       destacado: true,
       descripcion: 'Este modelo ofrece eficiencia operativa.',
       imagenes: [
-        '/img/CamionHino1.jpg',
-        '/img/CamionHino2.jpg',
-        '/img/CamionHino3.jpg',
+        '/img/CamionHino1.webp',
+        '/img/CamionHino2.webp',
+        '/img/CamionHino3.webp',
       ],
       video: '',
       especificaciones: {
@@ -510,9 +509,9 @@ const CamionDetalle = () => {
       destacado: true,
       descripcion: 'perfecto para ciudades y trayectos frecuentes.',
       imagenes: [
-        '/img/ChevroletNHR20221.jpg',
-        '/img/ChevroletNHR20222.jpg',
-        '/img/ChevroletNHR20223.jpg',
+        '/img/ChevroletNHR20221.webp',
+        '/img/ChevroletNHR20222.webp',
+        '/img/ChevroletNHR20223.webp',
       ],
       video: '',
       especificaciones: {
@@ -550,9 +549,9 @@ const CamionDetalle = () => {
       destacado: true,
       descripcion: 'Respaldo Chevrolet,bajo mantenimiento.',
       imagenes: [
-        '/img/ChevroletNHR20211.jpg',
-        '/img/ChevroletNHR20212.jpg',
-        '/img/ChevroletNHR20213.jpg',
+        '/img/ChevroletNHR20211.webp',
+        '/img/ChevroletNHR20212.webp',
+        '/img/ChevroletNHR20213.webp',
       ],
       video: '',
       especificaciones: {
@@ -590,9 +589,9 @@ const CamionDetalle = () => {
       destacado: true,
       descripcion: 'Linea Moderna,Respaldo Chevrolet.',
       imagenes: [
-        '/img/ChevroletNLR20231.jpg',
-        '/img/ChevroletNLR20232.jpg',
-        '/img/ChevroletNLR20233.jpg',
+        '/img/ChevroletNLR20231.webp',
+        '/img/ChevroletNLR20232.webp',
+        '/img/ChevroletNLR20233.webp',
       ],
       video: '',
       especificaciones: {
@@ -631,9 +630,9 @@ const CamionDetalle = () => {
       destacado: true,
       descripcion: 'Marca de respaldo y confianza en el mercado.',
       imagenes: [
-        '/img/Nissan20131.jpg',
-        '/img/Nissan20132.jpg',
-        '/img/Nissan20133.jpg',
+        '/img/Nissan20131.webp',
+        '/img/Nissan20132.webp',
+        '/img/Nissan20133.webp',
       ],
       video: '',
       especificaciones: {
@@ -671,9 +670,9 @@ const CamionDetalle = () => {
       destacado: true,
       descripcion: ' Robusta, confiable y lista para cualquier terreno.',
       imagenes: [
-        '/img/TOYOTAHILUX20141.jpg',
-        '/img/TOYOTAHILUX20142.jpg',
-        '/img/TOYOTAHILUX20143.jpg',
+        '/img/TOYOTAHILUX20141.webp',
+        '/img/TOYOTAHILUX20142.webp',
+        '/img/TOYOTAHILUX20143.webp',
       ],
       video: '',
       especificaciones: {
@@ -711,9 +710,9 @@ const CamionDetalle = () => {
       destacado: true,
       descripcion: ' tecnologia actual y alto valor de reventa.',
       imagenes: [
-        '/img/CamionJac20221.jpg',
-        '/img/CamionJac20222.jpg',
-        '/img/CamionJac20223.jpg',
+        '/img/CamionJac20221.webp',
+        '/img/CamionJac20222.webp',
+        '/img/CamionJac20223.webp',
       ],
       video: '',
       especificaciones: {
@@ -752,9 +751,9 @@ const CamionDetalle = () => {
       destacado: true,
       descripcion: 'Soporte repuesto y buen desempeño en el mercado nacional.',
       imagenes: [
-        '/img/FOTON20211.jpg',
-        '/img/FOTON20212.jpg',
-        '/img/FOTON20213.jpg',
+        '/img/FOTON20211.webp',
+        '/img/FOTON20212.webp',
+        '/img/FOTON20213.webp',
       ],
       video: '',
       especificaciones: {
@@ -792,9 +791,9 @@ const CamionDetalle = () => {
       destacado: true,
       descripcion: 'Reconocido por su resistencia ne topografias complejas.',
       imagenes: [
-        '/img/HYUNDAI20151.jpg',
-        '/img/HYUNDAI20152.jpg',
-        '/img/HYUNDAI20153.jpg',
+        '/img/HYUNDAI20151.webp',
+        '/img/HYUNDAI20152.webp',
+        '/img/HYUNDAI20153.webp',
       ],
       video: '',
       especificaciones: {
@@ -832,9 +831,9 @@ const CamionDetalle = () => {
       destacado: true,
       descripcion: 'Muy bien conservado y listo para seguir produciendo.',
       imagenes: [
-        '/img/FOTON20191.jpg',
-        '/img/FOTON20192.jpg',
-        '/img/FOTON20193.jpg',
+        '/img/FOTON20191.webp',
+        '/img/FOTON20192.webp',
+        '/img/FOTON20193.webp',
       ],
       video: '',
       especificaciones: {
@@ -872,9 +871,9 @@ const CamionDetalle = () => {
       destacado: true,
       descripcion: 'Rodada pero firme y con espiritud de trabajo.',
       imagenes: [
-        '/img/CAMIONETATOYOTAHILUX1.jpg',
-        '/img/CAMIONETATOYOTAHILUX2.jpg',
-        '/img/CAMIONETATOYOTAHILUX3.jpg',
+        '/img/CAMIONETATOYOTAHILUX1.webp',
+        '/img/CAMIONETATOYOTAHILUX2.webp',
+        '/img/CAMIONETATOYOTAHILUX3.webp',
       ],
       video: '',
       especificaciones: {
@@ -912,9 +911,9 @@ const CamionDetalle = () => {
       destacado: true,
       descripcion: 'Buen desempeño mecanico y listo para seguir rindiendo.',
       imagenes: [
-        '/img/MITSUBISHIFUSO1.jpg',
-        '/img/MITSUBISHIFUSO2.jpg',
-        '/img/MITSUBISHIFUSO3.jpg',
+        '/img/MITSUBISHIFUSO1.webp',
+        '/img/MITSUBISHIFUSO2.webp',
+        '/img/MITSUBISHIFUSO3.webp',
       ],
       video: '',
       especificaciones: {
@@ -952,9 +951,9 @@ const CamionDetalle = () => {
       destacado: true,
       descripcion: 'Buen estado general, listo para seguir produciendo.',
       imagenes: [
-        '/img/CAMIONJAC20121.jpg',
-        '/img/CAMIONJAC20122.jpg',
-        '/img/CAMIONJAC20123.jpg',
+        '/img/CAMIONJAC20121.webp',
+        '/img/CAMIONJAC20122.webp',
+        '/img/CAMIONJAC20123.webp',
       ],
       video: '',
       especificaciones: {
@@ -992,9 +991,9 @@ const CamionDetalle = () => {
       destacado: true,
       descripcion: 'Chasis de alta resistencia,rendimiento potente.',
       imagenes: [
-        '/img/VOLVO19791.jpg',
-        '/img/VOLVO19792.jpg',
-        '/img/VOLVO19793.jpg',
+        '/img/VOLVO19791.webp',
+        '/img/VOLVO19792.webp',
+        '/img/VOLVO19793.webp',
       ],
       video: '',
       especificaciones: {
@@ -1032,9 +1031,9 @@ const CamionDetalle = () => {
       destacado: true,
       descripcion: 'Reconocido por su bajo costo de operación.',
       imagenes: [
-        '/img/HINO30020121.jpg',
-        '/img/HINO30020122.jpg',
-        '/img/HINO30020123.jpg',
+        '/img/HINO30020121.webp',
+        '/img/HINO30020122.webp',
+        '/img/HINO30020123.webp',
       ],
       video: '',
       especificaciones: {

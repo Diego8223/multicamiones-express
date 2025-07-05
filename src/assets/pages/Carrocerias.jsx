@@ -2,13 +2,13 @@ import React, { useState, useEffect, useMemo } from 'react';
 import { Carousel } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import FallbackImage from '../../assets/img/foton.jpg';
+import FallbackImage from '../../assets/img/foton.webp';
 import './Carrocerias.css';
 
 // Importa imágenes para el carrusel de carrocerías
-import Carroceria1 from '../../assets/img/carroceria1.jpg';
-import Carroceria2 from '../../assets/img/carroceria2.jpg';
-import Carroceria3 from '../../assets/img/carroceria3.jpg';
+import Carroceria1 from '../../assets/img/carroceria1.webp';
+import Carroceria2 from '../../assets/img/carroceria2.webp';
+import Carroceria3 from '../../assets/img/carroceria3.webp';
 
 const Carrocerias = () => {
   // Estados del carrusel
@@ -107,10 +107,10 @@ const Carrocerias = () => {
       destacado: true,
       descripcion: 'Carrocería refrigerada para transporte de alimentos, capacidad 20m3',
       imagenes: [
-        '/img/carroceria-refrigerada-1.jpg',
-        '/img/carroceria-refrigerada-2.jpg',
-        '/img/carroceria-refrigerada-3.jpg',
-        '/img/carroceria-refrigerada-4.jpg'
+        '/img/carroceria-refrigerada-1.webp',
+        '/img/carroceria-refrigerada-2.webp',
+        '/img/carroceria-refrigerada-3.webp',
+        '/img/carroceria-refrigerada-4.webp'
       ],
       video: 'https://www.youtube.com/watch?v=dQw4w9WgXcQ',
       especificaciones: {
@@ -133,9 +133,9 @@ const Carrocerias = () => {
       destacado: false,
       descripcion: 'Carrocería tipo estaca en acero, excelente estado',
       imagenes: [
-        '/img/carroceria-estaca-1.jpg',
-        '/img/carroceria-estaca-2.jpg',
-        '/img/carroceria-estaca-3.jpg'
+        '/img/carroceria-estaca-1.webp',
+        '/img/carroceria-estaca-2.webp',
+        '/img/carroceria-estaca-3.webp'
       ],
       video: 'https://www.youtube.com/watch?v=9bZkp7q19f0',
       especificaciones: {
@@ -157,11 +157,11 @@ const Carrocerias = () => {
       destacado: true,
       descripcion: 'Cisterna para transporte de líquidos alimenticios, capacidad 30.000 litros',
       imagenes: [
-        '/img/carroceria-cisterna-1.jpg',
-        '/img/carroceria-cisterna-2.jpg',
-        '/img/carroceria-cisterna-3.jpg',
-        '/img/carroceria-cisterna-4.jpg',
-        '/img/carroceria-cisterna-5.jpg'
+        '/img/carroceria-cisterna-1.webp',
+        '/img/carroceria-cisterna-2.webp',
+        '/img/carroceria-cisterna-3.webp',
+        '/img/carroceria-cisterna-4.webp',
+        '/img/carroceria-cisterna-5.webp'
       ],
       video: 'https://www.youtube.com/watch?v=JGwWNGJdvx8',
       especificaciones: {
@@ -184,8 +184,8 @@ const Carrocerias = () => {
       destacado: false,
       descripcion: 'Carrocería tipo volqueta en acero, buen estado general',
       imagenes: [
-        '/img/carroceria-volqueta-1.jpg',
-        '/img/carroceria-volqueta-2.jpg'
+        '/img/carroceria-volqueta-1.webp',
+        '/img/carroceria-volqueta-2.webp'
       ],
       video: 'https://www.youtube.com/watch?v=JGwWNGJdvx8',
       especificaciones: {

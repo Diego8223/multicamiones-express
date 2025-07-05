@@ -28,10 +28,10 @@ const CarroceriaDetalle = () => {
       destacado: true,
       descripcion: 'Carrocería refrigerada para transporte de alimentos, capacidad 20m3. Fabricada con los más altos estándares de calidad, ideal para transporte de productos perecederos. Sistema de refrigeración de última generación con control digital de temperatura.',
       imagenes: [
-        '/img/carroceria-refrigerada-1.jpg',
-        '/img/carroceria-refrigerada-2.jpg',
-        '/img/carroceria-refrigerada-3.jpg',
-        '/img/carroceria-refrigerada-4.jpg'
+        '/img/carroceria-refrigerada-1.webp',
+        '/img/carroceria-refrigerada-2.webp',
+        '/img/carroceria-refrigerada-3.webp',
+        '/img/carroceria-refrigerada-4.webp'
       ],
       video: 'https://www.youtube.com/watch?v=dQw4w9WgXcQ',
       especificaciones: {
