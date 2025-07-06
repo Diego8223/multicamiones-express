@@ -7,7 +7,9 @@
     "dev": "vite",
     "build": "vite build",
     "lint": "eslint .",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "server": "node server.js",
+    "optimize-images": "npx sharp-convert --input ./public/images --output ./src/optimized --format webp --quality 80"
   },
   "dependencies": {
     "@fontsource/roboto": "^5.2.5",
@@ -27,7 +29,7 @@
     "react-dom": "^18.2.0",
     "react-icons": "^5.5.0",
     "react-router-dom": "^6.30.0",
-    "sharp": "^0.34.2",
+    "sharp": "^0.33.0",
     "svgo": "^3.0.2",
     "typeface-roboto": "^1.1.13",
     "vite-plugin-pwa": "^1.0.0"
@@ -43,10 +45,5 @@
     "eslint-plugin-react-refresh": "^0.4.19",
     "globals": "^16.0.0",
     "vite": "^6.3.5"
-  },
-  "description": "",
-  "main": "eslint.config.js",
-  "keywords": [],
-  "author": "",
-  "license": "ISC"
+  }
 }
