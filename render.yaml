@@ -8,11 +8,30 @@ services:
       - source: /*
         destination: /index.html
     headers:
-      - path: /*
-        cacheControl: public, max-age=3600
+      # Configuración de MIME types para todos los recursos
       - path: /*.js
+        contentType: application/javascript
         cacheControl: public, max-age=31536000, immutable
       - path: /*.css
+        contentType: text/css
+        cacheControl: public, max-age=31536000, immutable
+      - path: /*.png
+        contentType: image/png
+        cacheControl: public, max-age=31536000, immutable
+      - path: /*.jpg
+        contentType: image/jpeg
+        cacheControl: public, max-age=31536000, immutable
+      - path: /*.jpeg
+        contentType: image/jpeg
         cacheControl: public, max-age=31536000, immutable
       - path: /*.webp
+        contentType: image/webp
         cacheControl: public, max-age=31536000, immutable
+      - path: /*.woff2
+        contentType: font/woff2
+        cacheControl: public, max-age=31536000, immutable
+      - path: /*.ttf
+        contentType: font/ttf
+        cacheControl: public, max-age=31536000, immutable
+      - path: /*
+        cacheControl: public, max-age=3600
