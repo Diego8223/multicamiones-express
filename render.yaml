@@ -1,0 +1,13 @@
+# render.yaml
+# Este archivo le dice a Render cómo construir y desplegar tu aplicación.
+services:
+  - type: web # Define que este es un servicio web
+    name: tu-app-react # Un nombre descriptivo para tu servicio en Render (puedes cambiarlo)
+    env: static # Indica que es un sitio estático (HTML, CSS, JS)
+    buildCommand: npm install && npm run build # Comandos para instalar dependencias y construir la app
+    staticPublishPath: build # La carpeta donde se encuentran los archivos estáticos compilados (salida de npm run build)
+    # Reglas de reescritura para manejar el client-side routing de React
+    rewrites:
+      # Si una solicitud no coincide con un archivo físico, redirige a index.html
+      - source: /* # Coincide con cualquier ruta
+        destination: /index.html # La ruta a la que se redirige
