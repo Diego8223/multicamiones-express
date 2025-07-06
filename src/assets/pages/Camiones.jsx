@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useMemo } from 'react';
+import React, { useState, useEffect, useMemo, useCallback } from 'react';
 import { Carousel } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import 'bootstrap/dist/css/bootstrap.min.css';
@@ -10,62 +10,50 @@ import Multimarca from '../../assets/img/multimarca.webp';
 import Multicamiones from '../../assets/img/multicamiones.webp';
 import Expres from "../../assets/img/expres.webp";
 
+const FilterGroup = React.memo(({ 
+  title, 
+  name, 
+  options, 
+  count, 
+  filters, 
+  handleFilterChange,
+  responsiveStyles,
+  windowWidth
+}) => (
+  <div className="mb-3">
+    <h3 className="h6 mb-2" style={{ fontSize: responsiveStyles.filterLabelSize, fontWeight: 'bold' }}>
+      {title}
+    </h3>
+    <select
+      name={name}
+      className="form-select"
+      onChange={handleFilterChange}
+      value={filters[name]}
+      style={{ fontSize: responsiveStyles.inputSize }}
+    >
+      <option value="">Todos ({Object.values(count).reduce((a, b) => a + b, 0)})</option>
+      {options.map(option => (
+        <option 
+          key={option} 
+          value={option}
+          style={{ fontSize: responsiveStyles.filterOptionSize }}
+          title={option}
+        >
+          {windowWidth < 768 ? 
+            `${option.substring(0, 12)}${option.length > 12 ? '...' : ''}` : 
+            option} ({count[option] || 0})
+        </option>
+      ))}
+    </select>
+  </div>
+));
+
 const Camiones = () => {
   // Estados del carrusel
   const [index, setIndex] = useState(0);
   const [autoPlay, setAutoPlay] = useState(true);
   const [loading, setLoading] = useState(true);
   const [windowWidth, setWindowWidth] = useState(window.innerWidth);
-
-  // Actualizar ancho de ventana al cambiar tamaño
-  useEffect(() => {
-    const handleResize = () => setWindowWidth(window.innerWidth);
-    window.addEventListener('resize', handleResize);
-    return () => window.removeEventListener('resize', handleResize);
-  }, []);
-
-  // Configuración de rutas de imágenes locales para camiones
-  const carouselItems = useMemo(() => [
-    {
-      image: Multimarca,
-      altText: 'Camiones de alta calidad'
-    },
-    {
-      image: Multicamiones,
-      altText: 'Variedad de modelos disponibles'
-    },
-    {
-      image: Expres,
-      altText: 'Flota profesional de camiones'
-    }
-  ], []);
-
-  // Precarga de imágenes
-  useEffect(() => {
-    let isMounted = true;
-    const loadImages = async () => {
-      try {
-        await Promise.all(
-          carouselItems.map(item =>
-            new Promise((resolve, reject) => {
-              const img = new Image();
-              img.src = item.image;
-              img.onload = resolve;
-              img.onerror = () => reject(`Error loading: ${item.image}`);
-            })
-          )
-        );
-      } catch (error) {
-        console.error('Error en carga de imágenes:', error);
-      } finally {
-        if (isMounted) setLoading(false);
-      }
-    };
-
-    loadImages();
-    return () => { isMounted = false };
-  }, [carouselItems]);
-
   const [searchTerm, setSearchTerm] = useState('');
   const [filters, setFilters] = useState({
     marca: '',
@@ -77,27 +65,27 @@ const Camiones = () => {
   });
 
   // Datos específicos para camiones
-  const tiposCamion = [
+  const tiposCamion = useMemo(() => [
     'Chasis', 'Estaca', 'Furgón', 'Grúa', 'Tanque', 'Tractocamión', 
     'Volqueta', 'Refrigerado', 'Cisterna', 'Cargo', 'Planchón ferretero', 'Trailer'
-  ];
+  ], []);
 
-  const marcas = [
+  const marcas = useMemo(() => [
     'Chevrolet', 'Fotón', 'Hino', 'Kenworth', 'International', 'JMC',
     'JAC', 'Volkswagen', 'Mercedes', 'Freightliner', 'Shacman', 'Volvo',
     'Ford', 'Dongfeng', 'Renault', 'Hyundai', 'Dodge', 'DAF', 'Kia',
     'Mack', 'Daihatsu', 'Mitsubishi', 'Toyota', 'Nissan', 'DMF', 'Iveco',
     'Sinotruk', 'Otro'
-  ];
+  ], []);
 
-  const ciudadesColombia = [
+  const ciudadesColombia = useMemo(() => [
     'Bogotá', 'Medellín', 'Cali', 'Barranquilla', 'Cartagena',
     'Bucaramanga', 'Pereira', 'Manizales', 'Cúcuta', 'Ibagué'
-  ];
+  ], []);
 
-  const Estados = ['Nuevo', 'Usado', 'Vendido'];
+  const Estados = useMemo(() => ['Nuevo', 'Usado', 'Vendido'], []);
 
-  const camiones = [
+  const camiones = useMemo(() => [
     {
       id: 1,
       marca: 'FOTON MEDIANO',
@@ -757,63 +745,131 @@ const Camiones = () => {
 
     }
     
-  ];
+  ], []);
+
+  // Actualizar ancho de ventana al cambiar tamaño con debounce
+  useEffect(() => {
+    let resizeTimeout;
+    const handleResize = () => {
+      clearTimeout(resizeTimeout);
+      resizeTimeout = setTimeout(() => {
+        setWindowWidth(window.innerWidth);
+      }, 100);
+    };
+    
+    window.addEventListener('resize', handleResize);
+    return () => {
+      window.removeEventListener('resize', handleResize);
+      clearTimeout(resizeTimeout);
+    };
+  }, []);
+
+  // Configuración de rutas de imágenes locales para camiones
+  const carouselItems = useMemo(() => [
+    {
+      image: Multimarca,
+      altText: 'Camiones de alta calidad'
+    },
+    {
+      image: Multicamiones,
+      altText: 'Variedad de modelos disponibles'
+    },
+    {
+      image: Expres,
+      altText: 'Flota profesional de camiones'
+    }
+  ], []);
+
+  // Precarga de imágenes optimizada
+  useEffect(() => {
+    let isMounted = true;
+    const loadImages = async () => {
+      try {
+        const imagePromises = carouselItems.map(item => {
+          return new Promise((resolve) => {
+            const img = new Image();
+            img.src = item.image;
+            img.onload = resolve;
+            img.onerror = () => {
+              console.error(`Error loading: ${item.image}`);
+              resolve();
+            };
+          });
+        });
+        
+        await Promise.all(imagePromises);
+      } catch (error) {
+        console.error('Error en carga de imágenes:', error);
+      } finally {
+        if (isMounted) setLoading(false);
+      }
+    };
+
+    loadImages();
+    return () => { isMounted = false };
+  }, [carouselItems]);
 
   // Función para contar camiones por propiedad
-  const countBy = (prop) => {
+  const countBy = useCallback((prop) => {
     return camiones.reduce((acc, curr) => {
       const key = curr[prop]?.toString() || 'desconocido';
       acc[key] = (acc[key] || 0) + 1;
       return acc;
     }, {});
-  };
+  }, [camiones]);
 
-  const handleFilterChange = (e) => {
+  const handleFilterChange = useCallback((e) => {
     const { name, value, type, checked } = e.target;
     setFilters(prev => ({
       ...prev,
       [name]: type === 'checkbox' ? checked : value
     }));
-  };
+  }, []);
 
-  const filteredCamiones = camiones.filter(camion => {
+  const handleSearchChange = useCallback((e) => {
+    setSearchTerm(e.target.value);
+  }, []);
+
+  const filteredCamiones = useMemo(() => {
     const searchLower = searchTerm.toLowerCase();
-    const matchesSearch = (
-      camion.marca.toLowerCase().includes(searchLower) ||
-      camion.modelo.toLowerCase().includes(searchLower) ||
-      camion.descripcion.toLowerCase().includes(searchLower) ||
-      camion.tipo.toLowerCase().includes(searchLower)
-    );
+    return camiones.filter(camion => {
+      const matchesSearch = (
+        camion.marca.toLowerCase().includes(searchLower) ||
+        camion.modelo.toLowerCase().includes(searchLower) ||
+        camion.descripcion.toLowerCase().includes(searchLower) ||
+        camion.tipo.toLowerCase().includes(searchLower)
+      );
 
-    const matchesFilters = (
-      (!filters.marca || camion.marca === filters.marca) &&
-      (!filters.tipo || camion.tipo === filters.tipo) &&
-      (!filters.ubicacion || camion.ubicacion === filters.ubicacion) &&
-      (!filters.estado || camion.estado === filters.estado) &&
-      (!filters.destacado || camion.destacado === filters.destacado)
-    );
+      const matchesFilters = (
+        (!filters.marca || camion.marca === filters.marca) &&
+        (!filters.tipo || camion.tipo === filters.tipo) &&
+        (!filters.ubicacion || camion.ubicacion === filters.ubicacion) &&
+        (!filters.estado || camion.estado === filters.estado) &&
+        (!filters.destacado || camion.destacado === filters.destacado)
+      );
 
-    return matchesSearch && matchesFilters;
-  });
+      return matchesSearch && matchesFilters;
+    });
+  }, [camiones, searchTerm, filters]);
 
-  const formatPrice = (price) => {
+  const formatPrice = useCallback((price) => {
     return new Intl.NumberFormat('es-CO', {
       style: 'currency',
       currency: 'COP',
       minimumFractionDigits: 0
     }).format(price);
-  };
+  }, []);
 
-  const conteoEstados = countBy('estado');
-  const conteoTipos = countBy('tipo');
-  const conteoMarcas = countBy('marca');
-  const conteoUbicaciones = countBy('ubicacion');
-  const conteoDestacados = camiones.filter(c => c.destacado).length;
+  const conteoEstados = useMemo(() => countBy('estado'), [countBy]);
+  const conteoTipos = useMemo(() => countBy('tipo'), [countBy]);
+  const conteoMarcas = useMemo(() => countBy('marca'), [countBy]);
+  const conteoUbicaciones = useMemo(() => countBy('ubicacion'), [countBy]);
+  const conteoDestacados = useMemo(() => camiones.filter(c => c.destacado).length, [camiones]);
 
   // Estilos dinámicos responsive
-  const responsiveStyles = {
+  const responsiveStyles = useMemo(() => ({
     containerPadding: windowWidth < 768 ? '0 10px' : '0 20px',
-    carouselHeight: windowWidth < 768 ? '300px' : '500px', // Aumentada altura para móviles
+    carouselHeight: windowWidth < 768 ? '300px' : '500px',
     titleSize: windowWidth < 768 ? '1.8rem' : '2.5rem',
     cardTitleSize: windowWidth < 768 ? '1.2rem' : '1.5rem',
     cardTextSize: windowWidth < 768 ? '0.9rem' : '1rem',
@@ -825,42 +881,138 @@ const Camiones = () => {
     noResultsSize: windowWidth < 768 ? '1.1rem' : '1.3rem',
     filterOptionSize: windowWidth < 768 ? '0.8rem' : '0.9rem',
     filterLabelSize: windowWidth < 768 ? '0.9rem' : '1rem',
-    cardImageHeight: windowWidth < 768 ? '250px' : '300px' // Nueva propiedad para altura de imágenes en cards
-  };
+    cardImageHeight: windowWidth < 768 ? '250px' : '300px'
+  }), [windowWidth]);
 
-  // Componente para renderizar filtros agrupados
-  const FilterGroup = ({ title, name, options, count }) => (
-    <div className="mb-3">
-      <h3 className="h6 mb-2" style={{ fontSize: responsiveStyles.filterLabelSize, fontWeight: 'bold' }}>
-        {title}
-      </h3>
-      <select
-        name={name}
-        className="form-select"
-        onChange={handleFilterChange}
-        value={filters[name]}
-        style={{ fontSize: responsiveStyles.inputSize }}
-      >
-        <option value="">Todos ({Object.values(count).reduce((a, b) => a + b, 0)})</option>
-        {options.map(option => (
-          <option 
-            key={option} 
-            value={option}
-            style={{ fontSize: responsiveStyles.filterOptionSize }}
-            title={option}
+  // Componente CamionCard memoizado
+  const CamionCard = useCallback(({ camion }) => {
+    return (
+      <div className="card h-100 shadow-sm position-relative camion-card">
+        {camion.estado === 'Vendido' && (
+          <div className="sold-overlay">
+            <span className="sold-text">VENDIDO</span>
+          </div>
+        )}
+        
+        {camion.destacado && (
+          <div className="ribbon ribbon-top-right" style={{ top: '10px', right: '10px' }}>
+            <span>⭐ DESTACADO</span>
+          </div>
+        )}
+        
+        <Link to={`/camiones/${camion.id}`} className="text-decoration-none text-dark">
+          <div id={`carouselCamion${camion.id}`} className="carousel slide" data-bs-ride="carousel">
+            <div className="carousel-inner" style={{ height: responsiveStyles.cardImageHeight }}>
+              {camion.imagenes.map((img, index) => (
+                <div key={index} className={`carousel-item ${index === 0 ? 'active' : ''}`}>
+                  <Link 
+                    to={`/camiones/${camion.id}`} 
+                    onClick={() => window.scrollTo(0, 0)}
+                    style={{ display: 'block' }}
+                  >
+                    <img 
+                      src={img} 
+                      className="d-block w-100 h-100"
+                      alt={`${camion.marca} ${camion.modelo}`}
+                      style={{
+                        objectFit: 'cover',
+                        width: '100%',
+                        height: '100%'
+                      }}
+                      loading={index > 0 ? "lazy" : "eager"}
+                      decoding={index > 0 ? "async" : "sync"}
+                      onError={(e) => {
+                        e.target.onerror = null;
+                        e.target.src = FallbackImage;
+                      }}
+                    />
+                  </Link>
+                </div>
+              ))}
+            </div>
+            {camion.imagenes.length > 1 && (
+              <>
+                <button className="carousel-control-prev" type="button" data-bs-target={`#carouselCamion${camion.id}`} data-bs-slide="prev">
+                  <span className="carousel-control-prev-icon" aria-hidden="true"></span>
+                  <span className="visually-hidden">Previous</span>
+                </button>
+                <button className="carousel-control-next" type="button" data-bs-target={`#carouselCamion${camion.id}`} data-bs-slide="next">
+                  <span className="carousel-control-next-icon" aria-hidden="true"></span>
+                  <span className="visually-hidden">Next</span>
+                </button>
+              </>
+            )}
+          </div>
+          
+          <div className="card-body">
+            <h3 className="card-title" style={{ fontSize: responsiveStyles.cardTitleSize }}>
+              {camion.marca} {camion.modelo} ({camion.año})
+            </h3>
+            <div className="d-flex justify-content-between align-items-center mb-3">
+              <span className="price" style={{ fontSize: responsiveStyles.priceSize }}>
+                {formatPrice(camion.precio)}
+              </span>
+              <span className="badge bg-dark" style={{ fontSize: responsiveStyles.badgeSize }}>
+                {camion.kilometraje.toLocaleString()} km
+              </span>
+            </div>
+            <p className="card-text text-muted mb-3" style={{ fontSize: responsiveStyles.cardTextSize }}>
+              {camion.descripcion}
+            </p>
+            
+            <div className="mb-3">
+              {[
+                { label: 'Tipo', value: camion.tipo },
+                { label: 'Ubicación', value: camion.ubicacion },
+                { label: 'Estado', value: camion.estado, badge: true }
+              ].map((item, idx) => (
+                <div key={idx} className="d-flex justify-content-between mb-2">
+                  <span style={{ fontSize: responsiveStyles.cardTextSize }}>{item.label}:</span>
+                  {item.badge ? (
+                    <span className={`badge bg-${camion.estado === 'Nuevo' ? 'success' : camion.estado === 'Vendido' ? 'danger' : 'warning'}`}>
+                      {item.value.toUpperCase()}
+                    </span>
+                  ) : (
+                    <strong style={{ fontSize: responsiveStyles.cardTextSize }}>{item.value}</strong>
+                  )}
+                </div>
+              ))}
+            </div>
+          </div>
+        </Link>
+        
+        <div className="card-footer bg-white border-top-0">
+          <Link 
+            to={`/camiones/${camion.id}`} 
+            className="btn btn-primary w-100"
+            style={{ 
+              fontSize: responsiveStyles.buttonSize,
+              backgroundColor: '#1e3a8a',
+              borderColor: '#1e3a8a'
+            }}
+            onClick={() => window.scrollTo(0, 0)}
           >
-            {windowWidth < 768 ? 
-              `${option.substring(0, 12)}${option.length > 12 ? '...' : ''}` : 
-              option} ({count[option] || 0})
-          </option>
-        ))}
-      </select>
-    </div>
-  );
+            Ver detalles completos
+          </Link>
+        </div>
+      </div>
+    );
+  }, [formatPrice, responsiveStyles]);
+
+  const resetFilters = useCallback(() => {
+    setSearchTerm('');
+    setFilters({
+      marca: '',
+      tipo: '',
+      estado: '',
+      ubicacion: '',
+      destacado: false
+    });
+  }, []);
 
   return (
     <div className="camiones-container" style={{ padding: responsiveStyles.containerPadding, marginTop: windowWidth < 768 ? '60px' : '80px' }}>
-      {/* Carrusel - Modificado para mejor visualización en móviles */}
+      {/* Carrusel optimizado */}
       <div className="carousel-wrapper" style={{ marginTop: windowWidth < 768 ? '10px' : '20px' }}>
         <Carousel
           activeIndex={index}
@@ -886,6 +1038,7 @@ const Camiones = () => {
                     src={item.image}
                     alt={item.altText}
                     loading="eager"
+                    decoding="sync"
                     style={{ 
                       objectFit: 'cover',
                       width: '100%',
@@ -913,7 +1066,7 @@ const Camiones = () => {
         </p>
       </header>
 
-      {/* Contadores - Modificado con color azul #1e3a8a */}
+      {/* Contadores optimizados */}
       <div className="contadores-container mb-4">
         <div className="row g-3 justify-content-center">
           {[
@@ -937,7 +1090,7 @@ const Camiones = () => {
         </div>
       </div>
 
-      {/* Filtros */}
+      {/* Filtros optimizados */}
       <div className="card shadow-sm mb-4">
         <div className="card-body">
           <h2 className="h5 mb-3" style={{ fontSize: responsiveStyles.cardTitleSize }}>
@@ -951,7 +1104,7 @@ const Camiones = () => {
               className="form-control"
               placeholder="🔍 Buscar por marca, modelo o descripción..."
               value={searchTerm}
-              onChange={(e) => setSearchTerm(e.target.value)}
+              onChange={handleSearchChange}
               style={{ fontSize: responsiveStyles.inputSize }}
             />
           </div>
@@ -963,6 +1116,10 @@ const Camiones = () => {
                 name="marca" 
                 options={marcas} 
                 count={conteoMarcas} 
+                filters={filters}
+                handleFilterChange={handleFilterChange}
+                responsiveStyles={responsiveStyles}
+                windowWidth={windowWidth}
               />
             </div>
             
@@ -972,6 +1129,10 @@ const Camiones = () => {
                 name="tipo" 
                 options={tiposCamion} 
                 count={conteoTipos} 
+                filters={filters}
+                handleFilterChange={handleFilterChange}
+                responsiveStyles={responsiveStyles}
+                windowWidth={windowWidth}
               />
             </div>
             
@@ -981,6 +1142,10 @@ const Camiones = () => {
                 name="ubicacion" 
                 options={ciudadesColombia} 
                 count={conteoUbicaciones} 
+                filters={filters}
+                handleFilterChange={handleFilterChange}
+                responsiveStyles={responsiveStyles}
+                windowWidth={windowWidth}
               />
             </div>
             
@@ -990,6 +1155,10 @@ const Camiones = () => {
                 name="estado" 
                 options={Estados} 
                 count={conteoEstados} 
+                filters={filters}
+                handleFilterChange={handleFilterChange}
+                responsiveStyles={responsiveStyles}
+                windowWidth={windowWidth}
               />
               
               <div className="form-check form-switch mt-3">
@@ -1011,122 +1180,12 @@ const Camiones = () => {
         </div>
       </div>
 
-      {/* Listado de camiones - Modificado para mejor visualización */}
+      {/* Listado de camiones optimizado */}
       <div className="row">
         {filteredCamiones.length > 0 ? (
           filteredCamiones.map(camion => (
             <div key={camion.id} className="col-12 col-md-6 col-lg-4 mb-4">
-              <div className="card h-100 shadow-sm position-relative camion-card">
-                {/* Overlay de vendido */}
-                {camion.estado === 'Vendido' && (
-                  <div className="sold-overlay">
-                    <span className="sold-text">VENDIDO</span>
-                  </div>
-                )}
-                
-                {/* Ribbon de destacado - Modificado para posición superior */}
-                {camion.destacado && (
-                  <div className="ribbon ribbon-top-right" style={{ top: '10px', right: '10px' }}>
-                    <span>⭐ DESTACADO</span>
-                  </div>
-                )}
-                
-                <Link to={`/camiones/${camion.id}`} className="text-decoration-none text-dark">
-                  {/* Carrusel de imágenes del camión - Modificado para mejor visualización */}
-                  <div id={`carouselCamion${camion.id}`} className="carousel slide" data-bs-ride="carousel">
-                    <div className="carousel-inner" style={{ height: responsiveStyles.cardImageHeight }}>
-                      {camion.imagenes.map((img, index) => (
-                        <div key={index} className={`carousel-item ${index === 0 ? 'active' : ''}`}>
-                           <Link 
-                            to={`/camiones/${camion.id}`} 
-                            onClick={() => window.scrollTo(0, 0)}
-                            style={{ display: 'block' }}
-                           >
-                          <img 
-                            src={img} 
-                            className="d-block w-100 h-100"
-                            alt={`${camion.marca} ${camion.modelo}`}
-                            style={{
-                              objectFit: 'cover',
-                              width: '100%',
-                              height: '100%'
-                            }}
-                            onError={(e) => {
-                              e.target.onerror = null;
-                              e.target.src = FallbackImage;
-                            }}
-                          />
-                          </Link>
-                          
-                        </div>
-                      ))}
-                    </div>
-                    {camion.imagenes.length > 1 && (
-                      <>
-                        <button className="carousel-control-prev" type="button" data-bs-target={`#carouselCamion${camion.id}`} data-bs-slide="prev">
-                          <span className="carousel-control-prev-icon" aria-hidden="true"></span>
-                          <span className="visually-hidden">Previous</span>
-                        </button>
-                        <button className="carousel-control-next" type="button" data-bs-target={`#carouselCamion${camion.id}`} data-bs-slide="next">
-                          <span className="carousel-control-next-icon" aria-hidden="true"></span>
-                          <span className="visually-hidden">Next</span>
-                        </button>
-                      </>
-                    )}
-                  </div>
-                  
-                  <div className="card-body">
-                    <h3 className="card-title" style={{ fontSize: responsiveStyles.cardTitleSize }}>
-                      {camion.marca} {camion.modelo} ({camion.año})
-                    </h3>
-                    <div className="d-flex justify-content-between align-items-center mb-3">
-                      <span className="price" style={{ fontSize: responsiveStyles.priceSize }}>
-                        {formatPrice(camion.precio)}
-                      </span>
-                      <span className="badge bg-dark" style={{ fontSize: responsiveStyles.badgeSize }}>
-                        {camion.kilometraje.toLocaleString()} km
-                      </span>
-                    </div>
-                    <p className="card-text text-muted mb-3" style={{ fontSize: responsiveStyles.cardTextSize }}>
-                      {camion.descripcion}
-                    </p>
-                    
-                    <div className="mb-3">
-                      {[
-                        { label: 'Tipo', value: camion.tipo },
-                        { label: 'Ubicación', value: camion.ubicacion },
-                        { label: 'Estado', value: camion.estado, badge: true }
-                      ].map((item, idx) => (
-                        <div key={idx} className="d-flex justify-content-between mb-2">
-                          <span style={{ fontSize: responsiveStyles.cardTextSize }}>{item.label}:</span>
-                          {item.badge ? (
-                            <span className={`badge bg-${camion.estado === 'Nuevo' ? 'success' : camion.estado === 'Vendido' ? 'danger' : 'warning'}`}>
-                              {item.value.toUpperCase()}
-                            </span>
-                          ) : (
-                            <strong style={{ fontSize: responsiveStyles.cardTextSize }}>{item.value}</strong>
-                          )}
-                        </div>
-                      ))}
-                    </div>
-                  </div>
-                </Link>
-                
-                <div className="card-footer bg-white border-top-0">
-                  <Link 
-                    to={`/camiones/${camion.id}`} 
-                    className="btn btn-primary w-100"
-                    style={{ 
-                      fontSize: responsiveStyles.buttonSize,
-                      backgroundColor: '#1e3a8a',
-                      borderColor: '#1e3a8a'
-                    }}
-                    onClick={() => window.scrollTo(0, 0)}
-                  >
-                    Ver detalles completos
-                  </Link>
-                </div>
-              </div>
+              <CamionCard camion={camion} />
             </div>
           ))
         ) : (
@@ -1137,16 +1196,7 @@ const Camiones = () => {
             </div>
             <button 
               className="btn btn-outline-primary mt-3"
-              onClick={() => {
-                setSearchTerm('');
-                setFilters({
-                  marca: '',
-                  tipo: '',
-                  estado: '',
-                  ubicacion: '',
-                  destacado: false
-                });
-              }}
+              onClick={resetFilters}
               style={{ 
                 fontSize: responsiveStyles.buttonSize,
                 color: '#1e3a8a',
