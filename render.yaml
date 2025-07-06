@@ -6,34 +6,47 @@ services:
       npm install
       npm run build
     staticPublishPath: dist
+
     rewrites:
       - source: /*
         destination: /index.html
+
     headers:
-      # Configuración de MIME types
+      # JavaScript y CSS
       - path: /*.js
         contentType: application/javascript
         cacheControl: public, max-age=31536000, immutable
+
       - path: /*.css
         contentType: text/css
         cacheControl: public, max-age=31536000, immutable
+
+      # Imágenes
       - path: /*.png
         contentType: image/png
         cacheControl: public, max-age=31536000, immutable
+
       - path: /*.jpg
         contentType: image/jpeg
         cacheControl: public, max-age=31536000, immutable
+
       - path: /*.jpeg
         contentType: image/jpeg
         cacheControl: public, max-age=31536000, immutable
+
       - path: /*.webp
         contentType: image/webp
         cacheControl: public, max-age=31536000, immutable
+
+      # Fuentes
       - path: /*.woff2
         contentType: font/woff2
         cacheControl: public, max-age=31536000, immutable
+
       - path: /*.ttf
         contentType: font/ttf
         cacheControl: public, max-age=31536000, immutable
+
+      # Otros (fallback general)
       - path: /*
         cacheControl: public, max-age=3600
