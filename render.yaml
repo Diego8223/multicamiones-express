@@ -1,31 +1,19 @@
-# render.yaml optimizado para React en Render.com
 services:
   - type: web
-    name: multicamiones-express  # Nombre más descriptivo
-    env: node  # Debe ser 'node' para aplicaciones React, NO 'static'
-    region: sin  # Singapur (mejor conectividad global que us-east)
-    buildCommand: npm install --omit=dev && npm run build
-    staticPublishPath: build
+    name: multicamiones-express
+    env: node
+    region: sin
+    buildCommand: |
+      npm install --omit=dev
+      npm run optimize-images
+      npm run build
+    startCommand: npm run server
+    staticPublishPath: dist
     rewrites:
       - source: /*
         destination: /index.html
-    # NUEVAS CONFIGURACIONES CRÍTICAS
-    caching:
-      paths:
-        - /static
-        - /images
-        - /assets
-    headers:
-      - path: /*.js
-        cacheControl: public, max-age=31536000, immutable
-      - path: /*.css
-        cacheControl: public, max-age=31536000, immutable
-      - path: /*.webp
-        cacheControl: public, max-age=31536000, immutable
-      - path: /*
-        cacheControl: public, max-age=3600
-    envVars:  # Variables para optimización
+    envVars:
+      - key: NODE_ENV
+        value: production
       - key: GENERATE_SOURCEMAP
-        value: "false"
-      - key: INLINE_RUNTIME_CHUNK
         value: "false"

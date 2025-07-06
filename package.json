@@ -17,7 +17,9 @@
     "@svgr/webpack": "^6.5.1",
     "bootstrap": "^5.3.0",
     "bootstrap-icons": "^1.13.1",
+    "compression": "^1.8.0",
     "dotenv": "^16.5.0",
+    "express": "^5.1.0",
     "leaflet": "^1.9.4",
     "lucide-react": "^0.511.0",
     "react": "^18.2.0",
@@ -25,6 +27,7 @@
     "react-dom": "^18.2.0",
     "react-icons": "^5.5.0",
     "react-router-dom": "^6.30.0",
+    "sharp": "^0.34.2",
     "svgo": "^3.0.2",
     "typeface-roboto": "^1.1.13",
     "vite-plugin-pwa": "^1.0.0"
