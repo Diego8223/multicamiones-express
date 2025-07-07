@@ -4,6 +4,8 @@ import path from 'path';
 
 export default defineConfig({
   plugins: [react()],
+  // 💡 ESTA LÍNEA DEBE ESTAR ASÍ 💡
+  base: './', // Esto asegura que todas las rutas de activos sean relativas
   resolve: {
     alias: {
       '@': path.resolve(__dirname, './src'),
