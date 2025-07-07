@@ -1,136 +1,142 @@
-/* Estilos para la sección de video */
+/* --- Estilos para la sección de video --- */
 .video-section {
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    padding: 0px; /* **Importante: Quitar padding para que el video use todo el ancho** */
-    background-color: #0d1a2d; /* Un fondo oscuro que contraste con el video */
-    min-height: 70vh; /* Haz que la sección sea al menos el 70% de la altura de la ventana */
-    gap: 20px;
+    padding: 0; /* Asegura que no haya padding global para el video de fondo */
+    background-color: #0d1a2d; /* Fondo oscuro que contrasta con el video */
+    min-height: 70vh; /* La sección ocupa al menos el 70% de la altura del viewport */
+    gap: 20px; /* Espacio entre el texto y los controles */
     text-align: center;
-    margin-top: 80px; /* Espacio para el navbar fijo */
-    overflow: hidden; /* Asegurar que no haya desbordamientos */
-    position: relative; /* Para posicionar elementos absolutamente dentro si es necesario */
+    margin-top: 80px; /* Espacio para el navbar fijo en la parte superior */
+    overflow: hidden; /* Evita barras de desplazamiento si el contenido se desborda */
+    position: relative; /* Necesario para posicionar el video de fondo y otros elementos con z-index */
 }
 
+/* --- Información del Video (Título y Descripción) --- */
 .video-info {
-    max-width: 900px; /* Aumenta el ancho máximo para el texto */
-    color: #ffffff; /* Texto blanco para contraste con fondo oscuro */
-    padding: 0 25px; /* Padding horizontal para el texto */
-    z-index: 2; /* Asegura que el texto esté por encima del video */
-    position: relative; /* Para que z-index funcione */
-    text-shadow: 1px 1px 3px rgba(0,0,0,0.5); /* Sombra para mejor lectura sobre el video */
+    max-width: 900px; /* Limita el ancho del texto para mejor legibilidad */
+    color: #ffffff; /* Texto blanco para buena visibilidad sobre el fondo oscuro/video */
+    padding: 0 25px; /* Padding horizontal para evitar que el texto se pegue a los bordes en pantallas anchas */
+    z-index: 2; /* Asegura que este contenido esté por encima del video de fondo */
+    position: relative; /* Necesario para que z-index funcione en algunos navegadores */
+    text-shadow: 1px 1px 3px rgba(0,0,0,0.5); /* Sombra de texto para mejorar el contraste y la legibilidad */
 }
 
 .video-info h2 {
-    font-size: 3.5rem; /* Título más grande */
-    color: #e0e7ff; /* Un azul muy claro */
-    margin-bottom: 15px;
-    font-weight: 700;
+    font-size: 3.5rem; /* Título grande y prominente */
+    color: #e0e7ff; /* Tono de azul claro para el título */
+    margin-bottom: 15px; /* Espacio debajo del título */
+    font-weight: 700; /* Negrita para el título */
 }
 
 .video-info p {
-    font-size: 1.3rem; /* Descripción más grande */
-    line-height: 1.8;
-    margin-bottom: 25px;
+    font-size: 1.3rem; /* Tamaño de fuente para la descripción */
+    line-height: 1.8; /* Mayor espaciado entre líneas para mejor lectura */
+    margin-bottom: 25px; /* Espacio debajo de la descripción */
 }
 
-/* Contenedor del reproductor de video para hacerlo responsive */
+/* --- Contenedor del Reproductor de Video (Actúa como Fondo) --- */
 .video-wrapper {
-    position: relative;
-    width: 100%; /* Ocupa el 100% del ancho del padre (.video-section) */
-    /* Para el video de fondo, usa una relación de aspecto que cubra. Por ejemplo, 16:9 es bueno */
-    padding-bottom: 56.25%; /* Relación de aspecto 16:9 (altura = 9/16 * ancho) */
-    height: 0;
-    overflow: hidden;
-    max-width: 1200px; /* Permite que el video sea más grande en pantallas grandes */
-    background-color: #000;
-    border-radius: 0px; /* Quitar bordes redondeados si es un video de fondo */
-    box-shadow: none; /* Quitar sombra si es un video de fondo */
-
-    /* **Posicionamiento absoluto para el video de fondo** */
-    position: absolute;
+    /* Estas propiedades ya no son tan relevantes aquí si el iframe se posiciona y escala directamente.
+       Las dejo por claridad, pero el iframe interior es el que hace el trabajo pesado. */
+    position: absolute; /* Posicionamiento absoluto para cubrir toda la .video-section */
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    z-index: 1; /* Asegura que el video esté detrás del texto y controles */
+    overflow: hidden; /* Esencial para recortar el video si es más grande que el contenedor */
+    background-color: #000; /* Fondo de respaldo mientras carga el video o si falla */
+    z-index: 1; /* Coloca el video detrás del texto y los controles */
+    /* border-radius y box-shadow eliminados intencionalmente para un efecto de fondo completo */
 }
 
-/* Estilos para el iframe del reproductor de YouTube */
+/* --- Estilos para el iframe del reproductor de YouTube --- */
 .video-wrapper iframe,
 .video-wrapper #youtube-player { 
-    position: absolute;
-    top: 50%; /* Centrar verticalmente */
-    left: 50%; /* Centrar horizontalmente */
-    transform: translate(-50%, -50%); /* Ajuste fino del centrado */
-    min-width: 100%; /* Asegura que cubra el ancho */
-    min-height: 100%; /* Asegura que cubra el alto */
-    width: 177.77vh; /* 16:9 = 100/56.25 = 1.7777, entonces ancho = 1.7777 * altura del viewport */
-    height: 56.25vw; /* altura = 0.5625 * ancho del viewport */
-    /* Asegura que el video siempre cubra el contenedor y no tenga barras negras */
-    max-width: none;
+    position: absolute; /* Posicionamiento absoluto dentro de .video-wrapper */
+    top: 50%; /* Centra el video verticalmente */
+    left: 50%; /* Centra el video horizontalmente */
+    transform: translate(-50%, -50%); /* Ajuste fino para el centrado perfecto */
+
+    /* **Clave para el video de fondo que "cubre"** */
+    /* Estas líneas aseguran que el video siempre cubra el contenedor, incluso si las proporciones
+       del contenedor cambian. Uno de los anchos/altos será el 100% de la dimensión del contenedor
+       mientras que el otro se calcula para mantener la relación 16:9 y asegurar que el video
+       sea lo suficientemente grande para llenar el espacio. 'object-fit: cover' recorta el exceso. */
+    min-width: 100%; 
+    min-height: 100%; 
+    width: 177.77vh; /* Calcula el ancho basado en la altura del viewport para 16:9 (100/56.25) */
+    height: 56.25vw;  /* Calcula la altura basado en el ancho del viewport para 16:9 (9/16) */
+    
+    /* Asegúrate de que no haya límites de tamaño que impidan que el video crezca */
+    max-width: none; 
     max-height: none;
-    pointer-events: none; /* Deshabilita interacciones con el iframe (clicks), manteniendo los controles personalizados */
-    border: 0;
-    object-fit: cover; /* Recorta si es necesario para cubrir el contenedor */
+
+    pointer-events: none; /* Deshabilita la interacción directa con el iframe, forzando el uso de tus controles */
+    border: 0; /* Elimina cualquier borde por defecto del iframe */
+    object-fit: cover; /* Asegura que el video se escale para cubrir el área, recortando si es necesario */
 }
 
-/* Estilos para los controles de video */
+/* --- Estilos para los controles de video --- */
 .video-controls {
     display: flex;
-    gap: 20px; /* Más espacio entre botones */
-    margin-top: 30px; /* Más margen superior */
-    z-index: 2; /* Asegura que los controles estén encima del video */
-    position: relative;
+    gap: 20px; /* Espacio entre los botones */
+    margin-top: 30px; /* Margen superior para separarlos del texto */
+    z-index: 2; /* Asegura que los controles estén por encima del video */
+    position: relative; /* Necesario para que z-index funcione */
 }
 
 .control-btn {
-    background-color: rgba(30, 58, 138, 0.8); /* Azul oscuro con transparencia */
-    backdrop-filter: blur(5px); /* Efecto de desenfoque detrás del botón */
-    border: 2px solid #a8c1ff; /* Borde más claro */
+    background-color: rgba(30, 58, 138, 0.8);
+    /* Prefijo -webkit- para mayor compatibilidad */
+    -webkit-backdrop-filter: blur(5px); 
+    backdrop-filter: blur(5px); /* Versión estándar */
+    border: 2px solid #a8c1ff;
     color: white;
     border-radius: 50%;
-    width: 60px; /* Botones más grandes */
-    height: 60px; /* Botones más grandes */
+    width: 60px;
+    height: 60px;
     display: flex;
     align-items: center;
     justify-content: center;
     cursor: pointer;
-    font-size: 1.8rem; /* Iconos más grandes */
+    font-size: 1.8rem;
     transition: background-color 0.3s ease, transform 0.2s ease, border-color 0.3s ease;
-    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3); /* Sombra más pronunciada */
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
 }
 
 .control-btn:hover {
-    background-color: rgba(59, 130, 246, 0.9); /* Azul más claro y menos transparente al pasar el ratón */
-    transform: translateY(-3px) scale(1.05); /* Efecto de "levantamiento" y ligero escalado */
+    background-color: rgba(59, 130, 246, 0.9); /* Cambio de color al pasar el ratón */
+    transform: translateY(-3px) scale(1.05); /* Efecto de "elevación" y ligero aumento de tamaño */
     border-color: #fff; /* Borde blanco al pasar el ratón */
 }
 
 .control-btn svg {
-    fill: white; 
-    width: 28px; /* Iconos SVG más grandes */
-    height: 28px;
+    fill: white; /* Asegura que el SVG tenga color blanco */
+    width: 28px; /* Tamaño del SVG */
+    height: 28px; /* Tamaño del SVG */
 }
 
-/* Mensaje de carga */
+/* --- Mensaje de carga --- */
 .loading-message {
-    position: absolute;
+    position: absolute; /* Centrado absoluto */
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
     color: white;
-    font-size: 1.5rem; /* Mensaje de carga más grande */
+    font-size: 1.5rem; /* Tamaño del texto del mensaje */
     text-align: center;
     padding: 20px;
-    background-color: rgba(0, 0, 0, 0.7); /* Fondo oscuro con transparencia para el mensaje */
+    background-color: rgba(0, 0, 0, 0.7); /* Fondo oscuro semitransparente */
     border-radius: 8px;
     z-index: 3; /* Asegura que esté por encima de todo */
 }
 
-/* Media Queries para responsividad */
+/* --- Media Queries para responsividad --- */
+/* Las media queries son excelentes y están bien implementadas para ajustar tamaños */
+
 @media (max-width: 992px) {
     .video-info h2 {
         font-size: 2.8rem;
@@ -142,7 +148,7 @@
 
 @media (max-width: 768px) {
     .video-section {
-        min-height: 60vh;
+        min-height: 60vh; /* Ajuste de altura para tablets */
         gap: 15px;
     }
     .video-info h2 {
@@ -157,13 +163,13 @@
         font-size: 1.6rem;
     }
     .video-info {
-        padding: 0 20px;
+        padding: 0 20px; /* Ajuste de padding para texto en tablets */
     }
 }
 
 @media (max-width: 480px) {
     .video-section {
-        min-height: 50vh;
+        min-height: 50vh; /* Ajuste de altura para móviles pequeños */
         gap: 10px;
     }
     .video-info h2 {
@@ -178,6 +184,6 @@
         font-size: 1.4rem;
     }
     .video-info {
-        padding: 0 15px;
+        padding: 0 15px; /* Ajuste de padding para texto en móviles pequeños */
     }
 }
