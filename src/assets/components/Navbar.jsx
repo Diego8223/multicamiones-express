@@ -1,7 +1,14 @@
 import React, { useState, useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import { Menu, X, Moon, Sun } from "lucide-react";
-import { FaFacebook, FaInstagram, FaTiktok } from "react-icons/fa";
+import {
+  FaBars,
+  FaTimes,
+  FaMoon,
+  FaSun,
+  FaFacebook,
+  FaInstagram,
+  FaTiktok,
+} from "react-icons/fa";
 import "./Navbar.css";
 import logo from "../fotos/logo.webp";
 
@@ -9,24 +16,25 @@ const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [isAuthenticated, setIsAuthenticated] = useState(false);
   const [darkMode, setDarkMode] = useState(() => {
-    // Leer preferencia del usuario desde localStorage o media query
-    return localStorage.getItem('darkMode') === 'true' || 
-           (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches);
+    return (
+      localStorage.getItem("darkMode") === "true" ||
+      (window.matchMedia &&
+        window.matchMedia("(prefers-color-scheme: dark)").matches)
+    );
   });
+
   const navigate = useNavigate();
 
-  // Efecto para modo oscuro persistente
   useEffect(() => {
     if (darkMode) {
       document.body.classList.add("dark-mode");
-      localStorage.setItem('darkMode', 'true');
+      localStorage.setItem("darkMode", "true");
     } else {
       document.body.classList.remove("dark-mode");
-      localStorage.setItem('darkMode', 'false');
+      localStorage.setItem("darkMode", "false");
     }
   }, [darkMode]);
 
-  // Verificar autenticación
   useEffect(() => {
     const checkAuth = () => {
       const user = localStorage.getItem("user");
@@ -56,24 +64,24 @@ const Navbar = () => {
   };
 
   const socialLinks = [
-    { 
-      icon: <FaFacebook size={24} />, 
-      label: "Facebook", 
+    {
+      icon: <FaFacebook size={24} />,
+      label: "Facebook",
       url: "https://www.facebook.com/MULTICAMIONESEXPRESS/",
-      color: "#1877F2" 
+      color: "#1877F2",
     },
-    { 
-      icon: <FaInstagram size={24} />, 
-      label: "Instagram", 
+    {
+      icon: <FaInstagram size={24} />,
+      label: "Instagram",
       url: "https://www.instagram.com/multicamionesexpresscol/",
-      color: "#E4405F" 
+      color: "#E4405F",
     },
-    { 
-      icon: <FaTiktok size={24} />, 
-      label: "TikTok", 
+    {
+      icon: <FaTiktok size={24} />,
+      label: "TikTok",
       url: "https://www.tiktok.com/@multicamionesexpr",
-      color: "#000000" 
-    }
+      color: "#000000",
+    },
   ];
 
   return (
@@ -81,17 +89,30 @@ const Navbar = () => {
       <div className="navbar-container">
         {/* Logo y marca */}
         <Link to="/" className="logo-container" onClick={handleLinkClick}>
-          <img src={logo} alt="Logo Multicamiones Express" className="logo" loading="lazy" />
+          <img
+            src={logo}
+            alt="Logo Multicamiones Express"
+            className="logo"
+            loading="lazy"
+          />
           <h1 className="brand-name">Multicamiones Express</h1>
         </Link>
 
         {/* Menú escritorio */}
         <div className="desktop-menu-wrapper">
           <div className="menu-links">
-            <Link to="/" className="menu-link">Inicio</Link>
-            <Link to="/about" className="menu-link">Quiénes Somos</Link>
-            <Link to="/camiones" className="menu-link">Camiones</Link>
-            <Link to="/carrocerias" className="menu-link">Carrocerías</Link>
+            <Link to="/" className="menu-link">
+              Inicio
+            </Link>
+            <Link to="/about" className="menu-link">
+              Quiénes Somos
+            </Link>
+            <Link to="/camiones" className="menu-link">
+              Camiones
+            </Link>
+            <Link to="/carrocerias" className="menu-link">
+              Carrocerías
+            </Link>
           </div>
 
           {/* Redes sociales en escritorio */}
@@ -104,12 +125,14 @@ const Navbar = () => {
                 rel="noopener noreferrer"
                 className={`social-link ${label.toLowerCase()}`}
                 aria-label={label}
-                style={{ 
-                  color: darkMode ? '#f0f0f0' : '#333',
-                  transition: 'color 0.3s ease'
+                style={{
+                  color: darkMode ? "#f0f0f0" : "#333",
+                  transition: "color 0.3s ease",
                 }}
-                onMouseEnter={(e) => e.currentTarget.style.color = color}
-                onMouseLeave={(e) => e.currentTarget.style.color = darkMode ? '#f0f0f0' : '#333'}
+                onMouseEnter={(e) => (e.currentTarget.style.color = color)}
+                onMouseLeave={(e) =>
+                  (e.currentTarget.style.color = darkMode ? "#f0f0f0" : "#333")
+                }
               >
                 {icon}
               </a>
@@ -122,7 +145,7 @@ const Navbar = () => {
             onClick={toggleDarkMode}
             aria-label={darkMode ? "Cambiar a modo claro" : "Cambiar a modo oscuro"}
           >
-            {darkMode ? <Sun size={24} /> : <Moon size={24} />}
+            {darkMode ? <FaSun size={24} /> : <FaMoon size={24} />}
           </button>
 
           {isAuthenticated && (
@@ -144,7 +167,7 @@ const Navbar = () => {
           aria-expanded={isOpen}
           aria-controls="mobile-menu"
         >
-          {isOpen ? <X size={28} /> : <Menu size={28} />}
+          {isOpen ? <FaTimes size={28} /> : <FaBars size={28} />}
         </button>
       </div>
 
@@ -155,10 +178,18 @@ const Navbar = () => {
         role="menu"
         aria-hidden={!isOpen}
       >
-        <Link to="/" className="mobile-link" onClick={handleLinkClick}>Inicio</Link>
-        <Link to="/about" className="mobile-link" onClick={handleLinkClick}>Quiénes Somos</Link>
-        <Link to="/camiones" className="mobile-link" onClick={handleLinkClick}>Camiones</Link>
-        <Link to="/carrocerias" className="mobile-link" onClick={handleLinkClick}>Carrocerías</Link>
+        <Link to="/" className="mobile-link" onClick={handleLinkClick}>
+          Inicio
+        </Link>
+        <Link to="/about" className="mobile-link" onClick={handleLinkClick}>
+          Quiénes Somos
+        </Link>
+        <Link to="/camiones" className="mobile-link" onClick={handleLinkClick}>
+          Camiones
+        </Link>
+        <Link to="/carrocerias" className="mobile-link" onClick={handleLinkClick}>
+          Carrocerías
+        </Link>
 
         {/* Redes sociales en móvil */}
         <div className="mobile-socials" aria-label="Redes sociales móviles">
@@ -170,12 +201,14 @@ const Navbar = () => {
               rel="noopener noreferrer"
               className={`social-link ${label.toLowerCase()}`}
               aria-label={label}
-              style={{ 
-                color: darkMode ? '#f0f0f0' : '#333',
-                transition: 'color 0.3s ease'
+              style={{
+                color: darkMode ? "#f0f0f0" : "#333",
+                transition: "color 0.3s ease",
               }}
-              onMouseEnter={(e) => e.currentTarget.style.color = color}
-              onMouseLeave={(e) => e.currentTarget.style.color = darkMode ? '#f0f0f0' : '#333'}
+              onMouseEnter={(e) => (e.currentTarget.style.color = color)}
+              onMouseLeave={(e) =>
+                (e.currentTarget.style.color = darkMode ? "#f0f0f0" : "#333")
+              }
             >
               {icon}
             </a>
@@ -190,11 +223,11 @@ const Navbar = () => {
         >
           {darkMode ? (
             <>
-              <Sun size={20} /> <span>Modo Claro</span>
+              <FaSun size={20} /> <span>Modo Claro</span>
             </>
           ) : (
             <>
-              <Moon size={20} /> <span>Modo Oscuro</span>
+              <FaMoon size={20} /> <span>Modo Oscuro</span>
             </>
           )}
         </button>

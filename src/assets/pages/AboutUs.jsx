@@ -1,25 +1,28 @@
-import React from 'react';
+import React, { useCallback, Suspense } from 'react';
 import { Container, Row, Col } from 'react-bootstrap';
 import { useNavigate } from 'react-router-dom';
-import {
-  FaTruck,
+import { 
+  FaTruck, 
   FaSearchDollar,
   FaShieldAlt,
   FaUsersCog,
   FaMapMarkerAlt,
   FaPhone,
-  FaEnvelope
-} from 'react-icons/fa';
-import { GiSteeringWheel } from 'react-icons/gi';
-import MapComponent from "/src/assets/components/MapComponent.jsx";
+  FaEnvelope 
+} from "react-icons/fa";  // Corregido: usar 'fa' en lugar de 'fa6'
+import { GiSteeringWheel } from "react-icons/gi";
+
+// Carga perezosa del componente del mapa
+const LazyMapComponent = React.lazy(() => import('/src/assets/components/MapComponent.jsx'));
+
 import './AboutUs.css';
 
-const AboutUs = () => {
+const AboutUs = React.memo(() => {
   const navigate = useNavigate();
 
-  const handleInventoryClick = () => {
+  const handleInventoryClick = useCallback(() => {
     navigate('/camiones');
-  };
+  }, [navigate]);
 
   const values = [
     {
@@ -64,21 +67,20 @@ const AboutUs = () => {
     }
   ];
 
-  // Configuración simplificada del mapa
   const mapConfig = {
     initialPosition: [6.2027037, -75.5833673],
-    zoomLevel: 15, // Zoom un poco más alejado
+    zoomLevel: 15,
     markerTitle: 'Multicamiones Express',
     popupContent: `
       <div style="padding: 8px; text-align: center;">
         <h3 style="font-size: 1.2rem; margin-bottom: 0.5rem; color: #0d6efd;">Multicamiones Express</h3>
         <p style="margin-bottom: 0.5rem;"><i class="fas fa-map-marker-alt"></i> Medellín, Colombia</p>
-        <a href="https://maps.google.com/?q=Carrera+50+2+Sur+189,+Medellín" target="_blank" style="color: #0d6efd; text-decoration: none;">
+        <a href="https://maps.google.com/?q=Carrera%2050%202%20Sur%20189,%20Medell%C3%ADn" target="_blank" style="color: #0d6efd; text-decoration: none;">
           Ver dirección completa
         </a>
       </div>
     `,
-    simpleMode: true // Nueva propiedad para modo simplificado
+    simpleMode: true
   };
 
   return (
@@ -123,20 +125,20 @@ const AboutUs = () => {
               <h4 className="location-title">
                 <FaMapMarkerAlt className="me-2" /> VISÍTANOS
               </h4>
-              
-              {/* Mapa simplificado */}
+
               <div className="map-wrapper mt-3" style={{ height: '250px', borderRadius: '8px', overflow: 'hidden' }}>
-                <MapComponent {...mapConfig} />
+                <Suspense fallback={<div>Cargando mapa...</div>}>
+                  <LazyMapComponent {...mapConfig} />
+                </Suspense>
               </div>
 
-              {/* Información de contacto reorganizada */}
               <div className="contact-info mt-4 text-center">
                 <p className="mb-2">
-                  <FaPhone className="me-2" /> 
+                  <FaPhone className="me-2" />
                   <a href="tel:+6041234567" className="text-decoration-none">(604) 123 4567</a>
                 </p>
                 <p className="mb-2">
-                  <FaEnvelope className="me-2" /> 
+                  <FaEnvelope className="me-2" />
                   <a href="mailto:contacto@multicamionesexpress.com" className="text-decoration-none">
                     contacto@multicamionesexpress.com
                   </a>
@@ -188,6 +190,6 @@ const AboutUs = () => {
       </Container>
     </section>
   );
-};
+});
 
 export default AboutUs;

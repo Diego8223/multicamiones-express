@@ -5,7 +5,6 @@ import reactHooks from 'eslint-plugin-react-hooks';
 import reactRefresh from 'eslint-plugin-react-refresh';
 
 export default [
-  // Configuración base para todos los archivos
   {
     ignores: [
       'dist/**',
@@ -16,10 +15,8 @@ export default [
     ]
   },
   
-  // Configuración JavaScript base
   js.configs.recommended,
   
-  // Configuración recomendada para React
   {
     ...reactRecommended,
     files: ['**/*.{js,jsx}'],
@@ -38,7 +35,6 @@ export default [
     }
   },
   
-  // React Hooks
   {
     files: ['**/*.{js,jsx}'],
     plugins: {
@@ -51,7 +47,6 @@ export default [
     }
   },
   
-  // React Refresh (para Vite)
   {
     files: ['**/*.{js,jsx}'],
     plugins: {
@@ -65,7 +60,6 @@ export default [
     }
   },
   
-  // Reglas personalizadas
   {
     files: ['**/*.{js,jsx}'],
     rules: {

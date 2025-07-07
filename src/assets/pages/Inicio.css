@@ -1,187 +1,183 @@
-/* Variables de color */
-:root {
-  --primary: #ff0000;
-  --primary-dark: #cc0000;
-  --dark: #222;
-  --light: #fff;
-  --gray: #f5f5f5;
-  --text: #333;
-  --text-light: #666;
-}
-
-/* Estilos base */
-* {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-}
-
-body {
-  font-family: 'Segoe UI', Roboto, sans-serif;
-  line-height: 1.6;
-  background: #f8f9fa;
-}
-
-/* Contenedor principal */
-.inicio-container {
-  max-width: 1200px;
-  margin: 2rem auto;
-  padding: 0 20px;
-}
-
-/* Sección de video - ESTILOS MODIFICADOS */
+/* Estilos para la sección de video */
 .video-section {
-  border-radius: 12px;
-  overflow: hidden;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-  background: var(--light);
-  margin-bottom: 2rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 0px; /* **Importante: Quitar padding para que el video use todo el ancho** */
+    background-color: #0d1a2d; /* Un fondo oscuro que contraste con el video */
+    min-height: 70vh; /* Haz que la sección sea al menos el 70% de la altura de la ventana */
+    gap: 20px;
+    text-align: center;
+    margin-top: 80px; /* Espacio para el navbar fijo */
+    overflow: hidden; /* Asegurar que no haya desbordamientos */
+    position: relative; /* Para posicionar elementos absolutamente dentro si es necesario */
 }
 
-.video-wrapper {
-  position: relative;
-  width: 100%;
-  height: 0;
-  padding-bottom: 56.25%; /* Relación de aspecto 16:9 */
-  background: #000;
-}
-
-/* Contenedor del reproductor YouTube */
-#youtube-player {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  border: none;
-}
-
-/* Información del video */
 .video-info {
-  padding: 1.5rem;
-  text-align: center;
+    max-width: 900px; /* Aumenta el ancho máximo para el texto */
+    color: #ffffff; /* Texto blanco para contraste con fondo oscuro */
+    padding: 0 25px; /* Padding horizontal para el texto */
+    z-index: 2; /* Asegura que el texto esté por encima del video */
+    position: relative; /* Para que z-index funcione */
+    text-shadow: 1px 1px 3px rgba(0,0,0,0.5); /* Sombra para mejor lectura sobre el video */
 }
 
 .video-info h2 {
-  color: var(--dark);
-  margin-bottom: 0.75rem;
-  font-size: 1.5rem;
-  font-weight: 600;
+    font-size: 3.5rem; /* Título más grande */
+    color: #e0e7ff; /* Un azul muy claro */
+    margin-bottom: 15px;
+    font-weight: 700;
 }
 
 .video-info p {
-  color: var(--text-light);
-  font-size: 1rem;
-  max-width: 800px;
-  margin: 0 auto;
+    font-size: 1.3rem; /* Descripción más grande */
+    line-height: 1.8;
+    margin-bottom: 25px;
 }
 
-/* Controles - ESTILOS MEJORADOS */
+/* Contenedor del reproductor de video para hacerlo responsive */
+.video-wrapper {
+    position: relative;
+    width: 100%; /* Ocupa el 100% del ancho del padre (.video-section) */
+    /* Para el video de fondo, usa una relación de aspecto que cubra. Por ejemplo, 16:9 es bueno */
+    padding-bottom: 56.25%; /* Relación de aspecto 16:9 (altura = 9/16 * ancho) */
+    height: 0;
+    overflow: hidden;
+    max-width: 1200px; /* Permite que el video sea más grande en pantallas grandes */
+    background-color: #000;
+    border-radius: 0px; /* Quitar bordes redondeados si es un video de fondo */
+    box-shadow: none; /* Quitar sombra si es un video de fondo */
+
+    /* **Posicionamiento absoluto para el video de fondo** */
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1; /* Asegura que el video esté detrás del texto y controles */
+}
+
+/* Estilos para el iframe del reproductor de YouTube */
+.video-wrapper iframe,
+.video-wrapper #youtube-player { 
+    position: absolute;
+    top: 50%; /* Centrar verticalmente */
+    left: 50%; /* Centrar horizontalmente */
+    transform: translate(-50%, -50%); /* Ajuste fino del centrado */
+    min-width: 100%; /* Asegura que cubra el ancho */
+    min-height: 100%; /* Asegura que cubra el alto */
+    width: 177.77vh; /* 16:9 = 100/56.25 = 1.7777, entonces ancho = 1.7777 * altura del viewport */
+    height: 56.25vw; /* altura = 0.5625 * ancho del viewport */
+    /* Asegura que el video siempre cubra el contenedor y no tenga barras negras */
+    max-width: none;
+    max-height: none;
+    pointer-events: none; /* Deshabilita interacciones con el iframe (clicks), manteniendo los controles personalizados */
+    border: 0;
+    object-fit: cover; /* Recorta si es necesario para cubrir el contenedor */
+}
+
+/* Estilos para los controles de video */
 .video-controls {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  padding: 1rem;
-  background: var(--gray);
-  gap: 1.5rem;
+    display: flex;
+    gap: 20px; /* Más espacio entre botones */
+    margin-top: 30px; /* Más margen superior */
+    z-index: 2; /* Asegura que los controles estén encima del video */
+    position: relative;
 }
 
 .control-btn {
-  background: rgba(0, 0, 0, 0.7);
-  border: none;
-  width: 48px;
-  height: 48px;
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  cursor: pointer;
-  transition: all 0.2s ease;
-  color: white;
+    background-color: rgba(30, 58, 138, 0.8); /* Azul oscuro con transparencia */
+    backdrop-filter: blur(5px); /* Efecto de desenfoque detrás del botón */
+    border: 2px solid #a8c1ff; /* Borde más claro */
+    color: white;
+    border-radius: 50%;
+    width: 60px; /* Botones más grandes */
+    height: 60px; /* Botones más grandes */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    font-size: 1.8rem; /* Iconos más grandes */
+    transition: background-color 0.3s ease, transform 0.2s ease, border-color 0.3s ease;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3); /* Sombra más pronunciada */
 }
 
 .control-btn:hover {
-  background: rgba(0, 0, 0, 0.9);
-  transform: scale(1.1);
+    background-color: rgba(59, 130, 246, 0.9); /* Azul más claro y menos transparente al pasar el ratón */
+    transform: translateY(-3px) scale(1.05); /* Efecto de "levantamiento" y ligero escalado */
+    border-color: #fff; /* Borde blanco al pasar el ratón */
 }
 
 .control-btn svg {
-  width: 24px;
-  height: 24px;
-  fill: currentColor;
+    fill: white; 
+    width: 28px; /* Iconos SVG más grandes */
+    height: 28px;
 }
 
-/* Indicadores */
-.video-indicators {
-  display: flex;
-  justify-content: center;
-  padding: 1rem;
-  background: var(--gray);
-  gap: 0.75rem;
+/* Mensaje de carga */
+.loading-message {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: white;
+    font-size: 1.5rem; /* Mensaje de carga más grande */
+    text-align: center;
+    padding: 20px;
+    background-color: rgba(0, 0, 0, 0.7); /* Fondo oscuro con transparencia para el mensaje */
+    border-radius: 8px;
+    z-index: 3; /* Asegura que esté por encima de todo */
 }
 
-.indicator-dot {
-  width: 12px;
-  height: 12px;
-  border-radius: 50%;
-  background: rgba(0, 0, 0, 0.2);
-  cursor: pointer;
-  border: none;
-  transition: all 0.3s ease;
-}
-
-.indicator-dot:hover {
-  background: rgba(0, 0, 0, 0.4);
-}
-
-.indicator-dot.active {
-  background: var(--primary);
-  transform: scale(1.2);
-}
-
-/* Responsive - AJUSTES MEJORADOS */
+/* Media Queries para responsividad */
 @media (max-width: 992px) {
-  .inicio-container {
-    max-width: 800px;
-  }
+    .video-info h2 {
+        font-size: 2.8rem;
+    }
+    .video-info p {
+        font-size: 1.2rem;
+    }
 }
 
 @media (max-width: 768px) {
-  .video-info h2 {
-    font-size: 1.3rem;
-  }
-  
-  .video-info p {
-    font-size: 0.9rem;
-  }
-  
-  .control-btn {
-    width: 42px;
-    height: 42px;
-  }
+    .video-section {
+        min-height: 60vh;
+        gap: 15px;
+    }
+    .video-info h2 {
+        font-size: 2.2rem;
+    }
+    .video-info p {
+        font-size: 1.1rem;
+    }
+    .control-btn {
+        width: 55px;
+        height: 55px;
+        font-size: 1.6rem;
+    }
+    .video-info {
+        padding: 0 20px;
+    }
 }
 
-@media (max-width: 576px) {
-  .inicio-container {
-    padding: 0 15px;
-  }
-  
-  .video-info {
-    padding: 1rem;
-  }
-  
-  .video-controls {
-    gap: 1rem;
-    padding: 0.75rem;
-  }
-  
-  .control-btn {
-    width: 36px;
-    height: 36px;
-  }
-  
-  .control-btn svg {
-    width: 20px;
-    height: 20px;
-  }
+@media (max-width: 480px) {
+    .video-section {
+        min-height: 50vh;
+        gap: 10px;
+    }
+    .video-info h2 {
+        font-size: 1.8rem;
+    }
+    .video-info p {
+        font-size: 0.95rem;
+    }
+    .control-btn {
+        width: 48px;
+        height: 48px;
+        font-size: 1.4rem;
+    }
+    .video-info {
+        padding: 0 15px;
+    }
 }

@@ -834,10 +834,10 @@ const Camiones = () => {
     const searchLower = searchTerm.toLowerCase();
     return camiones.filter(camion => {
       const matchesSearch = (
-        camion.marca.toLowerCase().includes(searchLower) ||
-        camion.modelo.toLowerCase().includes(searchLower) ||
-        camion.descripcion.toLowerCase().includes(searchLower) ||
-        camion.tipo.toLowerCase().includes(searchLower)
+        camion.marca?.toLowerCase().includes(searchLower) ||
+        camion.modelo?.toLowerCase().includes(searchLower) ||
+        camion.descripcion?.toLowerCase().includes(searchLower) ||
+        camion.tipo?.toLowerCase().includes(searchLower)
       );
 
       const matchesFilters = (
@@ -900,11 +900,12 @@ const Camiones = () => {
           </div>
         )}
         
-        <Link to={`/camiones/${camion.id}`} className="text-decoration-none text-dark">
+        <div className="card-content-wrapper">
           <div id={`carouselCamion${camion.id}`} className="carousel slide" data-bs-ride="carousel">
             <div className="carousel-inner" style={{ height: responsiveStyles.cardImageHeight }}>
               {camion.imagenes.map((img, index) => (
                 <div key={index} className={`carousel-item ${index === 0 ? 'active' : ''}`}>
+                  {/* Enlace restaurado con scroll al top */}
                   <Link 
                     to={`/camiones/${camion.id}`} 
                     onClick={() => window.scrollTo(0, 0)}
@@ -945,41 +946,47 @@ const Camiones = () => {
           </div>
           
           <div className="card-body">
-            <h3 className="card-title" style={{ fontSize: responsiveStyles.cardTitleSize }}>
-              {camion.marca} {camion.modelo} ({camion.año})
-            </h3>
-            <div className="d-flex justify-content-between align-items-center mb-3">
-              <span className="price" style={{ fontSize: responsiveStyles.priceSize }}>
-                {formatPrice(camion.precio)}
-              </span>
-              <span className="badge bg-dark" style={{ fontSize: responsiveStyles.badgeSize }}>
-                {camion.kilometraje.toLocaleString()} km
-              </span>
-            </div>
-            <p className="card-text text-muted mb-3" style={{ fontSize: responsiveStyles.cardTextSize }}>
-              {camion.descripcion}
-            </p>
-            
-            <div className="mb-3">
-              {[
-                { label: 'Tipo', value: camion.tipo },
-                { label: 'Ubicación', value: camion.ubicacion },
-                { label: 'Estado', value: camion.estado, badge: true }
-              ].map((item, idx) => (
-                <div key={idx} className="d-flex justify-content-between mb-2">
-                  <span style={{ fontSize: responsiveStyles.cardTextSize }}>{item.label}:</span>
-                  {item.badge ? (
-                    <span className={`badge bg-${camion.estado === 'Nuevo' ? 'success' : camion.estado === 'Vendido' ? 'danger' : 'warning'}`}>
-                      {item.value.toUpperCase()}
-                    </span>
-                  ) : (
-                    <strong style={{ fontSize: responsiveStyles.cardTextSize }}>{item.value}</strong>
-                  )}
-                </div>
-              ))}
-            </div>
+            <Link 
+              to={`/camiones/${camion.id}`} 
+              className="text-decoration-none text-dark"
+              onClick={() => window.scrollTo(0, 0)}
+            >
+              <h3 className="card-title" style={{ fontSize: responsiveStyles.cardTitleSize }}>
+                {camion.marca} {camion.modelo} ({camion.año})
+              </h3>
+              <div className="d-flex justify-content-between align-items-center mb-3">
+                <span className="price" style={{ fontSize: responsiveStyles.priceSize }}>
+                  {formatPrice(camion.precio)}
+                </span>
+                <span className="badge bg-dark" style={{ fontSize: responsiveStyles.badgeSize }}>
+                  {camion.kilometraje.toLocaleString()} km
+                </span>
+              </div>
+              <p className="card-text text-muted mb-3" style={{ fontSize: responsiveStyles.cardTextSize }}>
+                {camion.descripcion}
+              </p>
+              
+              <div className="mb-3">
+                {[
+                  { label: 'Tipo', value: camion.tipo },
+                  { label: 'Ubicación', value: camion.ubicacion },
+                  { label: 'Estado', value: camion.estado, badge: true }
+                ].map((item, idx) => (
+                  <div key={idx} className="d-flex justify-content-between mb-2">
+                    <span style={{ fontSize: responsiveStyles.cardTextSize }}>{item.label}:</span>
+                    {item.badge ? (
+                      <span className={`badge bg-${camion.estado === 'Nuevo' ? 'success' : camion.estado === 'Vendido' ? 'danger' : 'warning'}`}>
+                        {item.value.toUpperCase()}
+                      </span>
+                    ) : (
+                      <strong style={{ fontSize: responsiveStyles.cardTextSize }}>{item.value}</strong>
+                    )}
+                  </div>
+                ))}
+              </div>
+            </Link>
           </div>
-        </Link>
+        </div>
         
         <div className="card-footer bg-white border-top-0">
           <Link 

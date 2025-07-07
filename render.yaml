@@ -1,7 +1,6 @@
 services:
   - type: static
     name: multicamiones-express
-    region: sin
     buildCommand: |
       npm install
       npm run build
@@ -12,41 +11,45 @@ services:
         destination: /index.html
 
     headers:
-      # JavaScript y CSS
-      - path: /*.js
+      # Política de seguridad para permitir scripts externos
+      - path: /*
+        name: Content-Security-Policy
+        value: >
+          script-src 'self' 'unsafe-inline' 'unsafe-eval' https://www.youtube.com https://cdn.jsdelivr.net https://cdnjs.cloudflare.com https://unpkg.com;
+          object-src 'none';
+          base-uri 'self';
+
+      # HTML principal
+      - path: /*
+        contentType: text/html
+        cacheControl: public, max-age=3600
+
+      # Archivos JS
+      - path: /assets/*
         contentType: application/javascript
         cacheControl: public, max-age=31536000, immutable
 
+      # Archivos CSS
       - path: /*.css
         contentType: text/css
         cacheControl: public, max-age=31536000, immutable
 
-      # Imágenes
-      - path: /*.png
-        contentType: image/png
-        cacheControl: public, max-age=31536000, immutable
-
-      - path: /*.jpg
-        contentType: image/jpeg
-        cacheControl: public, max-age=31536000, immutable
-
-      - path: /*.jpeg
-        contentType: image/jpeg
-        cacheControl: public, max-age=31536000, immutable
-
+      # Imágenes WebP
       - path: /*.webp
         contentType: image/webp
         cacheControl: public, max-age=31536000, immutable
 
-      # Fuentes
-      - path: /*.woff2
-        contentType: font/woff2
+      # PNG
+      - path: /*.png
+        contentType: image/png
         cacheControl: public, max-age=31536000, immutable
 
-      - path: /*.ttf
-        contentType: font/ttf
+      # Íconos
+      - path: /*.ico
+        contentType: image/x-icon
         cacheControl: public, max-age=31536000, immutable
 
-      # Otros (fallback general)
-      - path: /*
-        cacheControl: public, max-age=3600
+      # Manifest
+      - path: /manifest.webmanifest
+        contentType: application/manifest+json
+        cacheControl: public, max-age=31536000, immutable
