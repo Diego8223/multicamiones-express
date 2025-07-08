@@ -67,7 +67,7 @@ const Camiones = () => {
   // Datos específicos para camiones
   const tiposCamion = useMemo(() => [
     'Chasis', 'Estaca', 'Furgón', 'Grúa', 'Tanque', 'Tractocamión', 
-    'Volqueta', 'Refrigerado', 'Cisterna', 'Cargo', 'Planchón ferretero', 'Trailer'
+    'Volqueta', 'Refrigerado', 'Cisterna', 'Cargo', 'Planchón ferretero', 'Trailer', 'Camióneta', 'Camión' ,'Camión Pesado'
   ], []);
 
   const marcas = useMemo(() => [
@@ -75,7 +75,7 @@ const Camiones = () => {
     'JAC', 'Volkswagen', 'Mercedes', 'Freightliner', 'Shacman', 'Volvo',
     'Ford', 'Dongfeng', 'Renault', 'Hyundai', 'Dodge', 'DAF', 'Kia',
     'Mack', 'Daihatsu', 'Mitsubishi', 'Toyota', 'Nissan', 'DMF', 'Iveco',
-    'Sinotruk', 'Otro'
+    'Sinotruk','Shineray', 'Volkswagen', 'Otro'
   ], []);
 
   const ciudadesColombia = useMemo(() => [
@@ -85,667 +85,645 @@ const Camiones = () => {
 
   const Estados = useMemo(() => ['Nuevo', 'Usado', 'Vendido'], []);
 
-  const camiones = useMemo(() => [
-    {
-      id: 1,
-      marca: 'FOTON MEDIANO',
-      tipo: 'camión',
-      modelo: 'BJ1078',
-      ubicacion: 'Medellín',
-      precio: 110000000,
-      kilometraje: 134434,
-      año: 2019,
-      estado: 'Usado',
-      destacado: true,
-      descripcion: 'Camión en excelente estado con mantenimiento al día, ideal para transporte pesado',
-      imagenes: [
-        '/img/fotonmediano.webp',
-        '/img/fotonmediano.webp',
-        '/img/fotonmediano.webp'
-      ],
-      video: 'https://www.youtube.com/watch?v=dQw4w9WgXcQ',
-      especificaciones: {
-        motor: '3.8L Disel',
-        transmision: '',
-        capacidad: '4100 kg Runt',
-        ejes: '3',
-        suspension: '',
-        extras: ''
-      }
-    },
-    {
-      id: 2,
-      marca: 'CHEVROLET NLR ',
-      tipo: 'Camión',
-      modelo: '',
-      ubicacion: 'MEDELLIN',
-      precio: 130000000,
-      kilometraje: 160486,
-      año: 2023,
-      estado: 'Usado',
-      destacado: true,
-      descripcion: 'Excelente opción para trabajo continuo,Versatilidad sin safrificar potencia',
-      imagenes: [
-        '/img/NLR3.webp',
-        '/img/NLR3.webp',
-        '/img/NLR3.webp'
-      ],
-      video: 'https://www.youtube.com/watch?v=9bZkp7q19f0',
-      especificaciones: {
-        motor: '3,0 L DIESEL',
-        capacidad: '1830 KG RUNT',
-        
-      }
-    },
-    {
-      id: 3,
-      marca: 'CHEVROLET NQR5 ',
-      tipo: 'camión',
-      modelo: '',
-      ubicacion: 'MEDELLIN',
-      precio: 160000000,
-      kilometraje: 218377,
-      año: 2018,
-      estado: 'Usado',
-      destacado: true,
-      descripcion: 'Respaldo Chevrrolet en Desempeño y Durabilidad',
-      imagenes: [
-        '/img/NQR5.webp',
-        '/img/NQR5.webp',
-        '/img/NQR5.webp'
-      ],
-      video: 'https://www.youtube.com/watch?v=9bZkp7q19f0',
-      especificaciones: {
-        motor: '3,0 L DIESEL',
-        capacidad: '4650 KG RUNT',
-        
-      }
-    },
-    {
-      id: 4,
-      marca: 'CHEVROLET NHR 3,0L MT',
-      tipo: 'Camión',
-      modelo: '',
-      ubicacion: 'MEDELLIN',
-      precio: 120000000,
-      kilometraje: 62750,
-      año: 2023,
-      estado: 'Usado',
-      destacado: true,
-      descripcion: 'Excelente opción para emprendedores o flotas urbanas.',
-      imagenes: [
-        '/img/NHR3.webp',
-        '/img/NHR3.webp',
-        '/img/NHR3.webp'
-      ],
-      video: 'https://www.youtube.com/watch?v=JGwWNGJdvx8',
-      especificaciones: {
-        motor: '3,0 L Diesel',
-        capacidad: '1,500 KG RUNT',
-       
-      }
-    },
-    {
-      id: 5,
-      marca: 'SHINERAY ',
-      tipo: 'VANS',
-      modelo: '',
-      ubicacion: 'MEDELLIN',
-      precio: 48000000,
-      kilometraje: 61431,
-      año: 2023,
-      estado: 'Usado',
-      destacado: true,
-      descripcion: 'Vehiculo compacto,eficiente y perfecta para negocios en movimiento',
-      imagenes: [
-        '/img/X30CARGO.webp',
-        '/img/X30CARGO.webp',
-        '/img/X30CARGO.webp'
-      ],
-      video: 'https://www.youtube.com/watch?v=JGwWNGJdvx8',
-      especificaciones: {
-        motor: '1,4L Gasolina',
-        transmision: 'Manual',
-        capacidad: '1,860 KG RUNT',
-        
-      }
-    },
-     {
-      id: 6,
-      marca: 'INTERNATIONAL | 7600',
-      tipo: 'Camión Pesado',
-      modelo: '',
-      ubicacion: 'MEDELLIN',
-      precio: 500000000,
-      kilometraje: 149512,
-      año: 2019,
-      estado: 'Usado',
-      destacado: true,
-      descripcion: 'Traccion 6*4 para maximo rendimiento oportunidad para fortalecer tu flota con respaldo',
-      imagenes: [
-        '/img/INTERNATIONAL.webp',
-        '/img/INTERNATIONAL.webp',
-        '/img/INTERNATIONAL.webp'
-      ],
-      video: 'https://www.youtube.com/watch?v=JGwWNGJdvx8',
-      especificaciones: {
-        motor: '10,8 L Diesel',
-        transmision: 'Manual',
-        capacidad: '15,900 KG RUNT',
-        
-      }
-    },
-    {
-      id: 7,
-      marca: 'CHEVROLET NHR 3.0L MT',
-      tipo: 'Camión',
-      modelo: '',
-      ubicacion: 'MEDELLIN',
-      precio: 90000000,
-      kilometraje: 273471,
-      año: 2016,
-      estado: 'Usado',
-      destacado: true,
-      descripcion: 'Excelente alternativa para emprendedores y empresas',
-      imagenes: [
-        '/img/NHR2016.webp',
-        '/img/NHR2016.webp',
-        '/img/NHR2016.webp'
-      ],
-      video: 'https://www.youtube.com/watch?v=JGwWNGJdvx8',
-      especificaciones: {
-        motor: '3,0 L Diesel',
-        transmision: 'Manual',
-        capacidad: '1,700 KG RUNT',
-        
-      }
-    },
-    {
-      id: 8,
-      marca: 'JAC',
-      tipo: 'Camión',
-      modelo: 'HFC1171P3K3A53F',
-      ubicacion: 'MEDELLIN',
-      precio: 270000000,
-      kilometraje: 107699,
-      año: 2019,
-      estado: 'Usado',
-      destacado: true,
-      descripcion: 'Robusto,versátil y con la potencia que exige el trabajo pesado',
-      imagenes: [
-        '/img/CamionJac.webp',
-        '/img/CamionJac.webp',
-        '/img/CamionJac.webp'
-      ],
-      video: 'https://www.youtube.com/watch?v=JGwWNGJdvx8',
-      especificaciones: {
-        motor: '6,7 L Diesel',
-        transmision: 'Manual',
-        capacidad: '17,000 KG RUNT',
-        
-      }
-    },
-     {
-      id: 9,
-      marca: 'HINO',
-      tipo: 'Camión',
-      modelo: 'XZU423L-HKMRD3',
-      ubicacion: 'MEDELLIN',
-      precio: 90000000,
-      kilometraje: 14733,
-      año: 2010,
-      estado: 'Usado',
-      destacado: true,
-      descripcion: 'Diseño compacto con fuerza profesional,Ideal para distribucion urbana o regional',
-      imagenes: [
-        '/img/Hino.webp',
-        '/img/Hino.webp',
-        '/img/Hino.webp'
-      ],
-      video: 'https://www.youtube.com/watch?v=JGwWNGJdvx8',
-      especificaciones: {
-        motor: '4,0 L Diesel',
-        transmision: 'Manual',
-        capacidad: '5,110 KG RUNT',
-        
-      }
-    },
-    {
-      id: 10,
-      marca: 'TOYOTA HILUX',
-      tipo: 'Camióneta',
-      modelo: '',
-      ubicacion: 'MEDELLIN',
-      precio: 40000000,
-      kilometraje: 573522,
-      año: 2001,
-      estado: 'Usado',
-      destacado: true,
-      descripcion: 'Resistencia comprobada por generaciones',
-      imagenes: [
-        '/img/Hilux.webp',
-        '/img/Hilux.webp',
-        '/img/Hilux.webp'
-      ],
-      video: 'https://www.youtube.com/watch?v=JGwWNGJdvx8',
-      especificaciones: {
-        motor: '2,4 L Gasolina',
-        transmision: 'Manual',
-        capacidad: '1,000 KG RUNT',
-        
-      }
-    },
-    {
-      id: 11,
-      marca: 'VOLKSWAGEN',
-      tipo: 'Camión',
-      modelo: '9150OD',
-      ubicacion: 'MEDELLIN',
-      precio: 75000000,
-      kilometraje: 399280,
-      año: 2007,
-      estado: 'Usado',
-      destacado: true,
-      descripcion: 'Versatilidad para múltiples aplicaciones comerciales',
-      imagenes: [
-        '/img/VOLKSWAGEN.webp',
-        '/img/VOLKSWAGEN.webp',
-        '/img/VOLKSWAGEN.webp'
-      ],
-      video: 'https://www.youtube.com/watch?v=JGwWNGJdvx8',
-      especificaciones: {
-        motor: '4,3 L Diesel',
-        transmision: 'Manual',
-        capacidad: '3,450 KG RUNT',
-        
-      }
-    },
-     {
-      id: 12,
-      marca: 'TOYOTA HINO',
-      tipo: 'Camión',
-      modelo: 'FM8JRTA',
-      ubicacion: 'MEDELLIN',
-      precio: 385000000,
-      kilometraje: 321085,
-      año: 2020,
-      estado: 'Usado',
-      destacado: true,
-      descripcion: 'Este modelo ofrece eficiencia operativa.',
-      imagenes: [
-        '/img/CamionHino.webp',
-        '/img/CamionHino.webp',
-        '/img/CamionHino.webp'
-      ],
-      video: 'https://www.youtube.com/watch?v=JGwWNGJdvx8',
-      especificaciones: {
-        motor: '7,7 L Diesel',
-        transmision: 'Manual',
-        capacidad: '17,000 KG RUNT',
-        
-      }
-    },
-     {
-      id: 13,
-      marca: 'CHEVROLET',
-      tipo: 'Camión',
-      modelo: '',
-      ubicacion: 'MEDELLIN',
-      precio: 120000000,
-      kilometraje: 74955,
-      año: 2022,
-      estado: 'Usado',
-      destacado: true,
-      descripcion: 'Perfecto para ciudad y trayectos frecuentes.',
-      imagenes: [
-        '/img/ChevroletNHR2022.webp',
-        '/img/ChevroletNHR2022.webp',
-        '/img/ChevroletNHR2022.webp'
-      ],
-      video: 'https://www.youtube.com/watch?v=JGwWNGJdvx8',
-      especificaciones: {
-        motor: '3,0 L Diesel',
-        transmision: 'Manual',
-        capacidad: '1,758 KG RUNT',
-        
-      }
-    },
-    {
-      id: 14,
-      marca: 'CHEVROLET NHR',
-      tipo: 'Camión',
-      modelo: '',
-      ubicacion: 'MEDELLIN',
-      precio: 115000000,
-      kilometraje: 98159,
-      año: 2021,
-      estado: 'Usado',
-      destacado: true,
-      descripcion: 'Respaldo Chevrolet bajo mantenimiento.',
-      imagenes: [
-        '/img/ChevroletNHR2021.webp',
-        '/img/ChevroletNHR2021.webp',
-        '/img/ChevroletNHR2021.webp'
-      ],
-      video: 'https://www.youtube.com/watch?v=JGwWNGJdvx8',
-      especificaciones: {
-        motor: '2,999 cc Diesel',
-        transmision: 'Manual',
-        capacidad: '1,758 KG RUNT',
-        
-      }
-    },
-    {
-      id: 15,
-      marca: 'CHEVROLET NLR',
-      tipo: 'Camión',
-      modelo: '',
-      ubicacion: 'MEDELLIN',
-      precio: 129900000,
-      kilometraje: 112101,
-      año: 2023,
-      estado: 'Usado',
-      destacado: true,
-      descripcion: 'Linea moderna,Respaldo Chevrolet.',
-      imagenes: [
-        '/img/ChevroletNLR2023.webp',
-        '/img/ChevroletNLR2023.webp',
-        '/img/ChevroletNLR2023.webp'
-      ],
-      video: 'https://www.youtube.com/watch?v=JGwWNGJdvx8',
-      especificaciones: {
-        motor: '2,999 cc Diesel',
-        transmision: 'Manual',
-        capacidad: '1,650 KG RUNT',
-        
-      }
-    },
-     {
-      id: 16,
-      marca: 'NISSAN CABSTAR',
-      tipo: 'Camión',
-      modelo: '',
-      ubicacion: 'MEDELLIN',
-      precio: 63000000,
-      kilometraje: 176611,
-      año: 2013,
-      estado: 'Usado',
-      destacado: true,
-      descripcion: 'Marca de respaldo y confianza en el mercado.',
-      imagenes: [
-        '/img/Nissan2013.webp',
-        '/img/Nissan2013.webp',
-        '/img/Nissan2013.webp'
-      ],
-      video: 'https://www.youtube.com/watch?v=JGwWNGJdvx8',
-      especificaciones: {
-        motor: '2,999 cc Diesel',
-        transmision: 'Manual',
-        capacidad: '2,540 KG RUNT',
-        
-      }
-    },
-    {
-      id: 17,
-      marca: 'TOYOTA HYLUX',
-      tipo: 'Camióneta',
-      modelo: '',
-      ubicacion: 'MEDELLIN',
-      precio: 78000000,
-      kilometraje: 146020,
-      año: 2014,
-      estado: 'Usado',
-      destacado: true,
-      descripcion: 'Robusta, confiable y lista para cualquier terreno.',
-      imagenes: [
-        '/img/TOYOTAHILUX2014.webp',
-        '/img/TOYOTAHILUX2014.webp',
-        '/img/TOYOTAHILUX2014.webp'
-      ],
-      video: 'https://www.youtube.com/watch?v=JGwWNGJdvx8',
-      especificaciones: {
-        motor: '2,694 cc Gasolina',
-        transmision: 'Manual',
-        capacidad: '1,000 KG RUNT',
-        
-      }
-    },
-    {
-      id: 18,
-      marca: 'JAC',
-      tipo: 'Camión',
-      modelo: '',
-      ubicacion: 'MEDELLIN',
-      precio: 88000000,
-      kilometraje: 119766,
-      año: 2022,
-      estado: 'Usado',
-      destacado: true,
-      descripcion: 'Tecnologia actual y alto valor de reventa.',
-      imagenes: [
-        '/img/CamionJac2022.webp',
-        '/img/CamionJac2022.webp',
-        '/img/CamionJac2022.webp'
-      ],
-      video: 'https://www.youtube.com/watch?v=JGwWNGJdvx8',
-      especificaciones: {
-        motor: '2,746 cc Diesel',
-        transmision: 'Manual',
-        capacidad: '5,600 KG RUNT',
-        
-      }
-    },
-    {
-      id: 19,
-      marca: 'FOTON',
-      tipo: 'Camión',
-      modelo: '',
-      ubicacion: 'MEDELLIN',
-      precio: 145000000,
-      kilometraje: 114794,
-      año: 2021,
-      estado: 'Usado',
-      destacado: true,
-      descripcion: 'Soporte y buen desempeño en el mercado nacional.',
-      imagenes: [
-        '/img/FOTON2021.webp',
-        '/img/FOTON2021.webp',
-        '/img/FOTON2021.webp'
-      ],
-      video: 'https://www.youtube.com/watch?v=JGwWNGJdvx8',
-      especificaciones: {
-        motor: '3,760 cc Diesel',
-        transmision: 'Manual',
-        capacidad: '5,160 KG RUNT',
-        
-      }
-    },
-     {
-      id: 20,
-      marca: 'HYUNDAI',
-      tipo: 'Camión',
-      modelo: 'HD 78',
-      ubicacion: 'MEDELLIN',
-      precio: 125000000,
-      kilometraje: 173889,
-      año: 2015,
-      estado: 'Usado',
-      destacado: true,
-      descripcion: 'Reconocido por su resistencia en topografias complejas.',
-      imagenes: [
-        '/img/HYUNDAI2015.webp',
-        '/img/HYUNDAI2015.webp',
-        '/img/HYUNDAI2015.webp'
-      ],
-      video: 'https://www.youtube.com/watch?v=JGwWNGJdvx8',
-      especificaciones: {
-        motor: '3,9L Diesel',
-        transmision: 'MECANICA',
-        capacidad: '4,100 KG RUNT',
-        
-      }
-    },
-    
-     {
-      id: 21,
-      marca: 'FOTON',
-      tipo: 'Camión',
-      modelo: 'BJ1041V9AD4-FB',
-      ubicacion: 'MEDELLIN',
-      precio: 74000000,
-      kilometraje: 92493,
-      año: 2019,
-      estado: 'Usado',
-      destacado: true,
-      descripcion: 'Muy bien conservado y listo para seguir produciendo.',
-      imagenes: [
-        '/img/FOTON2019.webp',
-        '/img/FOTON2019.webp',
-        '/img/FOTON2019.webp'
-      ],
-      video: 'https://www.youtube.com/watch?v=JGwWNGJdvx8',
-      especificaciones: {
-        motor: '2,776 CC Diesel',
-        transmision: 'MANUAL',
-        capacidad: '2,500 KG RUNT',
-        
-      }
-      
-    },
-     
-    
-     {
-      id: 22,
-      marca: 'TOYOTA HYLUX',
-      tipo: 'Camióneta',
-      modelo: '',
-      ubicacion: 'MEDELLIN',
-      precio: 28000000,
-      kilometraje: 302358,
-      año: 1998,
-      estado: 'Usado',
-      destacado: true,
-      descripcion: 'Rodada,pero firme y con espiritud de trabajo.',
-      imagenes: [
-        '/img/CAMIONETATOYOTAHILUX.webp',
-        '/img/CAMIONETATOYOTAHILUX.webp',
-        '/img/CAMIONETATOYOTAHILUX.webp'
-      ],
-      video: 'https://www.youtube.com/watch?v=JGwWNGJdvx8',
-      especificaciones: {
-        motor: '2,400 CC Gasolina + Gas',
-        transmision: 'MANUAL',
-        capacidad: 'Para 5 pasajeros',
-        
-      }
-      
-    },
-    {
-      id: 23,
-      marca: 'MITSUBISHI FUSO',
-      tipo: 'Camión',
-      modelo: '',
-      ubicacion: 'MEDELLIN',
-      precio: 127000000,
-      kilometraje: 269867,
-      año: 2017,
-      estado: 'Usado',
-      destacado: true,
-      descripcion: 'Buen desempeño mecanico y lista para seguir riendiendo.',
-      imagenes: [
-        '/img/MITSUBISHIFUSO.webp',
-        '/img/MITSUBISHIFUSO.webp',
-        '/img/MITSUBISHIFUSO.webp'
-      ],
-      video: 'https://www.youtube.com/watch?v=JGwWNGJdvx8',
-      especificaciones: {
-        motor: '3,9 L Diesel',
-        transmision: 'MANUAL',
-        capacidad: '9,000 KG RUNT',
-        
-      }
-      
-    },
+  // Función para normalizar valores (eliminar espacios y convertir a minúsculas)
+  const normalizeValue = useCallback((value) => {
+    return value ? value.trim().toLowerCase() : '';
+  }, []);
 
-     {
-      id: 24,
-      marca: 'JAC',
-      tipo: 'Camión',
-      modelo: '',
-      ubicacion: 'MEDELLIN',
-      precio: 48000000,
-      kilometraje: 242934,
-      año: 2012,
-      estado: 'Usado',
-      destacado: true,
-      descripcion: 'Buen estado general .',
-      imagenes: [
-        '/img/CAMIONJAC2012.webp',
-        '/img/CAMIONJAC2012.webp',
-        '/img/CAMIONJAC2012.webp'
-      ],
-      video: 'https://www.youtube.com/watch?v=JGwWNGJdvx8',
-      especificaciones: {
-        motor: '2,771 Diesel',
-        transmision: 'MANUAL',
-        capacidad: '3,000 KG RUNT',
-          }
-
-    },
-
-       {
-      id: 25,
-      marca: 'VOLVO',
-      tipo: 'Camión',
-      modelo: 'SISU RR143',
-      ubicacion: 'MEDELLIN',
-      precio: 125000000,
-      kilometraje: 0,
-      año: 1979,
-      estado: 'Usado',
-      destacado: true,
-      descripcion: 'Chasis de alta resistencia,mecanica confiable.',
-      imagenes: [
-        '/img/VOLVO1979.webp',
-        '/img/VOLVO1979.webp',
-        '/img/VOLVO1979.webp'
-      ],
-      video: 'https://www.youtube.com/watch?v=JGwWNGJdvx8',
-      especificaciones: {
-        motor: '9,000 CC Diesel',
-        transmision: 'MANUAL',
-        capacidad: '20,000 KG RUNT',
-        
-      }
-
-    },
+  const camiones = useMemo(() => {
+    return [
       {
-      id: 26,
-      marca: 'HINO 300',
-      tipo: 'Camión',
-      modelo: 'XZU423L-HKMR',
-      ubicacion: 'MEDELLIN',
-      precio: 120000000,
-      kilometraje: 452011,
-      año: 2012,
-      estado: 'Usado',
-      destacado: true,
-      descripcion: 'Reconocido por su bajo costo de operacion.',
-      imagenes: [
-        '/img/HINO3002012.webp',
-        '/img/HINO3002012.webp',
-        '/img/HINO3002012.webp'
-      ],
-      video: 'https://www.youtube.com/watch?v=JGwWNGJdvx8',
-      especificaciones: {
-        motor: '4,009 Diesel',
-        transmision: 'MANUAL',
-        capacidad: 'Ideal para reparto',
+        id: 1,
+        marca: 'Fotón',
+        tipo: 'Cargo',
+        modelo: 'BJ1078',
+        ubicacion: 'Medellín',
+        precio: 110000000,
+        kilometraje: 134434,
+        año: 2019,
+        estado: 'Usado',
+        destacado: true,
+        descripcion: 'Camión en excelente estado con mantenimiento al día, ideal para transporte pesado',
+        imagenes: [
+          '/img/fotonmediano.webp',
+          '/img/fotonmediano.webp',
+          '/img/fotonmediano.webp'
+        ],
+        video: 'https://www.youtube.com/watch?v=dQw4w9WgXcQ',
+        especificaciones: {
+          motor: '3.8L Disel',
+          transmision: '',
+          capacidad: '4100 kg Runt',
+          ejes: '3',
+          suspension: '',
+          extras: ''
+        }
+      },
+      {
+        id: 2,
+        marca: 'Chevrolet',
+        tipo: 'Camión',
+        modelo: 'NLR',
+        ubicacion: 'Medellín',
+        precio: 130000000,
+        kilometraje: 160486,
+        año: 2023,
+        estado: 'Usado',
+        destacado: true,
+        descripcion: 'Excelente opción para trabajo continuo,Versatilidad sin safrificar potencia',
+        imagenes: [
+          '/img/NLR3.webp',
+          '/img/NLR3.webp',
+          '/img/NLR3.webp'
+        ],
+        video: 'https://www.youtube.com/watch?v=9bZkp7q19f0',
+        especificaciones: {
+          motor: '3,0 L DIESEL',
+          capacidad: '1830 KG RUNT',
+        }
+      },
+      {
+        id: 3,
+        marca: 'Chevrolet',
+        tipo: 'Camión',
+        modelo: 'NQR5',
+        ubicacion: 'Medellín',
+        precio: 160000000,
+        kilometraje: 218377,
+        año: 2018,
+        estado: 'Usado',
+        destacado: true,
+        descripcion: 'Respaldo Chevrrolet en Desempeño y Durabilidad',
+        imagenes: [
+          '/img/NQR5.webp',
+          '/img/NQR5.webp',
+          '/img/NQR5.webp'
+        ],
+        video: 'https://www.youtube.com/watch?v=9bZkp7q19f0',
+        especificaciones: {
+          motor: '3,0 L DIESEL',
+          capacidad: '4650 KG RUNT',
+        }
+      },
+      {
+        id: 4,
+        marca: 'Chevrolet',
+        tipo: 'Camión',
+        modelo: 'NHR 3,0L MT',
+        ubicacion: 'Medellín',
+        precio: 120000000,
+        kilometraje: 62750,
+        año: 2023,
+        estado: 'Usado',
+        destacado: true,
+        descripcion: 'Excelente opción para emprendedores o flotas urbanas.',
+        imagenes: [
+          '/img/NHR3.webp',
+          '/img/NHR3.webp',
+          '/img/NHR3.webp'
+        ],
+        video: 'https://www.youtube.com/watch?v=JGwWNGJdvx8',
+        especificaciones: {
+          motor: '3,0 L Diesel',
+          capacidad: '1,500 KG RUNT',
+        }
+      },
+      {
+        id: 5,
+        marca: 'Shineray',
+        tipo: 'Camióneta',
+        modelo: 'X30',
+        ubicacion: 'Medellín',
+        precio: 48000000,
+        kilometraje: 61431,
+        año: 2023,
+        estado: 'Vendido',
+        destacado: true,
+        descripcion: 'Vehiculo compacto,eficiente y perfecta para negocios en movimiento',
+        imagenes: [
+          '/img/X30CARGO.webp',
+          '/img/X30CARGO.webp',
+          '/img/X30CARGO.webp'
+        ],
+        video: 'https://www.youtube.com/watch?v=JGwWNGJdvx8',
+        especificaciones: {
+          motor: '1,4L Gasolina',
+          transmision: 'Manual',
+          capacidad: '1,860 KG RUNT',
+        }
+      },
+      {
+        id: 6,
+        marca: 'International',
+        tipo: 'Camión Pesado',
+        modelo: '7600',
+        ubicacion: 'Medellín',
+        precio: 500000000,
+        kilometraje: 149512,
+        año: 2019,
+        estado: 'Usado',
+        destacado: true,
+        descripcion: 'Traccion 6*4 para maximo rendimiento oportunidad para fortalecer tu flota con respaldo',
+        imagenes: [
+          '/img/INTERNATIONAL.webp',
+          '/img/INTERNATIONAL.webp',
+          '/img/INTERNATIONAL.webp'
+        ],
+        video: 'https://www.youtube.com/watch?v=JGwWNGJdvx8',
+        especificaciones: {
+          motor: '10,8 L Diesel',
+          transmision: 'Manual',
+          capacidad: '15,900 KG RUNT',
+        }
+      },
+      {
+        id: 7,
+        marca: 'Chevrolet',
+        tipo: 'Camión',
+        modelo: 'NHR 3.0L MT',
+        ubicacion: 'Medellín',
+        precio: 90000000,
+        kilometraje: 273471,
+        año: 2016,
+        estado: 'Usado',
+        destacado: true,
+        descripcion: 'Excelente alternativa para emprendedores y empresas',
+        imagenes: [
+          '/img/NHR2016.webp',
+          '/img/NHR2016.webp',
+          '/img/NHR2016.webp'
+        ],
+        video: 'https://www.youtube.com/watch?v=JGwWNGJdvx8',
+        especificaciones: {
+          motor: '3,0 L Diesel',
+          transmision: 'Manual',
+          capacidad: '1,700 KG RUNT',
+        }
+      },
+      {
+        id: 8,
+        marca: 'JAC',
+        tipo: 'Camión',
+        modelo: 'HFC1171P3K3A53F',
+        ubicacion: 'Medellín',
+        precio: 270000000,
+        kilometraje: 107699,
+        año: 2019,
+        estado: 'Usado',
+        destacado: true,
+        descripcion: 'Robusto,versátil y con la potencia que exige el trabajo pesado',
+        imagenes: [
+          '/img/CamionJac.webp',
+          '/img/CamionJac.webp',
+          '/img/CamionJac.webp'
+        ],
+        video: 'https://www.youtube.com/watch?v=JGwWNGJdvx8',
+        especificaciones: {
+          motor: '6,7 L Diesel',
+          transmision: 'Manual',
+          capacidad: '17,000 KG RUNT',
+        }
+      },
+      {
+        id: 9,
+        marca: 'Hino',
+        tipo: 'Camión',
+        modelo: 'XZU423L-HKMRD3',
+        ubicacion: 'Medellín',
+        precio: 90000000,
+        kilometraje: 14733,
+        año: 2010,
+        estado: 'Vendido',
+        destacado: true,
+        descripcion: 'Diseño compacto con fuerza profesional,Ideal para distribucion urbana o regional',
+        imagenes: [
+          '/img/Hino.webp',
+          '/img/Hino.webp',
+          '/img/Hino.webp'
+        ],
+        video: 'https://www.youtube.com/watch?v=JGwWNGJdvx8',
+        especificaciones: {
+          motor: '4,0 L Diesel',
+          transmision: 'Manual',
+          capacidad: '5,110 KG RUNT',
+        }
+      },
+      {
+        id: 10,
+        marca: 'Toyota',
+        tipo: 'Camióneta',
+        modelo: 'Hilux',
+        ubicacion: 'Medellín',
+        precio: 40000000,
+        kilometraje: 573522,
+        año: 2001,
+        estado: 'Usado',
+        destacado: true,
+        descripcion: 'Resistencia comprobada por generaciones',
+        imagenes: [
+          '/img/Hilux.webp',
+          '/img/Hilux.webp',
+          '/img/Hilux.webp'
+        ],
+        video: 'https://www.youtube.com/watch?v=JGwWNGJdvx8',
+        especificaciones: {
+          motor: '2,4 L Gasolina',
+          transmision: 'Manual',
+          capacidad: '1,000 KG RUNT',
+        }
+      },
+      {
+        id: 11,
+        marca: 'Volkswagen',
+        tipo: 'Camión',
+        modelo: '9150OD',
+        ubicacion: 'Medellín',
+        precio: 75000000,
+        kilometraje: 399280,
+        año: 2007,
+        estado: 'Usado',
+        destacado: true,
+        descripcion: 'Versatilidad para múltiples aplicaciones comerciales',
+        imagenes: [
+          '/img/VOLKSWAGEN.webp',
+          '/img/VOLKSWAGEN.webp',
+          '/img/VOLKSWAGEN.webp'
+        ],
+        video: 'https://www.youtube.com/watch?v=JGwWNGJdvx8',
+        especificaciones: {
+          motor: '4,3 L Diesel',
+          transmision: 'Manual',
+          capacidad: '3,450 KG RUNT',
+        }
+      },
+      {
+        id: 12,
+        marca: 'Toyota Hino',
+        tipo: 'Camión',
+        modelo: 'FM8JRTA',
+        ubicacion: 'Medellín',
+        precio: 385000000,
+        kilometraje: 321085,
+        año: 2020,
+        estado: 'Usado',
+        destacado: true,
+        descripcion: 'Este modelo ofrece eficiencia operativa.',
+        imagenes: [
+          '/img/CamionHino.webp',
+          '/img/CamionHino.webp',
+          '/img/CamionHino.webp'
+        ],
+        video: 'https://www.youtube.com/watch?v=JGwWNGJdvx8',
+        especificaciones: {
+          motor: '7,7 L Diesel',
+          transmision: 'Manual',
+          capacidad: '17,000 KG RUNT',
+        }
+      },
+      {
+        id: 13,
+        marca: 'Chevrolet',
+        tipo: 'Camión',
+        modelo: 'NHR',
+        ubicacion: 'Medellín',
+        precio: 120000000,
+        kilometraje: 74955,
+        año: 2022,
+        estado: 'Usado',
+        destacado: true,
+        descripcion: 'Perfecto para ciudad y trayectos frecuentes.',
+        imagenes: [
+          '/img/ChevroletNHR2022.webp',
+          '/img/ChevroletNHR2022.webp',
+          '/img/ChevroletNHR2022.webp'
+        ],
+        video: 'https://www.youtube.com/watch?v=JGwWNGJdvx8',
+        especificaciones: {
+          motor: '3,0 L Diesel',
+          transmision: 'Manual',
+          capacidad: '1,758 KG RUNT',
+        }
+      },
+      {
+        id: 14,
+        marca: 'Chevrolet',
+        tipo: 'Camión',
+        modelo: 'NHR',
+        ubicacion: 'Medellín',
+        precio: 115000000,
+        kilometraje: 98159,
+        año: 2021,
+        estado: 'Usado',
+        destacado: true,
+        descripcion: 'Respaldo Chevrolet bajo mantenimiento.',
+        imagenes: [
+          '/img/ChevroletNHR2021.webp',
+          '/img/ChevroletNHR2021.webp',
+          '/img/ChevroletNHR2021.webp'
+        ],
+        video: 'https://www.youtube.com/watch?v=JGwWNGJdvx8',
+        especificaciones: {
+          motor: '2,999 cc Diesel',
+          transmision: 'Manual',
+          capacidad: '1,758 KG RUNT',
+        }
+      },
+      {
+        id: 15,
+        marca: 'Chevrolet',
+        tipo: 'Camión',
+        modelo: 'NLR',
+        ubicacion: 'Medellín',
+        precio: 129900000,
+        kilometraje: 112101,
+        año: 2023,
+        estado: 'Usado',
+        destacado: true,
+        descripcion: 'Linea moderna,Respaldo Chevrolet.',
+        imagenes: [
+          '/img/ChevroletNLR2023.webp',
+          '/img/ChevroletNLR2023.webp',
+          '/img/ChevroletNLR2023.webp'
+        ],
+        video: 'https://www.youtube.com/watch?v=JGwWNGJdvx8',
+        especificaciones: {
+          motor: '2,999 cc Diesel',
+          transmision: 'Manual',
+          capacidad: '1,650 KG RUNT',
+        }
+      },
+      {
+        id: 16,
+        marca: 'Nissan',
+        tipo: 'Camión',
+        modelo: 'Cabstar',
+        ubicacion: 'Medellín',
+        precio: 63000000,
+        kilometraje: 176611,
+        año: 2013,
+        estado: 'Usado',
+        destacado: true,
+        descripcion: 'Marca de respaldo y confianza en el mercado.',
+        imagenes: [
+          '/img/Nissan2013.webp',
+          '/img/Nissan2013.webp',
+          '/img/Nissan2013.webp'
+        ],
+        video: 'https://www.youtube.com/watch?v=JGwWNGJdvx8',
+        especificaciones: {
+          motor: '2,999 cc Diesel',
+          transmision: 'Manual',
+          capacidad: '2,540 KG RUNT',
+        }
+      },
+      {
+        id: 17,
+        marca: 'Toyota',
+        tipo: 'Camióneta',
+        modelo: 'Hilux',
+        ubicacion: 'Medellín',
+        precio: 78000000,
+        kilometraje: 146020,
+        año: 2014,
+        estado: 'Vendido',
+        destacado: true,
+        descripcion: 'Robusta, confiable y lista para cualquier terreno.',
+        imagenes: [
+          '/img/TOYOTAHILUX2014.webp',
+          '/img/TOYOTAHILUX2014.webp',
+          '/img/TOYOTAHILUX2014.webp'
+        ],
+        video: 'https://www.youtube.com/watch?v=JGwWNGJdvx8',
+        especificaciones: {
+          motor: '2,694 cc Gasolina',
+          transmision: 'Manual',
+          capacidad: '1,000 KG RUNT',
+        }
+      },
+      {
+        id: 18,
+        marca: 'JAC',
+        tipo: 'Camión',
+        modelo: '',
+        ubicacion: 'Medellín',
+        precio: 88000000,
+        kilometraje: 119766,
+        año: 2022,
+        estado: 'Usado',
+        destacado: true,
+        descripcion: 'Tecnologia actual y alto valor de reventa.',
+        imagenes: [
+          '/img/CamionJac2022.webp',
+          '/img/CamionJac2022.webp',
+          '/img/CamionJac2022.webp'
+        ],
+        video: 'https://www.youtube.com/watch?v=JGwWNGJdvx8',
+        especificaciones: {
+          motor: '2,746 cc Diesel',
+          transmision: 'Manual',
+          capacidad: '5,600 KG RUNT',
+        }
+      },
+      {
+        id: 19,
+        marca: 'Fotón',
+        tipo: 'Camión',
+        modelo: '',
+        ubicacion: 'Medellín',
+        precio: 145000000,
+        kilometraje: 114794,
+        año: 2021,
+        estado: 'Usado',
+        destacado: true,
+        descripcion: 'Soporte y buen desempeño en el mercado nacional.',
+        imagenes: [
+          '/img/FOTON2021.webp',
+          '/img/FOTON2021.webp',
+          '/img/FOTON2021.webp'
+        ],
+        video: 'https://www.youtube.com/watch?v=JGwWNGJdvx8',
+        especificaciones: {
+          motor: '3,760 cc Diesel',
+          transmision: 'Manual',
+          capacidad: '5,160 KG RUNT',
+        }
+      },
+      {
+        id: 20,
+        marca: 'Hyundai',
+        tipo: 'Camión',
+        modelo: 'HD 78',
+        ubicacion: 'Medellín',
+        precio: 125000000,
+        kilometraje: 173889,
+        año: 2015,
+        estado: 'Usado',
+        destacado: true,
+        descripcion: 'Reconocido por su resistencia en topografias complejas.',
+        imagenes: [
+          '/img/HYUNDAI2015.webp',
+          '/img/HYUNDAI2015.webp',
+          '/img/HYUNDAI2015.webp'
+        ],
+        video: 'https://www.youtube.com/watch?v=JGwWNGJdvx8',
+        especificaciones: {
+          motor: '3,9L Diesel',
+          transmision: 'MECANICA',
+          capacidad: '4,100 KG RUNT',
+        }
+      },
+      {
+        id: 21,
+        marca: 'Fotón',
+        tipo: 'Camión',
+        modelo: 'BJ1041V9AD4-FB',
+        ubicacion: 'Medellín',
+        precio: 74000000,
+        kilometraje: 92493,
+        año: 2019,
+        estado: 'Usado',
+        destacado: true,
+        descripcion: 'Muy bien conservado y listo para seguir produciendo.',
+        imagenes: [
+          '/img/FOTON2019.webp',
+          '/img/FOTON2019.webp',
+          '/img/FOTON2019.webp'
+        ],
+        video: 'https://www.youtube.com/watch?v=JGwWNGJdvx8',
+        especificaciones: {
+          motor: '2,776 CC Diesel',
+          transmision: 'MANUAL',
+          capacidad: '2,500 KG RUNT',
+        }
+      },
+      {
+        id: 22,
+        marca: 'Toyota',
+        tipo: 'Camióneta',
+        modelo: 'Hilux',
+        ubicacion: 'Medellín',
+        precio: 28000000,
+        kilometraje: 302358,
+        año: 1998,
+        estado: 'Usado',
+        destacado: true,
+        descripcion: 'Rodada,pero firme y con espiritud de trabajo.',
+        imagenes: [
+          '/img/CAMIONETATOYOTAHILUX.webp',
+          '/img/CAMIONETATOYOTAHILUX.webp',
+          '/img/CAMIONETATOYOTAHILUX.webp'
+        ],
+        video: 'https://www.youtube.com/watch?v=JGwWNGJdvx8',
+        especificaciones: {
+          motor: '2,400 CC Gasolina + Gas',
+          transmision: 'MANUAL',
+          capacidad: 'Para 5 pasajeros',
+        }
+      },
+      {
+        id: 23,
+        marca: 'Mitsubishi',
+        tipo: 'Camión',
+        modelo: 'Fuso',
+        ubicacion: 'Medellín',
+        precio: 127000000,
+        kilometraje: 269867,
+        año: 2017,
+        estado: 'Usado',
+        destacado: true,
+        descripcion: 'Buen desempeño mecanico y lista para seguir riendiendo.',
+        imagenes: [
+          '/img/MITSUBISHIFUSO.webp',
+          '/img/MITSUBISHIFUSO.webp',
+          '/img/MITSUBISHIFUSO.webp'
+        ],
+        video: 'https://www.youtube.com/watch?v=JGwWNGJdvx8',
+        especificaciones: {
+          motor: '3,9 L Diesel',
+          transmision: 'MANUAL',
+          capacidad: '9,000 KG RUNT',
+        }
+      },
+      {
+        id: 24,
+        marca: 'JAC',
+        tipo: 'Camión',
+        modelo: '',
+        ubicacion: 'Medellín',
+        precio: 48000000,
+        kilometraje: 242934,
+        año: 2012,
+        estado: 'Usado',
+        destacado: true,
+        descripcion: 'Buen estado general .',
+        imagenes: [
+          '/img/CAMIONJAC2012.webp',
+          '/img/CAMIONJAC2012.webp',
+          '/img/CAMIONJAC2012.webp'
+        ],
+        video: 'https://www.youtube.com/watch?v=JGwWNGJdvx8',
+        especificaciones: {
+          motor: '2,771 Diesel',
+          transmision: 'MANUAL',
+          capacidad: '3,000 KG RUNT',
+        }
+      },
+      {
+        id: 25,
+        marca: 'Volvo',
+        tipo: 'Camión',
+        modelo: 'SISU RR143',
+        ubicacion: 'Medellín',
+        precio: 125000000,
+        kilometraje: 0,
+        año: 1979,
+        estado: 'Usado',
+        destacado: true,
+        descripcion: 'Chasis de alta resistencia,mecanica confiable.',
+        imagenes: [
+          '/img/VOLVO1979.webp',
+          '/img/VOLVO1979.webp',
+          '/img/VOLVO1979.webp'
+        ],
+        video: 'https://www.youtube.com/watch?v=JGwWNGJdvx8',
+        especificaciones: {
+          motor: '9,000 CC Diesel',
+          transmision: 'MANUAL',
+          capacidad: '20,000 KG RUNT',
+        }
+      },
+      {
+        id: 26,
+        marca: 'Hino',
+        tipo: 'Camión',
+        modelo: '300',
+        ubicacion: 'Medellín',
+        precio: 120000000,
+        kilometraje: 452011,
+        año: 2012,
+        estado: 'Usado',
+        destacado: true,
+        descripcion: 'Reconocido por su bajo costo de operacion.',
+        imagenes: [
+          '/img/HINO3002012.webp',
+          '/img/HINO3002012.webp',
+          '/img/HINO3002012.webp'
+        ],
+        video: 'https://www.youtube.com/watch?v=JGwWNGJdvx8',
+        especificaciones: {
+          motor: '4,009 Diesel',
+          transmision: 'MANUAL',
+          capacidad: 'Ideal para reparto'  // CORRECCIÓN: Se eliminó la coma sobrante aquí
+        }
       }
-
-    }
-    
-  ], []);
+    ].map(camion => ({
+      ...camion,
+      marca: normalizeValue(camion.marca) === 'fotón' ? 'Fotón' : camion.marca,
+      tipo: normalizeValue(camion.tipo) === 'camión' ? 'Camión' : 
+            normalizeValue(camion.tipo) === 'camióneta' ? 'Camióneta' : camion.tipo,
+      ubicacion: normalizeValue(camion.ubicacion) === 'medellín' ? 'Medellín' : camion.ubicacion
+    }));
+  }, [normalizeValue]);
 
   // Actualizar ancho de ventana al cambiar tamaño con debounce
   useEffect(() => {
@@ -809,11 +787,13 @@ const Camiones = () => {
     return () => { isMounted = false };
   }, [carouselItems]);
 
-  // Función para contar camiones por propiedad
+  // Función para contar camiones por propiedad (CORREGIDA)
   const countBy = useCallback((prop) => {
     return camiones.reduce((acc, curr) => {
-      const key = curr[prop]?.toString() || 'desconocido';
-      acc[key] = (acc[key] || 0) + 1;
+      const key = curr[prop];
+      if (key) {
+        acc[key] = (acc[key] || 0) + 1;
+      }
       return acc;
     }, {});
   }, [camiones]);
@@ -860,6 +840,7 @@ const Camiones = () => {
     }).format(price);
   }, []);
 
+  // Conteos optimizados
   const conteoEstados = useMemo(() => countBy('estado'), [countBy]);
   const conteoTipos = useMemo(() => countBy('tipo'), [countBy]);
   const conteoMarcas = useMemo(() => countBy('marca'), [countBy]);
@@ -905,7 +886,6 @@ const Camiones = () => {
             <div className="carousel-inner" style={{ height: responsiveStyles.cardImageHeight }}>
               {camion.imagenes.map((img, index) => (
                 <div key={index} className={`carousel-item ${index === 0 ? 'active' : ''}`}>
-                  {/* Enlace restaurado con scroll al top */}
                   <Link 
                     to={`/camiones/${camion.id}`} 
                     onClick={() => window.scrollTo(0, 0)}
