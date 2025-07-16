@@ -715,6 +715,78 @@ const Camiones = () => {
           transmision: 'MANUAL',
           capacidad: 'Ideal para reparto'  // CORRECCIÓN: Se eliminó la coma sobrante aquí
         }
+      },
+         {
+        id: 27,
+        marca: 'Chevrolet NHR',
+        tipo: 'Camión',
+        modelo: '',
+        ubicacion: 'Medellín',
+        precio: 105000000,
+        kilometraje: 125088,
+        año: 2020,
+        estado: 'Usado',
+        destacado: true,
+        descripcion: 'Reconocido por su bajo costo de operacion.',
+        imagenes: [
+          '/img/CHEVROLETNHR2020.webp',
+          '/img/CHEVROLETNHR2020.webp',
+          '/img/CHEVROLETNHR2020.webp'
+        ],
+        video: 'https://www.youtube.com/watch?v=JGwWNGJdvx8',
+        especificaciones: {
+          motor: '3,0L Diesel',
+          transmision: 'MANUAL',
+          capacidad: 'De carga 1725 kg RUNT'  // CORRECCIÓN: Se eliminó la coma sobrante aquí
+        }
+      },
+      {
+        id: 28,
+        marca: 'Chevrolet NHR',
+        tipo: 'Camión',
+        modelo: '',
+        ubicacion: 'Medellín',
+        precio: 105000000,
+        kilometraje: 117722,
+        año: 2020,
+        estado: 'Usado',
+        destacado: true,
+        descripcion: 'Reconocido por su bajo costo de operacion.',
+        imagenes: [
+          '/img/CHEVROLETNHR31.webp',
+          '/img/CHEVROLETNHR31.webp',
+          '/img/CHEVROLETNHR31.webp'
+        ],
+        video: 'https://www.youtube.com/watch?v=JGwWNGJdvx8',
+        especificaciones: {
+          motor: '3,0L Diesel',
+          transmision: 'MANUAL',
+          capacidad: 'De carga 1725 kg RUNT'  // CORRECCIÓN: Se eliminó la coma sobrante aquí
+        }
+      },
+      {
+        id: 29,
+        marca: 'Chevrolet NHR',
+        tipo: 'Camión',
+        modelo: '',
+        ubicacion: 'Medellín',
+        precio: 105000000,
+        kilometraje: 117819,
+        año: 2020,
+        estado: 'Usado',
+        destacado: true,
+        descripcion: 'Movilidad eficiente.',
+        imagenes: [
+          '/img/CHEVROLETNHRMODELO20201.webp',
+          '/img/CHEVROLETNHRMODELO20201.webp',
+          '/img/CHEVROLETNHRMODELO20201.webp'
+        ],
+        video: 'https://www.youtube.com/watch?v=JGwWNGJdvx8',
+        especificaciones: {
+          motor: '3,0L Diesel',
+          transmision: 'MANUAL',
+          capacidad: 'De carga 1725 kg RUNT'  // CORRECCIÓN: Se eliminó la coma sobrante aquí
+        }
       }
     ].map(camion => ({
       ...camion,

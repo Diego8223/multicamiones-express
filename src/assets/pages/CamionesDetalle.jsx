@@ -1055,7 +1055,115 @@ const CamionDetalle = () => {
         email: 'multicamionesexpressmed@gmail.com',
         horario: 'Lunes a Viernes: 9:00 AM - 5:00 PM / Sábados: 10:00 AM - 2:00 PM'
       }
+    },
+    { 
+      id: 27, 
+      marca: 'Chevrolet NHR', 
+      tipo: 'Camión', 
+      modelo: '', 
+      ubicacion: 'MEDELLIN',
+      precio: 105000000,
+      kilometraje: 125088,
+      año: 2020,
+      estado: 'usado',
+      destacado: true,
+      descripcion: 'Tamaño versátil con buena capacidad útil.',
+      imagenes: [
+        '/img/CHEVROLETNHR20201.webp',
+        '/img/CHEVROLETNHR20202.webp',
+        '/img/CHEVROLETNHR20203.webp',
+      ],
+      video: '',
+      especificaciones: {
+        'Motor': '3,0L DIESEL',
+        'Capacidad de Carga': '1725 kg RUNT',
+        
+      },
+      caracteristicas: [
+        'Motor 3,0L Diesel - Económico,Confiable y facil de mantener',
+        'Transmisión Manual - Control preciso y respuesta constante',
+        'Capacidad de Carga - 1.725 KG RUNT Perfecto para rutas urbanas y entregas',
+
+      ],
+    },
+       {
+      id: 28,
+      marca: 'Chevrolet NHR',
+      tipo: 'Camión',
+      modelo: '',
+      ubicacion: 'MEDELLIN',
+      precio: 105000000,
+      kilometraje: 177722,
+      año: 2020,
+      estado: 'usado',
+      destacado: true,
+      descripcion: 'Movilidad y eficiencia.',
+      imagenes: [
+        '/img/CHEVROLETNHR32.webp',
+        '/img/CHEVROLETNHR33.webp',
+        '/img/CHEVROLETNHR34.webp',
+      ],
+      video: '',
+      especificaciones: {
+        'Motor': '3,0L DIESEL',
+        'Capacidad de Carga': '1725 kg RUNT',
+        
+      },
+      caracteristicas: [
+        'Motor 3,0L Diesel - Económico,Confiable y facil de mantener',
+        'Transmisión Manual - Control preciso y respuesta constante',
+        'Capacidad de Carga - 1.725 KG RUNT Perfecto para rutas urbanas y entregas',
+
+      ],
+      garantia: '',
+      contacto: {
+        nombre: 'Juan Acosta',
+        telefono: '+57 3127767298',
+        whatsapp: '+57 3127767298',
+        email: 'multicamionesexpressmed@gmail.com',
+        horario: 'Lunes a Viernes: 9:00 AM - 5:00 PM / Sábados: 10:00 AM - 2:00 PM'
+      }
+    },
+    {
+      id: 29,
+      marca: 'Chevrolet NHR',
+      tipo: 'Camión',
+      modelo: '',
+      ubicacion: 'MEDELLIN',
+      precio: 105000000,
+      kilometraje: 177819,
+      año: 2020,
+      estado: 'usado',
+      destacado: true,
+      descripcion: 'Tamaño versátil con buena capacidad útil.',
+      imagenes: [
+        '/img/CHEVROLETNHRMODELO20202.webp',
+        '/img/CHEVROLETNHRMODELO20203.webp',
+        '/img/CHEVROLETNHMODELO20204.webp',
+      ],
+      video: '',
+      especificaciones: {
+        'Motor': '3,0L DIESEL',
+        'Capacidad de Carga': '1725 kg RUNT',
+        
+      },
+      caracteristicas: [
+        'Motor 3,0L Diesel - Responde con fuerza,ahorra con eficiencia',
+        'Transmisión Manual - Control seguro en cada proyecto',
+        'Capacidad de Carga - 1.725 KG RUNT Ideal para reparto,abastecimiento o transporte ágil',
+
+      ],
+      garantia: '',
+      contacto: {
+        nombre: 'Juan Acosta',
+        telefono: '+57 3127767298',
+        whatsapp: '+57 3127767298',
+        email: 'multicamionesexpressmed@gmail.com',
+        horario: 'Lunes a Viernes: 9:00 AM - 5:00 PM / Sábados: 10:00 AM - 2:00 PM'
+      }
     }
+
+
   ];
 
   useEffect(() => {
