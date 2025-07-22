@@ -749,7 +749,7 @@ const Camiones = () => {
         precio: 105000000,
         kilometraje: 117722,
         año: 2020,
-        estado: 'Usado',
+        estado: 'Vendido',
         destacado: true,
         descripcion: 'Reconocido por su bajo costo de operacion.',
         imagenes: [
@@ -773,7 +773,7 @@ const Camiones = () => {
         precio: 105000000,
         kilometraje: 117819,
         año: 2020,
-        estado: 'Usado',
+        estado: 'Vendido',
         destacado: true,
         descripcion: 'Movilidad eficiente.',
         imagenes: [
