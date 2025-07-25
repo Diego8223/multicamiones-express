@@ -101,7 +101,7 @@ const Camiones = () => {
         precio: 110000000,
         kilometraje: 134434,
         año: 2019,
-        estado: 'Usado',
+        estado: 'Vendido',
         destacado: true,
         descripcion: 'Camión en excelente estado con mantenimiento al día, ideal para transporte pesado',
         imagenes: [
