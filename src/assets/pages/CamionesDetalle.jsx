@@ -21,16 +21,16 @@ const CamionDetalle = () => {
   const camiones = [
     { 
       id: 1, 
-      marca: 'FOTON MEDIANO', 
+      marca: 'CHEVROLET NHR', 
       tipo: 'camión', 
-      modelo: 'BJ1078', 
+      modelo: '2017', 
       ubicacion: 'Medellín, Colombia',
-      precio: 110000000,
-      kilometraje: 134434,
-      año: 2019,
+      precio: 85000000,
+      kilometraje: 208022,
+      año: 2017,
       estado: 'usado',
       destacado: true,
-      descripcion: 'Camión en excelente estado con mantenimiento al día, ideal para transporte pesado. Incluye todos los servicios recientes y documentación al día. Equipado con las últimas tecnologías en seguridad y confort para el conductor.',
+      descripcion: 'Una solución versátil para negocios en crecimiento.',
       imagenes: [
         '/img/camion1.webp',
         '/img/camion2.webp',
@@ -38,16 +38,16 @@ const CamionDetalle = () => {
       ],
       video: '',
       especificaciones: {
-        'Motor': '3,8L Disel',
-        'Peso bruto': '4,100 kg Runt',
+        'Motor': '3,0L Disel',
+        'Peso bruto': '1,634 kg Runt',
         
       },
       caracteristicas: [
-        'Motor 3,8 Disel -Rendimiento Solido y efeciente en operación Continua',
-        'Caja Manual-Manejo Preciso y Respuesta Inmediata en todo terreno',
-        'Carga Util 4,100 kg RUNT Ideal para labores logisticas o reparto exigente',
-        '134,434 km  - Listo para seguir produciendo desde el primer dia "',
-        
+        'Motor 3,0 Disel - Rendimiento Comprobado para el Trabajo Diario,con excelente economia de combustible',
+        'Caja Manual- Transmision Confiable,ideal para enfrentar recorridos urbanos o mixtos sin complicaciones',
+        'Carga Util 1,634 kg RUNT Optimo para reparto,comercio al por mayor o transporte de insumos',
+        '208,022 km  - Listo para seguir operando sin interrupciones."',
+
       ],
       garantia: '',
       contacto: {
@@ -181,16 +181,16 @@ const CamionDetalle = () => {
     },
     { 
       id: 5, 
-      marca: 'SHINERAY', 
-      tipo: 'Vans', 
-      modelo: '2023', 
+      marca: 'HINO', 
+      tipo: 'Camión', 
+      modelo: '2011', 
       ubicacion: 'MEDELLIN',
-      precio: 48000000,
-      kilometraje: 61431,
-      año: 2023,
+      precio: 125000000,
+      kilometraje: 492398,
+      año: 2011,
       estado: 'usado',
       destacado: true,
-      descripcion: 'compacta, Eficiente y perfecta para negocios en movimiento.',
+      descripcion: 'Una maquina de batalla para empresas que no se detienen.',
       imagenes: [
         '/img/Vans1.webp',
         '/img/Vans2.webp',
@@ -198,15 +198,15 @@ const CamionDetalle = () => {
       ],
       video: '',
       especificaciones: {
-        'Motor': '3,0L Disel',
-        'Peso bruto': '1,500 kg Runt',
+        'Motor': '5,1L Disel',
+        'Peso bruto': '6,000 kg Runt',
         
       },
       caracteristicas: [
-        'Motor 3,0 Diesel -Rendimiento Solido y efeciente en operación Continua',
-        'Caja Manual-Manejo Preciso y Respuesta Inmediata en todo terreno',
-        'Carga Util 1,500 kg RUNT Perfecto para entregas,Transporte Liviano o logistica Local',
-        '62,750 km  - Activo, operativo y listo para producir "',
+        'Motor 5,1 Diesel - Fuerza constante para mover grandes cargas con eficiencia',
+        'Caja Manual-Robusta y precisa,Lista para jornadas intensas.',
+        'Carga Util 6,000 kg RUNT Perfecto para Obras,Distribucion de materiales, carga pesada o logistica nacional.',
+        '492,398 km  - Motor operativo con historial de trabajo comprobado."',
         
       ],
       garantia: '',

@@ -94,27 +94,27 @@ const Camiones = () => {
     return [
       {
         id: 1,
-        marca: 'Fotón',
-        tipo: 'Cargo',
-        modelo: 'BJ1078',
+        marca: 'CHEVROLET NHR ',
+        tipo: '',
+        modelo: '2017',
         ubicacion: 'Medellín',
-        precio: 110000000,
-        kilometraje: 134434,
-        año: 2019,
-        estado: 'Vendido',
+        precio: 85000000,
+        kilometraje: 208022,
+        año: 2017,
+        estado: 'Usado',
         destacado: true,
-        descripcion: 'Camión en excelente estado con mantenimiento al día, ideal para transporte pesado',
+        descripcion: 'Una solucion Versátil para negocios en crecimiento',
         imagenes: [
-          '/img/fotonmediano.webp',
-          '/img/fotonmediano.webp',
-          '/img/fotonmediano.webp'
+          '/img/CHEVROLETNHR2017.webp',
+          '/img/CHEVROLETNHR2017.webp',
+          '/img/CHEVROLETNHR2017.webp'
         ],
         video: 'https://www.youtube.com/watch?v=dQw4w9WgXcQ',
         especificaciones: {
-          motor: '3.8L Disel',
+          motor: '3.0L Disel',
           transmision: '',
-          capacidad: '4100 kg Runt',
-          ejes: '3',
+          capacidad: '1634 kg Runt',
+          ejes: '',
           suspension: '',
           extras: ''
         }
@@ -190,16 +190,16 @@ const Camiones = () => {
       },
       {
         id: 5,
-        marca: 'Shineray',
-        tipo: 'Camióneta',
-        modelo: 'X30',
+        marca: 'HINO ',
+        tipo: 'Camión',
+        modelo: '2011',
         ubicacion: 'Medellín',
-        precio: 48000000,
-        kilometraje: 61431,
-        año: 2023,
-        estado: 'Vendido',
+        precio: 125000000,
+        kilometraje: 492398,
+        año: 2011,
+        estado: 'Usado',
         destacado: true,
-        descripcion: 'Vehiculo compacto,eficiente y perfecta para negocios en movimiento',
+        descripcion: 'Una maquina de batalla para empresas que no se detienen',
         imagenes: [
           '/img/X30CARGO.webp',
           '/img/X30CARGO.webp',
@@ -207,9 +207,9 @@ const Camiones = () => {
         ],
         video: 'https://www.youtube.com/watch?v=JGwWNGJdvx8',
         especificaciones: {
-          motor: '1,4L Gasolina',
+          motor: '5,1L Diesel',
           transmision: 'Manual',
-          capacidad: '1,860 KG RUNT',
+          capacidad: '6,000 KG RUNT',
         }
       },
       {
