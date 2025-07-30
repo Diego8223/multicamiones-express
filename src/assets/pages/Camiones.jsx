@@ -672,7 +672,7 @@ const Camiones = () => {
       },
      {
   id: 25,
-  marca: 'Chevrolet NHR',
+  marca: 'Chevrolet',
   tipo: 'Camión',
   modelo: '',
   ubicacion: 'Medellín',
@@ -699,7 +699,7 @@ const Camiones = () => {
 
 return camiones.map(camion => ({
       ...camion,
-      marca: normalizeValue(camion.marca) === 'fotón' ? 'Fotón' : camion.marca,
+      marca: normalizeValue(camion.marca) === 'chevrolet' ? 'Chevrolet' : camion.marca,
       tipo: normalizeValue(camion.tipo) === 'camión' ? 'Camión' : 
             normalizeValue(camion.tipo) === 'camióneta' ? 'Camióneta' : camion.tipo,
       ubicacion: normalizeValue(camion.ubicacion) === 'medellín' ? 'Medellín' : camion.ubicacion
