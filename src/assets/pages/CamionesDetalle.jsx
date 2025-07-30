@@ -336,47 +336,9 @@ const CamionDetalle = () => {
         horario: 'Lunes a Viernes: 9:00 AM - 5:00 PM / Sábados: 10:00 AM - 2:00 PM'
       }
     },
-     { 
-      id: 9, 
-      marca: 'HINO', 
-      tipo: 'Camión', 
-      modelo: '', 
-      ubicacion: 'MEDELLIN',
-      precio: 90000000,
-      kilometraje: 14733,
-      año: 2010,
-      estado: 'usado',
-      destacado: true,
-      descripcion: 'Diseño compacto con fuerza profesional,Ideal para distribucion urbana o regional.',
-      imagenes: [
-        '/img/Hino1.webp',
-        '/img/Hino2.webp',
-        '/img/Hino3.webp',
-      ],
-      video: '',
-      especificaciones: {
-        'Motor': '4,0L Diesel',
-        'Capacidad de Carga': '5,110 kg Runt',
-        
-      },
-      caracteristicas: [
-        'Motor 4,0L Diesel -potencia continua en cada jornada',
-        'Transmisión Manual- control mecanico preciso en todo terreno',
-        'Capacidad de Carga - 5,110 KG RUNT Perfecto para operacion de carga media',
-        '14,733 km  - Operando en excelentes condiciones"',
-        
-      ],
-      garantia: '',
-      contacto: {
-        nombre: 'Juan Acosta',
-        telefono: '+57 3127767298',
-        whatsapp: '+57 3127767298',
-        email: 'multicamionesexpressmed@gmail.com',
-        horario: 'Lunes a Viernes: 9:00 AM - 5:00 PM / Sábados: 10:00 AM - 2:00 PM'
-      }
-    },
+    
    { 
-      id: 10, 
+      id: 9, 
       marca: 'TOYOTA HILUX', 
       tipo: 'Camióneta', 
       modelo: '', 
@@ -416,7 +378,7 @@ const CamionDetalle = () => {
       }
     },
      { 
-      id: 11, 
+      id: 10, 
       marca: 'VOLKSWAGEN', 
       tipo: 'Camión', 
       modelo: '', 
@@ -456,7 +418,7 @@ const CamionDetalle = () => {
       }
     },
    { 
-      id: 12, 
+      id: 11, 
       marca: 'TOYOTA HINO', 
       tipo: 'Camión', 
       modelo: '', 
@@ -497,7 +459,7 @@ const CamionDetalle = () => {
       },
 
        { 
-      id: 13, 
+      id: 12, 
       marca: 'CHEVROLET NHR', 
       tipo: 'Camión', 
       modelo: '', 
@@ -537,7 +499,7 @@ const CamionDetalle = () => {
       }
     },
    { 
-      id: 14, 
+      id: 13, 
       marca: 'CHEVROLET NHR', 
       tipo: 'Camión', 
       modelo: '', 
@@ -577,7 +539,7 @@ const CamionDetalle = () => {
       }
     },
      { 
-      id: 15, 
+      id: 14, 
       marca: 'CHEVROLET NLR', 
       tipo: 'Camión', 
       modelo: '', 
@@ -618,7 +580,7 @@ const CamionDetalle = () => {
     },
   
    { 
-      id: 16, 
+      id: 15, 
       marca: 'CHEVROLET NLR', 
       tipo: 'Camión', 
       modelo: '', 
@@ -657,48 +619,9 @@ const CamionDetalle = () => {
         horario: 'Lunes a Viernes: 9:00 AM - 5:00 PM / Sábados: 10:00 AM - 2:00 PM'
       }
     },
-    { 
-      id: 17, 
-      marca: 'TOYOTA HILUX', 
-      tipo: 'Camióneta', 
-      modelo: '', 
-      ubicacion: 'MEDELLIN',
-      precio: 78000000,
-      kilometraje: 146020,
-      año: 2014,
-      estado: 'usado',
-      destacado: true,
-      descripcion: ' Robusta, confiable y lista para cualquier terreno.',
-      imagenes: [
-        '/img/TOYOTAHILUX20141.webp',
-        '/img/TOYOTAHILUX20142.webp',
-        '/img/TOYOTAHILUX20143.webp',
-      ],
-      video: '',
-      especificaciones: {
-        'Motor': '2,694 cc Gasolina',
-        'Capacidad de Carga': '1,000 kg Runt',
-        
-      },
-      caracteristicas: [
-        'Motor 2,694 cc Gasolina - Potencia firme, bajo mantenimiento y excelente desempeño',
-        'Transmisión Manual - conducción ágil y precisa',
-        'Capacidad de Carga - 1,000 KG RUNT Perfecta para trabajo liviano,rutas rurales o uso de doble propósito ',
-        '146020 km  - En buen estado operativo,Listo para seguir trabajando"',
-        
-        
-      ],
-      garantia: '',
-      contacto: {
-        nombre: 'Juan Acosta',
-        telefono: '+57 3127767298',
-        whatsapp: '+57 3127767298',
-        email: 'multicamionesexpressmed@gmail.com',
-        horario: 'Lunes a Viernes: 9:00 AM - 5:00 PM / Sábados: 10:00 AM - 2:00 PM'
-      }
-    },
+    
    { 
-      id: 18, 
+      id: 16, 
       marca: 'JAC', 
       tipo: 'Camión', 
       modelo: '', 
@@ -739,7 +662,7 @@ const CamionDetalle = () => {
     },
   
   { 
-      id: 19, 
+      id: 17, 
       marca: 'FOTON', 
       tipo: 'Camión', 
       modelo: '', 
@@ -779,7 +702,7 @@ const CamionDetalle = () => {
       }
     },
    { 
-      id: 20, 
+      id: 18, 
       marca: 'HYUNDAI', 
       tipo: 'Camión', 
       modelo: '', 
@@ -819,7 +742,7 @@ const CamionDetalle = () => {
       }
     },
      { 
-      id: 21, 
+      id: 19, 
       marca: 'FOTON', 
       tipo: 'Camión', 
       modelo: '', 
@@ -859,7 +782,7 @@ const CamionDetalle = () => {
       }
     },
      { 
-      id: 22, 
+      id: 20, 
       marca: 'TOYOTA HILUX', 
       tipo: 'Camióneta', 
       modelo: '', 
@@ -899,7 +822,7 @@ const CamionDetalle = () => {
       }
     },
     { 
-      id: 23, 
+      id: 21, 
       marca: 'MITSUBISHI', 
       tipo: 'Camión', 
       modelo: '', 
@@ -939,7 +862,7 @@ const CamionDetalle = () => {
       }
     },
     { 
-      id: 24, 
+      id: 22, 
       marca: 'JAC', 
       tipo: 'Camión', 
       modelo: '', 
@@ -979,7 +902,7 @@ const CamionDetalle = () => {
       }
     },
     { 
-      id: 25, 
+      id: 23, 
       marca: 'VOLVO', 
       tipo: 'Camión', 
       modelo: '', 
@@ -1019,7 +942,7 @@ const CamionDetalle = () => {
       }
     },
      { 
-      id: 26, 
+      id: 24, 
       marca: 'HINO', 
       tipo: 'Camión', 
       modelo: 'XZU423L-HKMR', 
@@ -1057,7 +980,7 @@ const CamionDetalle = () => {
       }
     },
     { 
-      id: 27, 
+      id: 25, 
       marca: 'Chevrolet NHR', 
       tipo: 'Camión', 
       modelo: '', 
@@ -1086,85 +1009,8 @@ const CamionDetalle = () => {
 
       ],
     },
-       {
-      id: 28,
-      marca: 'Chevrolet NHR',
-      tipo: 'Camión',
-      modelo: '',
-      ubicacion: 'MEDELLIN',
-      precio: 105000000,
-      kilometraje: 177722,
-      año: 2020,
-      estado: 'usado',
-      destacado: true,
-      descripcion: 'Movilidad y eficiencia.',
-      imagenes: [
-        '/img/CHEVROLETNHR32.webp',
-        '/img/CHEVROLETNHR33.webp',
-        '/img/CHEVROLETNHR34.webp',
-      ],
-      video: '',
-      especificaciones: {
-        'Motor': '3,0L DIESEL',
-        'Capacidad de Carga': '1725 kg RUNT',
-        
-      },
-      caracteristicas: [
-        'Motor 3,0L Diesel - Económico,Confiable y facil de mantener',
-        'Transmisión Manual - Control preciso y respuesta constante',
-        'Capacidad de Carga - 1.725 KG RUNT Perfecto para rutas urbanas y entregas',
-
-      ],
-      garantia: '',
-      contacto: {
-        nombre: 'Juan Acosta',
-        telefono: '+57 3127767298',
-        whatsapp: '+57 3127767298',
-        email: 'multicamionesexpressmed@gmail.com',
-        horario: 'Lunes a Viernes: 9:00 AM - 5:00 PM / Sábados: 10:00 AM - 2:00 PM'
-      }
-    },
-    {
-      id: 29,
-      marca: 'Chevrolet NHR',
-      tipo: 'Camión',
-      modelo: '',
-      ubicacion: 'MEDELLIN',
-      precio: 105000000,
-      kilometraje: 177819,
-      año: 2020,
-      estado: 'usado',
-      destacado: true,
-      descripcion: 'Tamaño versátil con buena capacidad útil.',
-      imagenes: [
-        '/img/CHEVROLETNHRMODELO20202.webp',
-        '/img/CHEVROLETNHRMODELO20203.webp',
-        '/img/CHEVROLETNHMODELO20204.webp',
-      ],
-      video: '',
-      especificaciones: {
-        'Motor': '3,0L DIESEL',
-        'Capacidad de Carga': '1725 kg RUNT',
-        
-      },
-      caracteristicas: [
-        'Motor 3,0L Diesel - Responde con fuerza,ahorra con eficiencia',
-        'Transmisión Manual - Control seguro en cada proyecto',
-        'Capacidad de Carga - 1.725 KG RUNT Ideal para reparto,abastecimiento o transporte ágil',
-
-      ],
-      garantia: '',
-      contacto: {
-        nombre: 'Juan Acosta',
-        telefono: '+57 3127767298',
-        whatsapp: '+57 3127767298',
-        email: 'multicamionesexpressmed@gmail.com',
-        horario: 'Lunes a Viernes: 9:00 AM - 5:00 PM / Sábados: 10:00 AM - 2:00 PM'
-      }
-    }
-
-
-  ];
+       
+  ]
 
   useEffect(() => {
     const timer = setTimeout(() => {

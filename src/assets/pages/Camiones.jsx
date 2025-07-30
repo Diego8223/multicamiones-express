@@ -284,32 +284,9 @@ const Camiones = () => {
           capacidad: '17,000 KG RUNT',
         }
       },
+      
       {
         id: 9,
-        marca: 'Hino',
-        tipo: 'Camión',
-        modelo: 'XZU423L-HKMRD3',
-        ubicacion: 'Medellín',
-        precio: 90000000,
-        kilometraje: 14733,
-        año: 2010,
-        estado: 'Vendido',
-        destacado: true,
-        descripcion: 'Diseño compacto con fuerza profesional,Ideal para distribucion urbana o regional',
-        imagenes: [
-          '/img/Hino.webp',
-          '/img/Hino.webp',
-          '/img/Hino.webp'
-        ],
-        video: 'https://www.youtube.com/watch?v=JGwWNGJdvx8',
-        especificaciones: {
-          motor: '4,0 L Diesel',
-          transmision: 'Manual',
-          capacidad: '5,110 KG RUNT',
-        }
-      },
-      {
-        id: 10,
         marca: 'Toyota',
         tipo: 'Camióneta',
         modelo: 'Hilux',
@@ -333,7 +310,7 @@ const Camiones = () => {
         }
       },
       {
-        id: 11,
+        id: 10,
         marca: 'Volkswagen',
         tipo: 'Camión',
         modelo: '9150OD',
@@ -357,7 +334,7 @@ const Camiones = () => {
         }
       },
       {
-        id: 12,
+        id: 11,
         marca: 'Toyota Hino',
         tipo: 'Camión',
         modelo: 'FM8JRTA',
@@ -381,7 +358,7 @@ const Camiones = () => {
         }
       },
       {
-        id: 13,
+        id: 12,
         marca: 'Chevrolet',
         tipo: 'Camión',
         modelo: 'NHR',
@@ -405,7 +382,7 @@ const Camiones = () => {
         }
       },
       {
-        id: 14,
+        id: 13,
         marca: 'Chevrolet',
         tipo: 'Camión',
         modelo: 'NHR',
@@ -429,7 +406,7 @@ const Camiones = () => {
         }
       },
       {
-        id: 15,
+        id: 14,
         marca: 'Chevrolet',
         tipo: 'Camión',
         modelo: 'NLR',
@@ -453,7 +430,7 @@ const Camiones = () => {
         }
       },
       {
-        id: 16,
+        id: 15,
         marca: 'Nissan',
         tipo: 'Camión',
         modelo: 'Cabstar',
@@ -476,32 +453,9 @@ const Camiones = () => {
           capacidad: '2,540 KG RUNT',
         }
       },
+     
       {
-        id: 17,
-        marca: 'Toyota',
-        tipo: 'Camióneta',
-        modelo: 'Hilux',
-        ubicacion: 'Medellín',
-        precio: 78000000,
-        kilometraje: 146020,
-        año: 2014,
-        estado: 'Vendido',
-        destacado: true,
-        descripcion: 'Robusta, confiable y lista para cualquier terreno.',
-        imagenes: [
-          '/img/TOYOTAHILUX2014.webp',
-          '/img/TOYOTAHILUX2014.webp',
-          '/img/TOYOTAHILUX2014.webp'
-        ],
-        video: 'https://www.youtube.com/watch?v=JGwWNGJdvx8',
-        especificaciones: {
-          motor: '2,694 cc Gasolina',
-          transmision: 'Manual',
-          capacidad: '1,000 KG RUNT',
-        }
-      },
-      {
-        id: 18,
+        id: 16,
         marca: 'JAC',
         tipo: 'Camión',
         modelo: '',
@@ -525,7 +479,7 @@ const Camiones = () => {
         }
       },
       {
-        id: 19,
+        id: 17,
         marca: 'Fotón',
         tipo: 'Camión',
         modelo: '',
@@ -549,7 +503,7 @@ const Camiones = () => {
         }
       },
       {
-        id: 20,
+        id: 18,
         marca: 'Hyundai',
         tipo: 'Camión',
         modelo: 'HD 78',
@@ -573,7 +527,7 @@ const Camiones = () => {
         }
       },
       {
-        id: 21,
+        id: 19,
         marca: 'Fotón',
         tipo: 'Camión',
         modelo: 'BJ1041V9AD4-FB',
@@ -597,7 +551,7 @@ const Camiones = () => {
         }
       },
       {
-        id: 22,
+        id: 20,
         marca: 'Toyota',
         tipo: 'Camióneta',
         modelo: 'Hilux',
@@ -621,7 +575,7 @@ const Camiones = () => {
         }
       },
       {
-        id: 23,
+        id: 21,
         marca: 'Mitsubishi',
         tipo: 'Camión',
         modelo: 'Fuso',
@@ -645,7 +599,7 @@ const Camiones = () => {
         }
       },
       {
-        id: 24,
+        id: 22,
         marca: 'JAC',
         tipo: 'Camión',
         modelo: '',
@@ -669,7 +623,7 @@ const Camiones = () => {
         }
       },
       {
-        id: 25,
+        id: 23,
         marca: 'Volvo',
         tipo: 'Camión',
         modelo: 'SISU RR143',
@@ -693,7 +647,7 @@ const Camiones = () => {
         }
       },
       {
-        id: 26,
+        id: 24,
         marca: 'Hino',
         tipo: 'Camión',
         modelo: '300',
@@ -716,8 +670,8 @@ const Camiones = () => {
           capacidad: 'Ideal para reparto'  // CORRECCIÓN: Se eliminó la coma sobrante aquí
         }
       },
-         {
-        id: 27,
+      {
+        id: 25,
         marca: 'Chevrolet NHR',
         tipo: 'Camión',
         modelo: '',
@@ -740,55 +694,10 @@ const Camiones = () => {
           capacidad: 'De carga 1725 kg RUNT'  // CORRECCIÓN: Se eliminó la coma sobrante aquí
         }
       },
-      {
-        id: 28,
-        marca: 'Chevrolet NHR',
-        tipo: 'Camión',
-        modelo: '',
-        ubicacion: 'Medellín',
-        precio: 105000000,
-        kilometraje: 117722,
-        año: 2020,
-        estado: 'Vendido',
-        destacado: true,
-        descripcion: 'Reconocido por su bajo costo de operacion.',
-        imagenes: [
-          '/img/CHEVROLETNHR31.webp',
-          '/img/CHEVROLETNHR31.webp',
-          '/img/CHEVROLETNHR31.webp'
-        ],
-        video: 'https://www.youtube.com/watch?v=JGwWNGJdvx8',
-        especificaciones: {
-          motor: '3,0L Diesel',
-          transmision: 'MANUAL',
-          capacidad: 'De carga 1725 kg RUNT'  // CORRECCIÓN: Se eliminó la coma sobrante aquí
-        }
-      },
-      {
-        id: 29,
-        marca: 'Chevrolet NHR',
-        tipo: 'Camión',
-        modelo: '',
-        ubicacion: 'Medellín',
-        precio: 105000000,
-        kilometraje: 117819,
-        año: 2020,
-        estado: 'Vendido',
-        destacado: true,
-        descripcion: 'Movilidad eficiente.',
-        imagenes: [
-          '/img/CHEVROLETNHRMODELO20201.webp',
-          '/img/CHEVROLETNHRMODELO20201.webp',
-          '/img/CHEVROLETNHRMODELO20201.webp'
-        ],
-        video: 'https://www.youtube.com/watch?v=JGwWNGJdvx8',
-        especificaciones: {
-          motor: '3,0L Diesel',
-          transmision: 'MANUAL',
-          capacidad: 'De carga 1725 kg RUNT'  // CORRECCIÓN: Se eliminó la coma sobrante aquí
-        }
-      }
-    ].map(camion => ({
+
+  ];
+
+  return camiones.map(camion => ({
       ...camion,
       marca: normalizeValue(camion.marca) === 'fotón' ? 'Fotón' : camion.marca,
       tipo: normalizeValue(camion.tipo) === 'camión' ? 'Camión' : 
