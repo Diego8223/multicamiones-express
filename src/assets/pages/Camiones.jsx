@@ -670,34 +670,34 @@ const Camiones = () => {
           capacidad: 'Ideal para reparto'  // CORRECCIÓN: Se eliminó la coma sobrante aquí
         }
       },
-      {
-        id: 25,
-        marca: 'Chevrolet NHR',
-        tipo: 'Camión',
-        modelo: '',
-        ubicacion: 'Medellín',
-        precio: 105000000,
-        kilometraje: 125088,
-        año: 2020,
-        estado: 'Usado',
-        destacado: true,
-        descripcion: 'Reconocido por su bajo costo de operacion.',
-        imagenes: [
-          '/img/CHEVROLETNHR2020.webp',
-          '/img/CHEVROLETNHR2020.webp',
-          '/img/CHEVROLETNHR2020.webp'
-        ],
-        video: 'https://www.youtube.com/watch?v=JGwWNGJdvx8',
-        especificaciones: {
-          motor: '3,0L Diesel',
-          transmision: 'MANUAL',
-          capacidad: 'De carga 1725 kg RUNT'  // CORRECCIÓN: Se eliminó la coma sobrante aquí
-        }
-      },
+     {
+  id: 25,
+  marca: 'Chevrolet NHR',
+  tipo: 'Camión',
+  modelo: '',
+  ubicacion: 'Medellín',
+  precio: 105000000,
+  kilometraje: 125088,
+  año: 2020,
+  estado: 'Usado',
+  destacado: true,
+  descripcion: 'Reconocido por su bajo costo de operacion.',
+  imagenes: [
+    '/img/CHEVROLETNHR2020.webp',
+    '/img/CHEVROLETNHR2020.webp',
+    '/img/CHEVROLETNHR2020.webp'
+  ],
+  video: 'https://www.youtube.com/watch?v=JGwWNGJdvx8',
+  especificaciones: {
+    motor: '3,0L Diesel',
+    transmision: 'MANUAL',
+    capacidad: 'De carga 1725 kg RUNT'
+  } // ✅ Aquí no va coma si es el último atributo
+}
 
   ]
 
-  return camiones.map(camion => ({
+return camiones.map(camion => ({
       ...camion,
       marca: normalizeValue(camion.marca) === 'fotón' ? 'Fotón' : camion.marca,
       tipo: normalizeValue(camion.tipo) === 'camión' ? 'Camión' : 
