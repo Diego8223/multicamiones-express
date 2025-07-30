@@ -695,7 +695,7 @@ const Camiones = () => {
         }
       },
 
-  ];
+  ]
 
   return camiones.map(camion => ({
       ...camion,
