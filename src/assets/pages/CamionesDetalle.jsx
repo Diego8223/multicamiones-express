@@ -1007,7 +1007,7 @@ const CamionDetalle = () => {
         'Transmisión Manual - Control preciso y respuesta constante',
         'Capacidad de Carga - 1.725 KG RUNT Perfecto para rutas urbanas y entregas',
 
-      ],
+      ]
     },
        
   ]
