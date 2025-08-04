@@ -1007,9 +1007,57 @@ const CamionDetalle = () => {
         'Transmisión Manual - Control preciso y respuesta constante',
         'Capacidad de Carga - 1.725 KG RUNT Perfecto para rutas urbanas y entregas',
 
-      ]
-    },
+      ],
        
+      garantia: '',
+      contacto: {
+        nombre: 'Juan Acosta',
+        telefono: '+57 3127767298',
+        whatsapp: '+57 3127767298',
+        email: 'multicamionesexpressmed@gmail.com',
+        horario: 'Lunes a Viernes: 9:00 AM - 5:00 PM / Sábados: 10:00 AM - 2:00 PM'
+      }
+    },
+     
+    { 
+      id: 26, 
+      marca: 'Chevrolet NHR', 
+      tipo: 'Camión', 
+      modelo: '', 
+      ubicacion: 'MEDELLIN',
+      precio: 65000000,
+      kilometraje:318061,
+      año: 2009,
+      estado: 'usado',
+      destacado: true,
+      descripcion: 'Aun da batalla donde se necesita,Excelente opción para iniciar o reforzar tu operación.',
+      imagenes: [
+        '/img/CHEVROLETNHR2.81.webp',
+        '/img/CHEVROLETNHR2.82.webp',
+        '/img/CHEVROLETNHR2.83.webp',
+      ],
+      video: '',
+      especificaciones: {
+        'Motor': '2,8L DIESEL',
+        'Capacidad de Carga': '1580 kg RUNT',
+        
+      },
+      caracteristicas: [
+        'Motor 2,8L Diesel - Eficiente y confiable y económico para el trabajo.',
+        'Transmisión Manual - Respuesta ágil para recorridos urbanos.',
+        'Capacidad de Carga - 1.580 KG RUNT Funcional operativo y con trayectoria comprobada.',
+
+      ],
+       
+      garantia: '',
+      contacto: {
+        nombre: 'Juan Acosta',
+        telefono: '+57 3127767298',
+        whatsapp: '+57 3127767298',
+        email: 'multicamionesexpressmed@gmail.com',
+        horario: 'Lunes a Viernes: 9:00 AM - 5:00 PM / Sábados: 10:00 AM - 2:00 PM'
+      }
+    },
   ]
 
   useEffect(() => {

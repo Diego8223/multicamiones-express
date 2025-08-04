@@ -683,29 +683,59 @@ const Camiones = () => {
   destacado: true,
   descripcion: 'Reconocido por su bajo costo de operacion.',
   imagenes: [
-    '/img/CHEVROLETNHR2020.webp',
-    '/img/CHEVROLETNHR2020.webp',
-    '/img/CHEVROLETNHR2020.webp'
+    '/img/CHEVROLETNHRMODELO20203.0.webp',
+    '/img/CHEVROLETNHRMODELO20203.0.webp',
+    '/img/CHEVROLETNHRMODELO20203.0.webp'
   ],
   video: 'https://www.youtube.com/watch?v=JGwWNGJdvx8',
   especificaciones: {
     motor: '3,0L Diesel',
     transmision: 'MANUAL',
     capacidad: 'De carga 1725 kg RUNT'
+  }
+},
+  {
+  id: 26,
+  marca: 'Chevrolet',
+  tipo: 'Camión',
+  modelo: '',
+  ubicacion: 'Medellín',
+  precio: 62000000,
+  kilometraje: 318061,
+  año: 2009,
+  estado: 'Usado',
+  destacado: true,
+  descripcion: 'Aun da batalla donde se necesita, excelente opción para iniciar o reforzar tu operación .',
+  imagenes: [
+    '/img/CHEVROLETNHR2020.webp',
+    '/img/CHEVROLETNHR2020.webp',
+    '/img/CHEVROLETNHR2020.webp'
+  ],
+  video: 'https://www.youtube.com/watch?v=JGwWNGJdvx8',
+  especificaciones: {
+    motor: '2,8L Diesel',
+    transmision: 'MANUAL',
+    capacidad: 'De carga 1580 kg RUNT'
   } // ✅ Aquí no va coma si es el último atributo
 }
 
-  ]
+  ];
 
-return camiones.map(camion => ({
-      ...camion,
-      marca: normalizeValue(camion.marca) === 'chevrolet' ? 'Chevrolet' : camion.marca,
-      tipo: normalizeValue(camion.tipo) === 'camión' ? 'Camión' : 
-            normalizeValue(camion.tipo) === 'camióneta' ? 'Camióneta' : camion.tipo,
-      ubicacion: normalizeValue(camion.ubicacion) === 'medellín' ? 'Medellín' : camion.ubicacion
-    }));
+return rawCamiones.map(camion => {
+      const normalizedMarca = normalizeValue(camion.marca);
+      const normalizedTipo = normalizeValue(camion.tipo);
+      const normalizedUbicacion = normalizeValue(camion.ubicacion);
+      
+      return {
+        ...camion,
+        marca: normalizedMarca.includes('chevrolet') ? 'Chevrolet' : 
+               normalizedMarca === 'fotón' ? 'Fotón' : camion.marca,
+        tipo: normalizedTipo === 'camión' ? 'Camión' : 
+              normalizedTipo === 'camióneta' ? 'Camióneta' : camion.tipo,
+        ubicacion: normalizedUbicacion === 'medellín' ? 'Medellín' : camion.ubicacion
+      };
+    });
   }, [normalizeValue]);
-
   // Actualizar ancho de ventana al cambiar tamaño con debounce
   useEffect(() => {
     let resizeTimeout;
