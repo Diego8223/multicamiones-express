@@ -101,7 +101,7 @@ const Camiones = () => {
         precio: 85000000,
         kilometraje: 208022,
         año: 2017,
-        estado: 'Vendida',
+        estado: 'Vendido',
         destacado: true,
         descripcion: 'Una solucion Versátil para negocios en crecimiento',
         imagenes: [
@@ -151,7 +151,7 @@ const Camiones = () => {
         precio: 160000000,
         kilometraje: 218377,
         año: 2018,
-        estado: 'Vendida',
+        estado: 'Vendido',
         destacado: true,
         descripcion: 'Respaldo Chevrrolet en Desempeño y Durabilidad',
         imagenes: [
@@ -174,7 +174,7 @@ const Camiones = () => {
         precio: 120000000,
         kilometraje: 62750,
         año: 2023,
-        estado: 'Vendida',
+        estado: 'Vendido',
         destacado: true,
         descripcion: 'Excelente opción para emprendedores o flotas urbanas.',
         imagenes: [
@@ -197,7 +197,7 @@ const Camiones = () => {
         precio: 125000000,
         kilometraje: 492398,
         año: 2011,
-        estado: 'vendida',
+        estado: 'Vendido',
         destacado: true,
         descripcion: 'Una maquina de batalla para empresas que no se detienen',
         imagenes: [
@@ -245,7 +245,7 @@ const Camiones = () => {
         precio: 90000000,
         kilometraje: 273471,
         año: 2016,
-        estado: 'Vendida',
+        estado: 'Vendido',
         destacado: true,
         descripcion: 'Excelente alternativa para emprendedores y empresas',
         imagenes: [
@@ -269,7 +269,7 @@ const Camiones = () => {
         precio: 270000000,
         kilometraje: 107699,
         año: 2019,
-        estado: 'Vendida',
+        estado: 'Vendido',
         destacado: true,
         descripcion: 'Robusto,versátil y con la potencia que exige el trabajo pesado',
         imagenes: [
@@ -294,7 +294,7 @@ const Camiones = () => {
         precio: 40000000,
         kilometraje: 573522,
         año: 2001,
-        estado: 'Vendida',
+        estado: 'Vendido',
         destacado: true,
         descripcion: 'Resistencia comprobada por generaciones',
         imagenes: [
@@ -366,7 +366,7 @@ const Camiones = () => {
         precio: 120000000,
         kilometraje: 74955,
         año: 2022,
-        estado: 'Vendida',
+        estado: 'Vendido',
         destacado: true,
         descripcion: 'Perfecto para ciudad y trayectos frecuentes.',
         imagenes: [
@@ -390,7 +390,7 @@ const Camiones = () => {
         precio: 115000000,
         kilometraje: 98159,
         año: 2021,
-        estado: 'Vendida',
+        estado: 'Vendido',
         destacado: true,
         descripcion: 'Respaldo Chevrolet bajo mantenimiento.',
         imagenes: [
@@ -487,7 +487,7 @@ const Camiones = () => {
         precio: 145000000,
         kilometraje: 114794,
         año: 2021,
-        estado: 'Vendida',
+        estado: 'Vendido',
         destacado: true,
         descripcion: 'Soporte y buen desempeño en el mercado nacional.',
         imagenes: [
