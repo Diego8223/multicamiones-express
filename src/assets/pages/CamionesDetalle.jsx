@@ -21,11 +21,11 @@ const CamionDetalle = () => {
   const camiones = [
     { 
       id: 1, 
-      marca: 'CHEVROLET NHR', 
+      marca: 'JMC', 
       tipo: 'camión', 
-      modelo: '2017', 
+      modelo: '2022', 
       ubicacion: 'Medellín, Colombia',
-      precio: 85000000,
+      precio: 118000000,
       kilometraje: 208022,
       año: 2017,
       estado: 'usado',
@@ -38,15 +38,15 @@ const CamionDetalle = () => {
       ],
       video: '',
       especificaciones: {
-        'Motor': '3,0L Disel',
-        'Peso bruto': '1,634 kg Runt',
+        'Motor': '2,9L Disel',
+        'Peso bruto': '4,400 kg Runt',
         
       },
       caracteristicas: [
-        'Motor 3,0 Disel - Rendimiento Comprobado para el Trabajo Diario,con excelente economia de combustible',
-        'Caja Manual- Transmision Confiable,ideal para enfrentar recorridos urbanos o mixtos sin complicaciones',
-        'Carga Util 1,634 kg RUNT Optimo para reparto,comercio al por mayor o transporte de insumos',
-        '208,022 km  - Listo para seguir operando sin interrupciones."',
+        'Motor 2,9 Diesel - Potencia y torque para cargas exigentes.',
+        'Caja Manual- Precisión y control en cada cambio.',
+        'Capacidad de carga - 4,400 kg RUNT Perfecto para empresa que requieren transportar grandes volumenes en menos viajes',
+        '45,780 km  - Desgaste minimo y gran vida util."',
 
       ],
       garantia: '',
@@ -101,13 +101,13 @@ const CamionDetalle = () => {
 
     {
       id: 3,
-      marca: 'CHEVROLET NQR 5.2 ',
+      marca: 'CHEVROLET NHR ',
       tipo: 'camión',
-      modelo: '2018', 
+      modelo: '2019', 
       ubicacion: 'Medellín',
-      precio: 160000000,
-      kilometraje: 218377,
-      año: 2018,
+      precio: 125000000,
+      kilometraje: 178757,
+      año: 2019,
       estado: 'usado',
       destacado: true,
       descripcion: 'Respaldo chevrolet en desempeño y Durabilidad',
@@ -118,15 +118,15 @@ const CamionDetalle = () => {
       ],
       video: '',
       especificaciones: {
-        'Motor': '5,2L Disel',
-        'Capacidad De Carga': '4,650 kg Runt',
+        'Motor': '3,0L Diesel',
+        'Capacidad De Carga': '1,650 kg Runt',
         
       },
       caracteristicas: [
-        'Motor 5,2 Disel -Rendimiento Solido y efeciente en operación Continua',
-        'Caja Manual-Manejo Preciso y Respuesta Inmediata en todo terreno',
-        'Carga Util 4,650 kg RUNT Ideal para labores logisticas o reparto exigente',
-        '218,377 km  - Listo para seguir produciendo desde el primer dia "',
+        'Motor 3,0 Diesel - Energia que se sostiene desde el arranque ',
+        'Caja Manual-Precision para cada entrega',
+        'Carga Util 1,650 kg RUNT LLeva mas de lo que imaginas',
+        '178,757 km  - Con historia pero con mucha ruta por delante "',
         
       ],
       garantia: '',

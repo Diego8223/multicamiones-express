@@ -94,14 +94,14 @@ const Camiones = () => {
     return [
       {
         id: 1,
-        marca: 'CHEVROLET NHR ',
+        marca: 'JMC',
         tipo: '',
-        modelo: '2017',
+        modelo: '2022',
         ubicacion: 'Medellín',
-        precio: 85000000,
-        kilometraje: 208022,
-        año: 2017,
-        estado: 'Vendido',
+        precio: 118000000,
+        kilometraje: 45780,
+        año: 2022,
+        estado: 'Usado',
         destacado: true,
         descripcion: 'Una solucion Versátil para negocios en crecimiento',
         imagenes: [
@@ -111,9 +111,9 @@ const Camiones = () => {
         ],
         video: 'https://www.youtube.com/watch?v=dQw4w9WgXcQ',
         especificaciones: {
-          motor: '3.0L Disel',
+          motor: '2.9L Diésel',
           transmision: '',
-          capacidad: '1634 kg Runt',
+          capacidad: '4400 kg Runt',
           ejes: '',
           suspension: '',
           extras: ''
@@ -144,14 +144,14 @@ const Camiones = () => {
       },
       {
         id: 3,
-        marca: 'Chevrolet',
+        marca: 'CHEVROLET',
         tipo: 'Camión',
-        modelo: 'NQR5',
+        modelo: 'NHR',
         ubicacion: 'Medellín',
-        precio: 160000000,
-        kilometraje: 218377,
-        año: 2018,
-        estado: 'Vendido',
+        precio: 125000000,
+        kilometraje: 178757,
+        año: 2019,
+        estado: 'Usado',
         destacado: true,
         descripcion: 'Respaldo Chevrrolet en Desempeño y Durabilidad',
         imagenes: [
@@ -162,7 +162,7 @@ const Camiones = () => {
         video: 'https://www.youtube.com/watch?v=9bZkp7q19f0',
         especificaciones: {
           motor: '3,0 L DIESEL',
-          capacidad: '4650 KG RUNT',
+          capacidad: '1650 KG RUNT',
         }
       },
       {
