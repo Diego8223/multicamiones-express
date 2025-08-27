@@ -142,16 +142,16 @@ const CamionDetalle = () => {
 
       { 
       id: 4, 
-      marca: 'CHEVROLET NHR 3,0L MT ', 
+      marca: 'HINO FC9JJ7A', 
       tipo: 'camión', 
-      modelo: '2023', 
+      modelo: '2022', 
       ubicacion: 'Medellín, Colombia',
-      precio: 120000000,
-      kilometraje: 62750,
-      año: 2023,
+      precio: 240000000,
+      kilometraje: 71174,
+      año: 2022,
       estado: 'usado',
       destacado: true,
-      descripcion: 'Excelnete Opción para emprendedores o flotas urbanas.',
+      descripcion: 'Perfecto aliado en transporte de carga pesada.',
       imagenes: [
         '/img/NHR3-1.webp',
         '/img/NHR3-2.webp',
@@ -164,10 +164,10 @@ const CamionDetalle = () => {
         
       },
       caracteristicas: [
-        'Motor 3,0 Disel -Rendimiento Solido y efeciente en operación Continua',
-        'Caja Manual-Manejo Preciso y Respuesta Inmediata en todo terreno',
-        'Carga Util 1,500 kg RUNT Perfecto para entregas,Transporte Liviano o logistica Local',
-        '62,750 km  - Activo, operativo y listo para producir "',
+        'Motor 5,1 Disel -Potente,eficiente y con el respaldo de Hino para largas jornadas',
+        'Caja Manual- Precision y control en todo tipo de terreno',
+        'Carga Util 5,890 kg RUNT Listo para mover grandes volumenes sin perder rendimiento',
+        '71,174 km  - Kilometraje bajo que garantiza vida util por delante."',
         
       ],
       garantia: '',

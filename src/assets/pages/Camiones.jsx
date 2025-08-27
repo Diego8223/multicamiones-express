@@ -167,16 +167,16 @@ const Camiones = () => {
       },
       {
         id: 4,
-        marca: 'Chevrolet',
+        marca: 'HINO FC9JJ7A',
         tipo: 'Camión',
-        modelo: 'NHR 3,0L MT',
+        modelo: '2022',
         ubicacion: 'Medellín',
-        precio: 120000000,
-        kilometraje: 62750,
-        año: 2023,
-        estado: 'Vendido',
+        precio: 240000000,
+        kilometraje: 71174,
+        año: 2022,
+        estado: 'Usado',
         destacado: true,
-        descripcion: 'Excelente opción para emprendedores o flotas urbanas.',
+        descripcion: 'Perfecto aliado en transporte de carga pesada.',
         imagenes: [
           '/img/NHR3.webp',
           '/img/NHR3.webp',
@@ -184,8 +184,8 @@ const Camiones = () => {
         ],
         video: 'https://www.youtube.com/watch?v=JGwWNGJdvx8',
         especificaciones: {
-          motor: '3,0 L Diesel',
-          capacidad: '1,500 KG RUNT',
+          motor: '5,1 L Diesel',
+          capacidad: '5,890 KG RUNT',
         }
       },
       {
