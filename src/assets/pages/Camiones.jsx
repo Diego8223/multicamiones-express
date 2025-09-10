@@ -101,7 +101,7 @@ const Camiones = () => {
         precio: 118000000,
         kilometraje: 45780,
         año: 2022,
-        estado: 'Usado',
+        estado: 'Vendido',
         destacado: true,
         descripcion: 'Una solucion Versátil para negocios en crecimiento',
         imagenes: [
