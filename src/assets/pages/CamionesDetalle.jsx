@@ -1079,7 +1079,7 @@ const CamionDetalle = () => {
       video: '',
       especificaciones: {
         'Motor': '2,8L DIESEL',
-        'Capacidad de Carga': '1580 kg RUNT',
+        'Capacidad de Carga': '2450 kg RUNT',
         
       },
       caracteristicas: [
