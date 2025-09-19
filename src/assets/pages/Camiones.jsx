@@ -717,6 +717,31 @@ const Camiones = () => {
     transmision: 'MANUAL',
     capacidad: 'De carga 1580 kg RUNT'
   } // ✅ Aquí no va coma si es el último atributo
+},
+
+{
+  id: 27,
+  marca: 'JMC JX1044TC4',
+  tipo: 'Camión',
+  modelo: '2020',
+  ubicacion: 'Medellín',
+  precio: 68000000,
+  kilometraje: 123700,
+  año: 2020,
+  estado: 'Usado',
+  destacado: true,
+  descripcion: 'Practico económico y fuerte, el camion que se adapta a cada ruta.',
+  imagenes: [
+    '/img/JMCJX1044TC4.webp',
+    '/img/JMCJX1044TC4.webp',
+    '/img/JMCJX1044TC4.webp'
+  ],
+  video: 'https://www.youtube.com/watch?v=JGwWNGJdvx8',
+  especificaciones: {
+    motor: '2,8L Diesel',
+    transmision: 'MANUAL',
+    capacidad: 'De carga 2450 kg RUNT'
+  } // ✅ Aquí no va coma si es el último atributo
 }
 
   ];

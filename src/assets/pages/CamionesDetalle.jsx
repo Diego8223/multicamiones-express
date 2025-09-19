@@ -1058,6 +1058,46 @@ const CamionDetalle = () => {
         horario: 'Lunes a Viernes: 9:00 AM - 5:00 PM / Sábados: 10:00 AM - 2:00 PM'
       }
     },
+
+     { 
+      id: 27, 
+      marca: 'JMC JX1044TC4', 
+      tipo: 'Camión', 
+      modelo: '2020', 
+      ubicacion: 'MEDELLIN',
+      precio: 68000000,
+      kilometraje:123700,
+      año: 2020,
+      estado: 'usado',
+      destacado: true,
+      descripcion: 'Práctico, económico y fuerte el camión que se adapta a cada ruta.',
+      imagenes: [
+        '/img/JMCJX1044TC420201.webp',
+        '/img/JMCJX1044TC420202.webp',
+        '/img/JMCJX1044TC420203.webp',
+      ],
+      video: '',
+      especificaciones: {
+        'Motor': '2,8L DIESEL',
+        'Capacidad de Carga': '1580 kg RUNT',
+        
+      },
+      caracteristicas: [
+        'Motor 2,8L Diesel - Potencia confiable y rendidora.',
+        'Transmisión Manual - Precisión en ciudad y carretera.',
+        'Capacidad de Carga - 2.450 KG RUNT ideal para negocios que mueven volumen sin parar.',
+
+      ],
+       
+      garantia: '',
+      contacto: {
+        nombre: 'Juan Acosta',
+        telefono: '+57 3127767298',
+        whatsapp: '+57 3127767298',
+        email: 'multicamionesexpressmed@gmail.com',
+        horario: 'Lunes a Viernes: 9:00 AM - 5:00 PM / Sábados: 10:00 AM - 2:00 PM'
+      }
+    },
   ]
 
   useEffect(() => {
