@@ -1382,27 +1382,29 @@ const CamionDetalle = () => {
                   </div>
 
                   <div className="d-grid gap-3 mb-4">
-                    <a 
-                      href={`https://wa.me/${cleanNumber(camion.contacto.whatsapp)}?text=Hola, estoy interesado en el camión ${camion.marca} ${camion.modelo} (ID: ${camion.id})`} 
-                      className="btn btn-success py-3 fs-5 fw-bold d-flex align-items-center justify-content-center"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                    >
-                      <i className="bi bi-whatsapp fs-4 me-2"></i>
-                      WhatsApp
-                    </a>
-                    <a 
-                      href={`tel:${cleanNumber(camion.contacto.telefono)}`} 
-                      className="btn btn-outline-success py-3 fs-5 fw-bold d-flex align-items-center justify-content-center"
-                    >
-                      <i className="bi bi-telephone fs-4 me-2"></i>
-                      Llamar ahora
-                    </a>
-                    <button className="btn btn-primary py-3 fs-5 fw-bold d-flex align-items-center justify-content-center">
-                      <i className="bi bi-credit-card fs-4 me-2"></i>
-                      Financiación
-                    </button>
-                  </div>
+  <a 
+    href={`https://wa.me/${cleanNumber(camion.contacto.whatsapp)}?text=Hola, estoy interesado en el camión ${camion.marca} ${camion.modelo} (ID: ${camion.id})&source=whatsapp&code=WA-${camion.id}`} 
+    className="btn btn-success py-3 fs-5 fw-bold d-flex align-items-center justify-content-center"
+    target="_blank"
+    rel="noopener noreferrer"
+  >
+    <i className="bi bi-whatsapp fs-4 me-2"></i>
+    WhatsApp
+  </a>
+  
+  <a 
+    href={`tel:${cleanNumber(camion.contacto.telefono)}`} 
+    className="btn btn-outline-success py-3 fs-5 fw-bold d-flex align-items-center justify-content-center"
+  >
+    <i className="bi bi-telephone fs-4 me-2"></i>
+    Llamar ahora
+  </a>
+  
+  <button className="btn btn-primary py-3 fs-5 fw-bold d-flex align-items-center justify-content-center">
+    <i className="bi bi-credit-card fs-4 me-2"></i>
+    Financiación
+  </button>
+</div>
 
                   <div className="contact-details mb-4">
                     <div className="d-flex align-items-start mb-3">

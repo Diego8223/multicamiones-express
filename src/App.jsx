@@ -1,8 +1,9 @@
 // =============================================
 // REACT & ROUTER IMPORTS
 // =============================================
-import React from 'react';
+import React, { useEffect } from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import TagManager from 'react-gtm-module'; // <-- Importamos GTM
 
 // =============================================
 // STYLES IMPORTS
@@ -57,10 +58,25 @@ const APP_ROUTES = [
 // MAIN APP COMPONENT
 // =============================================
 const App = () => {
+  // Inicializamos Google Tag Manager una sola vez
+  useEffect(() => {
+    TagManager.initialize({ gtmId: "GTM-PZZHJDM5" });
+  }, []);
+
   // Filtramos las rutas principales para el navbar (excluyendo rutas dinámicas y 404)
   const mainRoutes = APP_ROUTES.filter(
     route => !route.path.includes(':') && route.path !== '*'
   );
+
+  // Función para enviar evento de clic en WhatsApp al dataLayer de GTM
+  const handleWhatsAppClick = () => {
+    TagManager.dataLayer({
+      dataLayer: {
+        event: "whatsapp_click",
+        button_name: "Botón WhatsApp Flotante"
+      }
+    });
+  };
 
   return (
     <Router>
@@ -86,8 +102,10 @@ const App = () => {
         {/* Footer con rutas principales */}
         <Footer routes={mainRoutes} />
         
-        {/* Componente flotante de WhatsApp */}
-        <WhatsAppFloatingMenu />
+        {/* Componente flotante de WhatsApp con tracking */}
+        <div onClick={handleWhatsAppClick}>
+          <WhatsAppFloatingMenu />
+        </div>
       </div>
     </Router>
   );
