@@ -43,6 +43,33 @@
     <meta property="twitter:description" content="Servicio profesional de transporte y logística" />
     <meta property="twitter:image" content="https://multicamiones.com/og-image.webp" />
 
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-LVXR6D3H0D"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-LVXR6D3H0D');
+      
+      // Función para establecer datos del agente
+      function setAgentData(agentName, agent) {
+        // Enviar a Google Analytics
+        gtag('event', 'agent_data', {
+          'agent_name': agentName,
+          'agent': agent
+        });
+        
+        // También guardar en dataLayer para uso futuro
+        window.dataLayer.push({
+          'event': 'agentData',
+          'agent_name': agentName,
+          'agent': agent
+        });
+        
+        console.log('Datos del agente enviados:', agentName, agent);
+      }
+    </script>
+
     <link rel="icon" href="favicon.ico" />
     <link rel="apple-touch-icon" href="icons/icon-192x192.png" />
     <link rel="manifest" href="manifest.webmanifest" crossorigin="use-credentials" />
@@ -283,7 +310,7 @@
         }
 
         .mobile-link:hover {
-            background-color: #e0e7ff;
+            background-color: 'none';
         }
 
         /* Íconos en menú móvil */
@@ -656,6 +683,22 @@
                     icon.classList.add('fa-moon');
                 }
             }
+        });
+        
+        // Ejemplo de cómo capturar datos de agent_name y agent
+        // Esta es solo una demostración - debes adaptarla a tu flujo real de datos
+        document.addEventListener('DOMContentLoaded', function() {
+            // Simular obtención de datos después de 3 segundos (solo para demostración)
+            setTimeout(function() {
+                // Estos valores deben venir de tu sistema real
+                const agentName = "Juan Pérez"; // Ejemplo
+                const agent = "Agente Comercial"; // Ejemplo
+                
+                // Enviar datos a Google Analytics
+                if (typeof setAgentData === 'function') {
+                    setAgentData(agentName, agent);
+                }
+            }, 3000);
         });
     </script>
 
