@@ -3,10 +3,20 @@
 <head>
     <meta charset="UTF-8" />
 
+    <!-- Política de Seguridad de Contenido (CSP) -->
     <meta http-equiv="Content-Security-Policy" content="
         default-src 'self';
-        script-src 'self' 'unsafe-inline' 'unsafe-eval' https://cdn.jsdelivr.net https://cdnjs.cloudflare.com https://unpkg.com https://www.youtube.com;
-        style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://cdn.jsdelivr.net https://unpkg.com https://cdnjs.cloudflare.com;
+        script-src 'self' 'unsafe-inline' 'unsafe-eval' 
+            https://cdn.jsdelivr.net 
+            https://cdnjs.cloudflare.com 
+            https://unpkg.com 
+            https://www.youtube.com
+            https://www.googletagmanager.com;
+        style-src 'self' 'unsafe-inline' 
+            https://fonts.googleapis.com 
+            https://cdn.jsdelivr.net 
+            https://unpkg.com 
+            https://cdnjs.cloudflare.com;
         img-src 'self' data: https:;
         connect-src 'self' https: wss:; 
         media-src 'self' https:;
@@ -42,7 +52,9 @@
     <link rel="preconnect" href="https://unpkg.com" crossorigin>
     <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin> 
-    <link rel="preconnect" href="https://www.youtube.com"> <link rel="preconnect" href="https://www.youtube-nocookie.com"> <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet" />
+    <link rel="preconnect" href="https://www.youtube.com"> 
+    <link rel="preconnect" href="https://www.youtube-nocookie.com"> 
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet" />
     <link rel="preload" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" as="style" crossorigin="anonymous" />
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous" />
     <link rel="preload" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" as="style" crossorigin="anonymous" />
@@ -185,7 +197,7 @@
         /* Colores redes sociales */
         .social-links .fa-facebook { color: #1877f2; }
         .social-links .fa-instagram { color: #e4405f; }
-        .social-links .fa-Tiktok { color: #080808; }
+        .social-links .fa-tiktok { color: #080808; }
 
         /* Efectos hover redes sociales */
         .social-links a:hover {
@@ -223,6 +235,18 @@
             z-index: 1001;
             padding: 0.5rem;
             font-size: 1.8rem;
+        }
+
+        /* Botón modo oscuro */
+        .dark-mode-toggle {
+            background: none;
+            border: none;
+            color: white;
+            cursor: pointer;
+            z-index: 1001;
+            padding: 0.5rem;
+            font-size: 1.5rem;
+            margin-left: 15px;
         }
 
         /* Menú móvil */
@@ -540,6 +564,25 @@
                 <span class="brand-name">Multicamiones Express</span>
             </div>
 
+            <div class="menu-links">
+                <a href="/" class="menu-link">Inicio</a>
+                <a href="/servicios" class="menu-link">Servicios</a>
+                <a href="/flota" class="menu-link">Flota</a>
+                <a href="/contacto" class="menu-link">Contacto</a>
+            </div>
+
+            <div class="social-links">
+                <a href="https://web.facebook.com/MULTICAMIONESEXPRESS/?_rdc=1&_rdr#" target="_blank" rel="noopener noreferrer" aria-label="Facebook">
+                    <i class="fab fa-facebook"></i>
+                </a>
+                <a href="https://www.instagram.com/multicamionesexpresscol/" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
+                    <i class="fab fa-instagram"></i>
+                </a>
+                <a href="https://www.tiktok.com/@multicamionesexpr" target="_blank" rel="noopener noreferrer" aria-label="TikTok">
+                    <i class="fab fa-tiktok"></i>
+                </a>
+            </div>
+
             <button class="menu-toggle" aria-label="Menú">
                 <i class="fas fa-bars"></i>
             </button>
@@ -562,7 +605,7 @@
                 <a href="https://www.instagram.com/multicamionesexpresscol/" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
                     <i class="fab fa-instagram"></i>
                 </a>
-                <a href="https://www.tiktok.com/@multicamionesexpr" target="_blank" rel="noopener noreferrer" aria-label="tiktok">
+                <a href="https://www.tiktok.com/@multicamionesexpr" target="_blank" rel="noopener noreferrer" aria-label="TikTok">
                     <i class="fab fa-tiktok"></i>
                 </a>
             </div>
