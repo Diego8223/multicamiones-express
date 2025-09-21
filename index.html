@@ -11,7 +11,8 @@
             https://cdnjs.cloudflare.com 
             https://unpkg.com 
             https://www.youtube.com
-            https://www.googletagmanager.com;
+            https://www.googletagmanager.com
+            https://s.ytimg.com;
         style-src 'self' 'unsafe-inline' 
             https://fonts.googleapis.com 
             https://cdn.jsdelivr.net 
@@ -20,8 +21,12 @@
         img-src 'self' data: https:;
         connect-src 'self' https: wss:; 
         media-src 'self' https:;
-        frame-src 'self' https://www.youtube.com https://www.youtube-nocookie.com;
+        frame-src 'self' 
+            https://www.youtube.com 
+            https://www.youtube-nocookie.com
+            https://youtube.com;
         font-src 'self' https: data: https://cdnjs.cloudflare.com https://fonts.gstatic.com;
+        child-src https://www.youtube.com https://www.youtube-nocookie.com;
     ">
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
@@ -103,6 +108,7 @@
             overflow-x: hidden;
             width: 100%;
             transition: background-color 0.3s ease, color 0.3s ease;
+            background-color: #f8fafc;
         }
 
         /* Navbar Principal - Ocupa todo el ancho */
@@ -157,99 +163,16 @@
             white-space: nowrap;
         }
 
-        /* Menú principal */
-        .menu-links {
-            display: flex;
-            gap: 30px;
-            align-items: center;
-            flex: 1;
-            justify-content: center;
-            margin: 0 20px;
-        }
-
-        /* Links de navegación */
-        .menu-link {
+        /* Botón modo oscuro */
+        .dark-mode-toggle {
+            background: none;
+            border: none;
             color: white;
-            text-decoration: none;
-            font-weight: 600;
-            font-size: 1.1rem;
-            transition: all 0.3s ease;
-            position: relative;
-            padding: 5px 0;
-        }
-
-        .menu-link:hover {
-            color: #93c5fd;
-        }
-
-        .menu-link::after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 0;
-            height: 3px;
-            background: #93c5fd;
-            transition: width 0.3s ease;
-        }
-
-        .menu-link:hover::after {
-            width: 100%;
-        }
-
-        /* Íconos redes sociales */
-        .social-links {
-            display: flex;
-            gap: 15px;
-            margin-left: 20px;
-        }
-
-        .social-links a {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
-            transition: all 0.3s ease;
-            text-decoration: none;
-            background-color: transparent;
-        }
-
-        .social-icon {
+            cursor: pointer;
+            z-index: 1001;
+            padding: 0.5rem;
             font-size: 1.5rem;
-            transition: all 0.3s ease;
-        }
-
-        /* Colores redes sociales */
-        .social-links .fa-facebook { color: #1877f2; }
-        .social-links .fa-instagram { color: #e4405f; }
-        .social-links .fa-tiktok { color: #080808; }
-
-        /* Efectos hover redes sociales */
-        .social-links a:hover {
-            transform: translateY(-3px);
-        }
-
-        .social-links a:hover .fa-facebook {
-            color: white;
-            background-color: #1877f2;
-            border-radius: 50%;
-            padding: 8px;
-        }
-
-        .social-links a:hover .fa-instagram {
-            color: white;
-            background: radial-gradient(circle at 30% 107%, #fdf497 0%, #fdf497 5%, #fd5949 45%, #d6249f 60%, #285AEB 90%);
-            border-radius: 50%;
-            padding: 8px;
-        }
-
-        .social-links a:hover .fa-whatsapp {
-            color: white;
-            background-color: #25d366;
-            border-radius: 50%;
-            padding: 8px;
+            margin-left: 15px;
         }
 
         /* Botón del menú hamburguesa */
@@ -264,83 +187,171 @@
             font-size: 1.8rem;
         }
 
-        /* Botón modo oscuro */
-        .dark-mode-toggle {
-            background: none;
-            border: none;
-            color: white;
-            cursor: pointer;
-            z-index: 1001;
-            padding: 0.5rem;
-            font-size: 1.5rem;
-            margin-left: 15px;
-        }
-
-        /* Menú móvil */
-        .mobile-menu {
-            position: fixed;
-            top: 80px;
-            left: 0;
-            width: 100%;
-            max-height: 0;
-            overflow: hidden;
-            transition: max-height 0.5s ease;
-            background-color: #f8fafc;
-            z-index: 1000;
-            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
-        }
-
-        .mobile-menu.open {
-            max-height: calc(100vh - 80px);
-            overflow-y: auto;
-        }
-
-        .mobile-link {
-            display: block;
-            padding: 15px;
-            text-align: center;
-            color: #1e3a8a;
-            font-weight: 600;
-            font-size: 1.1rem;
-            border-bottom: 1px solid #e2e8f0;
-            transition: all 0.3s ease;
-            width: 100%;
-            box-sizing: border-box;
-            text-decoration: none;
-        }
-
-        .mobile-link:hover {
-            background-color: 'none';
-        }
-
-        /* Íconos en menú móvil */
-        .mobile-socials {
-            display: flex;
-            justify-content: center;
-            gap: 20px;
-            padding: 15px;
-            border-top: 1px solid #e2e8f0;
-            flex-wrap: wrap;
-        }
-
-        .mobile-socials a {
-            color: #1e3a8a;
-            font-size: 1.5rem;
-            transition: transform 0.3s ease;
-        }
-
-        .mobile-socials a:hover {
-            transform: scale(1.2);
-        }
-
         .dark-mode-toggle:hover {
             color: #facc15;
         }
 
         /* Contenido principal - espacio después del navbar */
         .main-content {
-            margin-top: 50px;
-            padding-top: 60px;
+            margin-top: 80px; /* Ajustado para coincidir con la altura del navbar */
+            padding-top: 40px; /* Reducido significativamente */
+        }
+
+        /* Carrusel de publicidad estilo Éxito */
+        .ad-carousel-section {
+            padding: 5px 0; /* Reducido de 20px a 5px */
+            background-color: #f8fafc;
+            text-align: center;
+            margin-bottom: 5px; /* Reducido de 30px a 5px para acercar al siguiente elemento */
+        }
+
+        .ad-carousel-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            position: relative;
+            overflow: hidden;
+            border-radius: 12px;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+            height: 500px;
+        }
+
+        .ad-carousel {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+        }
+
+        .ad-slide {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            opacity: 0;
+            transition: opacity 0.8s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .ad-slide.active {
+            opacity: 1;
+        }
+
+        .ad-slide img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        .ad-content {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(to top, rgba(0,0,0,0.85), transparent);
+            padding: 30px;
+            color: white;
+            text-align: left;
+        }
+
+        .ad-title {
+            font-size: 2.5rem;
+            font-weight: 800;
+            margin-bottom: 15px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+        }
+
+        .ad-subtitle {
+            font-size: 1.8rem;
+            font-weight: 600;
+            margin-bottom: 10px;
+            color: #facc15;
+            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.7);
+        }
+
+        .ad-description {
+            font-size: 1.2rem;
+            margin-bottom: 20px;
+            max-width: 700px;
+            line-height: 1.5;
+        }
+
+        .ad-button {
+            display: inline-block;
+            background-color: #facc15;
+            color: #1e3a8a;
+            padding: 12px 30px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 700;
+            transition: all 0.3s ease;
+            font-size: 1.1rem;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+        }
+
+        .ad-button:hover {
+            background-color: #fbbf24;
+            transform: translateY(-3px);
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3);
+        }
+
+        .carousel-controls {
+            position: absolute;
+            bottom: 30px;
+            right: 30px;
+            display: flex;
+            gap: 10px;
+            z-index: 10;
+        }
+
+        .carousel-dot {
+            width: 14px;
+            height: 14px;
+            border-radius: 50%;
+            background-color: rgba(255, 255, 255, 0.6);
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .carousel-dot.active {
+            background-color: white;
+            transform: scale(1.3);
+            box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
+        }
+
+        .carousel-arrow {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background-color: rgba(255, 255, 255, 0.9);
+            color: #1e3a8a;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            z-index: 10;
+            transition: all 0.3s ease;
+            font-size: 1.5rem;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.2);
+        }
+
+        .carousel-arrow:hover {
+            background-color: white;
+            transform: translateY(-50%) scale(1.1);
+        }
+
+        .carousel-arrow.prev {
+            left: 25px;
+        }
+
+        .carousel-arrow.next {
+            right: 25px;
         }
 
         /* Media Queries para Responsividad */
@@ -350,6 +361,11 @@
             .navbar-container {
                 padding: 0 25px;
             }
+            
+            .ad-carousel-container {
+                max-width: 1200px;
+                height: 450px;
+            }
         }
 
         /* Laptops */
@@ -358,17 +374,20 @@
                 max-width: 100%;
             }
 
-            .menu-links {
-                gap: 20px;
-            }
-
-            .social-links {
-                margin-left: 15px;
-                gap: 10px;
-            }
-
             .brand-name {
                 font-size: 1.3rem;
+            }
+
+            .ad-carousel-container {
+                height: 400px;
+            }
+            
+            .ad-title {
+                font-size: 2.2rem;
+            }
+            
+            .ad-subtitle {
+                font-size: 1.6rem;
             }
         }
 
@@ -382,18 +401,29 @@
                 font-size: 1.2rem;
             }
 
-            .menu-link {
-                font-size: 1rem;
+            .ad-carousel-container {
+                height: 350px;
+            }
+            
+            .ad-title {
+                font-size: 1.9rem;
+            }
+            
+            .ad-subtitle {
+                font-size: 1.4rem;
+            }
+            
+            .ad-description {
+                font-size: 1.1rem;
+            }
+
+            .ad-content {
+                padding: 25px;
             }
         }
 
         /* Tablets pequeñas y móviles grandes */
         @media (max-width: 768px) {
-            .menu-links,
-            .social-links {
-                display: none;
-            }
-
             .menu-toggle {
                 display: block;
             }
@@ -412,6 +442,49 @@
                 white-space: nowrap;
                 overflow: hidden;
                 text-overflow: ellipsis;
+            }
+
+            .ad-carousel-section {
+                padding: 3px 0; /* Reducido para móviles */
+                margin-bottom: 5px; /* Reducido para móviles */
+            }
+
+            .ad-carousel-container {
+                height: 300px;
+                border-radius: 8px;
+            }
+            
+            .ad-title {
+                font-size: 1.7rem;
+            }
+            
+            .ad-subtitle {
+                font-size: 1.3rem;
+            }
+            
+            .ad-description {
+                font-size: 1rem;
+                margin-bottom: 15px;
+            }
+
+            .ad-content {
+                padding: 20px;
+            }
+            
+            .ad-button {
+                padding: 10px 25px;
+                font-size: 1rem;
+            }
+
+            .carousel-arrow {
+                width: 40px;
+                height: 40px;
+                font-size: 1.2rem;
+            }
+            
+            .carousel-controls {
+                bottom: 20px;
+                right: 20px;
             }
         }
 
@@ -434,22 +507,56 @@
                 max-width: 150px;
             }
 
-            .mobile-menu {
-                top: 70px;
+            .ad-carousel-container {
+                height: 250px;
+            }
+            
+            .ad-title {
+                font-size: 1.4rem;
+                margin-bottom: 8px;
+            }
+            
+            .ad-subtitle {
+                font-size: 1.1rem;
+                margin-bottom: 5px;
+            }
+            
+            .ad-description {
+                font-size: 0.9rem;
+                margin-bottom: 12px;
             }
 
-            .mobile-menu.open {
-                max-height: calc(100vh - 70px);
+            .ad-content {
+                padding: 15px;
+            }
+            
+            .ad-button {
+                padding: 8px 20px;
+                font-size: 0.9rem;
             }
 
-            .mobile-link {
+            .carousel-arrow {
+                width: 35px;
+                height: 35px;
                 font-size: 1rem;
-                padding: 12px;
+            }
+            
+            .carousel-arrow.prev {
+                left: 15px;
             }
 
-            .mobile-socials {
-                gap: 15px;
-                padding: 12px;
+            .carousel-arrow.next {
+                right: 15px;
+            }
+            
+            .carousel-controls {
+                bottom: 15px;
+                right: 15px;
+            }
+            
+            .carousel-dot {
+                width: 12px;
+                height: 12px;
             }
         }
 
@@ -472,12 +579,30 @@
                 padding: 0 10px;
             }
 
-            .mobile-menu {
-                top: 60px;
+            .ad-carousel-container {
+                height: 220px;
             }
-
-            .mobile-menu.open {
-                max-height: calc(100vh - 60px);
+            
+            .ad-title {
+                font-size: 1.2rem;
+            }
+            
+            .ad-subtitle {
+                font-size: 1rem;
+            }
+            
+            .ad-description {
+                font-size: 0.8rem;
+                margin-bottom: 10px;
+            }
+            
+            .ad-content {
+                padding: 12px;
+            }
+            
+            .ad-button {
+                padding: 7px 18px;
+                font-size: 0.8rem;
             }
         }
 
@@ -514,7 +639,7 @@
             width: 100%;
             max-width: 100vw;
             height: 500px;
-            margin: 20px auto;
+            margin: 10px auto; /* Reducido de 20px a 10px para acercar elementos */
             border-radius: 8px;
             overflow: hidden;
             box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
@@ -557,7 +682,7 @@
         @media (max-width: 768px) {
             #map-container {
                 height: 300px;
-                margin: 10px;
+                margin: 8px auto; /* Reducido para móviles */
             }
 
             .loading-text {
@@ -568,7 +693,7 @@
         @media (max-width: 480px) {
             #map-container {
                 height: 200px;
-                margin: 5px;
+                margin: 5px auto; /* Reducido para móviles pequeños */
             }
 
             .loading-text {
@@ -581,18 +706,127 @@
             overflow-x: hidden;
             width: 100%;
         }
+        
+        /* Nuevos estilos para reducir espacio entre elementos */
+        #root {
+            margin-top: 0; /* Eliminamos cualquier margen superior */
+        }
+        
+        /* Ajuste para el contenedor principal */
+        .content-wrapper {
+            display: flex;
+            flex-direction: column;
+            gap: 5px; /* Reducimos el espacio entre elementos hijos */
+        }
+        
+        /* Ajustes para reducir espacios generales */
+        .main-content > * {
+            margin-bottom: 10px; /* Reducir espacio entre secciones */
+        }
     </style>
 </head>
 
-    <div id="root">
-        <div class="loading-container" id="loading">
-            <div class="loading-spinner"></div>
-            <h1 class="loading-text">Cargando Multicamiones Express</h1>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar-custom">
+        <div class="navbar-container">
+            <div class="logo-container">
+                <img src="logo.png" alt="Multicamiones Express" class="logo-img">
+                <span class="brand-name">Multicamiones Express</span>
+            </div>
+            
+            <button class="dark-mode-toggle" aria-label="Modo oscuro">
+                <i class="fas fa-moon"></i>
+            </button>
+            
+            <button class="menu-toggle" aria-label="Menú">
+                <i class="fas fa-bars"></i>
+            </button>
         </div>
-    </div>
+    </nav>
 
-    <div id="map-container" aria-label="Mapa de ubicación de Multicamiones Express" style="display:none;">
-        <div id="map" role="region" aria-live="polite" aria-busy="true"></div>
+    <div class="main-content">
+        <!-- Contenedor para agrupar elementos cercanos -->
+        <div class="content-wrapper">
+            <!-- Carrusel de Publicidad estilo Éxito -->
+            <section class="ad-carousel-section">
+                <div class="ad-carousel-container">
+                    <div class="ad-carousel">
+                        <!-- Slide 1 - Imagen local -->
+                        <div class="ad-slide active">
+                            <img src="./src/assets/img/foto1.webp" alt="Camiones en venta" loading="eager">
+                            <div class="ad-content">
+                                <h2 class="ad-subtitle">CAMIONES</h2>
+                                <h1 class="ad-title">EN VENTA</h1>
+                                <p class="ad-description">Los mejores camiones con garantía y respaldo Multicamiones Express</p>
+                                <a href="camiones" class="ad-button">Ver disponibilidad</a>
+                            </div>
+                        </div>
+                        
+                        <!-- Slide 2 - Imagen local -->
+                        <div class="ad-slide">
+                            <img src="./src/assets/img/foto2.webp" alt="Flota de camiones" loading="lazy">
+                            <div class="ad-content">
+                                <h2 class="ad-subtitle">CAMIONES</h2>
+                                <h1 class="ad-title">EN VENTA</h1>
+                                <p class="ad-description">Flota moderna y en perfecto estado para tus necesidades de transporte</p>
+                                <a href="camiones" class="ad-button">Ver modelos</a>
+                            </div>
+                        </div>
+                        
+                        <!-- Slide 3 - Imagen local -->
+                        <div class="ad-slide">
+                            <img src="./src/assets/img/foto3.webp" alt="Soluciones logísticas" loading="lazy">
+                            <div class="ad-content">
+                                <h2 class="ad-subtitle">MULTICAMIONES</h2>
+                                <h1 class="ad-title">EXPRESS</h1>
+                                <p class="ad-description">Tu socio confiable en soluciones de transporte y logística</p>
+                                <a href="camiones" class="ad-button">Nuestros servicios</a>
+                            </div>
+                        </div>
+                        
+                        <!-- Slide 4 - Imagen local -->
+                        <div class="ad-slide">
+                            <img src="./src/assets/img/foto4.webp" alt="Camiones Foton" loading="lazy">
+                            <div class="ad-content">
+                                <h2 class="ad-subtitle">CAMIONES</h2>
+                                <h1 class="ad-title">PROFESIONALES</h1>
+                                <p class="ad-description">Vehículos de alto rendimiento para el transporte de carga</p>
+                                <a href="camiones" class="ad-button">Cotizar ahora</a>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Controles del carrusel -->
+                    <div class="carousel-arrow prev">
+                        <i class="fas fa-chevron-left"></i>
+                    </div>
+                    <div class="carousel-arrow next">
+                        <i class="fas fa-chevron-right"></i>
+                    </div>
+                    
+                    <div class="carousel-controls">
+                        <div class="carousel-dot active" data-slide="0"></div>
+                        <div class="carousel-dot" data-slide="1"></div>
+                        <div class="carousel-dot" data-slide="2"></div>
+                        <div class="carousel-dot" data-slide="3"></div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Contenido principal de la aplicación -->
+            <div id="root">
+                <div class="loading-container" id="loading">
+                    <div class="loading-spinner"></div>
+                    <h1 class="loading-text">Cargando Multicamiones Express</h1>
+                </div>
+            </div>
+
+            <!-- Mapa -->
+            <div id="map-container" aria-label="Mapa de ubicación de Multicamiones Express" style="display:none;">
+                <div id="map" role="region" aria-live="polite" aria-busy="true"></div>
+            </div>
+        </div>
     </div>
 
     <noscript>
@@ -606,14 +840,6 @@
     </noscript>
 
     <script>
-        // Toggle del menú móvil
-        document.querySelector('.menu-toggle')?.addEventListener('click', function() {
-            const mobileMenu = document.querySelector('.mobile-menu');
-            if (mobileMenu) {
-                mobileMenu.classList.toggle('open');
-            }
-        });
-
         // Toggle del modo oscuro
         document.querySelector('.dark-mode-toggle')?.addEventListener('click', function() {
             document.body.classList.toggle('dark-mode');
@@ -631,7 +857,6 @@
         });
         
         // Ejemplo de cómo capturar datos de agent_name y agent
-        // Esta es solo una demostración - debes adaptarla a tu flujo real de datos
         document.addEventListener('DOMContentLoaded', function() {
             // Simular obtención de datos después de 3 segundos (solo para demostración)
             setTimeout(function() {
@@ -644,6 +869,92 @@
                     setAgentData(agentName, agent);
                 }
             }, 3000);
+        });
+
+        // Funcionalidad del carrusel de publicidad
+        document.addEventListener('DOMContentLoaded', function() {
+            const slides = document.querySelectorAll('.ad-slide');
+            const dots = document.querySelectorAll('.carousel-dot');
+            const prevArrow = document.querySelector('.carousel-arrow.prev');
+            const nextArrow = document.querySelector('.carousel-arrow.next');
+            let currentSlide = 0;
+            let slideInterval;
+
+            // Función para mostrar un slide específico
+            function showSlide(n) {
+                // Ocultar todos los slides
+                slides.forEach(slide => {
+                    slide.classList.remove('active');
+                });
+                dots.forEach(dot => {
+                    dot.classList.remove('active');
+                });
+                
+                // Asegurarse de que el índice esté dentro del rango
+                if (n >= slides.length) {
+                    currentSlide = 0;
+                } else if (n < 0) {
+                    currentSlide = slides.length - 1;
+                } else {
+                    currentSlide = n;
+                }
+                
+                // Mostrar el slide actual
+                slides[currentSlide].classList.add('active');
+                dots[currentSlide].classList.add('active');
+            }
+            
+            // Función para avanzar al siguiente slide
+            function nextSlide() {
+                showSlide(currentSlide + 1);
+            }
+            
+            // Iniciar el carrusel automático
+            function startSlideShow() {
+                clearInterval(slideInterval);
+                slideInterval = setInterval(nextSlide, 5000); // Cambiar cada 5 segundos
+            }
+            
+            // Detener el carrusel automático
+            function stopSlideShow() {
+                clearInterval(slideInterval);
+            }
+            
+            // Event listeners para los controles
+            if (prevArrow) {
+                prevArrow.addEventListener('click', function() {
+                    stopSlideShow();
+                    showSlide(currentSlide - 1);
+                    startSlideShow();
+                });
+            }
+            
+            if (nextArrow) {
+                nextArrow.addEventListener('click', function() {
+                    stopSlideShow();
+                    nextSlide();
+                    startSlideShow();
+                });
+            }
+            
+            // Event listeners para los dots
+            dots.forEach((dot, index) => {
+                dot.addEventListener('click', function() {
+                    stopSlideShow();
+                    showSlide(index);
+                    startSlideShow();
+                });
+            });
+            
+            // Pausar el carrusel cuando el mouse está sobre él
+            const carousel = document.querySelector('.ad-carousel');
+            if (carousel) {
+                carousel.addEventListener('mouseenter', stopSlideShow);
+                carousel.addEventListener('mouseleave', startSlideShow);
+            }
+            
+            // Iniciar el carrusel
+            startSlideShow();
         });
     </script>
 

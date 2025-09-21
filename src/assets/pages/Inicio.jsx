@@ -1,207 +1,154 @@
 import React, { useState, useRef, useEffect, useCallback } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap-icons/font/bootstrap-icons.css';
-import './Inicio.css'; // Asegúrate de que este archivo contiene los estilos CSS específicos de Inicio.
+import './Inicio.css';
 
 const videos = [
   {
-    id: 'UzMNJV-RR-I', // ID de tu video de YouTube
+    id: 'UzMNJV-RR-I',
     title: 'MULTICAMIONES EXPRESS ',
     description: 'Visítanos y Conoce Nuestra Empresa'
   }
 ];
 
-// Componente memoizado para controles
 const ControlButton = React.memo(({ onClick, children, label }) => (
   <button onClick={onClick} className="control-btn" aria-label={label}>
     {children}
   </button>
 ));
 
-// Componente memoizado para el reproductor de YouTube
 const YouTubePlayer = React.memo(({ playerRef, playerContainerRef, isMuted, onReady, onStateChange }) => {
   useEffect(() => {
-    // console.log("YouTubePlayer useEffect running. Checking window.YT:", window.YT);
-
-    // Asegúrate de que window.YT y el contenedor estén disponibles antes de crear el reproductor
     if (!window.YT || !window.YT.Player || !playerContainerRef.current) {
-      // console.warn("YouTube API not yet loaded or container ref not available. Skipping player creation.");
       return;
     }
     
-    // Destruye el reproductor existente si hay alguno para evitar múltiples instancias
     if (playerRef.current) {
-      // console.log("Destroying existing YouTube player.");
       playerRef.current.destroy();
       playerRef.current = null;
     }
 
-    // console.log("Creating new YouTube player...");
     playerRef.current = new window.YT.Player(playerContainerRef.current, {
       videoId: videos[0].id,
-      // No especificar width/height aquí, lo manejaremos con CSS para responsividad
       playerVars: {
         autoplay: 1,
         mute: isMuted ? 1 : 0,
-        rel: 0,            // No mostrar videos relacionados al final
-        modestbranding: 1, // Ocultar el logo de YouTube en la barra de control
-        disablekb: 1,      // Desactivar controles de teclado
-        fs: 0,             // Deshabilitar botón de pantalla completa
-        iv_load_policy: 3, // No mostrar anotaciones
-        playsinline: 1,    // Reproducir en línea en iOS
-        enablejsapi: 1,    // Habilitar la API de JavaScript
-        origin: window.location.origin // Prevenir posibles problemas de seguridad en iframe
+        rel: 0,
+        modestbranding: 1,
+        disablekb: 1,
+        fs: 0,
+        iv_load_policy: 3,
+        playsinline: 1,
+        enablejsapi: 1,
+        origin: window.location.origin
       },
       events: {
         onReady: (event) => {
-          // console.log("YouTube Player is ready.");
           onReady(event);
         },
         onStateChange: (event) => {
-          // console.log("YouTube Player state changed:", event.data);
           onStateChange(event);
         }
       }
     });
     
-    // Función de limpieza para destruir el reproductor cuando el componente se desmonte
     return () => {
       if (playerRef.current) {
-        // console.log("Cleaning up YouTube player on unmount.");
         playerRef.current.destroy();
         playerRef.current = null;
       }
     };
   }, [playerRef, playerContainerRef, isMuted, onReady, onStateChange]);
   
-  return <div id="youtube-player" ref={playerContainerRef}></div>; // Añadimos un ID aquí
+  return <div id="youtube-player" ref={playerContainerRef}></div>;
 });
 
 const Inicio = () => {
   const [isMuted, setIsMuted] = useState(true);
   const [isPlaying, setIsPlaying] = useState(true);
   const [isPlayerReady, setIsPlayerReady] = useState(false);
+  const [apiLoaded, setApiLoaded] = useState(false);
   const playerRef = useRef(null);
   const playerContainerRef = useRef(null);
-  const apiLoadedRef = useRef(false);
 
-  // Carga diferida de YouTube API
-  const loadYouTubeAPI = useCallback(() => {
-    if (apiLoadedRef.current || typeof window === 'undefined') {
-      // console.log("YouTube API already loaded or not in browser environment. Skipping load.");
-      return;
-    }
-    
+  // Carga de YouTube API
+  useEffect(() => {
+    // Si ya está cargada la API
     if (window.YT && window.YT.Player) {
-      apiLoadedRef.current = true;
-      // console.log("YouTube API already available on window.YT.");
-      // Si la API ya está, podemos considerar el reproductor listo
+      setApiLoaded(true);
       setIsPlayerReady(true);
       return;
     }
     
-    // Esta es la función global que el API de YouTube llamará cuando esté listo
-    // Aseguramos que solo se defina una vez
-    if (!window.onYouTubeIframeAPIReady) {
+    // Si ya hay un script cargándose
+    if (document.querySelector('script[src="https://www.youtube.com/iframe_api"]')) {
+      // Configuramos el callback para cuando esté lista
       window.onYouTubeIframeAPIReady = () => {
-        apiLoadedRef.current = true;
-        // console.log("YouTube IFrame API is ready. Setting isPlayerReady to true.");
-        setIsPlayerReady(true); 
+        setApiLoaded(true);
+        setIsPlayerReady(true);
       };
+      return;
     }
-
-    const script = document.createElement('script');
-    // *** ¡LA URL OFICIAL Y RECOMENDADA PARA EL API DE YOUTUBE! ***
-    script.src = 'https://www.youtube.com/iframe_api'; 
-    script.async = true;
-    script.defer = true;
-    script.onload = () => {
-      // console.log("YouTube API script element loaded into DOM. Waiting for onYouTubeIframeAPIReady...");
+    
+    // Crear el script para cargar la API
+    const tag = document.createElement('script');
+    tag.src = 'https://www.youtube.com/iframe_api';
+    const firstScriptTag = document.getElementsByTagName('script')[0];
+    firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+    
+    // Configurar la función global que YouTube llamará cuando la API esté lista
+    window.onYouTubeIframeAPIReady = () => {
+      setApiLoaded(true);
+      setIsPlayerReady(true);
     };
-    script.onerror = (e) => {
-      console.error("Failed to load YouTube API script:", e);
-      // Podrías mostrar un mensaje al usuario aquí si el video no carga
-    };
-    document.body.appendChild(script);
-    // console.log("YouTube API script appended to body.");
   }, []);
 
-  // Cargar API cuando el componente se monte
-  useEffect(() => {
-    loadYouTubeAPI();
-    
-    return () => {
-      // Limpieza del reproductor cuando el componente se desmonte
-      if (playerRef.current) {
-        playerRef.current.destroy();
-        playerRef.current = null;
-      }
-    };
-  }, [loadYouTubeAPI]);
-
-  // Handler para cuando el reproductor está listo
   const handlePlayerReady = useCallback((event) => {
     setIsPlayerReady(true);
-    // console.log("Player ready callback. isPlaying:", isPlaying);
     if (isPlaying) { 
       event.target.playVideo();
     }
   }, [isPlaying]);
 
-  // Handler para cambios de estado del reproductor
   const handlePlayerStateChange = useCallback((event) => {
-    if (window.YT) { // Asegurarse de que YT está disponible
+    if (window.YT) {
       if (event.data === window.YT.PlayerState.ENDED) {
-        // console.log("Video ended, replaying.");
-        event.target.playVideo(); // Loop video
+        event.target.playVideo();
       } else if (event.data === window.YT.PlayerState.PLAYING) {
-        // console.log("Video is playing.");
         setIsPlaying(true);
       } else if (event.data === window.YT.PlayerState.PAUSED) {
-        // console.log("Video is paused.");
         setIsPlaying(false);
       }
     }
   }, []);
 
-  // Toggle para silenciar/activar sonido
   const toggleMute = useCallback(() => {
-    setIsMuted(prev => {
-      if (isPlayerReady && playerRef.current) {
-        if (prev) {
-          playerRef.current.unMute();
-          // console.log("Unmuting video.");
-        } else {
-          playerRef.current.mute();
-          // console.log("Muting video.");
-        }
+    if (isPlayerReady && playerRef.current) {
+      if (isMuted) {
+        playerRef.current.unMute();
+      } else {
+        playerRef.current.mute();
       }
-      return !prev;
-    });
-  }, [isPlayerReady]);
+      setIsMuted(!isMuted);
+    }
+  }, [isPlayerReady, isMuted]);
 
-  // Toggle para reproducir/pausar
   const togglePlay = useCallback(() => {
-    setIsPlaying(prev => {
-      if (isPlayerReady && playerRef.current) {
-        if (prev) {
-          playerRef.current.pauseVideo();
-          // console.log("Pausing video.");
-        } else {
-          playerRef.current.playVideo();
-          // console.log("Playing video.");
-        }
+    if (isPlayerReady && playerRef.current) {
+      if (isPlaying) {
+        playerRef.current.pauseVideo();
+      } else {
+        playerRef.current.playVideo();
       }
-      return !prev;
-    });
-  }, [isPlayerReady]);
+      setIsPlaying(!isPlaying);
+    }
+  }, [isPlayerReady, isPlaying]);
 
   return (
     <div className="inicio-container">
       <section className="video-section">
         <div className="video-wrapper">
-          {/* Solo renderiza YouTubePlayer cuando el API de YouTube está cargado y listo */}
-          {isPlayerReady ? (
+          {apiLoaded ? (
             <YouTubePlayer
               playerRef={playerRef}
               playerContainerRef={playerContainerRef}

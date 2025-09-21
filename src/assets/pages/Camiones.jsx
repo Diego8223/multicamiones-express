@@ -929,7 +929,7 @@ return rawCamiones.map(camion => {
                   >
                     <img 
                       src={img} 
-                      className="d-block w-100 h-100"
+                      className="d-block w-200 h-200"
                       alt={`${camion.marca} ${camion.modelo}`}
                       style={{
                         objectFit: 'cover',

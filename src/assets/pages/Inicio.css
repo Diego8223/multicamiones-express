@@ -6,17 +6,17 @@
     justify-content: center;
     padding: 0; /* Asegura que no haya padding global para el video de fondo */
     background-color: #0d1a2d; /* Fondo oscuro que contrasta con el video */
-    min-height: 70vh; /* La sección ocupa al menos el 70% de la altura del viewport */
+    min-height: 90vh; /* La sección ocupa al menos el 70% de la altura del viewport */
     gap: 20px; /* Espacio entre el texto y los controles */
     text-align: center;
-    margin-top: 80px; /* Espacio para el navbar fijo en la parte superior */
+    margin-top: -5px; /* Espacio para el navbar fijo en la parte superior */
     overflow: hidden; /* Evita barras de desplazamiento si el contenido se desborda */
     position: relative; /* Necesario para posicionar el video de fondo y otros elementos con z-index */
 }
 
 /* --- Información del Video (Título y Descripción) --- */
 .video-info {
-    max-width: 900px; /* Limita el ancho del texto para mejor legibilidad */
+    max-width: 1600px; /* Limita el ancho del texto para mejor legibilidad */
     color: #ffffff; /* Texto blanco para buena visibilidad sobre el fondo oscuro/video */
     padding: 0 25px; /* Padding horizontal para evitar que el texto se pegue a los bordes en pantallas anchas */
     z-index: 2; /* Asegura que este contenido esté por encima del video de fondo */
