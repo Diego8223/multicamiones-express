@@ -9,7 +9,7 @@ import {
   FaMapMarkerAlt,
   FaPhone,
   FaEnvelope 
-} from "react-icons/fa";  // Corregido: usar 'fa' en lugar de 'fa6'
+} from "react-icons/fa";
 import { GiSteeringWheel } from "react-icons/gi";
 
 // Carga perezosa del componente del mapa
@@ -126,24 +126,28 @@ const AboutUs = React.memo(() => {
                 <FaMapMarkerAlt className="me-2" /> VISÍTANOS
               </h4>
 
-              <div className="map-wrapper mt-3" style={{ height: '250px', borderRadius: '8px', overflow: 'hidden' }}>
-                <Suspense fallback={<div>Cargando mapa...</div>}>
-                  <LazyMapComponent {...mapConfig} />
+              <div className="map-wrapper mt-3">
+                <Suspense fallback={
+                  <div className="map-loading-indicator">
+                    Cargando mapa...
+                  </div>
+                }>
+                  <LazyMapConfig {...mapConfig} />
                 </Suspense>
               </div>
 
-              <div className="contact-info mt-4 text-center">
-                <p className="mb-2">
+              <div className="contact-info mt-4">
+                <p>
                   <FaPhone className="me-2" />
-                  <a href="tel:+6041234567" className="text-decoration-none">(604) 123 4567</a>
+                  <a href="tel:+6041234567">(604) 123 4567</a>
                 </p>
-                <p className="mb-2">
+                <p>
                   <FaEnvelope className="me-2" />
-                  <a href="mailto:contacto@multicamionesexpress.com" className="text-decoration-none">
+                  <a href="mailto:contacto@multicamionesexpress.com">
                     contacto@multicamionesexpress.com
                   </a>
                 </p>
-                <p className="text-muted small mt-2">
+                <p className="address-note">
                   Carrera 50 2 Sur 189, Medellín
                 </p>
               </div>
@@ -191,5 +195,14 @@ const AboutUs = React.memo(() => {
     </section>
   );
 });
+
+// Componente wrapper para el mapa con la configuración simplificada
+const LazyMapConfig = ({ simpleMode, ...props }) => {
+  return (
+    <div className={simpleMode ? 'simplified-map' : ''}>
+      <LazyMapComponent {...props} />
+    </div>
+  );
+};
 
 export default AboutUs;
