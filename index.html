@@ -193,8 +193,8 @@
 
         /* Contenido principal - espacio después del navbar */
         .main-content {
-            margin-top: 80px; /* Ajustado para coincidir con la altura del navbar */
-            padding-top: 40px; /* Reducido significativamente */
+            margin-top: 120px; /* Ajustado para coincidir con la altura del navbar */
+            padding-top: 0; /* Eliminado padding superior */
         }
 
         /* Carrusel de publicidad estilo Éxito */
@@ -202,7 +202,7 @@
             padding: 5px 0; /* Reducido de 20px a 5px */
             background-color: #f8fafc;
             text-align: center;
-            margin-bottom: 5px; /* Reducido de 30px a 5px para acercar al siguiente elemento */
+            margin-bottom: 0; /* Eliminado margen inferior */
         }
 
         .ad-carousel-container {
@@ -446,7 +446,7 @@
 
             .ad-carousel-section {
                 padding: 3px 0; /* Reducido para móviles */
-                margin-bottom: 5px; /* Reducido para móviles */
+                margin-bottom: 0; /* Eliminado para móviles */
             }
 
             .ad-carousel-container {
@@ -716,12 +716,194 @@
         .content-wrapper {
             display: flex;
             flex-direction: column;
-            gap: 5px; /* Reducimos el espacio entre elementos hijos */
+            gap: 0; /* Eliminamos espacio entre elementos hijos */
         }
         
         /* Ajustes para reducir espacios generales */
         .main-content > * {
-            margin-bottom: 10px; /* Reducir espacio entre secciones */
+            margin-bottom: 0; /* Eliminar espacio entre secciones */
+        }
+        
+        /* Nuevos estilos para mejorar la experiencia móvil */
+        .mobile-optimized {
+            width: 100%;
+            overflow: hidden;
+        }
+        
+        /* Mejoras específicas para React content */
+        .react-content {
+            width: 100%;
+            overflow-x: hidden;
+        }
+        
+        /* Asegurar que las secciones no tengan márgenes excesivos */
+        section {
+            margin: 0;
+            padding: 0;
+            width: 100%;
+        }
+        
+        /* Contenedor para el contenido de React */
+        #root > div {
+            width: 100%;
+            max-width: 100vw;
+            overflow-x: hidden;
+        }
+        
+        /* Ajustes para el mapa en móviles */
+        @media (max-width: 768px) {
+            #map-container {
+                margin: 5px 0;
+                border-radius: 0;
+                box-shadow: none;
+            }
+        }
+
+        /* ESTILOS MEJORADOS PARA EL CONTENIDO DE REACT (Quienes Somos, Camiones, etc.) */
+        .react-section {
+            width: 100%;
+            padding: 20px 15px;
+            margin: 0 auto;
+            max-width: 1400px;
+        }
+
+        .react-card {
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+            padding: 25px;
+            margin-bottom: 20px;
+            width: 100%;
+            overflow: hidden;
+        }
+
+        .react-card h2 {
+            color: #1e3a8a;
+            font-size: 1.8rem;
+            margin-bottom: 15px;
+            font-weight: 700;
+        }
+
+        .react-card p {
+            color: #495057;
+            line-height: 1.6;
+            margin-bottom: 15px;
+        }
+
+        .stats-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-around;
+            gap: 15px;
+            margin: 20px 0;
+        }
+
+        .stat-item {
+            text-align: center;
+            padding: 15px;
+            background: #f1f5f9;
+            border-radius: 8px;
+            min-width: 120px;
+            flex: 1;
+        }
+
+        .stat-number {
+            font-size: 2rem;
+            font-weight: 700;
+            color: #1e3a8a;
+            display: block;
+        }
+
+        .stat-label {
+            font-size: 0.9rem;
+            color: #64748b;
+            margin-top: 5px;
+        }
+
+        /* Media queries para el contenido de React */
+        @media (max-width: 768px) {
+            .react-section {
+                padding: 15px 10px;
+            }
+            
+            .react-card {
+                padding: 20px;
+                margin-bottom: 15px;
+                border-radius: 10px;
+            }
+            
+            .react-card h2 {
+                font-size: 1.5rem;
+            }
+            
+            .stats-container {
+                gap: 10px;
+            }
+            
+            .stat-item {
+                min-width: 100px;
+                padding: 12px;
+            }
+            
+            .stat-number {
+                font-size: 1.7rem;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .react-section {
+                padding: 10px 5px;
+            }
+            
+            .react-card {
+                padding: 15px;
+                margin-bottom: 10px;
+                border-radius: 8px;
+            }
+            
+            .react-card h2 {
+                font-size: 1.3rem;
+            }
+            
+            .stats-container {
+                flex-direction: column;
+                gap: 8px;
+            }
+            
+            .stat-item {
+                min-width: auto;
+                padding: 10px;
+            }
+            
+            .stat-number {
+                font-size: 1.5rem;
+            }
+        }
+
+        /* Estilos para garantizar que todo el contenido esté bien alineado */
+        .container-fixed {
+            width: 100%;
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+
+        /* Eliminar cualquier espacio no deseado */
+        .no-spacing {
+            margin: 0;
+            padding: 0;
+        }
+
+        /* Asegurar que las imágenes sean responsivas */
+        img {
+            max-width: 100%;
+            height: auto;
+        }
+
+        /* Prevenir desbordamiento horizontal */
+        .prevent-overflow {
+            max-width: 100%;
+            overflow-x: hidden;
         }
     </style>
 </head>
@@ -815,7 +997,7 @@
             </section>
 
             <!-- Contenido principal de la aplicación -->
-            <div id="root">
+            <div id="root" class="react-content">
                 <div class="loading-container" id="loading">
                     <div class="loading-spinner"></div>
                     <h1 class="loading-text">Cargando Multicamiones Express</h1>
